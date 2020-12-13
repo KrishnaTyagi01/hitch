@@ -1,0 +1,96 @@
+.eventcarousel{
+    background-color: var(--color-primary-1);
+    width: 729.5px;
+    // height: 445px;
+    box-shadow: 0px 0px 14px rgba(0, 0, 0, 0.5);
+    border-radius: 10px;
+
+    &__imgdiv{
+    margin-top: -1rem;
+    margin-left: -1rem;
+    width: 829.5px;
+    height: 445px;
+    }
+
+    &__img{
+
+    }
+
+    &__prevlink{
+
+    }
+
+    &__previcon{
+        width: 28px;
+        height: 28px;
+        border-radius: 50%;
+        background: #39EAB4;
+        box-shadow: 0px 0px 14px rgba(0, 0, 0, 0.25);
+        background-image: none;
+    }
+
+    &__nextlink{
+        
+    }
+
+    &__nexticon{
+        width: 28px;
+        height: 28px;
+        border-radius: 50%;
+        background: #39EAB4;
+        box-shadow: 0px 0px 14px rgba(0, 0, 0, 0.25);
+        background-image: none;
+       
+    }
+  
+
+    &__rules{
+        display: flex;
+        margin-top: 52.17px;
+        background-color: var(--color-primary-1);
+        &--rule{
+            font-family: 'Kumbh Sans', sans-serif;
+            font-style: normal;
+            font-weight: normal;
+            font-size: 16px;
+            line-height: 16px;
+            color: #E6E4F2;
+
+         &:last-child{
+          img{
+                    display: none;
+                }
+            }
+
+          &:not(:last-child){
+            margin-right: 21.46px;
+          }  
+        }
+
+        &--dot{
+
+            margin-left: 13.47px;
+
+        }
+    }
+}
+
+
+// .carousel-control-prev-icon {
+//     background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='%23171429' viewBox='0 0 8 8'%3E%3Cpath d='M5.25 0l-4 4 4 4 1.5-1.5-2.5-2.5 2.5-2.5-1.5-1.5z'/%3E%3C/svg%3E") !important;
+
+//     // width: 10px;
+//     // height: 5px;
+//    }
+   
+//    .carousel-control-next-icon {
+//      background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='%23171429' viewBox='0 0 8 8'%3E%3Cpath d='M2.75 0l-1.5 1.5 2.5 2.5-2.5 2.5 1.5 1.5 4-4-4-4z'/%3E%3C/svg%3E") !important;
+//      width: 20px;
+//      height: 15px;
+//    }
+   
+
+// .carousel-inner{
+//     margin-top: -2rem;
+
+// }

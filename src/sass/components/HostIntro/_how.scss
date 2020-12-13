@@ -1,0 +1,60 @@
+.how{
+    display: flex;
+    align-items: center;
+    background: linear-gradient(to right bottom, var(--color-primary-1) -64.51%, var(--color-primary-2) 100%);
+
+    &__left{
+        
+        margin-left: 65.8px;
+        &--heading{
+        font-family: 'Kumbh Sans', sans-serif;
+            font-style: normal;
+            font-weight: normal;
+            font-size: 32px;
+            line-height: 32px;
+            margin-bottom: 53.88px;
+            color: #FFFFFF;
+        }
+
+        &--points{
+
+        }
+
+        &--point{
+            display: flex;
+            margin-bottom: 41px;
+        }
+
+        &--count{
+        font-family: 'Kumbh Sans', sans-serif;
+            font-style: normal;
+            font-weight: 300;
+            font-size: 38px;
+            line-height: 38px;
+            color: #FFFFFF;
+            margin-right: 28px;
+            margin-top: 5px;
+        }
+
+        &--text{
+        font-family: 'Kumbh Sans', sans-serif;
+            font-style: normal;
+            font-weight: 300;
+            font-size: 18px;
+            line-height: 166.1%;
+            width: 518px; 
+            color: #FFFFFF;
+            
+        }
+    }
+
+    &__right{
+        margin-left: 80.73px;
+        &--img{
+            width: 409.9px;
+            height: 654.54px;
+            filter: drop-shadow(0px 0px 24px rgba(0, 0, 0, 0.45));
+       
+        }
+    }
+}

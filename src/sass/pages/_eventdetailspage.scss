@@ -1,0 +1,55 @@
+.eventDetailsPage{
+    width: 100%;
+    background-color: var(--color-primary-1);
+    justify-content: space-between;
+    &__inner{
+       margin-top:68.35px ;
+       margin-right:43.25px ;
+       margin-left: 51px;
+    //    margin-bottom: 74.35px;
+    }
+
+    &__hero{
+        display: flex;
+        &--left{
+            margin-right: 46px;
+        }
+
+        &--right{
+
+        }
+    }
+
+    &__tags{
+        margin-top: 78.55px;
+    }
+
+    &__overview{
+        margin-top: 104.73px;
+    }
+
+    &__speakers{
+        margin-top: 137px;
+    }
+
+    &__eventdetails{
+        margin-top: 169.25px;
+    }
+
+    &__timeline{
+        margin-top: 185.25px;
+    }
+
+    &__messageboard{
+        margin-top: 216.13px;
+    }
+
+    &__organizersmessage{
+        margin-top: 162.3px;
+    }
+
+    &__similarevents{
+        background: linear-gradient(360deg, #524690 -64.51%, #171429 100%);
+        padding-bottom: 74.35px;
+    }
+}

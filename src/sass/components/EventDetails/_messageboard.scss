@@ -1,0 +1,124 @@
+.board{
+
+    border-top: 3px solid #39EAB4;
+    border-left: 3px solid #39EAB4;
+    border-right: 3px solid #39EAB4;
+    // box-sizing: border-box;
+    // border-radius: 10px;
+    
+
+
+    width: 654.22px;
+    height: 602.16px;
+    background-color: rgb(82, 70, 144);
+    backdrop-filter: blur(250px);    
+    overflow-y: scroll;
+ 
+    border-radius: 10px 10px 0 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    &::-webkit-scrollbar {
+        width: 10px;
+      }
+
+    &::-webkit-scrollbar-track {
+        background: rgb(82, 70, 144) ; 
+      }
+       
+    &::-webkit-scrollbar-thumb {
+        background:   var(--color-primary-1); 
+      }
+    &__message{
+        width: 580.82px;
+        // height: 127px;
+        margin-top: 24px;
+        background: rgb(23, 20, 41);
+        backdrop-filter: blur(250px);
+        border-radius: 10px;
+        display: flex;
+        // flex-direction: ;
+        // &--right{
+
+        // }
+
+        &--pic{
+            width: 50px;
+            height: 50px;
+            
+            filter: drop-shadow(0px 4px 14px rgba(88, 88, 88, 0.25));
+        }
+
+        &--name{
+            font-family: 'Source Sans Pro', sans-serif;
+            font-style: normal;
+            font-weight: 600;
+            font-size: 18px;
+            line-height: 21px;
+            
+            color: #FFFFFF;
+            
+        }
+
+        &--text{
+            font-family: 'Source Sans Pro', sans-serif;
+            font-style: normal;
+            font-weight: normal;
+            font-size: 14px;
+            line-height: 141.8%;
+            margin-bottom: 24px;
+            color: #FFFFFF;
+            
+        }
+    }
+}
+
+.inputbox{
+    border-bottom: 3px solid #39EAB4;
+    border-left: 3px solid #39EAB4;
+    border-right: 3px solid #39EAB4;
+    width: 655.04px;
+    height: 64.22px;
+    background: #191627;
+    border-radius: 0px 0px 10px 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    &__input{
+        
+        width: 608.39px;
+        height: 33.94px;
+        border: none;
+        background: #2B244D;
+        box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.25);
+        border-radius: 40000px;
+        color: #FFFFFF;
+        font-family: 'Kumbh Sans', sans-serif;
+       outline: none;
+        &::placeholder{
+            font-family: 'Kumbh Sans', sans-serif;
+            font-style: normal;
+            font-weight: 300;
+            font-size: 14px;
+            line-height: 14px;
+            letter-spacing: 0.02em;
+            text-transform: uppercase;
+            color: #FFFFFF;
+            padding-left: 23.07px ;
+        }
+    }
+}
+
+.messageboard{
+
+    &__heading{
+        font-family: 'Kumbh Sans', sans-serif;
+        font-style: normal;
+        font-weight: bold;
+        font-size: 24px;
+        line-height: 24px;
+        margin-bottom: 43.63px;
+        color: #FFFFFF;
+    }
+}

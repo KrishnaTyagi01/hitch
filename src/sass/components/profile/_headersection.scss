@@ -1,0 +1,53 @@
+.headersection{
+    background-color: var(--color-primary-2);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 60px;
+
+    &__left{
+        margin-left: 411px;
+
+        &--about{
+            font-family: 'Kumbh Sans', sans-serif;
+            font-style: normal;
+            font-weight: normal;
+            font-size: 16px;
+            line-height: 16px;
+            color: #39EAB4;
+
+            &:hover{
+                color: #39EAB4;
+            }
+            
+        }
+
+        &--activity{
+            margin-left: 54px;
+            font-family: 'Kumbh Sans', sans-serif;
+            font-style: normal;
+            font-weight: normal;
+            font-size: 16px;
+            line-height: 16px; 
+            color: #FFFFFF;
+
+            &:hover{
+                color: #ffffff;
+            }
+        }
+
+        
+    }
+
+    &__right{
+        margin-right: 30.16px;
+        &--link{
+            margin-left: 20px;
+        }
+
+        &--icon{
+            height: 16.25px;
+            width: 16.25px;
+        }
+    }
+}

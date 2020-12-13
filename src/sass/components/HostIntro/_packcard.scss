@@ -1,0 +1,57 @@
+.packcard{
+    width: 370px;
+    height: 514px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    background: #2B244D;
+    box-shadow: 0px 0px 14px rgba(0, 0, 0, 0.25);
+    border-radius: 10px;
+    transition: all .2s;
+    &__head{
+        font-family: 'Kumbh Sans', sans-serif;
+        font-style: normal;
+        font-weight: normal;
+        font-size: 34px;
+        line-height: 34px;
+        text-align: right;
+        margin-top: 36.38px;
+        color: #FFFFFF;
+    }
+
+    &__btn{
+        width: 179px;
+        height: 61.78px;
+        border: 1.5px solid #39EAB4;
+        box-sizing: border-box;
+        filter: drop-shadow(0px 4px 14px rgba(88, 88, 88, 0.25));
+        border-radius: 10px;
+        background-color: inherit;
+        font-family: 'Kumbh Sans', sans-serif;
+        font-style: normal;
+        font-weight: normal;
+        font-size: 24px;
+        line-height: 24px;
+        margin-bottom: 34.87px;
+        color: #39EAB4;
+
+        // border: none;
+        &:hover{
+            background-color: #39EAB4;
+            color: #171429;
+        }
+        
+        &:active, &:focus{
+          
+            outline: none;
+        }
+        
+    }
+
+    &:hover{
+        transform: translateY(-15px) ;
+        box-shadow: 6px 8px 14px rgba(0, 0, 0, 0.9);
+
+    }
+}

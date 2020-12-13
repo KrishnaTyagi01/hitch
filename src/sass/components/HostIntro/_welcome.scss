@@ -1,0 +1,85 @@
+.welcome{
+    display: flex;
+    align-items: center;
+    // width: 470px;
+    // height: 1280px;
+    
+    background: linear-gradient(to right, var(--color-primary-1) -64.51%, var(--color-primary-2) 100%);
+    // background: linear-gradient(to right, var(--color-primary-1) 10%, var(--color-primary-2) 100%);
+    // transform: rotate(-90deg);
+    &__left{
+        margin-left: 45.5px;
+        &--head1{
+            font-family: 'Kumbh Sans', sans-serif;
+            font-style: normal;
+            font-weight: bold;
+            font-size: 44px;
+            line-height: 153.3%;
+            color: #FFFFFF;
+            
+        }
+
+        &--head2{
+            font-family: 'Kumbh Sans', sans-serif;
+            font-style: normal;
+            font-weight: bold;
+            font-size: 44px;
+            line-height: 153.3%;
+            color: #FFFFFF;
+            margin-top: -10px;
+        }
+
+        &--icon{
+            width: 10px;
+            height: 10px;
+            margin-top: 11px;
+            margin-left: 3px;
+        }
+
+        &--text{
+            font-family: 'Kumbh Sans', sans-serif;
+            font-style: normal;
+            font-weight: 300;
+            font-size: 20px;
+            line-height: 20px;
+            width: 536.5px;
+            height: 65.08px;
+            color: #FFFFFF;
+            
+        }
+
+        &--btn{
+            // margin-top: 47.05px;
+            width: 179px;
+            height: 61.78px;
+            background: #39EAB4;
+            box-shadow: 0px 4px 14px rgba(88, 88, 88, 0.25);
+            border-radius: 10px;
+            font-family: 'Poppins', sans-serif;
+            font-style: normal;
+            font-weight: 500;
+            font-size: 24px;
+            line-height: 36px;
+            border: none;
+
+            &:focus{
+                border: none;
+                outline: none;
+            }
+            
+            
+            color: #171429;
+            
+        }
+    }
+
+    &__right{
+        margin-left: 81px;
+        &--img{
+            width: 562.49px;
+            height: 459.84px;
+            filter: drop-shadow(0px 4px 24px rgba(0, 0, 0, 0.35));
+            // transform: matrix(-1, 0, 0, 1, 0, 0);
+        }
+    }
+}
