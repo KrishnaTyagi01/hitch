@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
 import {Redirect} from 'react-router-dom'
-import {CheckUserExist, getProfile} from '../../API/UserAPI';
+import {CheckUserExist, getProfile} from '../../API/Auth';
 const SignupComponent = ()=>{
 
     const [email, setEmail] = useState('');

@@ -11,7 +11,11 @@ import yellowDotIcon from '../../icons/profile/yellowDotIcon.svg';
 import profilePicIcon from '../../icons/profile/profilePicIcon.svg';
 
 
-const ProfileCard = () => {
+const ProfileCard = (props) => {
+
+    const {values, setValues} = props;
+
+
     return (
         <div className="profilecard">
             <div className="profilecard__wrapper">
@@ -27,17 +31,17 @@ const ProfileCard = () => {
                 </span>
             </div>
             <div className="profilecard__mid">
-                <img className="profilecard__mid--pic" src={userProfilePic} alt="profile pic" />
-                <h3 className="profilecard__mid--name">John Doe</h3>
+                <img className="profilecard__mid--pic" src={values.image} alt="profile pic" />
+                <h3 className="profilecard__mid--name">{values.name}</h3>
             </div>
             <div className="profilecard__lower">
                 <div className="profilecard__lower--item">
                     <img src={jobIcon} alt="icon" className="profilecard__lower--icon" />
-                        <span className="profilecard__lower--text">Software Development</span>
+                        <span className="profilecard__lower--text">{values.job}</span>
                 </div>
                 <div className="profilecard__lower--item">
                     <img src={buildingIcon} alt="icon" className="profilecard__lower--icon" />
-                    <span className="profilecard__lower--text">Microsoft, Mumbai IN</span>
+                    <span className="profilecard__lower--text">{values.location}</span>
                 </div>
                 <div className="profilecard__lower--item">
                     <img src={profilePicIcon} alt="icon" className="profilecard__lower--icon" />
@@ -49,7 +53,7 @@ const ProfileCard = () => {
                 </div>
                 <div className="profilecard__lower--item">
                     <img src={locationIcon} alt="icon" className="profilecard__lower--icon " />
-                    <span className="profilecard__lower--text" id="profile__lower--locationtext">Mumbai IN</span>
+                    <span className="profilecard__lower--text" id="profile__lower--locationtext">{values.location}</span>
                 </div>
             </div>
         </div>

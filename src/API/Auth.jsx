@@ -22,19 +22,6 @@ export const CheckUserExist = (username) =>{
     })
 }
 
-export const getProfile = () => {
-    return fetch(`http://167.71.237.202/profiles/3/`, {
-        method: "GET"
-
-    })
-    .then(res=>{
-        console.log(res)
-        return res.json();
-    })
-    .catch(err=>{
-        console.log(err);
-    })
-} 
 
 export const loginUser = (user) =>{
     return fetch(`http://167.71.237.202/api/login/`, {
@@ -96,9 +83,8 @@ export const isAuthenticated = () =>{
     if(typeof window == 'undefined'){
         return false;
     }
-
     if(localStorage.getItem('userdata')){
-    return JSON.parse(localStorage.getItem('userdata'))
+      return JSON.parse(localStorage.getItem('userdata'))
     }
 
    else{

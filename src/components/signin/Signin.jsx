@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
 import {Redirect} from 'react-router-dom'
-import {loginUser, authenticate} from '../../API/UserAPI';
+import {loginUser, authenticate} from '../../API/Auth';
 
 const SigninComponent = (props)=>{
     

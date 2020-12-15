@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
 import {Redirect} from 'react-router-dom'
-import {registerUser, authenticate} from '../../API/UserAPI';
+import {registerUser, authenticate} from '../../API/Auth';
 
 const RegisterComponent = ()=>{
 

@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
 import {Redirect} from 'react-router-dom'
-import {validateOtp} from '../../API/UserAPI';
+import {validateOtp} from '../../API/Auth';
 
 const OtpComponent = (props)=>{
     const email = props.location.state.email;
