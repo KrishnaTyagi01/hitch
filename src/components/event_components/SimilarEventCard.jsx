@@ -39,8 +39,8 @@ const SimilarEventCard = () => {
 
         //HERE the part 
 
-        <div class="card img-fluid" style={{ width: "250px",border:"none",backgroundColor:"var(--color-primary-1)" }}>
-            <img className="card-img-top" src={eventpic2} alt="Card image" style={{ width: "250px" }} />
+        <div class="card img-fluid cardContainer">
+            <img className="card-img-top" src={eventpic2} alt="Card image"  />
             <div className="card-img-overlay similareventcard">
                 <div className="similareventcard__upper">
                     <span className="similareventcard__upper--cost">

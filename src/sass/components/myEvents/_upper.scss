@@ -1,0 +1,70 @@
+.upper{
+    height: 209px;
+    background: #2B244D;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+
+
+    &__container{
+        padding: 30px;
+        margin-left: 350px;
+
+        &--head{
+            width: 150px;
+            height: 28px;
+            font-family: 'Montserrat';
+            font-style: normal;
+            font-weight: 500;
+            font-size: 28px;
+            line-height: 34px;
+            margin-bottom: 50px;
+            color: #39EAB4;
+        }
+
+
+        &--category{
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 24px;
+
+            
+        }
+
+        &--btnactive{
+            background: #37D1A7;
+            border-radius: 1e+07px;
+            width: 121.13px;
+            height: 28.69px;
+            border: none;
+
+            &:hover{
+                transform: translateY(-2px);
+            }
+
+            &:focus{
+               outline: none; 
+            }
+        }
+
+        &--btn{
+            background-color: transparent;
+            border: none;
+            font-family: 'Montserrat';
+            font-style: normal;
+            font-weight: normal;
+            font-size: 16px;
+            line-height: 20px;
+            color: #FFFFFF;
+
+            &:focus{
+                outline: none;
+            }
+
+            &:hover{
+                text-decoration: underline;
+            }
+        }
+        
+    }
+}

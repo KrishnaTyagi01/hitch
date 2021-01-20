@@ -342,7 +342,7 @@
 
 .eventcarousel {
   background-color: var(--color-primary-1);
-  width: 729.5px;
+  width: 829.5px;
   box-shadow: 0px 0px 14px rgba(0, 0, 0, 0.5);
   border-radius: 10px; }
   .eventcarousel__imgdiv {
@@ -750,6 +750,14 @@
       text-align: justify;
       color: #E6E4F2; }
 
+.cardContainer {
+  width: 250px;
+  border: none;
+  background-color: var(--color-primary-1); }
+
+.card-img-top {
+  width: 250px; }
+
 .similareventcard {
   border: none;
   display: flex;
@@ -931,7 +939,7 @@
       color: #FFFFFF; }
 
 .profilecard {
-  width: 336px;
+  width: 100%;
   background: #2B244D;
   box-shadow: 0px 0px 24px rgba(0, 0, 0, 0.45);
   border-radius: 10px;
@@ -1017,7 +1025,7 @@
   align-items: center;
   height: 60px; }
   .headersection__left {
-    margin-left: 411px; }
+    margin-left: 30%; }
     .headersection__left--about {
       font-family: 'Kumbh Sans', sans-serif;
       font-style: normal;
@@ -1046,7 +1054,7 @@
       width: 16.25px; }
 
 .connectionbtn {
-  width: 337px;
+  width: 100%;
   height: 56px;
   border: none;
   background: #39EAB4;
@@ -1067,7 +1075,7 @@
     margin-right: 18.64px; }
 
 .followbtn {
-  width: 337px;
+  width: 100%;
   height: 56px;
   border: none;
   background: #2B244D;
@@ -1088,7 +1096,7 @@
     margin-right: 14.46px; }
 
 .about {
-  width: 821px;
+  width: 100%;
   background-color: var(--color-primary-1); }
   .about__heading {
     font-family: 'Kumbh Sans', sans-serif;
@@ -1107,7 +1115,7 @@
     color: #E6E4F2; }
 
 .hostedevents {
-  width: 822px;
+  width: 100%;
   background-color: var(--color-primary-1); }
   .hostedevents__upper {
     display: flex;
@@ -1140,7 +1148,7 @@
     justify-content: space-between; }
 
 .eventattended {
-  width: 822px;
+  width: 100%;
   background-color: var(--color-primary-1); }
   .eventattended__upper {
     display: flex;
@@ -1437,6 +1445,121 @@
     .signin__btn:focus {
       outline: none; }
 
+.filter {
+  background: var(--color-primary-1);
+  box-shadow: 0px 4px 14px rgba(0, 0, 0, 0.35);
+  border-radius: 10px;
+  width: 315px;
+  padding: 15px; }
+  .filter__head {
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 1px solid #DEDEDE;
+    padding-bottom: 13px; }
+    .filter__head--main {
+      font-family: 'Montserrat';
+      font-style: normal;
+      font-weight: normal;
+      font-size: 16px;
+      line-height: 20px;
+      display: flex;
+      align-items: center;
+      letter-spacing: 0.01em;
+      text-transform: uppercase;
+      color: #FFFFFF; }
+    .filter__head--sub {
+      font-family: 'Montserrat';
+      font-style: normal;
+      font-weight: normal;
+      font-size: 11px;
+      line-height: 16px;
+      color: #FFFFFF; }
+  .filter__type {
+    border-bottom: 1px solid #DEDEDE; }
+  .filter__subtype {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 19px;
+    margin-bottom: 30px; }
+    .filter__subtype--name {
+      font-family: 'Montserrat';
+      font-style: normal;
+      font-weight: normal;
+      font-size: 16px;
+      line-height: 16px;
+      color: #FFFFFF; }
+  .filter__form--span {
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: normal;
+    font-size: 14px;
+    line-height: 20px;
+    color: #FFFFFF;
+    margin-bottom: 20px; }
+  .filter__checkbox--input {
+    margin-right: 10px; }
+
+.custom-calendar {
+  box-shadow: 0 1em 3em rgba(156, 136, 255, 0.2); }
+
+.custom-today-day {
+  color: #171429 !important;
+  border: 1px solid #171429 !important; }
+
+.custom-today-day::after {
+  visibility: hidden;
+  /* hide small border under the text */ }
+
+.responsive-calendar {
+  font-size: 8.4px !important; }
+
+.upper {
+  height: 209px;
+  background: #2B244D;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end; }
+  .upper__container {
+    padding: 30px;
+    margin-left: 350px; }
+    .upper__container--head {
+      width: 150px;
+      height: 28px;
+      font-family: 'Montserrat';
+      font-style: normal;
+      font-weight: 500;
+      font-size: 28px;
+      line-height: 34px;
+      margin-bottom: 50px;
+      color: #39EAB4; }
+    .upper__container--category {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 24px; }
+    .upper__container--btnactive {
+      background: #37D1A7;
+      border-radius: 1e+07px;
+      width: 121.13px;
+      height: 28.69px;
+      border: none; }
+      .upper__container--btnactive:hover {
+        transform: translateY(-2px); }
+      .upper__container--btnactive:focus {
+        outline: none; }
+    .upper__container--btn {
+      background-color: transparent;
+      border: none;
+      font-family: 'Montserrat';
+      font-style: normal;
+      font-weight: normal;
+      font-size: 16px;
+      line-height: 20px;
+      color: #FFFFFF; }
+      .upper__container--btn:focus {
+        outline: none; }
+      .upper__container--btn:hover {
+        text-decoration: underline; }
+
 .eventDetailsPage {
   width: 100%;
   background-color: var(--color-primary-1);
@@ -1446,8 +1569,11 @@
     margin-right: 43.25px;
     margin-left: 51px; }
   .eventDetailsPage__hero {
-    display: flex; }
+    display: flex;
+    justify-content: space-between; }
     .eventDetailsPage__hero--left {
+      margin-right: 46px; }
+    .eventDetailsPage__hero--right {
       margin-right: 46px; }
   .eventDetailsPage__tags {
     margin-top: 78.55px; }
@@ -1475,6 +1601,7 @@
   display: flex;
   justify-content: space-between; }
   .profile__left {
+    width: 25%;
     margin-left: 37px; }
     .profile__left--profilecard {
       margin-top: -271px;
@@ -1482,7 +1609,8 @@
     .profile__left--connectionbtn {
       margin-bottom: 24px; }
   .profile__right {
-    margin-right: 45px; }
+    margin-right: 45px;
+    width: 65%; }
     .profile__right--about {
       margin-top: 50.34px; }
     .profile__right--hostedevents {
