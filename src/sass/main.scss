@@ -63,6 +63,8 @@
 
 //================ Dashboard ==================//
 @import "components/Dashboard/sidebar";
+@import "components/Dashboard/nav";
+@import "components/Dashboard/reviewBox";
 // ============== PAGES  ======================//
 @import "pages/eventdetailspage";
 @import "pages/profile";
