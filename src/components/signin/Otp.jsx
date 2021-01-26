@@ -29,12 +29,13 @@ const OtpComponent = (props)=>{
     const handleClick = () =>{
        validateOtp({username: email, otp:otp})
        .then(res=>{
-           if(res.status === "success"){
+           if(res.success == true){
+               console.log('reached here')
             console.log(res);
             setValues({...values, success: res.message, loading:true})
             SetToReg(true)
            } else{
-               
+               console.log(res)
                console.log(res.message);
                setValues({...values, error: res.message, loading:false})
            }
