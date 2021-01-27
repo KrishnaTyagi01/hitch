@@ -1,138 +1,138 @@
 .footer{
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    background-color: red;
-    &__upper{
-        width: 100%;
-        background-color: var(--color-primary-2);
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
+	width: 100%;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	background-color: red;
+	&__upper{
+		width: 100%;
+		background-color: var(--color-primary-2);
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
 
-        height: 90px;
-        &--text{
-            margin-left: 4.8rem;
-            font-family: 'Kumbh Sans', sans-serif;
-            font-style: normal;
-            font-weight: normal;
-            font-size: 20px;
-            line-height: 20px;
-            
-            color: #FFFFFF;
-            
-        }
+		height: 90px;
+		&--text{
+			margin-left: 4.8rem;
+			font-family: 'Kumbh Sans', sans-serif;
+			font-style: normal;
+			font-weight: normal;
+			font-size: 20px;
+			line-height: 20px;
+			
+			color: #FFFFFF;
+			
+		}
 
-        &--buttons{
-            margin-right: 4.8rem;
+		&--buttons{
+			margin-right: 4.8rem;
 
-            &:hover{
-                cursor: pointer;
-            }
-        }
-        &--googlebtn{
-            margin:0 1rem;
+			&:hover{
+				cursor: pointer;
+			}
+		}
+		&--googlebtn{
+			margin:0 1rem;
 
-            &:hover{
-                cursor: pointer;
-            }
-        }
-        &--applebtn{
-            margin:0 1rem;
-        }
-    }
+			&:hover{
+				cursor: pointer;
+			}
+		}
+		&--applebtn{
+			margin:0 1rem;
+		}
+	}
 
-    &__mid{
-        width: 100%;
-        display: flex;
-        justify-content: space-around;
-        padding-top: 1rem;
-        background-color: var(--color-primary-1);
+	&__mid{
+		width: 100%;
+		display: flex;
+		justify-content: space-around;
+		padding-top: 1rem;
+		background-color: var(--color-primary-1);
 
-        &--list{
-            list-style: none;
-        }
+		&--list{
+			list-style: none;
+		}
 
-        &--listitem{
-            margin-bottom: .5rem;
-        }
-        &--listhead{
-            margin-bottom: 1rem;
-         
-            font-family: 'Kumbh Sans', sans-serif;
-            font-style: normal;
-            font-weight: bold;
-            font-size: 14px;
-            line-height: 14px;
-            /* identical to box height */
-            
-            
-            color: #FFFFFF;
-            
-        }
-        &--listlink{
-            font-family: 'Kumbh Sans', sans-serif;
+		&--listitem{
+			margin-bottom: .5rem;
+		}
+		&--listhead{
+			margin-bottom: 1rem;
+		 
+			font-family: 'Kumbh Sans', sans-serif;
+			font-style: normal;
+			font-weight: bold;
+			font-size: 14px;
+			line-height: 14px;
+			/* identical to box height */
+			
+			
+			color: #FFFFFF;
+			
+		}
+		&--listlink{
+			font-family: 'Kumbh Sans', sans-serif;
 
-            font-style: normal;
-            font-weight: normal;
-            font-size: 14px;
-            line-height: 14px;
-            /* identical to box height */
-            
-            
-            color: #FFFFFF;
-            
-        }
-    }
+			font-style: normal;
+			font-weight: normal;
+			font-size: 14px;
+			line-height: 14px;
+			/* identical to box height */
+			
+			
+			color: #FFFFFF;
+			
+		}
+	}
 
-    &__lower{
-        width: 100%;
-        display: flex;
-        justify-content: space-between;
-        height: 70px;
-        align-items: center;
-        background-color: var(--color-primary-2);
+	&__lower{
+		width: 100%;
+		display: flex;
+		justify-content: space-between;
+		height: 70px;
+		align-items: center;
+		background-color: var(--color-primary-2);
 
-        &--contact{
-            margin-right: .5rem;
-            margin-left: 4.8rem;
-            font-family: 'Kumbh Sans', sans-serif;
-            font-style: normal;
-            font-weight: normal;
-            font-size: 16px;
-            line-height: 16px;
-            
-            
-            color: #FFFFFF;
-        }
-        &--iconlink{
-            margin-right: 1rem;
-            color: var(--color-primary-5);
+		&--contact{
+			margin-right: .5rem;
+			margin-left: 4.8rem;
+			font-family: 'Kumbh Sans', sans-serif;
+			font-style: normal;
+			font-weight: normal;
+			font-size: 16px;
+			line-height: 16px;
+			
+			
+			color: #FFFFFF;
+		}
+		&--iconlink{
+			margin-right: 1rem;
+			color: var(--color-primary-5);
 
-            &:hover{
-                cursor: pointer;
-            }
-        }
-        // &--icon{
-        //     font-size: 1.3rem;
-        // }
+			&:hover{
+				cursor: pointer;
+			}
+		}
+		// &--icon{
+		//     font-size: 1.3rem;
+		// }
 
-        &--text{
-            margin-right: 4.8rem;
-            font-family: 'Kumbh Sans', sans-serif;
-            font-style: normal;
-            font-weight: normal;
-            font-size: 16px;
-            line-height: 16px;
-            /* identical to box height */
-            
-            text-decoration-line: underline;
-            
-            color: #FFFFFF;
-            
-        }
-    }
+		&--text{
+			margin-right: 4.8rem;
+			font-family: 'Kumbh Sans', sans-serif;
+			font-style: normal;
+			font-weight: normal;
+			font-size: 16px;
+			line-height: 16px;
+			/* identical to box height */
+			
+			text-decoration-line: underline;
+			
+			color: #FFFFFF;
+			
+		}
+	}
 
-    
+	
 }

@@ -1,71 +1,71 @@
 .hostcard{
-    width: 300px;
-    height: 400px;
-    margin-bottom: 50.5px;
-    background: var(--color-primary-2);
-    border-radius: 10px;
+	width: 300px;
+	height: 400px;
+	margin-bottom: 50.5px;
+	background: var(--color-primary-2);
+	border-radius: 10px;
 
-    display: flex;
-    justify-content: center;
+	display: flex;
+	justify-content: center;
 
 
-    &__wrapper{
-        width: 196.46px;
-        height: 100%;
-        display: flex;
-        flex-direction: column;
-        justify-content: space-around;
-        align-items: center;
-    }
-    &__pic{
-        width: 90px;
-        height: 90px;
-    }
+	&__wrapper{
+		width: 196.46px;
+		height: 100%;
+		display: flex;
+		flex-direction: column;
+		justify-content: space-around;
+		align-items: center;
+	}
+	&__pic{
+		width: 90px;
+		height: 90px;
+	}
 
-    &__role{
-        width: 83.41px;
-        height: 26.75px;
-        
-        background: #39EAB4;
-        border-radius: 5px;
-    }
+	&__role{
+		width: 83.41px;
+		height: 26.75px;
+		
+		background: #39EAB4;
+		border-radius: 5px;
+	}
 
-    &__name{
-        font-family: 'Kumbh Sans', sans-serif;
-        font-style: normal;
-        font-weight: bold;
-        font-size: 16px;
-        line-height: 16px;
-        text-transform: uppercase;
-        color: #FFFFFF;
-        
-    }
+	&__name{
+		font-family: 'Kumbh Sans', sans-serif;
+		font-style: normal;
+		font-weight: bold;
+		font-size: 16px;
+		line-height: 16px;
+		text-transform: uppercase;
+		color: #FFFFFF;
+		
+	}
 
-    &__host{
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-    }
+	&__host{
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+	}
 
-    &__category{
-        font-family: 'Kumbh Sans', sans-serif;
-        font-style: normal;
-        font-weight: normal;
-        font-size: 12px;
-        line-height: 12px;
-        margin: 0 auto;
-        color: #FFFFFF;
-        text-transform: capitalize;
-    }
+	&__category{
+		font-family: 'Kumbh Sans', sans-serif;
+		font-style: normal;
+		font-weight: normal;
+		font-size: 12px;
+		line-height: 12px;
+		margin: 0 auto;
+		color: #FFFFFF;
+		text-transform: capitalize;
+	}
 
-    &__text{
-        font-family: 'Poppins', sans-serif;
-        font-style: normal;
-        font-weight: normal;
-        font-size: 14px;
-        line-height: 168.8%;        
-        text-align: justify;
-        
-        color: #E6E4F2;
-    }
+	&__text{
+		font-family: 'Poppins', sans-serif;
+		font-style: normal;
+		font-weight: normal;
+		font-size: 14px;
+		line-height: 168.8%;        
+		text-align: justify;
+		
+		color: #E6E4F2;
+	}
 }

@@ -1,76 +1,76 @@
 .eventcarousel{
-    background-color: var(--color-primary-1);
-    width: 829.5px;
-    // height: 445px;
-    box-shadow: 0px 0px 14px rgba(0, 0, 0, 0.5);
-    border-radius: 10px;
+	background-color: var(--color-primary-1);
+	width: 829.5px;
+	// height: 445px;
+	box-shadow: 0px 0px 14px rgba(0, 0, 0, 0.5);
+	border-radius: 10px;
 
-    &__imgdiv{
-    margin-top: -1rem;
-    margin-left: -1rem;
-    width: 829.5px;
-    height: 445px;
-    }
+	&__imgdiv{
+	margin-top: -1rem;
+	margin-left: -1rem;
+	width: 829.5px;
+	height: 445px;
+	}
 
-    &__img{
+	&__img{
 
-    }
+	}
 
-    &__prevlink{
+	&__prevlink{
 
-    }
+	}
 
-    &__previcon{
-        width: 28px;
-        height: 28px;
-        border-radius: 50%;
-        background: #39EAB4;
-        box-shadow: 0px 0px 14px rgba(0, 0, 0, 0.25);
-        background-image: none;
-    }
+	&__previcon{
+		width: 28px;
+		height: 28px;
+		border-radius: 50%;
+		background: #39EAB4;
+		box-shadow: 0px 0px 14px rgba(0, 0, 0, 0.25);
+		background-image: none;
+	}
 
-    &__nextlink{
-        
-    }
+	&__nextlink{
+		
+	}
 
-    &__nexticon{
-        width: 28px;
-        height: 28px;
-        border-radius: 50%;
-        background: #39EAB4;
-        box-shadow: 0px 0px 14px rgba(0, 0, 0, 0.25);
-        background-image: none;
-       
-    }
+	&__nexticon{
+		width: 28px;
+		height: 28px;
+		border-radius: 50%;
+		background: #39EAB4;
+		box-shadow: 0px 0px 14px rgba(0, 0, 0, 0.25);
+		background-image: none;
+	   
+	}
   
 
-    &__rules{
-        display: flex;
-        margin-top: 52.17px;
-        background-color: var(--color-primary-1);
-        &--rule{
-            font-family: 'Kumbh Sans', sans-serif;
-            font-style: normal;
-            font-weight: normal;
-            font-size: 16px;
-            line-height: 16px;
-            color: #E6E4F2;
+	&__rules{
+		display: flex;
+		margin-top: 52.17px;
+		background-color: var(--color-primary-1);
+		&--rule{
+			font-family: 'Kumbh Sans', sans-serif;
+			font-style: normal;
+			font-weight: normal;
+			font-size: 16px;
+			line-height: 16px;
+			color: #E6E4F2;
 
-         &:last-child{
-          img{
-                    display: none;
-                }
-            }
+		 &:last-child{
+		  img{
+					display: none;
+				}
+			}
 
-          &:not(:last-child){
-            margin-right: 21.46px;
-          }  
-        }
+		  &:not(:last-child){
+			margin-right: 21.46px;
+		  }  
+		}
 
-        &--dot{
+		&--dot{
 
-            margin-left: 13.47px;
+			margin-left: 13.47px;
 
-        }
-    }
+		}
+	}
 }

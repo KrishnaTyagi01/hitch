@@ -6,13 +6,13 @@ import Carousel from '../components/event_components/Carousel';
 import SignupComponent from '../components/signin/Signup';
 
 const Signup = ()=>{
-    return(
-        <>
-        <Navbar />
-         <SignupComponent />
-        <Footer />
-        </>
-    )
+	return(
+		<>
+		<Navbar />
+		 <SignupComponent />
+		<Footer />
+		</>
+	)
 }
 
 export default Signup;

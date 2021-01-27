@@ -17,52 +17,52 @@ import Timeline from '../components/event_components/Timeline';
 import {AddToCalenderBtn, BookmarkBtn} from '../components/event_components/Buttons';
 
 const EventDetailsPage = ()=>{
-    return(
-        <>
-            <div className="eventDetailsPage">
-                <Navbar />
-                <div className="eventDetailsPage__inner">
-                    <section className="eventDetailsPage__hero">
-                        <div className="eventDetailsPage__hero--left">
-                            <Carousel />
-                        </div>
-                        <div className="eventDetailsPage__hero--right">
-                            <EventCard />
-                            <AddToCalenderBtn />
-                            <BookmarkBtn />
-                        </div>
-                        
-                    </section>
-                    <section className="eventDetailsPage__tags">
-                        <Tags />
-                    </section>
-                    <section className="eventDetailsPage__overview">
-                        <Overview />
-                    </section>
-                    <section className="eventDetailsPage__speakers">
-                        <Speakers/>
-                    </section>
-                    <section className="eventDetailsPage__eventdetails">
-                        <EventDetails />
-                    </section>
-                    <section className="eventDetailsPage__timeline">
-                        <Timeline />
-                    </section>
-                    <section className="eventDetailsPage__messageboard">
-                        <MessageBoard />
-                    </section>
-                    <section className="eventDetailsPage__organizersmessage">
-                        <OrganizersMessage />
-                    </section>
-                    
-                </div>
-                <section className="eventDetailsPage__similarevents">
-                        <SimilarEventSection />
-                    </section>
-                <Footer />
-            </div>
-        </>
-    )
+	return(
+		<>
+			<div className="eventDetailsPage">
+				<Navbar />
+				<div className="eventDetailsPage__inner">
+					<section className="eventDetailsPage__hero">
+						<div className="eventDetailsPage__hero--left">
+							<Carousel />
+						</div>
+						<div className="eventDetailsPage__hero--right">
+							<EventCard />
+							<AddToCalenderBtn />
+							<BookmarkBtn />
+						</div>
+						
+					</section>
+					<section className="eventDetailsPage__tags">
+						<Tags />
+					</section>
+					<section className="eventDetailsPage__overview">
+						<Overview />
+					</section>
+					<section className="eventDetailsPage__speakers">
+						<Speakers/>
+					</section>
+					<section className="eventDetailsPage__eventdetails">
+						<EventDetails />
+					</section>
+					<section className="eventDetailsPage__timeline">
+						<Timeline />
+					</section>
+					<section className="eventDetailsPage__messageboard">
+						<MessageBoard />
+					</section>
+					<section className="eventDetailsPage__organizersmessage">
+						<OrganizersMessage />
+					</section>
+					
+				</div>
+				<section className="eventDetailsPage__similarevents">
+						<SimilarEventSection />
+					</section>
+				<Footer />
+			</div>
+		</>
+	)
 }
 
 export default EventDetailsPage;  

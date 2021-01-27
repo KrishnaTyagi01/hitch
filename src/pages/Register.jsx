@@ -5,13 +5,13 @@ import Footer from '../components/footer/Footer';
 import RegisterComponent from '../components/signin/Register';
 
 const Register = ()=>{
-    return(
-        <>
-        <Navbar />
-         <RegisterComponent />
-        <Footer />
-        </>
-    )
+	return(
+		<>
+		<Navbar />
+		 <RegisterComponent />
+		<Footer />
+		</>
+	)
 }
 
 export default Register;

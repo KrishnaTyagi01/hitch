@@ -12,34 +12,34 @@ import linkedInIcon2 from '../../icons/linkedInIcon.svg'
 
 
 const HeaderSection = () =>{
-    return (
-            <div className="headersection">
-                <div className="headersection__left">
-                <Link className="headersection__left--about" >About</Link>
-                <Link className="headersection__left--activity">Activity</Link>
-                </div>
-                <div className="headersection__right">
-                    <a href="#" className="headersection__right--link">
-                     <img className="headersection__right--icon" src={twitterIcon} alt="twitter"/>
-                    </a>
-                    <a href="#" className="headersection__right--link">
-                     <img className="headersection__right--icon" src={linkedInIcon2} alt="linkedIn"/>
-                    </a>
-                    <a href="#" className="headersection__right--link">
-                     <img className="headersection__right--icon" src={instagramIcon} alt="instagram"/>
-                    </a>
-                    <a href="#" className="headersection__right--link">
-                     <img className="headersection__right--icon" src={gmailIcon} alt="gmail"/>
-                    </a>
-                    <a  href="#" className="headersection__right--link">
-                     <img className="headersection__right--icon" src={fIcon} alt="facebook"/>
-                    </a>
-                    <a href="#" className="headersection__right--link">
-                     <img className="headersection__right--icon" src={webIcon} alt="web"/>
-                    </a>
-                </div>
-            </div>
-    )
+	return (
+			<div className="headersection">
+				<div className="headersection__left">
+				<Link className="headersection__left--about" >About</Link>
+				<Link className="headersection__left--activity">Activity</Link>
+				</div>
+				<div className="headersection__right">
+					<a href="#" className="headersection__right--link">
+					 <img className="headersection__right--icon" src={twitterIcon} alt="twitter"/>
+					</a>
+					<a href="#" className="headersection__right--link">
+					 <img className="headersection__right--icon" src={linkedInIcon2} alt="linkedIn"/>
+					</a>
+					<a href="#" className="headersection__right--link">
+					 <img className="headersection__right--icon" src={instagramIcon} alt="instagram"/>
+					</a>
+					<a href="#" className="headersection__right--link">
+					 <img className="headersection__right--icon" src={gmailIcon} alt="gmail"/>
+					</a>
+					<a  href="#" className="headersection__right--link">
+					 <img className="headersection__right--icon" src={fIcon} alt="facebook"/>
+					</a>
+					<a href="#" className="headersection__right--link">
+					 <img className="headersection__right--icon" src={webIcon} alt="web"/>
+					</a>
+				</div>
+			</div>
+	)
 }
 
 export default HeaderSection;
