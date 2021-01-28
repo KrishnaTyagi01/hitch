@@ -5,13 +5,13 @@ import Footer from '../components/footer/Footer';
 import SigninComponent from '../components/signin/Signin';
 
 const Signin = (props)=>{
-    return(
-        <>
-        <Navbar />
-         <SigninComponent {...props} />
-        <Footer />
-        </>
-    )
+	return(
+		<>
+		<Navbar />
+		 <SigninComponent {...props} />
+		<Footer />
+		</>
+	)
 }
 
 export default Signin;

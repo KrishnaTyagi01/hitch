@@ -1,32 +1,32 @@
 .reviewBox{
-    width: 250px;
-    height: 250px;
-    background: rgba(23, 20, 41, 0.3);
-    border-radius: 10px;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-around;
-    align-items: center;
+	width: 250px;
+	height: 250px;
+	background: rgba(23, 20, 41, 0.3);
+	border-radius: 10px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-around;
+	align-items: center;
 
-    &__head{
-        font-family: 'Montserrat';
-        font-style: normal;
-        font-weight: 500;
-        font-size: 16px;
-        color: #877CC0;
-        
-    }
+	&__head{
+		font-family: 'Montserrat';
+		font-style: normal;
+		font-weight: 500;
+		font-size: 16px;
+		color: #877CC0;
+		
+	}
 
-    &__rating{
-        // font-family: 'League Script';
-        font-style: normal;
-        font-weight: normal;
-        font-size: 70px;
-        line-height: 77px;
-        
-        color: #877CC0;
-        display: flex;
-        align-items: center;
-        
-    }
+	&__rating{
+		// font-family: 'League Script';
+		font-style: normal;
+		font-weight: normal;
+		font-size: 70px;
+		line-height: 77px;
+		
+		color: #877CC0;
+		display: flex;
+		align-items: center;
+		
+	}
 }

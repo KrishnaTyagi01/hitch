@@ -1,15 +1,16 @@
- *{
-    padding: 0;
-    margin: 0;
-    box-sizing: border-box;
+*{
+	padding: 0;
+	margin: 0;
+	box-sizing: border-box;
 }
 
 :root{
-    --color-primary-1: #171429;
-    --color-primary-2 : #2B244D ;
-    --color-primary-3 : #524690 ;
-    --color-primary-5: #C6C1E1;
+	--color-primary-1: #171429;
+	--color-primary-2 : #2B244D ;
+	--color-primary-3 : #524690 ;
+	--color-primary-5: #C6C1E1;
 }
+
 @import url('https://fonts.googleapis.com/css2?family=Kumbh+Sans:wght@300;400;700&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,500;1,300&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@400;600;700&display=swap');
