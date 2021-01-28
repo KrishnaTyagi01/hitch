@@ -1,0 +1,52 @@
+.notification{
+    width: 531px;
+    height: 89px;
+    background: rgba(82, 70, 144, 0.3);
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 23.04px;
+
+    &__info{
+
+        &--pic{
+            margin-right: 27.59px;
+            width: 45.36px;
+            height: 45.36px;
+            border-radius: 100%;
+            border: 3px solid #fff;
+        }
+
+        &--msgspan{
+            width: 253px;
+            height: 18px;
+            font-family: 'Montserrat';
+            font-style: normal;
+            font-weight: normal;
+            font-size: 18px;
+            line-height: 22px;
+
+            color: #E6E4F2;
+
+        }
+    }
+
+    &__buttons{
+
+        &--btncomment{
+            font-size: 21px;
+            background-color: transparent;
+            border: none;
+            color: #877CC0;
+            margin-right: 20px;
+        }
+
+        &--btndelete{
+            font-size: 21px;
+            background-color: transparent;
+            border: none;
+            color: #EB4746;
+        }
+    }
+}

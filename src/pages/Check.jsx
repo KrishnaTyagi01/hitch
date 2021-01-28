@@ -6,6 +6,9 @@ import Sidebar from '../components/Dashboard/Sidebar'
 import Nav from '../components/Dashboard/Nav'
 import ReviewBox from '../components/Dashboard/ReviewBox'
 import ConnectionReq from '../components/Dashboard/ConnectionReq'
+import Notification from '../components/Dashboard/Notification'
+import Base from '../components/Dashboard/Base'
+import PricingPlan from '../components/Dashboard/PricingPlan'
 function Check() {
     return (
         <div>
@@ -13,9 +16,12 @@ function Check() {
             <Filter />   */}
             {/* <ShowInfoCard />    */}
             {/* <Sidebar /> */}
-            <Nav />
+            {/* <Nav />
             <ReviewBox />
-            <ConnectionReq />
+            <ConnectionReq /> */}
+            {/* <Notification />
+            <Base /> */}
+            <PricingPlan />
         </div>
     )
 }

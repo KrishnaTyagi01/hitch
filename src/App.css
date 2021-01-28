@@ -1726,6 +1726,110 @@
     display: flex;
     align-items: center; }
 
+.notification {
+  width: 531px;
+  height: 89px;
+  background: rgba(82, 70, 144, 0.3);
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 23.04px; }
+  .notification__info--pic {
+    margin-right: 27.59px;
+    width: 45.36px;
+    height: 45.36px;
+    border-radius: 100%;
+    border: 3px solid #fff; }
+  .notification__info--msgspan {
+    width: 253px;
+    height: 18px;
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: normal;
+    font-size: 18px;
+    line-height: 22px;
+    color: #E6E4F2; }
+  .notification__buttons--btncomment {
+    font-size: 21px;
+    background-color: transparent;
+    border: none;
+    color: #877CC0;
+    margin-right: 20px; }
+  .notification__buttons--btndelete {
+    font-size: 21px;
+    background-color: transparent;
+    border: none;
+    color: #EB4746; }
+
+.base {
+  width: 1019.58px;
+  height: 650.78px;
+  background: rgba(82, 70, 144, 0.3);
+  border-radius: 10px; }
+
+.pricingplan {
+  padding: 35px 31px; }
+  .pricingplan__upper {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center; }
+  .pricingplan__left--head {
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 20px;
+    line-height: 24px;
+    color: #FFFFFF;
+    margin-right: 14px; }
+  .pricingplan__left--subhead {
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: normal;
+    font-size: 16px;
+    line-height: 20px;
+    color: #FFFFFF;
+    margin-left: 15px; }
+  .pricingplan__right--timingbtn {
+    background: rgba(57, 234, 180, 0.2);
+    border-radius: 10px;
+    width: 254px;
+    height: 38.3px;
+    border: none;
+    margin-right: 18px; }
+  .pricingplan__right--changebtn {
+    width: 149.47px;
+    height: 37px;
+    background: rgba(235, 153, 71, 0.2);
+    box-shadow: 0px 0px 14px rgba(88, 88, 88, 0.25);
+    border-radius: 10px;
+    border: none; }
+  .pricingplan__lower {
+    width: 951.61px;
+    height: 338.73px;
+    border: 1px solid #39EAB4;
+    box-sizing: border-box;
+    border-radius: 10px;
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+    margin-top: 36px; }
+    .pricingplan__lower--head {
+      font-family: 'Montserrat';
+      font-style: normal;
+      font-weight: 500;
+      font-size: 20px;
+      line-height: 24px;
+      color: #FFFFFF; }
+    .pricingplan__lower--date {
+      font-family: 'Montserrat';
+      font-style: normal;
+      font-weight: 500;
+      font-size: 16px;
+      line-height: 20px;
+      color: #39EAB4; }
+
 .eventDetailsPage {
   width: 100%;
   background-color: var(--color-primary-1);
