@@ -6,7 +6,7 @@ import Sidebar from '../components/Dashboard/Sidebar'
 import Nav from '../components/Dashboard/Nav'
 import ReviewBox from '../components/Dashboard/ReviewBox'
 import ConnectionReq from '../components/Dashboard/ConnectionReq'
-import Notification from '../components/Dashboard/Notification'
+import Message from '../components/Dashboard/Message'
 import Base from '../components/Dashboard/Base'
 import PricingPlan from '../components/Dashboard/PricingPlan'
 function Check() {
@@ -19,8 +19,8 @@ function Check() {
             {/* <Nav />
             <ReviewBox />
             <ConnectionReq /> */}
-            {/* <Notification />
-            <Base /> */}
+             <Message />
+            {/* <Base /> */} 
             <PricingPlan />
         </div>
     )
