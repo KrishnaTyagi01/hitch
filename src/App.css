@@ -752,7 +752,8 @@
 
 .cardContainer {
   width: 250px;
-  border: none; }
+  border: none;
+  background-color: var(--color-primary-1); }
 
 .card-img-top {
   width: 250px; }
@@ -1445,7 +1446,7 @@
       outline: none; }
 
 .filter {
-  background: var(--color-primary-1);
+  background-color: #2B244D;
   box-shadow: 0px 4px 14px rgba(0, 0, 0, 0.35);
   border-radius: 10px;
   width: 315px;
@@ -1541,19 +1542,23 @@
       -ms-transform: rotate(45deg);
       transform: rotate(45deg); }
 
-.custom-calendar {
-  box-shadow: 0 1em 3em rgba(156, 136, 255, 0.2); }
-
-.custom-today-day {
-  color: #171429 !important;
-  border: 1px solid #171429 !important; }
-
-.custom-today-day::after {
-  visibility: hidden;
-  /* hide small border under the text */ }
-
 .responsive-calendar {
-  font-size: 8.4px !important; }
+  font-size: 8.4px !important;
+  background-color: #171429 !important; }
+
+.todayClass-calendar {
+  background-color: #39EAB4;
+  color: black !important; }
+
+.todayClass-calendar::after {
+  visibility: hidden; }
+
+.selectedClass-calendar {
+  background-color: #39EAB4;
+  color: black !important; }
+
+.selectedClass-calendar::after {
+  visibility: hidden; }
 
 .upper {
   height: 209px;
@@ -1604,6 +1609,7 @@
 
 .eventsPage__content {
   display: grid;
+  background-color: var(--color-primary-1);
   grid-template-columns: 400px 1fr; }
   .eventsPage__content--filter {
     margin-top: -170px;

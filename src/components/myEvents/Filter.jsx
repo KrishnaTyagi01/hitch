@@ -101,7 +101,7 @@ function filter() {
 			{/* // =============================================== // */}
 
 			<div className="filter__calender">
-				{/* <Calendar style={{color: "#171429"}}/> */}
+				{/* <Calendar style={{ color: "#171429" }} /> */}
 				<div className="filter__subtype">
 					<div className="filter__subtype--name">Date</div>
 					<i style={{ fontSize: "7.5px", color: "#ffffff" }} class="fas fa-chevron-down " />
@@ -109,9 +109,8 @@ function filter() {
 
 				<Calendar
 					calendarClassName="responsive-calendar"
-					style={{
-						backgroundColor: "#171429"
-					}}
+					calendarTodayClassName="todayClass-calendar"
+					calendarSelectedDayClassName="selectedClass-calendar"
 				/>
 			</div>
 

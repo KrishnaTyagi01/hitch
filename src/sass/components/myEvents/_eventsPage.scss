@@ -1,6 +1,7 @@
 .eventsPage{
     &__content{
         display: grid;
+        background-color: var(--color-primary-1);
         grid-template-columns: 400px 1fr;
         &--filter{
             margin-top: -170px;
