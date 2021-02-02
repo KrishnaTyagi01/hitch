@@ -1,7 +1,7 @@
 .cardContainer{
 	width: 250px;
 	border:none;
-	background-color:var(--color-primary-1); 
+	// background-color:var(--color-primary-1); 
 }
 // @media (min-width: 1200px ){
 	.card-img-top{
@@ -95,7 +95,7 @@
 		width: 100%;
 		// margin-left: -7.5px;
 		// margin-bottom: -7px;
-}    
+	}    
 
 	&__eventdate{
 		display: flex;
@@ -152,8 +152,9 @@
 			font-family: 'Kumbh Sans', sans-serif;
 			font-style: normal;
 			font-weight: 300;
-			font-size: 8px;
-			line-height: 118.6%;
+			font-size: 10%;
+			// line-height: 118.6%;
+			line-height: 80%;
 			/* or 9px */
 			
 			text-align: justify;
