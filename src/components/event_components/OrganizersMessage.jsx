@@ -1,6 +1,3 @@
-import React from 'react';
-
-
 const OrganizersMessage = ()=>{
 	return (
 		<div className="organizer">

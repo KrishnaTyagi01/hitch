@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import { useState } from 'react';
 import upArrow from '../../icons/upArrow.svg';
 import line from '../../icons/line.svg';
 import circle from '../../icons/timelineCircle.svg'

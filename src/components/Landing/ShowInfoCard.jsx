@@ -1,4 +1,3 @@
-import React from 'react'
 import heartIcon from '../../icons/Heart.svg'
 import calenderIcon from '../../icons/calender.svg'
 import { Link } from 'react-router-dom'

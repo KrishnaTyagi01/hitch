@@ -1,4 +1,3 @@
-import React from 'react';
 import image1 from '../../icons/hostIntro/image1.svg'
 import yellowDotIcon from '../../icons/profile/yellowDotIcon.svg';
 

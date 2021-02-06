@@ -1,4 +1,3 @@
-import React from 'react';
 import image2 from '../../icons/hostIntro/image2.svg'
 
 

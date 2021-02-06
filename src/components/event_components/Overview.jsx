@@ -1,8 +1,4 @@
-import React from 'react';
-
-const Overview = ()=>{
-	
-	
+const Overview = () => {
 	return(
 		<div className="overview">
 			<h2 className="overview__header">

@@ -1,4 +1,3 @@
-import React from 'react';
 import { GoogleMap, withScriptjs, withGoogleMap} from 'react-google-maps'
 
 function Map(){
@@ -8,7 +7,7 @@ function Map(){
 }
 // ${process.env.REACT_APP_GOOGLE_KEY}
 console.log(process.env.REACT_APP_GOOGLE_KEY)
-const WrappedMap = withScriptjs(withGoogleMap(Map)) 
+const WrappedMap = withScriptjs(withGoogleMap(Map))
 
 
 const MapSection = () =>{

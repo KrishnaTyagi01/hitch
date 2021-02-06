@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import { useState } from 'react';
 import {Link} from 'react-router-dom'
 import userProfilePic from '../../icons/profile/userProfilePic.png';
 import jobIcon from '../../icons/profile/jobIcon.svg';

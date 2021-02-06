@@ -1,4 +1,3 @@
-import React from 'react';
 import image3 from '../../icons/hostIntro/image3.svg'
 
 const HowSection = () =>{

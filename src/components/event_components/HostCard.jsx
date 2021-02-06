@@ -1,4 +1,3 @@
-import React from 'react';
 import host from '../../icons/Host.png'
 
 const HostCard = (props)=>{

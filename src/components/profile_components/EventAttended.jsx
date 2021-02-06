@@ -1,4 +1,3 @@
-import React from 'react';
 import SimilarEventCard from '../event_components/SimilarEventCard';
 
 const EventAttended = ()=>{

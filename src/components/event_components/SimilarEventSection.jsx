@@ -1,4 +1,3 @@
-import React from 'react';
 import SimilarEventCard  from './SimilarEventCard';
 import Carousel from 'react-elastic-carousel';
 

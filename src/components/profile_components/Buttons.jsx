@@ -1,4 +1,3 @@
-import React from 'react';
 import pinIcon from '../../icons/profile/pinIcon.svg';
 import followerIcon from '../../icons/profile/followersIcon.svg';
 

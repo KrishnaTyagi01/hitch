@@ -1,4 +1,3 @@
-import React from 'react';
 import calenderIcon from '../../icons/calender.svg';
 import heartIcon from '../../icons/Heart.svg';
 

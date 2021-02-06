@@ -1,5 +1,3 @@
-import React from 'react'
-// import Calendar from 'react-calendar'
 import 'react-modern-calendar-datepicker/lib/DatePicker.css';
 import DatePicker from 'react-modern-calendar-datepicker';
 import { Calendar } from "react-modern-calendar-datepicker";

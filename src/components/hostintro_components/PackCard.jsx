@@ -1,6 +1,3 @@
-import React from 'react';
-
-
 const PackCard = (props)=>{
 	return (
 		<div className="packcard">

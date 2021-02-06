@@ -1,4 +1,3 @@
-import React from 'react';
 import profilePic from '../../icons/profile/userProfilePic.png';
 import overviewIcon from '../../icons/dashboard/overview.svg';
 import activityIcon from '../../icons/dashboard/activity.svg';

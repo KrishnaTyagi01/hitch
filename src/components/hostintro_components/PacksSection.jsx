@@ -1,4 +1,3 @@
-import React from 'react';
 import PacksCard from './PackCard'
 
 const PacksSection = ()=>{

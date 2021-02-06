@@ -1,4 +1,3 @@
-import React from 'react';
 import eventpic from '../../icons/eventpic.png'
 import eventpic2 from '../../icons/eventPicSvg.svg'
 import calender from '../../icons/calender.svg'

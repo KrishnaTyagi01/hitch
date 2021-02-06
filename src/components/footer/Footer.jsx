@@ -1,4 +1,3 @@
-import React from 'react';
 import {Link} from 'react-router-dom'
 import GoogleBtn from '../../icons/googlePlayBtn.png';
 import AppleBtn from '../../icons/AppStoreBtn.png';
@@ -118,7 +117,7 @@ const Footer = ()=>{
 					   </span>
 					</div>
 				   
-					<Link className="footer__lower--text">Our Terms, Conditions and Privacy Policies</Link>
+					<Link to='terms' className="footer__lower--text">Our Terms, Conditions and Privacy Policies</Link>
 				</div>
 			</div>
 		</>

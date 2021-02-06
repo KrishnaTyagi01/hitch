@@ -1,4 +1,3 @@
-import React from 'react';
 import copyIcon from '../../icons/copyIcon.svg';
 import shareIcon from '../../icons/shareIcon.svg';
 

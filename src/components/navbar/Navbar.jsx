@@ -1,4 +1,3 @@
-import react from 'react';
 import { Link, withRouter } from 'react-router-dom'
 // const heartLogo =  require('../../icons/Bookmark.svg')
 
@@ -23,11 +22,11 @@ const Navbar = () => {
 				<button className="navbar__home--btn">Home</button>
 			</div>
 			<div className="navbar__about">
-				<Link className="navbar__about--link">About Hitch</Link>
+				<Link to='/about' className="navbar__about--link">About Hitch</Link>
 			</div>
 			<div className="navbar__heart">
-				<Link>
-					<i class="far fa-heart navbar__heart--icon"></i>
+				<Link to='/bookmarks'>
+					<i className="far fa-heart navbar__heart--icon"></i>
 				</Link>
 			</div>
 			<div className="navbar__profile">profile</div>

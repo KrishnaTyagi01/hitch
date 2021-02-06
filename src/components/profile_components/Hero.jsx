@@ -1,4 +1,3 @@
-import React from 'react';
 import heroImg from '../../icons/profile/hero.png';
 
 const Hero = ()=>{

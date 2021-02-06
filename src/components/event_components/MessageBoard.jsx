@@ -1,4 +1,3 @@
-import React from 'react';
 import userpic from '../../icons/user.png'
 import {useState} from 'react'
 const MessageBoard = () =>{

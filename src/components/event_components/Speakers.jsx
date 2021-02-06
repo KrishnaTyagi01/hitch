@@ -1,4 +1,3 @@
-import React from 'react';
 import HostCard from './HostCard';
 import host1 from '../../icons/Host.png'
 import host2 from '../../icons/Host2.png'

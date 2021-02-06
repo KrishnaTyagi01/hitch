@@ -1,6 +1,5 @@
-import React, {useEffect, useState} from 'react';
-import Navbar from '../components/navbar/Navbar';
-import Footer from '../components/footer/Footer';
+import { useEffect, useState } from 'react';
+
 import About from '../components/profile_components/About'
 import EventAttended from '../components/profile_components/EventAttended'
 import HeaderSection from '../components/profile_components/HeaderSection'
@@ -13,7 +12,7 @@ import {isAuthenticated} from '../API/Auth';
 import {getSelfProfile} from '../API/User';
 
 
-const Profile = ()=>{
+const Profile = () => {
 
 	const {token} = isAuthenticated();
 	const [values, setValues] = useState({
@@ -77,45 +76,39 @@ const Profile = ()=>{
 	console.log(values)
 
 	return (
-		<>
-		<Navbar values={values} setValues={setValues}/>
 		<section className="profilepage">
-		<div className="profile_top">
-		
-		<Hero values={values} setValues={setValues}/>
-		<HeaderSection values={values} setValues={setValues}/>
-		</div>
-		<div className="profile">
-
-			<div className="profile__left">
-				<div className="profile__left--profilecard">
-					<ProfileCard values={values} setValues={setValues} />
-				</div>
-				<div className="profile__left--connectionbtn">
-					<ConnectionButton values={values} setValues={setValues} />
-				</div>
-				<div className="profile__left--followbtn">
-					<FollowButton values={values} setValues={setValues}/>
-				</div>
+			<div className="profile_top">
+				<Hero values={values} setValues={setValues}/>
+				<HeaderSection values={values} setValues={setValues}/>
 			</div>
-			<div className="profile__right">
-				<div className="profile__right--about">
-					<About values={values} setValues={setValues}/>
-				</div>
-				<div className="profile__right--hostedevents">
-					<HostedEvents values={values} setValues={setValues}/>
-				</div>
-				<div className="profile__right--eventsattended">
-					<EventAttended values={values} setValues={setValues}/>
-				</div>
-			</div>
+			<div className="profile">
 
-		</div>
-		<div className="profile__footer">
-			<Footer />
-		</div>
+				<div className="profile__left">
+					<div className="profile__left--profilecard">
+						<ProfileCard values={values} setValues={setValues} />
+					</div>
+					<div className="profile__left--connectionbtn">
+						<ConnectionButton values={values} setValues={setValues} />
+					</div>
+					<div className="profile__left--followbtn">
+						<FollowButton values={values} setValues={setValues}/>
+					</div>
+				</div>
+				
+				<div className="profile__right">
+					<div className="profile__right--about">
+						<About values={values} setValues={setValues}/>
+					</div>
+					<div className="profile__right--hostedevents">
+						<HostedEvents values={values} setValues={setValues}/>
+					</div>
+					<div className="profile__right--eventsattended">
+						<EventAttended values={values} setValues={setValues}/>
+					</div>
+				</div>
+
+			</div>
 		</section>
-		</>
 	)
 }
 

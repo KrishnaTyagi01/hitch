@@ -1,4 +1,3 @@
-import React from 'react'
 import StarIcon from '../../icons/dashboard/StarIcon.svg'
 
 function ReviewBox(props) {

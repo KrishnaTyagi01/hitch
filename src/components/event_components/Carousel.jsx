@@ -1,4 +1,3 @@
-import React from 'react';
 import carousel from '../../icons/carousel.png';
 import leftArrow from '../../icons/leftArrow.svg';
 import rightArrow from '../../icons/rightArrow.svg';

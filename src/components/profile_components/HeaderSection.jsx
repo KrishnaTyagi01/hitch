@@ -1,4 +1,3 @@
-import React from 'react';
 import {Link} from 'react-router-dom'
 import twitterIcon from '../../icons/profile/twitterIcon.svg';
 import linkedInIcon from '../../icons/profile/linkedInIcon.svg';
