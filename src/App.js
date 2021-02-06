@@ -13,6 +13,8 @@ import PrivateRoute from './API/ProtectedRoute'
 import Filter from './components/myEvents/Filter'
 import Upper from './components/myEvents/Upper';
 import eventsPage from './components/myEvents/eventsPage';
+import AboutUs from './components/AboutUs/AboutUs';
+import HostEvent from './components/HostEvent/HostEvent';
 // import Landing from './components/Landing/Landing';
 
 function App() {
@@ -29,6 +31,8 @@ function App() {
 				<PrivateRoute exact path="/profile" component={Profile} />
 				<Route exact path="/hostintro"> <HostIntro /></Route>
 				<Route exact path="/events" component={eventsPage}></Route>
+				<Route exact path="/about-us" component={AboutUs}></Route>
+				<Route exact path="/host-event" component={HostEvent}></Route>
 			</Switch>
 		</BrowserRouter>
 	);
