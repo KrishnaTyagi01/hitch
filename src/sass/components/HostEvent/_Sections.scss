@@ -1,0 +1,48 @@
+.linkToSections{
+    // position: absolute;
+    width: 322.37px;
+    height: 720px;
+    // left: 48.01px;
+    // top: 187px;
+
+    background: #2B244D;
+    box-shadow: 0px 4px 14px rgba(0, 0, 0, 0.45);
+    border-radius: 10px;
+
+    ul{
+        list-style-type: none;
+    }
+
+
+    .list{
+        height: 100%;
+        width: 100%;
+        font-family: Montserrat;
+        font-style: normal;
+        font-weight: normal;
+        font-size: 16px;
+        line-height: 20px;
+        color: #FFFFFF;
+        padding:80px 0px;
+        align-items: center;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-evenly;
+        
+        li{
+            padding: 8px 15px;
+            cursor: pointer;
+            border-radius: 10000px; 
+        }
+
+        li:nth-child(1){
+            background: #39EAB4;
+            color: #2B244D;
+
+        }
+    }
+
+    // .list:nth-child(1){
+    //     background-color: red;
+    // }
+}

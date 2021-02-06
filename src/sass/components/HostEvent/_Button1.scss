@@ -1,0 +1,26 @@
+.confirm_button1{
+    width: 131px;
+    height: 37px;
+    background: rgba(57, 234, 180, 0.35);
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    // width: 61px;
+    // height: 16px;
+    // left: 1129.97px;
+    // top: 398.5px;
+
+    font-family: Montserrat;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 16px;
+    line-height: 20px;
+
+    color: #39EAB4;
+
+    &:hover{
+        cursor: pointer;
+    }
+}

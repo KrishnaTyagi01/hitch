@@ -1,0 +1,240 @@
+.AboutUs{
+	// background-color: #E5E5E5;
+	background: #171429;
+	// height: 100%;
+	// width: 100%;
+	&__welcome{
+		width: 100%;
+		position: relative;
+		height: 390px;
+		// background:linear-gradient(to left, #2B244D, var(--color-primary-1));
+		background: linear-gradient(to left, #524690 -64.51%, #171429 100%);
+		&--heading{
+			position: absolute;
+			top:100px;
+			left:60px;
+			font-family: Montserrat;
+			font-style: normal;
+			font-weight: 500;
+			font-size: 32px;
+			line-height: 39px;
+			color: #FFFFFF;
+		}
+		&--body{
+			overflow: hidden;
+			position: absolute;
+			top:160px;
+			left:60px;
+			width: 590px;
+			height: auto;
+			font-family: Montserrat;
+			font-style: normal;
+			font-weight: normal;
+			font-size: 22px;
+			line-height: 27px;
+			text-align: justify;
+			color: #FFFFFF;
+		}
+		&--person1{
+			position: absolute;
+			left: 64.37%;
+			right: 3.29%;
+			top: 4.29%;
+			bottom: 87.21%;
+		}
+		&--person2{
+			position: absolute;
+			left: 74.56%;
+			right: -8.62%;
+			top: 4.21%;
+			bottom: 87.19%;
+
+		}
+	}
+
+
+	&__whatWeDo{
+		width: 100%;
+		display: grid;
+		position: relative;
+		grid-template-rows: 60px 1fr;
+		padding-top: 100px;
+		padding-bottom: 100px;
+		&--heading{
+			justify-self: center;
+			width: 284px;
+			height: 32px;
+			padding-top:30px;
+
+			font-family: Montserrat;
+			font-style: normal;
+			font-weight: 500;
+			font-size: 32px;
+			line-height: 39px;
+
+			color: #FFFFFF;
+		}
+
+		&--cards{
+			margin-top: 80px;
+			margin-bottom: 80px;
+			display: flex;
+			justify-content: space-evenly;
+		}
+		
+	}
+
+
+	&__whyChoose{
+		background: linear-gradient(to right, #524690 -64.51%, #171429 100%);
+		height: 390px;
+		position: relative;
+
+		&__content{
+			position: absolute;
+			top:50px;
+			left:50%;
+			height: 280px;
+			justify-content: center;
+			display: flex;
+			padding-right: 50px;
+			flex-direction: column;
+			align-items: center;
+		}
+
+		&__header{
+			font-family: Montserrat;
+			padding-bottom: 30px;
+			font-style: normal;
+			font-weight: 500;
+			font-size: 32px;
+			line-height: 39px;
+			color: #FFFFFF;
+		}
+
+		&__text{
+			font-family: Montserrat;
+			font-style: normal;
+			font-weight: normal;
+			font-size: 22px;
+			line-height: 27px;
+			text-align: justify;
+			color: #FFFFFF;
+		}
+
+		&__image{
+			position: absolute;
+			top:53px;
+		}
+	}
+
+	&__Team{
+		padding-top:200px;
+		width: 100%;
+		&__heading{
+			width: 100%;
+			text-align: center;
+			font-family: Montserrat;
+			font-style: normal;
+			font-weight: 500;
+			font-size: 32px;
+			line-height: 39px;
+
+			color: #FFFFFF;
+		}
+
+		&__grid{
+			width: 100%;
+			padding-top: 60px;
+			padding-bottom: 160px;
+			justify-content: center;
+			// background-color: red;
+			display: grid;
+			grid-template-columns: repeat(auto-fit, minmax(363px, max-content));
+			grid-gap: 50px;
+		}
+	}
+
+	
+}
+
+.AboutUsCard{
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: space-evenly;
+	background-color: #2B244D;
+	width:400px;
+	height: 540px;
+	border-radius: 5%;
+	&--heading{
+		font-family: Montserrat;
+		font-style: normal;
+		font-weight: normal;
+		font-size: 28px;
+		line-height: 34px;
+		color: #39EAB4;
+	}
+
+	
+
+	&--image{
+		img{
+			min-width: 0;
+			min-height: 0;
+			width: auto;
+			height: 60px;
+		}
+	}
+
+	&--text{
+		width:300px;
+		height: auto;
+		font-family: Montserrat;
+		font-style: normal;
+		font-weight: normal;
+		font-size: 18px;
+		line-height: 22px;
+		text-align: justify;
+
+		color: #39EAB4;
+	}
+
+	&__lastRow--card1{
+		width: 100%;
+		display: flex;
+		justify-content: space-evenly;
+	}
+
+	&__lastRow--card2{
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		background: #39EAB4;    
+		border-radius: 5px;
+		width:200px;
+		height: 40px;
+		font-family: Montserrat;
+		font-style: normal;
+		font-weight: normal;
+		font-size: 18px;
+		line-height: 22px;
+		color: #171429;
+	}
+
+	&__lastRow--card3{
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		background: #39EAB4;    
+		border-radius: 5px;
+		width:180px;
+		height: 40px;
+		font-family: Montserrat;
+		font-style: normal;
+		font-weight: normal;
+		font-size: 18px;
+		line-height: 22px;
+		color: #171429;
+	}
+}
