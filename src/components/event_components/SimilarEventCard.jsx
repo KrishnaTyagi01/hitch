@@ -1,8 +1,9 @@
 import React from 'react';
-import eventpic from '../../icons/eventpic.png'
+// import eventpic from '../../icons/eventpic.png'
 import eventpic2 from '../../icons/eventPicSvg.svg'
 import calender from '../../icons/calender.svg'
 import heart from '../../icons/Heart.svg'
+
 const SimilarEventCard = () => {
 	return (
 		// <div className="similareventcard">
@@ -40,19 +41,19 @@ const SimilarEventCard = () => {
 		//HERE the part 
 
 		<div class="card img-fluid cardContainer">
-			<img className="card-img-top" src={eventpic2} alt="Card image"  />
+			<img className="card-img-top" src={eventpic2} alt="Card image" />
 			<div className="card-img-overlay similareventcard">
 				<div className="similareventcard__upper">
 					<span className="similareventcard__upper--cost">
-					 <p style={{textAlign:"center", marginTop:"8.63px"}}>$15.00</p>    
+						<p style={{ textAlign: "center", marginTop: "8.63px" }}>$15.00</p>
 					</span>
 					<div className="similareventcard__upper--buttons">
-					  <button className="similareventcard__upper--calender">
-						<img className="similareventcard__upper--calendericon" src={calender} alt="calender"/>
-					  </button>
-					  <button className="similareventcard__upper--heart">
-						<img className="similareventcard__upper--hearticon" src={heart} alt="heart" />
-					  </button>
+						<button className="similareventcard__upper--calender">
+							<img className="similareventcard__upper--calendericon" src={calender} alt="calender" />
+						</button>
+						<button className="similareventcard__upper--heart">
+							<img className="similareventcard__upper--hearticon" src={heart} alt="heart" />
+						</button>
 					</div>
 				</div>
 
@@ -68,7 +69,7 @@ const SimilarEventCard = () => {
 					</div>
 				</div>
 			</div>
-		</div> 
+		</div>
 
 
 	)

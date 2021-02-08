@@ -1,4 +1,6 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
+
 import image1 from "../../icons/about Hitch/matchmaking.png";
 import image2 from "../../icons/about Hitch/zoom 1.png";
 import image3 from "../../icons/about Hitch/eventhosting.png";
@@ -17,16 +19,18 @@ const AboutUsCard = (props) => {
 		}
 		else if (props.card === '2') {
 			return (
-				<div className="AboutUsCard__lastRow--card2">
+				<Link to="/events" className="AboutUsCard__lastRow--card2">
+					{/* <ScrollToTop /> */}
 					Discover Events
-				</div>
+				</Link>
 			)
 		}
 		else {
 			return (
-				<div className="AboutUsCard__lastRow--card3">
+				<Link to="/host-event" className="AboutUsCard__lastRow--card3">
+					{/* <ScrollToTop /> */}
 					HOST
-				</div>
+				</Link>
 			)
 		}
 	}

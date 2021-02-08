@@ -96,9 +96,6 @@ const HostEvent = () => {
 
                         </div>
                     </div>
-
-
-
                 </form>
             </div>
             <Footer />

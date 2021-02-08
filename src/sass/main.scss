@@ -2,6 +2,8 @@
 	padding: 0;
 	margin: 0;
 	box-sizing: border-box;
+	-webkit-text-size-adjust: none;
+	
 }
 
 :root{
@@ -9,6 +11,13 @@
 	--color-primary-2 : #2B244D ;
 	--color-primary-3 : #524690 ;
 	--color-primary-5: #C6C1E1;
+}
+
+html,body{
+	width: 100%;
+	height: 100%;
+	overflow-x: hidden;
+	// font-size: 8px;
 }
 
 @import url('https://fonts.googleapis.com/css2?family=Kumbh+Sans:wght@300;400;700&display=swap');
@@ -59,6 +68,7 @@
 @import "components/myEvents/filter";
 @import "components/myEvents/upper";
 @import "components/myEvents/eventsPage";
+@import "components/myEvents/myEventCard";
 
 //================ Landing ====================//
 @import "components/Landing/showinfocard";

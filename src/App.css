@@ -6,13 +6,19 @@
 * {
   padding: 0;
   margin: 0;
-  box-sizing: border-box; }
+  box-sizing: border-box;
+  -webkit-text-size-adjust: none; }
 
 :root {
   --color-primary-1: #171429;
   --color-primary-2: #2B244D ;
   --color-primary-3: #524690 ;
   --color-primary-5: #C6C1E1; }
+
+html, body {
+  width: 100%;
+  height: 100%;
+  overflow-x: hidden; }
 
 .navbar {
   background: rgba(23, 20, 41, 0.5);
@@ -1623,6 +1629,78 @@
       flex-wrap: wrap;
       margin-bottom: 80px; }
 
+.myEventCardContainer {
+  height: 250px;
+  width: 250px;
+  border-radius: 10px;
+  overflow: hidden;
+  margin-right: 15px;
+  margin-bottom: 15px;
+  position: relative; }
+  .myEventCardContainer img {
+    width: 100%;
+    border-radius: 10px;
+    background-size: cover;
+    background-position: center; }
+  .myEventCardContainer_footer {
+    width: 250px;
+    display: flex;
+    width: 250px;
+    height: 76.45px;
+    position: absolute;
+    bottom: 0px;
+    background: rgba(43, 36, 77, 0.7);
+    backdrop-filter: blur(20px);
+    /* Note: backdrop-filter has minimal browser support */
+    border-radius: 0px 0px 10px 10px; }
+    .myEventCardContainer_footer_date {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-evenly;
+      margin: 5px 15px; }
+      .myEventCardContainer_footer_date .month {
+        width: 28.37px;
+        height: 18.62px;
+        font-family: Montserrat;
+        font-style: normal;
+        font-weight: 500;
+        font-size: 14px;
+        line-height: 17px;
+        color: #16C28D; }
+      .myEventCardContainer_footer_date .day {
+        width: 29px;
+        height: 28px;
+        font-family: Montserrat;
+        font-style: normal;
+        font-weight: normal;
+        font-size: 28px;
+        line-height: 34px;
+        color: #FFFFFF; }
+    .myEventCardContainer_footer_content {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-evenly; }
+      .myEventCardContainer_footer_content .heading {
+        margin-right: 10px;
+        height: 14px;
+        font-family: Montserrat;
+        font-style: normal;
+        font-weight: 500;
+        font-size: 14px;
+        line-height: 17px;
+        color: #FFFFFF; }
+      .myEventCardContainer_footer_content .content {
+        height: 27px;
+        margin-right: 20px;
+        font-family: Montserrat;
+        font-style: normal;
+        font-weight: normal;
+        font-size: 8px;
+        line-height: 118.6%;
+        /* or 9px */
+        text-align: justify;
+        color: #FFFFFF; }
+
 .showInfoCard {
   width: 645px;
   height: 220px;
@@ -2376,6 +2454,11 @@
     font-size: 18px;
     line-height: 22px;
     color: #171429; }
+    .AboutUsCard__lastRow--card2:hover {
+      cursor: pointer;
+      text-decoration: none; }
+    .AboutUsCard__lastRow--card2 a {
+      text-decoration: none; }
   .AboutUsCard__lastRow--card3 {
     display: flex;
     align-items: center;
@@ -2390,6 +2473,11 @@
     font-size: 18px;
     line-height: 22px;
     color: #171429; }
+    .AboutUsCard__lastRow--card3:hover {
+      cursor: pointer;
+      text-decoration: none; }
+    .AboutUsCard__lastRow--card3 a {
+      text-decoration: none; }
 
 .teamMember {
   width: 362.6px;

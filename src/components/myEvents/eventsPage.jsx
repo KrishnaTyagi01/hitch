@@ -1,13 +1,30 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import Upper from './Upper';
 import Filter from './Filter';
 import Footer from '../footer/Footer';
 import Navbar from '../navbar/Navbar';
-import EventCard from '../event_components/EventCard';
-import EventDetails from '../event_components/EventDetails';
-import SimilarEventCard from '../event_components/SimilarEventCard';
+import MyEventCard from './MyEventCard';
+// import { useEffect } from 'react/cjs/react.development';
+import axios from 'axios';
 
-const mainComponent = () => {
+const MainComponent = () => {
+    const [events, setEvents] = useState([]);
+
+    useEffect(() => {
+        const getAllEvents = async () => {
+            let res = await axios.get(`http://167.71.237.202/events/`);
+            res = res.data;
+            setEvents(res);
+        }
+        getAllEvents();
+    }, [])
+
+    const MyEvents = events.map(event => {
+        return <MyEventCard title={event.title} desc={event.description} img={event.image} date={event.scheduled_date} />
+    })
+
+
+
     return (
         <div className="eventsPage">
             <Navbar />
@@ -17,23 +34,7 @@ const mainComponent = () => {
                     <Filter />
                 </div>
                 <section className="eventsPage__content--events">
-                    <SimilarEventCard />
-                    <SimilarEventCard />
-                    <SimilarEventCard />
-                    <SimilarEventCard />
-                    <SimilarEventCard />
-                    <SimilarEventCard />
-                    <SimilarEventCard />
-                    <SimilarEventCard />
-                    <SimilarEventCard />
-                    <SimilarEventCard />
-                    <SimilarEventCard />
-                    <SimilarEventCard />
-                    <SimilarEventCard />
-                    <SimilarEventCard />
-                    <SimilarEventCard />
-                    <SimilarEventCard />
-                    <SimilarEventCard />
+                    {MyEvents}
                 </section>
             </div>
             <Footer />
@@ -41,4 +42,4 @@ const mainComponent = () => {
     );
 }
 
-export default mainComponent;
+export default MainComponent;

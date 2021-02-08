@@ -220,6 +220,16 @@
 		font-size: 18px;
 		line-height: 22px;
 		color: #171429;
+
+		&:hover{
+			cursor: pointer;
+			text-decoration: none;
+		}
+
+		a{
+			text-decoration: none;
+		}
+
 	}
 
 	&__lastRow--card3{
@@ -236,5 +246,14 @@
 		font-size: 18px;
 		line-height: 22px;
 		color: #171429;
+
+		&:hover{
+			cursor: pointer;
+			text-decoration: none;
+		}
+
+		a{
+			text-decoration: none;
+		}
 	}
 }

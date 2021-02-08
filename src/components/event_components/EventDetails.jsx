@@ -3,6 +3,8 @@ import copyIcon from '../../icons/copyIcon.svg';
 import shareIcon from '../../icons/shareIcon.svg';
 
 const EventDetail = () => {
+
+
 	return (
 		<div className="eventdetails">
 			<div className="eventdetails__schedule">
@@ -12,7 +14,7 @@ const EventDetail = () => {
 					<span className="eventdetails__timing--text">START TIME</span>
 					<p className="eventdetails__timing--time">7:00 PM IST</p>
 				</div>
-				
+
 				<div className="eventdetails__duration">
 					<span className="eventdetails__duration--text">DURATION</span>
 					<p className="eventdetails__duration--length">3-4HRS</p>
@@ -34,11 +36,11 @@ const EventDetail = () => {
 				<div className="eventdetails__visit--buttons">
 					<button className="eventdetails__visit--sharebtn" >
 						share
-						<img className="eventdetails__visit--shareicon" src={shareIcon} alt="share icon"/>
+						<img className="eventdetails__visit--shareicon" src={shareIcon} alt="share icon" />
 					</button>
 					<button className="eventdetails__visit--copybtn" >
 						copy
-						<img className="eventdetails__visit--copyicon" src={copyIcon} alt="share icon"/>
+						<img className="eventdetails__visit--copyicon" src={copyIcon} alt="share icon" />
 					</button>
 				</div>
 			</div>
