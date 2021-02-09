@@ -1,10 +1,12 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Footer from '../footer/Footer';
 import Navbar from '../navbar/Navbar';
 import Sections from './Sections';
 import Button1 from './Button1';
 
 const HostEvent = () => {
+    const [imgurl, setImgurl] = useState('');
+
     return (
         <div className="hostEvent">
             <Navbar />
@@ -42,10 +44,20 @@ const HostEvent = () => {
                             <span>Pictures</span>
                             <span id="event_pictures_header_right">Minimum 1 Required</span>
                         </div>
+                        {/* <div>
+                            <img src={imgurl} alt="NOT AVAILABLE" />
+                        </div> */}
                         <div className="event_pictures_picture_box">
                             <div className="event_pictures_picture_box_circle">
                                 <div>+</div>
                             </div>
+                            {/* <input
+                                value={imgurl}
+                                type="file"
+                                accept="image/png, image/jpeg"
+                                onChange={(e) => }
+                            />
+                            <button>Done</button> */}
                         </div>
                         <div className="event_pictures_all_pictures">
                             <div></div>
@@ -79,15 +91,46 @@ const HostEvent = () => {
                             <div className="event_schedule_date_header">
                                 Date
                             </div>
-                            <div></div>
+                            <div className="event_schedule_date_blanks">
+                                <div>
+                                    <input className="day" placeholder="D"></input>
+                                    <input className="day" placeholder="D"></input>
+
+                                    <input className="month" placeholder="M"></input>
+                                    <input className="month" placeholder="M"></input>
+
+                                    <input className="year" placeholder="Y"></input>
+                                    <input className="year" placeholder="Y"></input>
+                                    <input className="year" placeholder="Y"></input>
+                                    <input className="year" placeholder="Y"></input>
+                                </div>
+                                <div className="button">
+                                    <Button1 />
+                                </div>
+
+                            </div>
                         </div>
                         <div className="event_schedule_time">
+                            <div className="event_schedule_time_header">
+                                Start Time
+                            </div>
+                            <div className="event_schedule_time_blanks">
+                                <div>
+                                    <input className="day" placeholder="H"></input>
+                                    <input className="day" placeholder="H"></input>
 
+                                    <input className="month" placeholder="M"></input>
+                                    <input className="month" placeholder="M"></input>
+                                </div>
+                                <div className="button">
+                                    <Button1 />
+                                </div>
+                            </div>
                         </div>
                     </div>
-                    {/* ======================= EVENT SCHEDULE  =============================================  */}
+                    {/* ======================= EVENT SCHEDULE  ============================================= 
                     {/* ======================= EVENT SCHEDULE =============================================  */}
-                    <div className="event_timeline">
+                    {/* <div className="event_timeline">
                         <div className="event_timeline_header"></div>
                         <div className="event_timeline_table">
 
@@ -95,7 +138,34 @@ const HostEvent = () => {
                         <div className="event_timeline_buttons">
 
                         </div>
+                    </div>  */}
+
+                    {/* ============================= EVENT PRICE PLAN =========================  */}
+                    {/* ============================= EVENT PRICE PLAN =========================  */}
+                    <div className="event_pricePlan">
+                        <div className="event_pricePlan_header">
+                            Current Price Plan
+                        </div>
+                        <div className="change_plan">
+                            <Button1 />
+                        </div>
+                        <div className="plan">
+
+                        </div>
                     </div>
+
+                    {/* ============================= EVENT TAGS =========================  */}
+                    {/* ============================= EVENT TAGS =========================  */}
+                    <div className="event_tags">
+                        <div className="event_tags_header">
+                            Tags
+                        </div>
+                        <textarea />
+                        <span><Button1 /></span>
+                    </div>
+                    {/* ============================= EVENT ADDITIONAL INFO =========================  */}
+                    {/* ============================= EVENT ADDITIONAL INFO =========================  */}
+                    <textarea placeholder="Additional information" />
                 </form>
             </div>
             <Footer />

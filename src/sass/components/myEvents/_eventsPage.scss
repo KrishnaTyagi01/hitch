@@ -16,5 +16,15 @@
             flex-wrap: wrap;
             margin-bottom: 80px;
         }
-}
+    }
+
+
+
+    &_carousel{
+        background-color: red;
+        padding-bottom: 30px;
+        padding-top: 10px;
+        background: linear-gradient(360deg, #524690 -64.51%, #171429 100%);
+    }
+
 }

@@ -1,7 +1,8 @@
 .cardContainer{
 	width: 250px;
 	border:none;
-	background-color:var(--color-primary-1); 
+	// background-color:var(--color-primary-1); 
+	background-color: transparent;
 	// background-color: ;
 }
 // @media (min-width: 1200px ){
@@ -153,7 +154,7 @@
 			font-family: 'Kumbh Sans', sans-serif;
 			font-style: normal;
 			font-weight: 300;
-			font-size: 10%;
+			font-size: 8px;
 			// line-height: 118.6%;
 			line-height: 80%;
 			/* or 9px */

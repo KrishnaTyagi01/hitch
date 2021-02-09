@@ -6,6 +6,7 @@ import Navbar from '../navbar/Navbar';
 import MyEventCard from './MyEventCard';
 // import { useEffect } from 'react/cjs/react.development';
 import axios from 'axios';
+import SimilarEventSection from '../event_components/SimilarEventSection';
 
 const MainComponent = () => {
     const [events, setEvents] = useState([]);
@@ -23,12 +24,14 @@ const MainComponent = () => {
         return <MyEventCard title={event.title} desc={event.description} img={event.image} date={event.scheduled_date} />
     })
 
-
+    const onButtonClick = (events) => {
+        setEvents(events);
+    }
 
     return (
         <div className="eventsPage">
             <Navbar />
-            <Upper />
+            <Upper onButtonClick={onButtonClick} />
             <div className="eventsPage__content">
                 <div className="eventsPage__content--filter">
                     <Filter />
@@ -36,6 +39,9 @@ const MainComponent = () => {
                 <section className="eventsPage__content--events">
                     {MyEvents}
                 </section>
+            </div>
+            <div className="eventsPage_carousel">
+                <SimilarEventSection />
             </div>
             <Footer />
         </div>

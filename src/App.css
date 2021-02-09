@@ -759,7 +759,7 @@ html, body {
 .cardContainer {
   width: 250px;
   border: none;
-  background-color: var(--color-primary-1); }
+  background-color: transparent; }
 
 .card-img-top {
   width: 250px; }
@@ -862,7 +862,7 @@ html, body {
       font-family: 'Kumbh Sans', sans-serif;
       font-style: normal;
       font-weight: 300;
-      font-size: 10%;
+      font-size: 8px;
       line-height: 80%;
       /* or 9px */
       text-align: justify;
@@ -1628,6 +1628,11 @@ html, body {
       flex-direction: row;
       flex-wrap: wrap;
       margin-bottom: 80px; }
+  .eventsPage_carousel {
+    background-color: red;
+    padding-bottom: 30px;
+    padding-top: 10px;
+    background: linear-gradient(360deg, #524690 -64.51%, #171429 100%); }
 
 .myEventCardContainer {
   height: 250px;
@@ -2066,6 +2071,7 @@ html, body {
     top: -250px; }
   .hostEvent .sec_container {
     flex-basis: 100%;
+    min-width: 0;
     padding-right: 20px;
     display: flex;
     flex-direction: column;
@@ -2095,7 +2101,8 @@ html, body {
       background: #2B244D;
       border-radius: 10px; }
       .hostEvent .sec_container .event_name span {
-        top: 5.4px; }
+        top: 5.4px;
+        right: 10px; }
     .hostEvent .sec_container .event_tagline {
       margin: 20px 0px;
       height: 118px;
@@ -2237,6 +2244,160 @@ html, body {
             line-height: 102px;
             /* identical to box height */
             color: #877CC0; }
+    .hostEvent .sec_container .event_schedule_header {
+      margin-bottom: 100px;
+      margin-top: 100px;
+      height: 24px;
+      font-family: Montserrat;
+      font-style: normal;
+      font-weight: normal;
+      font-size: 24px;
+      line-height: 29px;
+      color: #E6E4F2; }
+    .hostEvent .sec_container .event_schedule_date_header {
+      height: 18px;
+      font-family: Montserrat;
+      font-style: normal;
+      font-weight: normal;
+      font-size: 18px;
+      line-height: 22px;
+      color: #E6E4F2; }
+    .hostEvent .sec_container .event_schedule_date_blanks {
+      display: flex; }
+      .hostEvent .sec_container .event_schedule_date_blanks div:nth-of-type(2) {
+        position: absolute;
+        margin-top: 35px;
+        right: 30px; }
+      .hostEvent .sec_container .event_schedule_date_blanks input {
+        display: inline-block;
+        margin-right: 10px;
+        margin-top: 20px;
+        font-family: Montserrat;
+        font-style: normal;
+        font-weight: 500;
+        font-size: 16px;
+        line-height: 24px;
+        display: inline-flex;
+        justify-content: center;
+        align-items: center;
+        color: #877CC0; }
+        .hostEvent .sec_container .event_schedule_date_blanks input:nth-child(2) {
+          margin-right: 50px; }
+        .hostEvent .sec_container .event_schedule_date_blanks input:nth-child(4) {
+          margin-right: 50px; }
+      .hostEvent .sec_container .event_schedule_date_blanks .day {
+        width: 48.75px;
+        height: 65px;
+        background: rgba(135, 124, 192, 0.3);
+        border-radius: 10px;
+        display: inline-flex;
+        justify-content: center;
+        align-items: center; }
+      .hostEvent .sec_container .event_schedule_date_blanks .month {
+        width: 48.75px;
+        height: 65px;
+        background: rgba(135, 124, 192, 0.3);
+        border-radius: 10px; }
+      .hostEvent .sec_container .event_schedule_date_blanks .year {
+        width: 48.75px;
+        height: 65px;
+        background: rgba(135, 124, 192, 0.3);
+        border-radius: 10px; }
+    .hostEvent .sec_container .event_schedule_time {
+      margin-top: 60px;
+      margin-bottom: 200px; }
+      .hostEvent .sec_container .event_schedule_time_header {
+        height: 18px;
+        font-family: Montserrat;
+        font-style: normal;
+        font-weight: normal;
+        font-size: 18px;
+        line-height: 22px;
+        color: #E6E4F2; }
+      .hostEvent .sec_container .event_schedule_time_blanks {
+        display: flex; }
+        .hostEvent .sec_container .event_schedule_time_blanks div:nth-of-type(2) {
+          position: absolute;
+          margin-top: 35px;
+          right: 30px; }
+        .hostEvent .sec_container .event_schedule_time_blanks input {
+          display: inline-block;
+          margin-right: 10px;
+          margin-top: 20px;
+          font-family: Montserrat;
+          font-style: normal;
+          font-weight: 500;
+          font-size: 16px;
+          line-height: 24px;
+          display: inline-flex;
+          justify-content: center;
+          align-items: center;
+          color: #877CC0; }
+          .hostEvent .sec_container .event_schedule_time_blanks input:nth-child(2) {
+            margin-right: 50px; }
+          .hostEvent .sec_container .event_schedule_time_blanks input:nth-child(4) {
+            margin-right: 50px; }
+        .hostEvent .sec_container .event_schedule_time_blanks .day {
+          width: 48.75px;
+          height: 65px;
+          background: rgba(135, 124, 192, 0.3);
+          border-radius: 10px;
+          display: inline-flex;
+          justify-content: center;
+          align-items: center; }
+        .hostEvent .sec_container .event_schedule_time_blanks .month {
+          width: 48.75px;
+          height: 65px;
+          background: rgba(135, 124, 192, 0.3);
+          border-radius: 10px; }
+        .hostEvent .sec_container .event_schedule_time_blanks .year {
+          width: 48.75px;
+          height: 65px;
+          background: rgba(135, 124, 192, 0.3);
+          border-radius: 10px; }
+    .hostEvent .sec_container .event_pricePlan {
+      position: relative;
+      margin-bottom: 100px; }
+      .hostEvent .sec_container .event_pricePlan_header {
+        height: 24px;
+        font-family: Montserrat;
+        font-style: normal;
+        font-weight: normal;
+        font-size: 24px;
+        line-height: 29px;
+        color: #E6E4F2; }
+      .hostEvent .sec_container .event_pricePlan .change_plan {
+        position: absolute;
+        right: 100px;
+        top: 0px; }
+      .hostEvent .sec_container .event_pricePlan .plan {
+        margin-top: 50px;
+        height: 286.57px;
+        margin-right: 100px;
+        background: #2B244D;
+        box-shadow: 0px 0px 34px rgba(0, 0, 0, 0.55);
+        border-radius: 10px; }
+    .hostEvent .sec_container .event_tags {
+      position: relative;
+      margin-bottom: 100px; }
+      .hostEvent .sec_container .event_tags_header {
+        margin-bottom: 40px;
+        height: 24px;
+        font-family: Montserrat;
+        font-style: normal;
+        font-weight: normal;
+        font-size: 24px;
+        line-height: 29px;
+        color: #E6E4F2; }
+      .hostEvent .sec_container .event_tags textarea {
+        width: 100%;
+        height: 286.57px;
+        margin-right: 50px;
+        background: #2B244D;
+        border-radius: 10px; }
+      .hostEvent .sec_container .event_tags span {
+        bottom: 10px;
+        z-index: 10; }
 
 .confirm_button1 {
   width: 131px;
