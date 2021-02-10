@@ -1,0 +1,61 @@
+.overviewContainer{
+    margin:20px;
+}
+
+.hrLine{
+    margin:20px 10px;
+    height: 0px;
+    border: 0.5px solid rgba(230, 228, 242, 0.5);
+}
+
+.LastEvent{
+    &_header{
+        height: 20px;
+        font-family: Montserrat;
+        font-style: normal;
+        font-weight: 500;
+        font-size: 20px;
+        line-height: 24px;
+        margin: 10px 20px 0px 0px;
+        color: #E6E4F2;
+    }
+    &_content{
+        height: 20px;
+        font-family: Montserrat;
+        font-style: normal;
+        font-weight: 200;
+        font-size: 14px;
+        line-height: 24px;
+        margin: 10px 20px 0px 0px;
+        color: #E6E4F2;
+    }
+}
+
+.Audience{
+    &_header{
+        // width: 140px;
+        height: 20px;
+        // left: 222px;
+        // top: 898.62px;
+        margin-top:500px;
+
+        font-family: Montserrat;
+        font-style: normal;
+        font-weight: 500;
+        font-size: 20px;
+        line-height: 24px;
+
+        color: #E6E4F2;
+    }
+    &_content{
+        height: 20px;
+        font-family: Montserrat;
+        font-style: normal;
+        font-weight: 200;
+        font-size: 14px;
+        line-height: 24px;
+        margin: 10px 20px 0px 0px;
+        color: #E6E4F2;
+    }
+    margin-bottom:500px;
+}

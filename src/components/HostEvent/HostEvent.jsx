@@ -1,11 +1,37 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Footer from '../footer/Footer';
 import Navbar from '../navbar/Navbar';
 import Sections from './Sections';
 import Button1 from './Button1';
 
 const HostEvent = () => {
-    const [imgurl, setImgurl] = useState('');
+    const [selectedFile, setSelectedFile] = useState();
+    const [preview, setPreview] = useState();
+
+    // create a preview as a side effect, whenever selected file is changed
+    useEffect(() => {
+        if (!selectedFile) {
+            setPreview(undefined);
+            return;
+        }
+
+        const objectUrl = URL.createObjectURL(selectedFile);
+        setPreview(objectUrl);
+
+        // free memory when ever this component is unmounted
+        return () => URL.revokeObjectURL(objectUrl);
+    }, [selectedFile]);
+
+    const onSelectFile = e => {
+        if (!e.target.files || e.target.files.length === 0) {
+            setSelectedFile(undefined);
+            return;
+        }
+
+        // I've kept this example simple by using the first image instead of multiple
+        setSelectedFile(e.target.files[0]);
+    }
+
 
     return (
         <div className="hostEvent">
@@ -21,6 +47,7 @@ const HostEvent = () => {
 
                     {/* ======================= EVENT NAME =============================================  */}
                     {/* ======================= EVENT NAME =============================================  */}
+                    <section id="basics"></section>
                     <div className="event_name">
                         <input type="text" placeholder="Name of event" />
                         <span><Button1 /></span>
@@ -39,6 +66,7 @@ const HostEvent = () => {
 
                     {/* ======================= EVENT PICTURES =============================================  */}
                     {/* ======================= EVENT PICTURES =============================================  */}
+                    <section id="pictures"></section>
                     <div className="event_pictures">
                         <div className="event_pictures_header">
                             <span>Pictures</span>
@@ -59,6 +87,14 @@ const HostEvent = () => {
                             />
                             <button>Done</button> */}
                         </div>
+                        <div className="event_pictures_chooseFile">
+                            <input type='file' onChange={onSelectFile} />
+                            {selectedFile && <img src={preview} />}
+                        </div>
+                        {/* <div className="event_pictures_chooseFile">
+                            <input type="file" onChange={readurl} />
+                            <Button1 />
+                        </div> */}
                         <div className="event_pictures_all_pictures">
                             <div></div>
                             <div></div>
@@ -68,6 +104,7 @@ const HostEvent = () => {
                     </div>
                     {/* ======================= EVENT HOST AND SPEAKERS =============================================  */}
                     {/* ======================= EVENT HOST AND SPEAKERS =============================================  */}
+                    <section id="hosts"></section>
                     <div className="event_hosts">
                         <div className="event_hosts_header">
                             Host and Speakers
@@ -83,6 +120,7 @@ const HostEvent = () => {
                     </div>
                     {/* ======================= EVENT SCHEDULE  =============================================  */}
                     {/* ======================= EVENT SCHEDULE =============================================  */}
+                    <section id="schedule"></section>
                     <div className="event_schedule">
                         <div className="event_schedule_header">
                             Schedule and Timeline
@@ -142,6 +180,7 @@ const HostEvent = () => {
 
                     {/* ============================= EVENT PRICE PLAN =========================  */}
                     {/* ============================= EVENT PRICE PLAN =========================  */}
+                    <section id="pricing"></section>
                     <div className="event_pricePlan">
                         <div className="event_pricePlan_header">
                             Current Price Plan
@@ -156,6 +195,7 @@ const HostEvent = () => {
 
                     {/* ============================= EVENT TAGS =========================  */}
                     {/* ============================= EVENT TAGS =========================  */}
+                    <section id="tags"></section>
                     <div className="event_tags">
                         <div className="event_tags_header">
                             Tags
@@ -165,7 +205,30 @@ const HostEvent = () => {
                     </div>
                     {/* ============================= EVENT ADDITIONAL INFO =========================  */}
                     {/* ============================= EVENT ADDITIONAL INFO =========================  */}
-                    <textarea placeholder="Additional information" />
+                    <section id="additional"></section>
+                    <div className="events_addInfo">
+                        <textarea placeholder="Additional information" />
+                        <span>Optional</span>
+                        <span>
+                            <Button1 />
+                        </span>
+                    </div>
+                    {/* ============================= EVENT LOCATION =========================  */}
+                    {/* ============================= EVENT LOCATION =========================  */}
+                    {/* <div style={{ margin: '100px' }}>
+                        <CustomMap />
+                    </div> */}
+                    {/* ============================= EVENT LOCATION =========================  */}
+                    {/* ============================= EVENT LOCATION =========================  */}
+                    <section id="view"></section>
+                    <button className="ViewEvent" onClick={(e) => e.preventDefault()}>
+                        View your event
+                    </button>
+                    <section id="post"></section>
+                    <button className="PostEvent" onClick={(e) => e.preventDefault()}>
+                        Post event
+                    </button>
+
                 </form>
             </div>
             <Footer />

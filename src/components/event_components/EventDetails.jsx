@@ -3,8 +3,6 @@ import copyIcon from '../../icons/copyIcon.svg';
 import shareIcon from '../../icons/shareIcon.svg';
 
 const EventDetail = () => {
-
-
 	return (
 		<div className="eventdetails">
 			<div className="eventdetails__schedule">

@@ -5,6 +5,23 @@
 	border-radius: 10px;
 	width: 315px;
 	padding: 15px;
+	position: fixed;
+	z-index: 1;
+	// top:20px;
+	height: Min(80vh , 800px);
+	overflow-y: auto;
+	&::-webkit-scrollbar {
+		width: 0px;
+
+	}
+	&::-webkit-scrollbar-track {
+		background: rgb(82, 70, 144) ; 
+	}
+	
+	&::-webkit-scrollbar-thumb {
+		background:  var(--color-primary-1); 
+	}
+
 	
 
 	&__head{
@@ -52,6 +69,10 @@
 			font-size: 16px;
 			line-height: 16px;
 			color: #FFFFFF;
+		}
+		i{
+			cursor: pointer;
+
 		}
 	}
 

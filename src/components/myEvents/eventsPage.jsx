@@ -43,7 +43,10 @@ const MainComponent = () => {
             <div className="eventsPage_carousel">
                 <SimilarEventSection />
             </div>
-            <Footer />
+            <div className="eventsPage_footer">
+                <Footer />
+
+            </div>
         </div>
     );
 }

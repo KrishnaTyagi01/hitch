@@ -13,7 +13,7 @@
 	--color-primary-5: #C6C1E1;
 }
 
-html,body{
+html,body,#root{
 	width: 100%;
 	height: 100%;
 	overflow-x: hidden;
@@ -80,6 +80,10 @@ html,body{
 @import "components/Dashboard/message";
 @import "components/Dashboard/base";
 @import "components/Dashboard/pricingplan";
+@import "components/Dashboard/Temp";
+@import "components/Dashboard/page_notification";
+@import "components/Dashboard/page_messages";
+@import "components/Dashboard/page_overview";
 
 // ============== PAGES  ======================//
 @import "pages/eventdetailspage";

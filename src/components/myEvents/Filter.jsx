@@ -3,8 +3,14 @@ import React from 'react'
 import 'react-modern-calendar-datepicker/lib/DatePicker.css';
 import DatePicker from 'react-modern-calendar-datepicker';
 import { Calendar } from "react-modern-calendar-datepicker";
+import { useState } from 'react';
 
-function filter() {
+const Filter = () => {
+	const [category, setCategory] = useState(false);
+	const [time, setTime] = useState(false);
+	const [language, setLanguage] = useState(false);
+	const [date, setDate] = useState(false);
+
 	return (
 		<div className="filter">
 			<div className="filter__head">
@@ -15,36 +21,38 @@ function filter() {
 			<div className="filter__type">
 				<div className="filter__subtype">
 					<div className="filter__subtype--name">Category</div>
-					<i style={{ fontSize: "7.5px", color: "#ffffff" }} class="fas fa-chevron-down " />
+					<i onClick={() => setCategory(!category)} style={{ fontSize: "7.5px", color: "#ffffff" }} class="fas fa-chevron-down " />
 				</div>
 
-				<div className="filter__checkbox">
-					<form className="filter__form" style={{ display: "flex", flexDirection: "column" }}>
-						<label className="filter__form--span">
-							<input className="filter__checkbox--input" type="checkbox" value="greenEggs" />
-							<span class="filter__checkbox--checkmark"></span>
+				{category ? (
+					<div className="filter__checkbox">
+						<form className="filter__form" style={{ display: "flex", flexDirection: "column" }}>
+							<label className="filter__form--span">
+								<input className="filter__checkbox--input" type="checkbox" value="greenEggs" />
+								<span class="filter__checkbox--checkmark"></span>
 							Design
 						</label>
-						<label className="filter__form--span">
-							<input className="filter__checkbox--input" type="checkbox" value="greenEggs" />
-							<span class="filter__checkbox--checkmark"></span>
+							<label className="filter__form--span">
+								<input className="filter__checkbox--input" type="checkbox" value="greenEggs" />
+								<span class="filter__checkbox--checkmark"></span>
 							Football
 						</label>
-						<label className="filter__form--span">
-							<input className="filter__checkbox--input" type="checkbox" value="greenEggs" />
-							<span class="filter__checkbox--checkmark"></span>
+							<label className="filter__form--span">
+								<input className="filter__checkbox--input" type="checkbox" value="greenEggs" />
+								<span class="filter__checkbox--checkmark"></span>
 							Music
 						</label>
-					</form>
-				</div>
+						</form>
+					</div>) : null}
+
 			</div>
 			{/* // =============================================== // */}
 			<div className="filter__type">
 				<div className="filter__subtype">
 					<div className="filter__subtype--name">Event Time</div>
-					<i style={{ fontSize: "7.5px", color: "#ffffff" }} class="fas fa-chevron-down " />
+					<i onClick={() => setTime(!time)} style={{ fontSize: "7.5px", color: "#ffffff" }} class="fas fa-chevron-down " />
 				</div>
-				<div className="filter__checkbox">
+				{time ? (<div className="filter__checkbox">
 					<form className="filter__form" style={{ display: "flex", flexDirection: "column" }}>
 						<label className="filter__form--span">
 							<input className="filter__checkbox--input" type="checkbox" value="greenEggs" />
@@ -67,17 +75,17 @@ function filter() {
 						Weekend
 					</label>
 					</form>
-				</div>
+				</div>) : null}
 			</div>
 			{/* // =============================================== // */}
 			{/* // =============================================== // */}
 			<div className="filter__type">
 				<div className="filter__subtype">
 					<div className="filter__subtype--name">Languages offered</div>
-					<i style={{ fontSize: "7.5px", color: "#ffffff" }} class="fas fa-chevron-down " />
+					<i onClick={() => setLanguage(!language)} style={{ fontSize: "7.5px", color: "#ffffff" }} class="fas fa-chevron-down " />
 				</div>
 
-				<div className="filter__checkbox">
+				{language ? (<div className="filter__checkbox">
 					<form className="filter__form" style={{ display: "flex", flexDirection: "column" }}>
 						<label className="filter__form--span">
 							<input className="filter__checkbox--input" type="checkbox" value="greenEggs" />
@@ -95,7 +103,7 @@ function filter() {
 						Punjabi
 					</label>
 					</form>
-				</div>
+				</div>) : null}
 			</div>
 
 			{/* // =============================================== // */}
@@ -104,18 +112,18 @@ function filter() {
 				{/* <Calendar style={{ color: "#171429" }} /> */}
 				<div className="filter__subtype">
 					<div className="filter__subtype--name">Date</div>
-					<i style={{ fontSize: "7.5px", color: "#ffffff" }} class="fas fa-chevron-down " />
+					<i onClick={() => setDate(!date)} style={{ fontSize: "7.5px", color: "#ffffff" }} class="fas fa-chevron-down " />
 				</div>
 
-				<Calendar
+				{date ? (<Calendar
 					calendarClassName="responsive-calendar"
 					calendarTodayClassName="todayClass-calendar"
 					calendarSelectedDayClassName="selectedClass-calendar"
-				/>
+				/>) : null}
 			</div>
 
 		</div>
 	)
 }
 
-export default filter
+export default Filter;

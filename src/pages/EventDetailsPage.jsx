@@ -1,5 +1,5 @@
 import react from 'react';
-import {Link, withRouter} from 'react-router-dom'
+import { Link, withRouter } from 'react-router-dom'
 import Navbar from '../components/navbar/Navbar';
 import Footer from '../components/footer/Footer';
 import EventCard from '../components/event_components/EventCard';
@@ -14,10 +14,10 @@ import OrganizersMessage from '../components/event_components/OrganizersMessage'
 import SimilarEventCard from '../components/event_components/SimilarEventCard';
 import SimilarEventSection from '../components/event_components/SimilarEventSection';
 import Timeline from '../components/event_components/Timeline';
-import {AddToCalenderBtn, BookmarkBtn} from '../components/event_components/Buttons';
+import { AddToCalenderBtn, BookmarkBtn } from '../components/event_components/Buttons';
 
-const EventDetailsPage = ()=>{
-	return(
+const EventDetailsPage = () => {
+	return (
 		<>
 			<div className="eventDetailsPage">
 				<Navbar />
@@ -31,7 +31,6 @@ const EventDetailsPage = ()=>{
 							<AddToCalenderBtn />
 							<BookmarkBtn />
 						</div>
-						
 					</section>
 					<section className="eventDetailsPage__tags">
 						<Tags />
@@ -40,7 +39,7 @@ const EventDetailsPage = ()=>{
 						<Overview />
 					</section>
 					<section className="eventDetailsPage__speakers">
-						<Speakers/>
+						<Speakers />
 					</section>
 					<section className="eventDetailsPage__eventdetails">
 						<EventDetails />
@@ -54,11 +53,11 @@ const EventDetailsPage = ()=>{
 					<section className="eventDetailsPage__organizersmessage">
 						<OrganizersMessage />
 					</section>
-					
+
 				</div>
 				<section className="eventDetailsPage__similarevents">
-						<SimilarEventSection />
-					</section>
+					<SimilarEventSection />
+				</section>
 				<Footer />
 			</div>
 		</>

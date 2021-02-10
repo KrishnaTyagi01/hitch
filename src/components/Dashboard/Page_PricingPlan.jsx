@@ -1,9 +1,12 @@
 import React from 'react'
 import Base from './Base'
 import dotIcon from '../../icons/dashboard/dot.svg'
-function PricingPlan() {
+import HostedEventCarousel from './HostedEvents';
+const PricingPlan = () => {
     return (
-        <Base>
+        <>
+            <HostedEventCarousel />
+            <div className="hrLine"></div>
             <div className="pricingplan">
                 <div className="pricingplan__upper">
                     <div className="pricingplan__left">
@@ -22,8 +25,8 @@ function PricingPlan() {
                     <span className="pricingplan__lower--date">ACTIVE since 12th Oct 2020</span>
                 </div>
             </div>
-        </Base>
-    )
+        </>
+    );
 }
 
-export default PricingPlan
+export default PricingPlan;

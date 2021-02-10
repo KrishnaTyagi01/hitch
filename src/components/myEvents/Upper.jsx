@@ -1,16 +1,30 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useRef } from 'react'
 // import { useEffect } from 'react/cjs/react.development';
 import axios from 'axios';
 
 function Upper(props) {
 	const [events, setEvents] = useState([]);
+	const ref1 = useRef(null);
+	const ref2 = useRef(null);
+	const ref3 = useRef(null);
+	const ref4 = useRef(null);
+
 
 	useEffect(() => {
 		console.log(events);
 		props.onButtonClick(events);
 	}, [events])
 
+	const makeActive = (currRef) => {
+		ref1.current.className = "upper__container--btn";
+		ref2.current.className = "upper__container--btn";
+		ref3.current.className = "upper__container--btn";
+		ref4.current.className = "upper__container--btn";
+		currRef.current.className = "upper__container--btnactive";
+	}
+
 	const Bookmark = () => {
+		makeActive(ref1);
 		const getAllEvents = async () => {
 			let res = await axios.get(`http://167.71.237.202/events/`);
 			res = res.data;
@@ -20,10 +34,12 @@ function Upper(props) {
 	}
 
 	const Hosted = () => {
+		makeActive(ref2);
+
 		const getAllEvents = async () => {
 			let res = await axios.get(`http://167.71.237.202/profiles/hosted_events/`, {
 				headers: {
-					Authorization: 'Token cb9022f78d5d99ddaea2b55eddfa846ec5c1e821dd9814d5019834053a28b3ec'
+					Authorization: 'Token e7593defc5dd91004fba58b60f286d8bf2b349273253778de729158a2a5abb16'
 				}
 			});
 			// http://{{hitch}}/profiles/hosted_events/
@@ -34,10 +50,12 @@ function Upper(props) {
 	}
 
 	const Upcoming = () => {
+		makeActive(ref3);
+
 		const getAllEvents = async () => {
 			let res = await axios.get(`http://167.71.237.202/profiles/upcoming_events/`, {
 				headers: {
-					Authorization: 'Token cb9022f78d5d99ddaea2b55eddfa846ec5c1e821dd9814d5019834053a28b3ec'
+					Authorization: 'Token e7593defc5dd91004fba58b60f286d8bf2b349273253778de729158a2a5abb16'
 				}
 			});
 			res = res.data;
@@ -47,10 +65,12 @@ function Upper(props) {
 	}
 
 	const Attended = () => {
+		makeActive(ref4);
+
 		const getAllEvents = async () => {
 			let res = await axios.get(`http://167.71.237.202/profiles/events_attended/`, {
 				headers: {
-					Authorization: 'Token cb9022f78d5d99ddaea2b55eddfa846ec5c1e821dd9814d5019834053a28b3ec'
+					Authorization: 'Token e7593defc5dd91004fba58b60f286d8bf2b349273253778de729158a2a5abb16'
 				}
 			});
 			res = res.data;
@@ -65,16 +85,16 @@ function Upper(props) {
 			<div className="upper__container">
 				<h3 className="upper__container--head">My Events</h3>
 				<div className="upper__container--category">
-					<button onClick={Bookmark} className="upper__container--btnactive" id="upper__container--btnactive">
+					<button ref={ref1} onClick={Bookmark} className="upper__container--btnactive">
 						Bookmark
 					</button>
-					<button onClick={Hosted} className="upper__container--btn">
+					<button ref={ref2} onClick={Hosted} className="upper__container--btn">
 						Your Hosted Events
 					</button>
-					<button onClick={Upcoming} className="upper__container--btn">
+					<button ref={ref3} onClick={Upcoming} className="upper__container--btn">
 						Upcoming Events
 					</button>
-					<button onClick={Attended} className="upper__container--btn" >
+					<button ref={ref4} onClick={Attended} className="upper__container--btn" >
 						Events Attended
 					</button>
 				</div>

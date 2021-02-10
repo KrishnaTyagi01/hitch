@@ -1,5 +1,6 @@
 .hostEvent{
     background: #171429;
+    position: relative;
 
     filter: drop-shadow(0px 0px 14px rgba(0, 0, 0, 0.5));
 
@@ -29,10 +30,7 @@
 
     .sections{
         flex-basis: 500px;
-        // align-items: center;
-        justify-content: center;
-        display: flex;
-        // background-color: green;
+        margin-left: 20px;
         position: relative;
         top:-250px;
     }
@@ -533,6 +531,95 @@
             z-index: 10;
         }
     }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    .events_addInfo{
+        position: relative;
+        margin-bottom: 100px;
+        textarea{
+            // width: 822px;
+            padding-top: 10px;
+            padding-left: 10px;
+            height: 228px;
+            background: #2B244D;
+            border-radius: 10px;
+        }
+        span:nth-of-type(2){
+            position: absolute;
+            bottom:10px;
+        }
+        span:nth-of-type(1){
+            width: 66px;
+            height: 16px;
+            // left: 1152.47px;
+            // top: 4263.85px;
+            right:15px;
+            top:6px;
+
+            font-family: Montserrat;
+            // font-family: League Script;
+            font-style: normal;
+            font-weight: normal;
+            font-size: 16px;
+            line-height: 18px;
+
+            color: #EB9947;
+        }
+    }
+
+
+
+
+    .ViewEvent{
+        // width: 818px;
+        height: 51.43px;
+        background-color: #171429;
+        border: 1.5px solid #39EAB4;
+        box-sizing: border-box;
+        border-radius: 5px;
+
+        font-family: Montserrat;
+        font-style: normal;
+        font-weight: normal;
+        font-size: 18px;
+        line-height: 22px;
+
+        color: #39EAB4;
+        margin-bottom: 50px;
+    }
+
+    .PostEvent{
+        // width: 818px;
+        height: 51.43px;
+
+        background: #39EAB4;
+        box-shadow: 0px 0px 14px rgba(88, 88, 88, 0.25);
+        border-radius: 5px;
+        font-family: Montserrat;
+        font-style: normal;
+        font-weight: normal;
+        font-size: 20px;
+        line-height: 24px;
+        margin-bottom: 100px;
+        color: #2B244D;
+    }
+
+
+
+
 
 
 

@@ -8,7 +8,7 @@ import ReviewBox from '../components/Dashboard/ReviewBox'
 import ConnectionReq from '../components/Dashboard/ConnectionReq'
 import Message from '../components/Dashboard/Message'
 import Base from '../components/Dashboard/Base'
-import PricingPlan from '../components/Dashboard/PricingPlan'
+import PricingPlan from '../components/Dashboard/Page_PricingPlan'
 function Check() {
     return (
         <div>
@@ -19,8 +19,8 @@ function Check() {
             {/* <Nav />
             <ReviewBox />
             <ConnectionReq /> */}
-             <Message />
-            {/* <Base /> */} 
+            <Message />
+            {/* <Base /> */}
             <PricingPlan />
         </div>
     )

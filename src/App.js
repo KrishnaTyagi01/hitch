@@ -25,6 +25,7 @@ import Upper from './components/myEvents/Upper';
 import eventsPage from './components/myEvents/eventsPage';
 import AboutUs from './components/AboutUs/AboutUs';
 import HostEvent from './components/HostEvent/HostEvent';
+import Temp from './components/Dashboard/Temp';
 
 function _ScrollToTop(props) {
 	const { pathname } = useLocation();
@@ -41,10 +42,11 @@ function App() {
 		<BrowserRouter>
 			<Switch>
 				<ScrollToTop >
-					<Route exact path="/" component={EventDetailsPage} />
+					<Route exact path="/event-details" component={EventDetailsPage} />
 					<Route exact path="/check"><Check /></Route>
 					{/* <Route exact path="/landing"><Landing /></Route> */}
 					<Route exact path="/signup"> <Signup /></Route>
+					<Route exact path="/"> <Signup /></Route>
 					<Route exact path="/signin" render={props => <Signin {...props} />} />
 					<Route exact path="/register"> <Register /></Route>
 					<Route exact path="/otp" render={props => <Otp {...props} />} />
@@ -53,6 +55,7 @@ function App() {
 					<Route exact path="/events" component={eventsPage}></Route>
 					<Route exact path="/about-us" component={AboutUs}></Route>
 					<Route exact path="/host-event" component={HostEvent}></Route>
+					<Route exact path="/dashboard" component={Temp}></Route>
 				</ScrollToTop>
 			</Switch>
 		</BrowserRouter>
