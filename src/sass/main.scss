@@ -6,9 +6,9 @@
 
 :root {
 	--color-primary-1: #171429;
-	--color-primary-2 : #2B244D ;
-	--color-primary-3 : #524690 ;
-	--color-primary-5: #C6C1E1;
+	--color-primary-2: #2b244d;
+	--color-primary-3: #524690;
+	--color-primary-5: #c6c1e1;
 }
 
 @import url('https://fonts.googleapis.com/css2?family=Kumbh+Sans:wght@300;400;700&display=swap');
@@ -17,60 +17,60 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,400;0,500;0,700;1,300&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=League+Script&display=swap');
 
-@import "components/constants/navbar";
-@import "components/constants/footer";
+@import 'components/constants/navbar';
+@import 'components/constants/footer';
 
 // ============= EVENT DETAILS SECTION ===============//
-@import "components/EventDetails/eventcard";
-@import "components/EventDetails/buttons";
-@import "components/EventDetails/carousel";
-@import "components/EventDetails/tags";
-@import "components/EventDetails/overview";
-@import "components/EventDetails/hostcard";
-@import "components/EventDetails/speakers";
-@import "components/EventDetails/eventdetails";
-@import "components/EventDetails/messageboard";
-@import "components/EventDetails/organizersmessage";
-@import "components/EventDetails/similareventcard";
-@import "components/EventDetails/similareventsection";
-@import "components/EventDetails/timeline";
-
+@import 'components/EventDetails/eventcard';
+@import 'components/EventDetails/buttons';
+@import 'components/EventDetails/carousel';
+@import 'components/EventDetails/tags';
+@import 'components/EventDetails/overview';
+@import 'components/EventDetails/hostcard';
+@import 'components/EventDetails/speakers';
+@import 'components/EventDetails/eventdetails';
+@import 'components/EventDetails/messageboard';
+@import 'components/EventDetails/organizersmessage';
+@import 'components/EventDetails/similareventcard';
+@import 'components/EventDetails/similareventsection';
+@import 'components/EventDetails/timeline';
 
 // ============= PROFILE SECTION ===============//
-@import "components/profile/profilecard";
-@import "components/profile/headersection";
-@import "components/profile/buttons";
-@import "components/profile/about";
-@import "components/profile/hostedevents";
-@import "components/profile/eventattended";
-@import "components/profile/hero";
+@import 'components/profile/profilecard';
+@import 'components/profile/headersection';
+@import 'components/profile/buttons';
+@import 'components/profile/about';
+@import 'components/profile/hostedevents';
+@import 'components/profile/eventattended';
+@import 'components/profile/hero';
 
 // ============= HOST INTRO SECTION ===============//
-@import "components/HostIntro/welcome";
-@import "components/HostIntro/why";
-@import "components/HostIntro/how";
-@import "components/HostIntro/packcard";
-@import "components/HostIntro/packcardsection";
+@import 'components/HostIntro/welcome';
+@import 'components/HostIntro/why';
+@import 'components/HostIntro/how';
+@import 'components/HostIntro/packcard';
+@import 'components/HostIntro/packcardsection';
 
 // ============= SIGNIN SECTION ===============//
-@import "components/signin/signin";
+@import 'components/signin/signin';
 
 //================ My Events ==================//
-@import "components/myEvents/filter";
-@import "components/myEvents/upper";
+@import 'components/myEvents/filter';
+@import 'components/myEvents/upper';
 
 //================ Landing ====================//
-@import "components/Landing/showinfocard";
+@import 'components/Landing/showinfocard';
 
 //================ Dashboard ==================//
-@import "components/Dashboard/sidebar";
-@import "components/Dashboard/nav";
-@import "components/Dashboard/reviewBox";
-@import "components/Dashboard/message";
-@import "components/Dashboard/base";
-@import "components/Dashboard/pricingplan";
+@import 'components/Dashboard/sidebar';
+@import 'components/Dashboard/nav';
+@import 'components/Dashboard/reviewBox';
+@import 'components/Dashboard/message';
+@import 'components/Dashboard/base';
+@import 'components/Dashboard/pricingplan';
 
 // ============== PAGES  ======================//
-@import "pages/eventdetailspage";
-@import "pages/profile";
-@import "pages/hostintropage";
+@import 'pages/eventdetailspage';
+@import 'pages/profile';
+@import 'pages/hostintropage';
+@import 'pages/page404';

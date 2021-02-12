@@ -1,0 +1,42 @@
+// Auth actions
+export const CHECK_USER_EXISTENCE = 'CHECK_USER_EXISTENCE';
+export const VALIDATE_OTP = 'VALIDATE_OTP';
+export const REGISTER = 'REGISTER';
+export const REGISTER_SUCCESS = 'REGISTER_SUCCESS';
+export const REGISTER_FAIL = 'REGISTER_FAIL';
+export const LOGIN = 'LOGIN';
+export const LOGIN_SUCCESS = 'LOGIN_SUCCESS';
+export const LOGIN_FAIL = 'LOGIN_FAIL';
+export const LOGOUT = 'LOGOUT';
+export const LOGOUT_SUCCESS = 'LOGOUT_SUCCESS';
+export const CHANGE_PASSWORD = 'CHANGE_PASSWORD';
+export const RESET_PASSWORD = 'RESET_PASSWORD';
+export const RESET_PASSWORD_CONFIRM = 'RESET_PASSWORD_CONFIRM';
+export const USER_LOADED = 'USER_LOADED';
+export const USER_LOADING = 'USER_LOADING';
+export const AUTH_ERROR = 'AUTH_ERROR';
+
+// Common actions
+export const GET_EVENTS = 'GET_EVENTS';
+export const GET_EVENT = 'GET_EVENT';
+export const GET_PROFILE = 'GET_PROFILE';
+
+// Profile actions
+export const GET_SELF_PROFILE = 'GET_SELF_PROFILE';
+export const EDIT_PROFILE = 'EDIT_PROFILE';
+export const DELETE_PROFILE = 'DELETE_PROFILE';
+export const GET_HOSTED_EVENTS = 'GET_HOSTED_EVENTS';
+export const GET_ATTENDED_EVENTS = 'GET_ATTENDED_EVENTS';
+export const GET_UPCOMING_EVENTS = 'GET_UPCOMING_EVENTS';
+export const GET_WISHLIST = 'GET_WISHLIST';
+export const ADD_TO_WISHLIST = 'ADD_TO_WISHLIST';
+export const REMOVE_FROM_WISHLIST = 'REMOVE_FROM_WISHLIST';
+export const DELETE_WISHLIST = 'DELETE_WISHLIST';
+
+// Event actions
+export const CREATE_EVENT = 'CREATE_EVENT';
+export const EDIT_EVENT = 'EDIT_EVENT';
+export const REGISTER_FOR_EVENT = 'REGISTER_FOR_EVENT';
+export const VERIFY_PAYMENT_FOR_EVENT = 'VERIFY_PAYMENT_FOR_EVENT';
+
+export const INC_COUNT = 'INC_COUNT';
