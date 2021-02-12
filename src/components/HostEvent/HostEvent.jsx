@@ -3,33 +3,58 @@ import Footer from '../footer/Footer';
 import Navbar from '../navbar/Navbar';
 import Sections from './Sections';
 import Button1 from './Button1';
+import axios from 'axios';
 
 const HostEvent = () => {
-    const [selectedFile, setSelectedFile] = useState();
-    const [preview, setPreview] = useState();
+    // const [selectedFile, setSelectedFile] = useState();
+    // const [preview, setPreview] = useState();
 
-    // create a preview as a side effect, whenever selected file is changed
-    useEffect(() => {
-        if (!selectedFile) {
-            setPreview(undefined);
-            return;
-        }
 
-        const objectUrl = URL.createObjectURL(selectedFile);
-        setPreview(objectUrl);
 
-        // free memory when ever this component is unmounted
-        return () => URL.revokeObjectURL(objectUrl);
-    }, [selectedFile]);
+    // // create a preview as a side effect, whenever selected file is changed
+    // useEffect(() => {
+    //     if (!selectedFile) {
+    //         setPreview(undefined);
+    //         return;
+    //     }
 
-    const onSelectFile = e => {
-        if (!e.target.files || e.target.files.length === 0) {
-            setSelectedFile(undefined);
-            return;
-        }
+    //     const objectUrl = URL.createObjectURL(selectedFile);
+    //     setPreview(objectUrl);
 
-        // I've kept this example simple by using the first image instead of multiple
-        setSelectedFile(e.target.files[0]);
+    //     // free memory when ever this component is unmounted
+    //     return () => URL.revokeObjectURL(objectUrl);
+    // }, [selectedFile]);
+
+    // const onSelectFile = e => {
+    //     if (!e.target.files || e.target.files.length === 0) {
+    //         setSelectedFile(undefined);
+    //         return;
+    //     }
+
+    //     // I've kept this example simple by using the first image instead of multiple
+    //     setSelectedFile(e.target.files[0]);
+    // }
+
+    const [Title, setTitle] = useState('');
+    const [Tagline, setTagline] = useState('');
+    const [Overview, setOverview] = useState('');
+
+    const [DateD1, setDateD1] = useState('');
+    const [DateD2, setDateD2] = useState('');
+    const [DateM1, setDateM1] = useState('');
+    const [DateM2, setDateM2] = useState('');
+    const [DateY1, setDateY1] = useState('');
+    const [DateY2, setDateY2] = useState('');
+    const [DateY3, setDateY3] = useState('');
+    const [DateY4, setDateY4] = useState('');
+
+    const [TimeH1, setTimeH1] = useState('');
+    const [TimeH2, setTimeH2] = useState('');
+    const [TimeM1, setTimeM1] = useState('');
+    const [TimeM2, setTimeM2] = useState('');
+
+    const postEvent = () => {
+
     }
 
 
@@ -49,18 +74,18 @@ const HostEvent = () => {
                     {/* ======================= EVENT NAME =============================================  */}
                     <section id="basics"></section>
                     <div className="event_name">
-                        <input type="text" placeholder="Name of event" />
+                        <input value={Title} onChange={e => setTitle(e.target.value)} type="text" placeholder="Name of event" />
                         <span><Button1 /></span>
                     </div>
                     <div className="event_tagline">
-                        <textarea placeholder="Tagline for the event" />
+                        <textarea value={Tagline} onChange={e => setTagline(e.target.value)} placeholder="Tagline for the event" />
                         <span><Button1 /></span>
                     </div>
 
                     {/* ======================= EVENT OVERVIEW =============================================  */}
                     {/* ======================= EVENT OVERVIEW =============================================  */}
                     <div className="event_overview">
-                        <textarea placeholder="Overview of the event" />
+                        <textarea value={Overview} onChange={e => setOverview(e.target.value)} placeholder="Overview of the event" />
                         <span><Button1 /></span>
                     </div>
 
@@ -72,28 +97,14 @@ const HostEvent = () => {
                             <span>Pictures</span>
                             <span id="event_pictures_header_right">Minimum 1 Required</span>
                         </div>
-                        {/* <div>
-                            <img src={imgurl} alt="NOT AVAILABLE" />
-                        </div> */}
                         <div className="event_pictures_picture_box">
                             <div className="event_pictures_picture_box_circle">
                                 <div>+</div>
                             </div>
-                            {/* <input
-                                value={imgurl}
-                                type="file"
-                                accept="image/png, image/jpeg"
-                                onChange={(e) => }
-                            />
-                            <button>Done</button> */}
-                        </div>
-                        <div className="event_pictures_chooseFile">
-                            <input type='file' onChange={onSelectFile} />
-                            {selectedFile && <img src={preview} />}
                         </div>
                         {/* <div className="event_pictures_chooseFile">
-                            <input type="file" onChange={readurl} />
-                            <Button1 />
+                            <input type='file' onChange={onSelectFile} />
+                            {selectedFile && <img src={preview} />}
                         </div> */}
                         <div className="event_pictures_all_pictures">
                             <div></div>
@@ -104,7 +115,7 @@ const HostEvent = () => {
                     </div>
                     {/* ======================= EVENT HOST AND SPEAKERS =============================================  */}
                     {/* ======================= EVENT HOST AND SPEAKERS =============================================  */}
-                    <section id="hosts"></section>
+                    <section id="host"></section>
                     <div className="event_hosts">
                         <div className="event_hosts_header">
                             Host and Speakers
@@ -131,16 +142,16 @@ const HostEvent = () => {
                             </div>
                             <div className="event_schedule_date_blanks">
                                 <div>
-                                    <input className="day" placeholder="D"></input>
-                                    <input className="day" placeholder="D"></input>
+                                    <input value={DateD1} onChange={(e) => setDateD1(e.target.value)} className="day" placeholder="D"></input>
+                                    <input value={DateD2} onChange={(e) => setDateD2(e.target.value)} className="day" placeholder="D"></input>
 
-                                    <input className="month" placeholder="M"></input>
-                                    <input className="month" placeholder="M"></input>
+                                    <input value={DateM1} onChange={(e) => setDateM1(e.target.value)} className="month" placeholder="M"></input>
+                                    <input value={DateM2} onChange={(e) => setDateM2(e.target.value)} className="month" placeholder="M"></input>
 
-                                    <input className="year" placeholder="Y"></input>
-                                    <input className="year" placeholder="Y"></input>
-                                    <input className="year" placeholder="Y"></input>
-                                    <input className="year" placeholder="Y"></input>
+                                    <input value={DateY1} onChange={(e) => setDateY1(e.target.value)} className="year" placeholder="Y"></input>
+                                    <input value={DateY2} onChange={(e) => setDateY2(e.target.value)} className="year" placeholder="Y"></input>
+                                    <input value={DateY3} onChange={(e) => setDateY3(e.target.value)} className="year" placeholder="Y"></input>
+                                    <input value={DateY4} onChange={(e) => setDateY4(e.target.value)} className="year" placeholder="Y"></input>
                                 </div>
                                 <div className="button">
                                     <Button1 />
@@ -154,11 +165,11 @@ const HostEvent = () => {
                             </div>
                             <div className="event_schedule_time_blanks">
                                 <div>
-                                    <input className="day" placeholder="H"></input>
-                                    <input className="day" placeholder="H"></input>
+                                    <input value={TimeH1} onChange={(e) => setTimeH1(e.target.value)} className="day" placeholder="H"></input>
+                                    <input value={TimeH2} onChange={(e) => setTimeH2(e.target.value)} className="day" placeholder="H"></input>
 
-                                    <input className="month" placeholder="M"></input>
-                                    <input className="month" placeholder="M"></input>
+                                    <input value={TimeM1} onChange={(e) => setTimeM1(e.target.value)} className="month" placeholder="M"></input>
+                                    <input value={TimeM2} onChange={(e) => setTimeM2(e.target.value)} className="month" placeholder="M"></input>
                                 </div>
                                 <div className="button">
                                     <Button1 />
