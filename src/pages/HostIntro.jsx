@@ -3,9 +3,8 @@ import PacksSection from '../components/hostintro_components/PacksSection';
 import WelcomeSection from '../components/hostintro_components/WelcomeSection';
 import WhySection from '../components/hostintro_components/WhySection';
 
-
-const HostIntro = ()=>{
-	return(
+const HostIntro = () => {
+	return (
 		<div className="hostintro">
 			<section className="hostintro__welcome">
 				<WelcomeSection />

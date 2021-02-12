@@ -3,7 +3,8 @@ import {
 	LOGIN,
 	LOGOUT,
 	CHANGE_PASSWORD,
-	RESET_PASSWORD
+	RESET_PASSWORD,
+	AUTH_ERROR
 } from '../types';
 
 const initialState = {
@@ -34,6 +35,10 @@ export default function authReducer(state = initialState, action) {
 				name: action.payload.name,
 				username: action.payload.username,
 				token: action.payload.token
+			};
+		case AUTH_ERROR:
+			return {
+				...initialState
 			};
 		default:
 			return state;

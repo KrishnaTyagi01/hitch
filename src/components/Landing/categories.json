@@ -1,0 +1,26 @@
+[
+	{
+		"name": "Standup",
+    "picture": "/static/image.jpg"
+	},
+	{
+		"name": "Music",
+    "picture": "/static/avatar.jpg"
+	},
+	{
+		"name": "Webinars",
+    "picture": "/static/image.jpg"
+	},
+	{
+		"name": "Fundraising",
+    "picture": "/static/avatar.jpg"
+	},
+	{
+		"name": "Codecamp",
+    "picture": "/static/image.jpg"
+	},
+	{
+		"name": "Tech",
+    "picture": "/static/avatar.jpg"
+	}
+]

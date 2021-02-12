@@ -18,8 +18,7 @@ import {
 	RESET_PASSWORD,
 	RESET_PASSWORD_CONFIRM,
 	USER_LOADED,
-	USER_LOADING,
-	AUTH_ERROR
+	USER_LOADING
 } from '../types';
 
 const initialState = {
@@ -29,7 +28,6 @@ const initialState = {
 	registerStatus: null,
 	isNewUser: false,
 	loginSuccess: null,
-	isAuthenticated: null,
 	isLoading: false,
 	message: null,
 	temp: null
@@ -53,8 +51,7 @@ export default function userReducer(state = initialState, action) {
 		case LOGIN_SUCCESS:
 			return {
 				...state,
-				loginSuccess: action.payload.success,
-				isAuthenticated: true
+				loginSuccess: action.payload.success
 			};
 		case REGISTER_SUCCESS:
 			return {
@@ -64,6 +61,7 @@ export default function userReducer(state = initialState, action) {
 			};
 		case LOGOUT_SUCCESS:
 			return {
+				...state,
 				message: action.payload.message,
 				temp: action.payload.temp
 			};
@@ -82,12 +80,10 @@ export default function userReducer(state = initialState, action) {
 				...state,
 				message: 'RESET_PASSWORD_CONFIRM'
 			};
-		case AUTH_ERROR:
 		case LOGIN_FAIL:
 		case REGISTER_FAIL:
 			return {
 				...state,
-				isAuthenticated: false,
 				isLoading: false
 			};
 		case USER_LOADING:
@@ -98,7 +94,6 @@ export default function userReducer(state = initialState, action) {
 		case USER_LOADED:
 			return {
 				...state,
-				isAuthenticated: true,
 				isLoading: false,
 				user: action.payload
 			};

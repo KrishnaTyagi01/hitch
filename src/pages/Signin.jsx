@@ -1,6 +1,6 @@
 import SigninComponent from '../components/signin/Signin';
 
-const Signin = (props)=>{
+const Signin = (props) => {
 	return(
 		<>
 		 <SigninComponent {...props} />

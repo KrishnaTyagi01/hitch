@@ -1,0 +1,86 @@
+.event-card-new {
+	position: relative;
+	background-position: center;
+	background-repeat: no-repeat;
+	background-size: cover;
+	color: white;
+	border-radius: 10px;
+	margin: 18px;
+	width: 250px;
+	height: 250px;
+	box-shadow: 0px 0px 24px rgba(0, 0, 0, 0.45);
+
+	.top-details {
+		position: absolute;
+		top: 0;
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		padding: 8px 10px;
+		width: 100%;
+
+		.ticket-price {
+			position: relative;
+			background: rgba(43, 36, 77, 0.9);
+			font-size: 12px;
+			padding: 8px 12px;
+			backdrop-filter: blur(250px);
+			border-radius: 10px;
+		}
+
+		.action-icons {
+			position: relative;
+			display: flex;
+
+			.details-icon {
+				background: rgba(43, 36, 77, 0.9);
+				padding: 8px;
+				border-radius: 50%;
+				margin-left: 8px;
+
+				img {
+					width: 10px;
+					height: 10px;
+				}
+			}
+		}
+	}
+
+	.bottom-details {
+		position: absolute;
+		bottom: 0;
+		display: grid;
+		grid-gap: 10px;
+		// justify-content: space-between;
+		justify-items: start;
+		align-items: center;
+		grid-template-columns: 25% 75%;
+		background: rgba(43, 36, 77, 0.9);
+		padding: 15px 20px;
+		border-radius: 0px 0px 10px 10px;
+		width: 100%;
+
+		.date {
+			text-align: center;
+
+			.month {
+				color: var(--color-secondary-2);
+				font-size: 14px;
+			}
+
+			.day {
+				font-size: 28px;
+			}
+		}
+
+		.title {
+			font-size: 14px;
+			font-weight: 600;
+			margin-bottom: 6px;
+		}
+
+		.description {
+			font-size: 8px;
+		}
+	}
+}

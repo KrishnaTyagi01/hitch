@@ -1,73 +1,70 @@
-.showInfoCard{
+.showInfoCard {
+	position: absolute;
+	z-index: 2;
+	left: 0;
+	bottom: -25px;
 	width: 645px;
-	height: 220px;
-	background: #2B244D;
+	// height: 220px;
+	color: #FFFFFF;
+	background-color: #2B244D;
 	// mix-blend-mode: normal;
 	box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.5);
 	border-radius: 10px;
+	font-family: 'Montserrat';
 
-	&__upperpart {
+	&__upper {
 		display: flex;
 		justify-content: space-around;
 		padding-top: 27px;
 
-		&--block{
+		.block {
 			border-right: 1px solid rgba(255, 255, 255, 0.3);
 			padding-right: 49px;
-		}
-		&--head{
-			font-family: 'Montserrat';
-			font-style: normal;
-			font-weight: 500;
-			font-size: 24px;
-			color: #FFFFFF;
 
+			.head {
+				font-style: normal;
+				font-weight: 500;
+				font-size: 24px;
+			}
+	
+			.subhead {
+				font-style: normal;
+				font-weight: normal;
+				font-size: 16px;
+			}
 		}
-		&--subhead{
-			font-family: 'Montserrat';
-			font-style: normal;
-			font-weight: normal;
-			font-size: 16px;
-			color: #FFFFFF;
-			
-		}
+
 	}
 
-
-	&__lower{
+	&__lower {
 		// width: 100%;
 		display: flex;
 		justify-content: space-between;
 		padding: 50px 35px;
-		// &--icons{
 
-		// }
-
-		&--line{
+		.line {
 			width: 313px;
 			border-bottom: 1px solid rgba(255, 255, 255, 0.3);
 			margin-bottom: 8px;
 		}
 
-		&--icon{
+		.icon {
 			width: 21px;
 			height: 18.68px;
+
 			&:not(:last-of-type){
 				margin-right: 19.44px;
 			}
-			&:hover{
+			&:hover {
 				cursor: pointer;
 			}
 		}
 
-		&--know{
-			font-family: 'Montserrat';
+		.know {
+			color: white;
 			font-style: normal;
 			font-weight: 500;
 			font-size: 16px;
-			color: #FFFFFF !important;
-			
 		}
 	}
-	
 }

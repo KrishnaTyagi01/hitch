@@ -1,6 +1,6 @@
 import SignupComponent from '../components/signin/Signup';
 
-const Signup = ()=>{
+const Signup = () => {
 	return(
 		<>
 		 <SignupComponent />
