@@ -1,0 +1,627 @@
+.hostEvent{
+    background: #171429;
+    position: relative;
+
+    filter: drop-shadow(0px 0px 14px rgba(0, 0, 0, 0.5));
+
+    .header{
+        position: relative;
+        width: 100%;
+        background: linear-gradient(360deg, #524690 -64.51%, #262143 100%);
+        height: 340px;
+        font-family: Montserrat;
+        font-style: normal;
+        font-weight: 500;
+        font-size: 28px;
+        line-height: 34px;
+        color: #39EAB4;
+        span{
+            position: absolute;
+            top:240px;
+            left: 400px;
+        }
+
+    }
+
+    .maincontainer{
+        display: flex;
+        width: 100%;
+    }
+
+    .sections{
+        flex-basis: 500px;
+        margin-left: 20px;
+        position: relative;
+        top:-250px;
+    }
+
+    .sec_container{
+        flex-basis: 100%;
+        // width: 100%;
+        min-width: 0;
+        padding-right: 20px ;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-evenly;
+
+        input,textarea{
+            border-style: none;
+            border-radius: 10px;
+            padding-left: 10px;
+            background-color:#2B244D ;
+            width: 100%;
+            height: 100%;
+            font-family: Montserrat;
+            font-style: normal;
+            font-weight: normal;
+            font-size: 16px;
+            line-height: 18px;
+            color: #877CC0;
+        }
+
+        span{
+            position: absolute;
+            z-index: 5;
+            right: 10px;
+        }
+
+        .event_name{
+            margin:20px 0px;
+            position: relative;
+            width: 100%;
+            height: 53px;
+            background: #2B244D;
+            border-radius: 10px;
+        
+            span{
+                top:5.4px;
+                right:10px;
+            }
+        }
+
+        .event_tagline{
+            margin:20px 0px;
+            height: 118px;
+            width: 100%;
+            position: relative;
+            background: #2B244D;
+            border-radius: 10px;
+
+            textarea{
+            padding-top:10px;
+                
+            }
+
+            span{
+                bottom:5px;
+            }
+        }
+
+        .event_overview{
+            margin:20px 0px;
+            height: 229px;
+            width: 100%;
+            position: relative;
+            background: #2B244D;
+            border-radius: 10px;
+            span{
+                bottom:5px;
+            }
+
+            textarea{
+                padding-top:10px;
+                    
+                }
+        }
+
+        .event_pictures{
+            margin:80px 0px;
+            // height: 229px;
+            width: 100%;
+            position: relative;
+            // margin-top: 20px;
+            // margin-bottom: 20px;
+            &_header{
+                font-family: Montserrat;
+                font-style: normal;
+                font-weight: normal;
+                font-size: 24px;
+                line-height: 29px;
+                color: #E6E4F2;
+                span{
+                    position: absolute;
+                    left:0;
+                    top:0;
+                }
+                #event_pictures_header_right{
+                    position: absolute;
+                    right:10px !important;
+                    top:0;
+                    left:unset;
+                    font-style: normal;
+                    font-weight: normal;
+                    font-size: 20px;
+                    line-height: 22px;
+                    color: #EB9947;
+                }
+                margin-bottom: 60px;
+            }
+
+            &_picture_box{
+                &:hover{
+                    background-color: rgba(128, 128, 128, 0.096);
+                }
+                width: 100%;
+                height: 346px;
+                border: 5px dashed #877CC0;
+                box-sizing: border-box;
+                border-radius: 20px;
+                justify-content: center;
+                align-items: center;
+                display: flex;
+                &_circle{
+                    width: 114px;
+                    height: 114px;
+                    border-radius: 50%;
+                    border: 5px dashed #877CC0;
+                    box-sizing: border-box;
+                    display:flex;
+                    justify-content: center;
+                    align-items: center;
+
+                    div{
+                        // all:unset;
+                        margin-left: -10px;
+                        width: 39px;
+                        height: 102px;
+                        font-family: Poppins;
+                        font-style: normal;
+                        font-weight: 500;
+                        font-size: 68px;
+                        line-height: 102px;
+                        /* identical to box height */
+                        color: #877CC0;
+                    }
+                    
+
+                }
+
+            }
+
+            &_all_pictures{
+                display: flex;
+                margin-top:20px;
+                div{
+                    width: 196.6px;
+                margin-right: 10px;
+
+                height: 124px;
+                background: #2B244D;
+                border-radius: 10px;
+                }
+            }
+        }
+
+
+
+        // EVENT HOSTS 
+        .event_hosts{
+            margin-bottom: 100px;
+            &_header{
+                // width: 208px;
+                height: 24px;
+                margin-bottom: 60px;
+                font-family: Montserrat;
+                font-style: normal;
+                font-weight: normal;
+                font-size: 24px;
+                line-height: 29px;
+                color: #E6E4F2;
+            }
+
+            &_cards{
+                display: flex;
+                flex-wrap: wrap;
+            }
+
+            &_card{
+                // position: absolute;
+                width: 300px;
+                height: 400px;
+                // left: 415.25px;
+                // top: 1745px;
+                margin-right: 15px;
+                background: #2B244D;
+                box-shadow: 0px 0px 34px rgba(0, 0, 0, 0.55);
+                border-radius: 10px;
+            }
+
+            &_addCard{
+                // position: absolute;
+                &:hover{
+                    background-color: rgba(128, 128, 128, 0.096);
+                }
+                width: 300px;
+                height: 400px;
+                // left: 415.25px;
+                // top: 1745px;
+                margin-right: 15px;
+                border: 5px dashed #877CC0;
+                box-sizing: border-box;
+                border-radius: 10px;
+                display: flex;
+                justify-content: center;
+                align-items:center;
+                &_circle{
+                    width: 114px;
+                    height: 114px;
+                    border-radius: 50%;
+                    border: 5px dashed #877CC0;
+                    box-sizing: border-box;
+                    display:flex;
+                    justify-content: center;
+                    align-items: center;
+
+                    div{
+                        // all:unset;
+                        margin-left: -10px;
+                        width: 39px;
+                        height: 102px;
+                        font-family: Poppins;
+                        font-style: normal;
+                        font-weight: 500;
+                        font-size: 68px;
+                        line-height: 102px;
+                        /* identical to box height */
+                        color: #877CC0;
+                    }
+                }
+            }
+        }
+
+
+
+
+        // =========== EVENT SCHEDULE ======================== 
+        .event_schedule{
+            &_header{
+                // width: 254px;
+                margin-bottom: 100px;
+                margin-top: 100px;
+                height: 24px;
+                font-family: Montserrat;
+                font-style: normal;
+                font-weight: normal;
+                font-size: 24px;
+                line-height: 29px;
+
+                color: #E6E4F2;
+            }
+
+
+            &_date{
+                &_header{
+                    height: 18px;
+                    font-family: Montserrat;
+                    font-style: normal;
+                    font-weight: normal;
+                    font-size: 18px;
+                    line-height: 22px;
+                    color: #E6E4F2;
+                }
+
+                &_blanks{
+                    display: flex;
+
+                    div:nth-of-type(2){
+                        position: absolute;
+                        margin-top: 35px;
+                        right: 30px;
+                    }
+                    
+                    input{
+                        display: inline-block;
+                        margin-right: 10px;
+                        margin-top:20px;
+
+                        font-family: Montserrat;
+                        font-style: normal;
+                        font-weight: 500;
+                        font-size: 16px;
+                        line-height: 24px;
+                        display: inline-flex;
+                        justify-content: center;
+                        align-items:center;
+
+
+                        color: #877CC0;
+                        &:nth-child(2){
+                            margin-right: 50px;
+                        }
+
+                        &:nth-child(4){
+                            margin-right: 50px;
+                        }
+                    }
+                    .day{
+                        width: 48.75px;
+                        height: 65px;
+                        background: rgba(135, 124, 192, 0.3);
+                        border-radius: 10px;
+                        display: inline-flex;
+                        justify-content: center;
+                        align-items:center;
+                        
+                    }
+                    
+
+                    .month{
+                        width: 48.75px;
+                        height: 65px;
+                        background: rgba(135, 124, 192, 0.3);
+                        border-radius: 10px;
+                    }
+                   
+                    .year{
+                        width: 48.75px;
+                        height: 65px;
+                        background: rgba(135, 124, 192, 0.3);
+                        border-radius: 10px;
+                    }
+                }
+            }
+        
+
+        // =============== EVENT TIME ==========================
+        &_time{
+            margin-top: 60px;
+            margin-bottom: 200px;
+            &_header{
+                height: 18px;
+                    font-family: Montserrat;
+                    font-style: normal;
+                    font-weight: normal;
+                    font-size: 18px;
+                    line-height: 22px;
+                    color: #E6E4F2;
+            }
+
+            &_blanks{
+                display: flex;
+
+                div:nth-of-type(2){
+                    position: absolute;
+                    margin-top: 35px;
+                    right: 30px;
+                }
+                
+                input{
+                    display: inline-block;
+                    margin-right: 10px;
+                    margin-top:20px;
+
+                    font-family: Montserrat;
+                    font-style: normal;
+                    font-weight: 500;
+                    font-size: 16px;
+                    line-height: 24px;
+                    display: inline-flex;
+                    justify-content: center;
+                    align-items:center;
+
+
+                    color: #877CC0;
+                    &:nth-child(2){
+                        margin-right: 50px;
+                    }
+
+                    &:nth-child(4){
+                        margin-right: 50px;
+                    }
+                }
+                .day{
+                    width: 48.75px;
+                    height: 65px;
+                    background: rgba(135, 124, 192, 0.3);
+                    border-radius: 10px;
+                    display: inline-flex;
+                    justify-content: center;
+                    align-items:center;
+                    
+                }
+                
+
+                .month{
+                    width: 48.75px;
+                    height: 65px;
+                    background: rgba(135, 124, 192, 0.3);
+                    border-radius: 10px;
+                }
+               
+                .year{
+                    width: 48.75px;
+                    height: 65px;
+                    background: rgba(135, 124, 192, 0.3);
+                    border-radius: 10px;
+                }
+            }
+        }
+    }
+
+
+
+
+
+
+
+
+
+
+    .event_pricePlan{
+        position: relative;
+        margin-bottom: 100px;
+        &_header{
+            // width: 203px;
+            height: 24px;
+
+            font-family: Montserrat;
+            font-style: normal;
+            font-weight: normal;
+            font-size: 24px;
+            line-height: 29px;
+
+            color: #E6E4F2;
+        }
+        .change_plan{
+            position: absolute;
+            right:100px;
+            top:0px;
+        }
+        .plan{
+            // width: 100%;
+            margin-top:50px;
+            height: 286.57px;
+            // left: 414.25px;
+            // top: 3328.22px;
+            margin-right: 100px;
+            // margin-top: 60px;
+
+            background: #2B244D;
+            box-shadow: 0px 0px 34px rgba(0, 0, 0, 0.55);
+            border-radius: 10px;
+        }
+    }
+
+
+
+
+
+
+
+
+
+
+    // ======================== EVENT TAGS ============================
+    .event_tags{
+        position: relative;
+        margin-bottom: 100px;
+        &_header{
+            // width: 51px;
+            margin-bottom: 40px;
+            height: 24px;
+    
+            font-family: Montserrat;
+            font-style: normal;
+            font-weight: normal;
+            font-size: 24px;
+            line-height: 29px;
+            color: #E6E4F2;
+        }
+
+        textarea{
+            width: 100%;
+            height: 286.57px;
+            margin-right: 50px;
+            background: #2B244D;
+            border-radius: 10px;
+        }
+
+        span{
+            bottom: 10px;
+            z-index: 10;
+        }
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    .events_addInfo{
+        position: relative;
+        margin-bottom: 100px;
+        textarea{
+            // width: 822px;
+            padding-top: 10px;
+            padding-left: 10px;
+            height: 228px;
+            background: #2B244D;
+            border-radius: 10px;
+        }
+        span:nth-of-type(2){
+            position: absolute;
+            bottom:10px;
+        }
+        span:nth-of-type(1){
+            width: 66px;
+            height: 16px;
+            // left: 1152.47px;
+            // top: 4263.85px;
+            right:15px;
+            top:6px;
+
+            font-family: Montserrat;
+            // font-family: League Script;
+            font-style: normal;
+            font-weight: normal;
+            font-size: 16px;
+            line-height: 18px;
+
+            color: #EB9947;
+        }
+    }
+
+
+
+
+    .ViewEvent{
+        // width: 818px;
+        height: 51.43px;
+        background-color: #171429;
+        border: 1.5px solid #39EAB4;
+        box-sizing: border-box;
+        border-radius: 5px;
+
+        font-family: Montserrat;
+        font-style: normal;
+        font-weight: normal;
+        font-size: 18px;
+        line-height: 22px;
+
+        color: #39EAB4;
+        margin-bottom: 50px;
+    }
+
+    .PostEvent{
+        // width: 818px;
+        height: 51.43px;
+
+        background: #39EAB4;
+        box-shadow: 0px 0px 14px rgba(88, 88, 88, 0.25);
+        border-radius: 5px;
+        font-family: Montserrat;
+        font-style: normal;
+        font-weight: normal;
+        font-size: 20px;
+        line-height: 24px;
+        margin-bottom: 100px;
+        color: #2B244D;
+    }
+
+
+
+
+
+
+
+    }
+}

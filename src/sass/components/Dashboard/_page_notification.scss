@@ -1,0 +1,92 @@
+.Notif{
+    display: grid;
+    grid-template-columns:1fr 1fr;
+    height: 100%;
+    // overflow-y: hidden;
+    &_list{
+        background: rgba(23, 20, 41, 0.5);
+        padding-top:25px;
+        padding-left: 40px;
+        height: 100%;
+        // margin-bottom: 10000px;
+        .new{
+            margin-bottom: 100px;
+
+            &_header{
+                height: 20px;
+                margin-bottom: 80px;
+                
+                
+                font-family: Montserrat;
+                font-style: normal;
+                font-weight: 500;
+                font-size: 20px;
+                line-height: 24px;
+                
+                color: #E6E4F2;
+            }
+
+            &_content{
+                // width: 50px;
+                height: 20px;
+                // left: 220px;
+                // top: 167px;
+
+                font-family: Montserrat;
+                font-style: normal;
+                font-weight: 500;
+                font-size: 20px;
+                line-height: 24px;
+
+                color: #E6E4F2;
+            }
+        }
+
+        .old{
+            &_header{
+                // width: 50px;
+            margin-bottom: 80px;
+            height: 20px;
+                // left: 220px;
+                // top: 167px;
+
+                font-family: Montserrat;
+                font-style: normal;
+                font-weight: 500;
+                font-size: 20px;
+                line-height: 24px;
+
+                color: #E6E4F2;
+            }
+
+            &_content{
+                // width: 50px;
+                height: 20px;
+                // left: 220px;
+                // top: 167px;
+                
+                font-family: Montserrat;
+                font-style: normal;
+                font-weight: 500;
+                font-size: 20px;
+                line-height: 24px;
+                
+                color: #E6E4F2;
+            }
+        }
+    }
+
+    &_preview{
+        padding-top:25px;
+        padding-left: 40px;
+        // height: 20px;
+
+        font-family: Montserrat;
+        font-style: normal;
+        font-weight: 500;
+        font-size: 20px;
+        line-height: 24px;
+
+        color: #E6E4F2;
+    }
+}

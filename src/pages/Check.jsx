@@ -8,22 +8,23 @@
 // import Base from '../components/Dashboard/Base'
 import Message from '../components/Dashboard/Message';
 import PricingPlan from '../components/Dashboard/PricingPlan';
+import React from 'react';
 
 function Check() {
-	return (
-		<div>
-			{/* <Upper />
+    return (
+        <div>
+            {/* <Upper />
 			<Filter />   */}
-			{/* <ShowInfoCard />    */}
-			{/* <Sidebar /> */}
-			{/* <Nav />
+            {/* <ShowInfoCard />    */}
+            {/* <Sidebar /> */}
+            {/* <Nav />
 			<ReviewBox />
 			<ConnectionReq /> */}
-			<Message />
-			{/* <Base /> */}
-			<PricingPlan />
-		</div>
-	);
+            <Message />
+            {/* <Base /> */}
+            <PricingPlan />
+        </div>
+    );
 }
 
 export default Check;

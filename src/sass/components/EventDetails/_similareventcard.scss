@@ -1,7 +1,10 @@
 .cardContainer{
 	width: 250px;
+	height: 250px;
 	border:none;
-	background-color:var(--color-primary-1); 
+	// background-color:var(--color-primary-1); 
+	background-color: transparent;
+	// background-color: ;
 }
 // @media (min-width: 1200px ){
 	.card-img-top{
@@ -62,9 +65,7 @@
 			border: none;
 			background: rgba(43, 36, 77, 0.7);
 			backdrop-filter: blur(250px);
-			
-			// display: flex;
-			// align-items: center;
+
 		}
 		&--calendericon{
 			width: 10.64px;
@@ -95,7 +96,7 @@
 		width: 100%;
 		// margin-left: -7.5px;
 		// margin-bottom: -7px;
-}    
+	}    
 
 	&__eventdate{
 		display: flex;
@@ -153,7 +154,8 @@
 			font-style: normal;
 			font-weight: 300;
 			font-size: 8px;
-			line-height: 118.6%;
+			// line-height: 118.6%;
+			line-height: 80%;
 			/* or 9px */
 			
 			text-align: justify;
