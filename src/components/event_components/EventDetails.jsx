@@ -1,8 +1,12 @@
 import React from 'react';
 import copyIcon from '../../icons/copyIcon.svg';
 import shareIcon from '../../icons/shareIcon.svg';
+import Moment from 'moment';
 
-const EventDetail = () => {
+const EventDetail = (props) => {
+
+	// console.log();
+
 	return (
 		<div className="eventdetails">
 			<div className="eventdetails__schedule">
@@ -10,12 +14,12 @@ const EventDetail = () => {
 
 				<div className="eventdetails__timing">
 					<span className="eventdetails__timing--text">START TIME</span>
-					<p className="eventdetails__timing--time">7:00 PM IST</p>
+					<p className="eventdetails__timing--time">{(Moment(props.event.scheduled_time, ["hh:mm:ss"]).format("hh:mm A"))}</p>
 				</div>
 
 				<div className="eventdetails__duration">
-					<span className="eventdetails__duration--text">DURATION</span>
-					<p className="eventdetails__duration--length">3-4HRS</p>
+					<span className="eventdetails__duration--text">DURATION DAYS</span>
+					<p className="eventdetails__duration--length">{props.event.duration_days}</p>
 				</div>
 
 			</div>
@@ -23,7 +27,7 @@ const EventDetail = () => {
 			<div className="eventdetails__price">
 				<h3 className="eventdetails__price--head">PRICE</h3>
 				<span className="eventdetails__price--body">THIS EVENT IS</span>
-				<p className="eventdetails__price--cost">FREE</p>
+				<p className="eventdetails__price--cost">{props.event.ticket_price === 0 ? 'FREE' : props.event.ticket_price}</p>
 			</div>
 
 			<div className="eventdetails__visit">

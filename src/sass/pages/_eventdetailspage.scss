@@ -11,13 +11,19 @@
 
 	&__hero{
 		display: flex;
-		justify-content: space-between;
+		// justify-content: space-between;
 		&--left{
 			// width: ;
+			flex-basis: 100%;
+			display: flex;
+			justify-content: center;
+			align-items: center;
 			margin-right: 46px;
+			
 		}
 
 		&--right{
+			flex-basis: 200px;
 			margin-right: 46px;
 		}
 	}

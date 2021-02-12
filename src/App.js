@@ -43,6 +43,7 @@ function App() {
 			<Switch>
 				<ScrollToTop >
 					<Route exact path="/event-details" component={EventDetailsPage} />
+					{/* <Route exact path="/event-details" render={(props) => <EventDetailsPage {...props} />} /> */}
 					<Route exact path="/check"><Check /></Route>
 					{/* <Route exact path="/landing"><Landing /></Route> */}
 					<Route exact path="/signup"> <Signup /></Route>
@@ -59,6 +60,7 @@ function App() {
 				</ScrollToTop>
 			</Switch>
 		</BrowserRouter>
+
 	);
 }
 

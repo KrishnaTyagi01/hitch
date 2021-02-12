@@ -4,9 +4,9 @@ import Filter from './Filter';
 import Footer from '../footer/Footer';
 import Navbar from '../navbar/Navbar';
 import MyEventCard from './MyEventCard';
-// import { useEffect } from 'react/cjs/react.development';
 import axios from 'axios';
 import SimilarEventSection from '../event_components/SimilarEventSection';
+import { Redirect, Link } from 'react-router-dom';
 
 const MainComponent = () => {
     const [events, setEvents] = useState([]);
@@ -21,7 +21,15 @@ const MainComponent = () => {
     }, [])
 
     const MyEvents = events.map(event => {
-        return <MyEventCard title={event.title} desc={event.description} img={event.image} date={event.scheduled_date} />
+        return (
+            <Link to={{
+                pathname: "/event-details",
+                state: { event: event }
+            }}
+            >
+                <MyEventCard title={event.title} desc={event.description} img={event.image} date={event.scheduled_date} />
+            </Link>
+        )
     })
 
     const onButtonClick = (events) => {

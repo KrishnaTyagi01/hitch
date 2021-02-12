@@ -3,7 +3,7 @@ import { Link, withRouter } from 'react-router-dom'
 import Navbar from '../components/navbar/Navbar';
 import Footer from '../components/footer/Footer';
 import EventCard from '../components/event_components/EventCard';
-import Carousel from '../components/event_components/Carousel';
+import MyCarousel from '../components/event_components/Carousel';
 import Tags from '../components/event_components/Tags';
 import Speakers from '../components/event_components/Speakers';
 import Overview from '../components/event_components/Overview';
@@ -15,8 +15,13 @@ import SimilarEventCard from '../components/event_components/SimilarEventCard';
 import SimilarEventSection from '../components/event_components/SimilarEventSection';
 import Timeline from '../components/event_components/Timeline';
 import { AddToCalenderBtn, BookmarkBtn } from '../components/event_components/Buttons';
+import { useEffect } from 'react/cjs/react.development';
 
-const EventDetailsPage = () => {
+const EventDetailsPage = (props) => {
+	useEffect(() => {
+		console.log(props.location.state.event);
+	}, []);
+
 	return (
 		<>
 			<div className="eventDetailsPage">
@@ -24,25 +29,25 @@ const EventDetailsPage = () => {
 				<div className="eventDetailsPage__inner">
 					<section className="eventDetailsPage__hero">
 						<div className="eventDetailsPage__hero--left">
-							<Carousel />
+							<MyCarousel imgURL={props.location.state.event.image} />
 						</div>
 						<div className="eventDetailsPage__hero--right">
-							<EventCard />
+							<EventCard event={props.location.state.event} />
 							<AddToCalenderBtn />
 							<BookmarkBtn />
 						</div>
 					</section>
 					<section className="eventDetailsPage__tags">
-						<Tags />
+						<Tags tags={props.location.state.event.tags} />
 					</section>
 					<section className="eventDetailsPage__overview">
-						<Overview />
+						<Overview description={props.location.state.event.description} />
 					</section>
 					<section className="eventDetailsPage__speakers">
 						<Speakers />
 					</section>
 					<section className="eventDetailsPage__eventdetails">
-						<EventDetails />
+						<EventDetails event={props.location.state.event} />
 					</section>
 					<section className="eventDetailsPage__timeline">
 						<Timeline />
