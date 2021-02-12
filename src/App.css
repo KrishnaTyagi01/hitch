@@ -800,6 +800,7 @@ html, body, #root {
 
 .cardContainer {
   width: 250px;
+  height: 250px;
   border: none;
   background-color: transparent; }
 
