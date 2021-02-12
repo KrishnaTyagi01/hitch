@@ -1,9 +1,13 @@
-import React from 'react'
+import Hero from '../components/Landing/Hero';
+import Explore from '../components/Landing/Explore';
+import Discover from '../components/Landing/Discover';
 
 export default function Home() {
 	return (
 		<div>
-			Home
+			<Hero />
+			<Explore />
+			<Discover />
 		</div>
-	)
+	);
 }

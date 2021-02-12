@@ -1,7 +1,7 @@
 import RegisterComponent from '../components/signin/Register';
 
-const Register = ()=>{
-	return(
+const Register = () => {
+	return (
 		<>
 		 <RegisterComponent />
 		</>

@@ -1,0 +1,17 @@
+[
+	{
+		"label": "Category",
+		"name": "category",
+		"options": ["Standup", "Music", "Webinars", "Fundraising", "Codecamp", "Tech"] 
+	},
+	{
+		"label": "Event Type",
+		"name": "eventType",
+		"options": ["one", "two", "three", "four"] 
+	},
+	{
+		"label": "Weekend",
+		"name": "weekend",
+		"options": ["Yes", "No"]
+	}
+]

@@ -1,10 +1,10 @@
-.footer{
+.footer {
 	width: 100%;
 	display: flex;
 	flex-direction: column;
 	align-items: center;
 	background-color: red;
-	&__upper{
+	&__upper {
 		width: 100%;
 		background-color: var(--color-primary-2);
 		display: flex;
@@ -12,66 +12,63 @@
 		align-items: center;
 
 		height: 90px;
-		&--text{
+		&--text {
 			margin-left: 4.8rem;
 			font-family: 'Kumbh Sans', sans-serif;
 			font-style: normal;
 			font-weight: normal;
 			font-size: 20px;
 			line-height: 20px;
-			
-			color: #FFFFFF;
-			
+
+			color: #ffffff;
 		}
 
-		&--buttons{
+		&--buttons {
 			margin-right: 4.8rem;
 
-			&:hover{
+			&:hover {
 				cursor: pointer;
 			}
 		}
-		&--googlebtn{
-			margin:0 1rem;
+		&--googlebtn {
+			margin: 0 1rem;
 
-			&:hover{
+			&:hover {
 				cursor: pointer;
 			}
 		}
-		&--applebtn{
-			margin:0 1rem;
+		&--applebtn {
+			margin: 0 1rem;
 		}
 	}
 
-	&__mid{
+	&__mid {
 		width: 100%;
 		display: flex;
 		justify-content: space-around;
 		padding-top: 1rem;
 		background-color: var(--color-primary-1);
 
-		&--list{
+		&--list {
 			list-style: none;
 		}
 
-		&--listitem{
-			margin-bottom: .5rem;
+		&--listitem {
+			margin-bottom: 0.5rem;
 		}
-		&--listhead{
+		&--listhead {
 			margin-bottom: 1rem;
-		 
+
 			font-family: 'Kumbh Sans', sans-serif;
 			font-style: normal;
 			font-weight: bold;
 			font-size: 14px;
 			line-height: 14px;
 			/* identical to box height */
-			
-			
-			color: #FFFFFF;
-			
+
+			color: #ffffff;
 		}
-		&--listlink{
+		&--listlink {
 			font-family: 'Kumbh Sans', sans-serif;
 
 			font-style: normal;
@@ -79,14 +76,12 @@
 			font-size: 14px;
 			line-height: 14px;
 			/* identical to box height */
-			
-			
-			color: #FFFFFF;
-			
+
+			color: #ffffff;
 		}
 	}
 
-	&__lower{
+	&__lower {
 		width: 100%;
 		display: flex;
 		justify-content: space-between;
@@ -94,23 +89,22 @@
 		align-items: center;
 		background-color: var(--color-primary-2);
 
-		&--contact{
-			margin-right: .5rem;
+		&--contact {
+			margin-right: 0.5rem;
 			margin-left: 4.8rem;
 			font-family: 'Kumbh Sans', sans-serif;
 			font-style: normal;
 			font-weight: normal;
 			font-size: 16px;
 			line-height: 16px;
-			
-			
-			color: #FFFFFF;
+
+			color: #ffffff;
 		}
-		&--iconlink{
+		&--iconlink {
 			margin-right: 1rem;
 			color: var(--color-primary-5);
 
-			&:hover{
+			&:hover {
 				cursor: pointer;
 			}
 		}
@@ -118,7 +112,7 @@
 		//     font-size: 1.3rem;
 		// }
 
-		&--text{
+		&--text {
 			margin-right: 4.8rem;
 			font-family: 'Kumbh Sans', sans-serif;
 			font-style: normal;
@@ -126,13 +120,10 @@
 			font-size: 16px;
 			line-height: 16px;
 			/* identical to box height */
-			
+
 			text-decoration-line: underline;
-			
-			color: #FFFFFF;
-			
+
+			color: #ffffff;
 		}
 	}
-
-	
 }

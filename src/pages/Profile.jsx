@@ -6,10 +6,10 @@ import HeaderSection from '../components/profile_components/HeaderSection'
 import Hero from '../components/profile_components/Hero'
 import HostedEvents from '../components/profile_components/HostedEvents'
 import ProfileCard from '../components/profile_components/ProfileCard'
-import {ConnectionButton, FollowButton} from '../components/profile_components/Buttons'
+import { ConnectionButton, FollowButton } from '../components/profile_components/Buttons'
 
-import {isAuthenticated} from '../API/Auth';
-import {getSelfProfile} from '../API/User';
+import { isAuthenticated } from '../API/Auth';
+import { getSelfProfile } from '../API/User';
 
 
 const Profile = () => {

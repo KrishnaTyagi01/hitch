@@ -1,15 +1,18 @@
-import EventCard from '../components/event_components/EventCard';
-import Carousel from '../components/event_components/Carousel';
-import Tags from '../components/event_components/Tags';
-import Speakers from '../components/event_components/Speakers';
-import Overview from '../components/event_components/Overview';
-import EventDetails from '../components/event_components/EventDetails';
-import MessageBoard from '../components/event_components/MessageBoard';
-import OrganizersMessage from '../components/event_components/OrganizersMessage';
+import EventCardOld from "../components/event_components/EventCardOld";
+import Carousel from "../components/event_components/Carousel";
+import Tags from "../components/event_components/Tags";
+import Speakers from "../components/event_components/Speakers";
+import Overview from "../components/event_components/Overview";
+import EventDetails from "../components/event_components/EventDetails";
+import MessageBoard from "../components/event_components/MessageBoard";
+import OrganizersMessage from "../components/event_components/OrganizersMessage";
 //  import MapSection from '../components/event_components/Maps';
-import SimilarEventSection from '../components/event_components/SimilarEventSection';
-import Timeline from '../components/event_components/Timeline';
-import { AddToCalenderBtn, BookmarkBtn } from '../components/event_components/Buttons';
+import SimilarEventSection from "../components/event_components/SimilarEventSection";
+import Timeline from "../components/event_components/Timeline";
+import {
+	AddToCalenderBtn,
+	BookmarkBtn
+} from "../components/event_components/Buttons";
 
 const EventDetailsPage = () => {
 	return (
@@ -20,11 +23,10 @@ const EventDetailsPage = () => {
 						<Carousel />
 					</div>
 					<div className="eventDetailsPage__hero--right">
-						<EventCard />
+						<EventCardOld />
 						<AddToCalenderBtn />
 						<BookmarkBtn />
 					</div>
-					
 				</section>
 				<section className="eventDetailsPage__tags">
 					<Tags />
@@ -33,7 +35,7 @@ const EventDetailsPage = () => {
 					<Overview />
 				</section>
 				<section className="eventDetailsPage__speakers">
-					<Speakers/>
+					<Speakers />
 				</section>
 				<section className="eventDetailsPage__eventdetails">
 					<EventDetails />
@@ -47,13 +49,12 @@ const EventDetailsPage = () => {
 				<section className="eventDetailsPage__organizersmessage">
 					<OrganizersMessage />
 				</section>
-				
 			</div>
 			<section className="eventDetailsPage__similarevents">
 				<SimilarEventSection />
 			</section>
 		</div>
-	)
-}
+	);
+};
 
-export default EventDetailsPage;  
+export default EventDetailsPage;

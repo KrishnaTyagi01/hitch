@@ -24,4 +24,4 @@ yarn-error.log*
 
 # Remove before deployment
 
-/src/App.css
+src/App.css
