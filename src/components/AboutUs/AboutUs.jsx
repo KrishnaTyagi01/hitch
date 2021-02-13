@@ -1,10 +1,10 @@
 import React from 'react';
-import Navbar from '../navbar/Navbar';
+import Navbar from '../Layout/Navbar';
 import person1 from "../../icons/about Hitch/person1.png";
 import person2 from "../../icons/about Hitch/person2.png";
 import Card1 from './AboutUsCard1';
 import person3 from "../../icons/hostIntro/image2.svg";
-import Footer from '../footer/Footer';
+import Footer from '../Layout/Footer';
 import TeamCard from './TeamCard';
 
 const AboutUs = () => {
@@ -65,9 +65,6 @@ const AboutUs = () => {
 
 			</div>
 			<Footer />
-
-
-
 		</div>
 	);
 }

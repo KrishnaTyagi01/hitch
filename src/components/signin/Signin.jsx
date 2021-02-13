@@ -6,7 +6,7 @@ import { Redirect } from 'react-router-dom'
 // import { loginUser, authenticate } from '../../API/Auth';
 
 import { connect } from 'react-redux';
-import { getAuthToken } from '../../Redux/Actions';
+// import { getAuthToken } from '../../Redux/Actions';
 
 const SigninComponent = (props) => {
 
@@ -67,4 +67,4 @@ const mapStateToProps = state => {
 	return { auth_token: state.auth_token };
 }
 
-export default connect(mapStateToProps, { getAuthToken })(SigninComponent);
+export default (SigninComponent);

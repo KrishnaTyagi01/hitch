@@ -37,7 +37,7 @@ const MyEventCard = (props) => {
                         {toUpper(props.title.substr(0, 50))}
                     </div>
                     <div className="content">
-                        {props.desc.substr(0, 120)}
+                        {props.desc === null ? null : props.desc.substr(0, 120)}
                     </div>
                 </div>
             </div>

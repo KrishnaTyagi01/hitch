@@ -1,39 +1,42 @@
-import React, { useState, useEffect } from 'react';
-import Footer from '../footer/Footer';
-import Navbar from '../navbar/Navbar';
+import React, { useState, useEffect, useRef } from 'react';
+import Footer from '../Layout/Footer';
+import Navbar from '../Layout/Navbar';
 import Sections from './Sections';
 import Button1 from './Button1';
 import axios from 'axios';
+import { connect } from 'react-redux';
+// import { useRef } from 'react/cjs/react.development';
 
-const HostEvent = () => {
-    // const [selectedFile, setSelectedFile] = useState();
-    // const [preview, setPreview] = useState();
+const HostEvent = (props) => {
+    const [selectedFile, setSelectedFile] = useState();
+    const [preview, setPreview] = useState();
+    const imgRef = useRef(null);
 
 
 
-    // // create a preview as a side effect, whenever selected file is changed
-    // useEffect(() => {
-    //     if (!selectedFile) {
-    //         setPreview(undefined);
-    //         return;
-    //     }
+    // create a preview as a side effect, whenever selected file is changed
+    useEffect(() => {
+        if (!selectedFile) {
+            setPreview(undefined);
+            return;
+        }
 
-    //     const objectUrl = URL.createObjectURL(selectedFile);
-    //     setPreview(objectUrl);
+        const objectUrl = URL.createObjectURL(selectedFile);
+        setPreview(objectUrl);
 
-    //     // free memory when ever this component is unmounted
-    //     return () => URL.revokeObjectURL(objectUrl);
-    // }, [selectedFile]);
+        // free memory when ever this component is unmounted
+        return () => URL.revokeObjectURL(objectUrl);
+    }, [selectedFile]);
 
-    // const onSelectFile = e => {
-    //     if (!e.target.files || e.target.files.length === 0) {
-    //         setSelectedFile(undefined);
-    //         return;
-    //     }
+    const onSelectFile = e => {
+        if (!e.target.files || e.target.files.length === 0) {
+            setSelectedFile(undefined);
+            return;
+        }
 
-    //     // I've kept this example simple by using the first image instead of multiple
-    //     setSelectedFile(e.target.files[0]);
-    // }
+        // I've kept this example simple by using the first image instead of multiple
+        setSelectedFile(e.target.files[0]);
+    }
 
     const [Title, setTitle] = useState('');
     const [Tagline, setTagline] = useState('');
@@ -53,7 +56,37 @@ const HostEvent = () => {
     const [TimeM1, setTimeM1] = useState('');
     const [TimeM2, setTimeM2] = useState('');
 
-    const postEvent = () => {
+    const [Image, setImage] = useState(null);
+
+    const postEvent = async (e) => {
+        e.preventDefault();
+        const getDate = () => {
+            return DateY1 + DateY2 + DateY3 + DateY4 + '-' + DateM1 + DateM2 + '-' + DateD1 + DateD2;
+        }
+
+        const getTime = () => {
+            return TimeH1 + TimeH2 + ':' + TimeM1 + TimeM2;
+        }
+
+        let form_data = new FormData();
+        form_data.append('image', Image);
+        form_data.append('title', Title);
+        form_data.append('description', Tagline);
+        form_data.append('scheduled_time', getTime());
+        form_data.append('scheduled_date', getDate());
+        let url = 'http://167.71.237.202/events/';
+
+        const res = await axios.post(url, form_data, {
+            headers: {
+                Authorization: `Token ${props.token}`,
+            }
+        })
+
+        console.log(res);
+        // for (var pair of form_data.entries()) {
+        //     console.log(pair[0] + ', ' + pair[1]);
+        // }
+
 
     }
 
@@ -98,20 +131,21 @@ const HostEvent = () => {
                             <span id="event_pictures_header_right">Minimum 1 Required</span>
                         </div>
                         <div className="event_pictures_picture_box">
-                            <div className="event_pictures_picture_box_circle">
+                            {/* <div className="event_pictures_picture_box_circle">
                                 <div>+</div>
-                            </div>
-                        </div>
-                        {/* <div className="event_pictures_chooseFile">
-                            <input type='file' onChange={onSelectFile} />
+                            </div> */}
                             {selectedFile && <img src={preview} />}
-                        </div> */}
-                        <div className="event_pictures_all_pictures">
-                            <div></div>
-                            <div></div>
-                            <div></div>
-                            <div></div>
                         </div>
+                        <div className="event_pictures_chooseFile">
+                            <input ref={imgRef} type='file' onChange={(e) => { onSelectFile(e); setImage(e.target.files[0]) }} />
+                            {/* {selectedFile && <img src={preview} />} */}
+                        </div>
+                        {/* <div className="event_pictures_all_pictures">
+                            <div></div>
+                            <div></div>
+                            <div></div>
+                            <div></div>
+                        </div> */}
                     </div>
                     {/* ======================= EVENT HOST AND SPEAKERS =============================================  */}
                     {/* ======================= EVENT HOST AND SPEAKERS =============================================  */}
@@ -236,7 +270,7 @@ const HostEvent = () => {
                         View your event
                     </button>
                     <section id="post"></section>
-                    <button className="PostEvent" onClick={(e) => e.preventDefault()}>
+                    <button className="PostEvent" onClick={postEvent}>
                         Post event
                     </button>
 
@@ -247,4 +281,10 @@ const HostEvent = () => {
     )
 }
 
-export default HostEvent;
+const mapStateToProps = state => {
+    return {
+        token: state.authState.token,
+    }
+}
+
+export default connect(mapStateToProps)(HostEvent);

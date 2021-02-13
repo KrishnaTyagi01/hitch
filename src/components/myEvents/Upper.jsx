@@ -1,12 +1,8 @@
 import React, { useState, useEffect, useRef } from 'react'
-// import { useEffect } from 'react/cjs/react.development';
 import axios from 'axios';
 import { connect } from 'react-redux';
 
 const Upper = (props) => {
-
-	// console.log(props);
-
 	const [events, setEvents] = useState([]);
 	const ref1 = useRef(null);
 	const ref2 = useRef(null);
@@ -15,6 +11,7 @@ const Upper = (props) => {
 
 
 	useEffect(() => {
+		console.log(props.token);
 		props.onButtonClick(events);
 	}, [events])
 
@@ -42,7 +39,7 @@ const Upper = (props) => {
 		const getAllEvents = async () => {
 			let res = await axios.get(`http://167.71.237.202/profiles/hosted_events/`, {
 				headers: {
-					Authorization: `Token ${Window.auth_token}`,
+					Authorization: `Token ${props.token}`,
 				}
 			});
 			// http://{{hitch}}/profiles/hosted_events/
@@ -58,7 +55,7 @@ const Upper = (props) => {
 		const getAllEvents = async () => {
 			let res = await axios.get(`http://167.71.237.202/profiles/upcoming_events/`, {
 				headers: {
-					Authorization: `Token ${Window.auth_token}`
+					Authorization: `Token ${props.token}`
 				}
 			});
 			res = res.data;
@@ -73,7 +70,7 @@ const Upper = (props) => {
 		const getAllEvents = async () => {
 			let res = await axios.get(`http://167.71.237.202/profiles/events_attended/`, {
 				headers: {
-					Authorization: `Token ${Window.auth_token}`,
+					Authorization: `Token ${props.token}`,
 				}
 			});
 			res = res.data;
@@ -107,8 +104,9 @@ const Upper = (props) => {
 }
 
 const mapStateToProps = state => {
-	console.log(state);
-	return { auth_token: state.auth_token };
+	return {
+		token: state.authState.token,
+	}
 }
 
 export default connect(mapStateToProps)(Upper);

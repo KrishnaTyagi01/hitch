@@ -1,7 +1,7 @@
 import react from 'react';
 import { Link, withRouter } from 'react-router-dom'
-import Navbar from '../components/navbar/Navbar';
-import Footer from '../components/footer/Footer';
+import Navbar from '../components/Layout/Navbar';
+import Footer from '../components/Layout/Footer';
 import EventCard from '../components/event_components/EventCard';
 import MyCarousel from '../components/event_components/Carousel';
 import Tags from '../components/event_components/Tags';
@@ -65,9 +65,7 @@ const EventDetailsPage = (props) => {
 				</section>
 				<Footer />
 			</div>
-			<section className="eventDetailsPage__similarevents">
-				<SimilarEventSection />
-			</section>
+
 		</>
 	);
 };

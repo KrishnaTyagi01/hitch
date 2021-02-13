@@ -2,7 +2,7 @@ import { createStore, applyMiddleware, compose } from 'redux';
 import thunk from 'redux-thunk';
 // import throttle from "lodash/throttle";
 
-import rootReducer from './reducers';
+import rootReducer from './Reducers';
 import { loadUser, saveUser } from '../localStorage';
 
 const middleware = [thunk];
@@ -23,12 +23,5 @@ const store = createStore(
 	)
 );
 
-// store.subscribe(
-// 	throttle(() => {
-// 		saveUser({
-// 			user: store.getState().authState
-// 		});
-// 	}, 1000)
-// );
 
 export default store;

@@ -5,9 +5,9 @@
 	border-radius: 10px;
 	width: 315px;
 	padding: 15px;
-	position: fixed;
+	position: sticky;
 	z-index: 1;
-	// top:20px;
+	top:20px;
 	height: Min(80vh , 800px);
 	overflow-y: auto;
 	&::-webkit-scrollbar {

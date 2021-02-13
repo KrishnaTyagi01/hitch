@@ -1,15 +1,17 @@
 import { combineReducers } from 'redux';
+import authReducer from './authReducer';
+import userReducer from './userReducer';
+import eventReducer from './eventReducer';
+import profileReducer from './profileReducer';
+import commonReducer from './commonReducer';
 
-const AuthTokenReducer = (prevAuthToken = null, action) => {
-    console.log('OUT HERE');
-    if (action.type === 'AUTH_TOKEN') {
-        console.log('IN HERE');
-        return action.payload;
-    }
-    return prevAuthToken;
-}
+const authState = 'authState';
 
 export default combineReducers({
-    auth_token: AuthTokenReducer
-})
+    [authState]: authReducer,
+    userState: userReducer,
+    eventState: eventReducer,
+    profileState: profileReducer,
+    commonState: commonReducer
+});
 

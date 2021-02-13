@@ -31,29 +31,36 @@ import store from './redux/store';
 import '@fortawesome/fontawesome-free/css/all.min.css';
 import './App.css';
 
+import eventsPage from './components/myEvents/eventsPage';
+import AboutUs from './components/AboutUs/AboutUs';
+import HostEvent from './components/HostEvent/HostEvent';
+import Temp from './components/Dashboard/Temp';
+
 function App() {
 	return (
 		<Provider store={store}>
 			<BrowserRouter>
-				<div>
-					<Navbar />
 
-					<Switch>
-						<Route exact path='/' component={Home} />
-						<Route exact path='/eventdetails' component={EventDetailsPage} />
-						<Route exact path='/check' component={Check} />
-						<Route exact path='/signup' component={Signup} />
-						<Route exact path='/signin' render={(props) => <Signin {...props} />} />
-						<Route exact path='/register' component={Register} />
-						<Route exact path='/otp' render={(props) => <Otp {...props} />} />
-						<PrivateRoute exact path='/profile' component={Profile} />
-						<Route exact path='/hostintro' component={HostIntro} />
-						<Route exact path='/templogin' component={TempLogin} />
-						<Route component={Page404} />
-					</Switch>
+				{/* <Navbar /> */}
+				<Switch>
+					<Route exact path='/' component={Home} />
+					<Route exact path='/check' component={Check} />
+					<Route exact path='/signup' component={Signup} />
+					<Route exact path='/signin' render={(props) => <Signin {...props} />} />
+					<Route exact path='/register' component={Register} />
+					<Route exact path='/otp' render={(props) => <Otp {...props} />} />
+					<PrivateRoute exact path='/profile' component={Profile} />
+					<Route exact path='/hostintro' component={HostIntro} />
+					<Route exact path='/templogin' component={TempLogin} />
+					<Route exact path="/event-details" component={EventDetailsPage} />
+					<Route exact path="/events" component={eventsPage}></Route>
+					<Route exact path="/about-us" component={AboutUs}></Route>
+					<Route exact path="/host-event" component={HostEvent}></Route>
+					<Route exact path="/dashboard" component={Temp}></Route>
+					<Route component={Page404} />
+				</Switch>
+				{/* <Footer /> */}
 
-					<Footer />
-				</div>
 			</BrowserRouter>
 		</Provider>
 		// =======
@@ -64,9 +71,7 @@ function App() {
 		// import Filter from './components/myEvents/Filter'
 		// import Upper from './components/myEvents/Upper';
 		// import eventsPage from './components/myEvents/eventsPage';
-		// import AboutUs from './components/AboutUs/AboutUs';
-		// import HostEvent from './components/HostEvent/HostEvent';
-		// import Temp from './components/Dashboard/Temp';
+
 
 		// function _ScrollToTop(props) {
 		// 	const { pathname } = useLocation();
@@ -83,21 +88,21 @@ function App() {
 		// 		<BrowserRouter>
 		// 			<Switch>
 		// 				<ScrollToTop >
-		// 					<Route exact path="/event-details" component={EventDetailsPage} />
-		// 					{/* <Route exact path="/event-details" render={(props) => <EventDetailsPage {...props} />} /> */}
-		// 					<Route exact path="/check"><Check /></Route>
-		// 					{/* <Route exact path="/landing"><Landing /></Route> */}
-		// 					<Route exact path="/signup"> <Signup /></Route>
-		// 					<Route exact path="/"> <Signup /></Route>
-		// 					<Route exact path="/signin" render={props => <Signin {...props} />} />
-		// 					<Route exact path="/register"> <Register /></Route>
-		// 					<Route exact path="/otp" render={props => <Otp {...props} />} />
-		// 					<PrivateRoute exact path="/profile" component={Profile} />
-		// 					<Route exact path="/hostintro"> <HostIntro /></Route>
-		// 					<Route exact path="/events" component={eventsPage}></Route>
-		// 					<Route exact path="/about-us" component={AboutUs}></Route>
-		// 					<Route exact path="/host-event" component={HostEvent}></Route>
-		// 					<Route exact path="/dashboard" component={Temp}></Route>
+		// <Route exact path="/event-details" component={EventDetailsPage} />
+		// {/* <Route exact path="/event-details" render={(props) => <EventDetailsPage {...props} />} /> */}
+		// <Route exact path="/check"><Check /></Route>
+		// {/* <Route exact path="/landing"><Landing /></Route> */}
+		// <Route exact path="/signup"> <Signup /></Route>
+		// <Route exact path="/"> <Signup /></Route>
+		// <Route exact path="/signin" render={props => <Signin {...props} />} />
+		// <Route exact path="/register"> <Register /></Route>
+		// <Route exact path="/otp" render={props => <Otp {...props} />} />
+		// <PrivateRoute exact path="/profile" component={Profile} />
+		// <Route exact path="/hostintro"> <HostIntro /></Route>
+		// <Route exact path="/events" component={eventsPage}></Route>
+		// <Route exact path="/about-us" component={AboutUs}></Route>
+		// <Route exact path="/host-event" component={HostEvent}></Route>
+		// <Route exact path="/dashboard" component={Temp}></Route>
 		// 				</ScrollToTop>
 		// 			</Switch>
 		// 		</BrowserRouter>

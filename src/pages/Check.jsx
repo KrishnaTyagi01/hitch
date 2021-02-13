@@ -7,22 +7,19 @@
 // import ConnectionReq from '../components/Dashboard/ConnectionReq'
 // import Base from '../components/Dashboard/Base'
 import Message from '../components/Dashboard/Message';
-import PricingPlan from '../components/Dashboard/PricingPlan';
+import PricingPlan from '../components/Dashboard/Page_PricingPlan';
 import React from 'react';
+import Navbar from '../components/Layout/Navbar';
+import Footer from '../components/Layout/Footer';
 
 function Check() {
     return (
         <div>
-            {/* <Upper />
-			<Filter />   */}
-            {/* <ShowInfoCard />    */}
-            {/* <Sidebar /> */}
-            {/* <Nav />
-			<ReviewBox />
-			<ConnectionReq /> */}
+            <Navbar />
             <Message />
             {/* <Base /> */}
             <PricingPlan />
+            <Footer />
         </div>
     );
 }

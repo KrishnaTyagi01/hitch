@@ -58,6 +58,7 @@ export const login = (user, next) => async (dispatch) => {
 };
 
 export const logout = () => async (dispatch, getState) => {
+
 	try {
 		const response = await axios.post('/api/logout/', null, tokenConfig(getState));
 		removeUser();

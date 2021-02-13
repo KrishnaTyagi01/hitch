@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import Upper from './Upper';
 import Filter from './Filter';
-import Footer from '../footer/Footer';
-import Navbar from '../navbar/Navbar';
+import Footer from '../Layout/Footer';
+import Navbar from '../Layout/Navbar';
 import MyEventCard from './MyEventCard';
 import axios from 'axios';
 import SimilarEventSection from '../event_components/SimilarEventSection';
@@ -19,6 +19,8 @@ const MainComponent = () => {
         }
         getAllEvents();
     }, [])
+
+    console.log(events);
 
     const MyEvents = events.map(event => {
         return (

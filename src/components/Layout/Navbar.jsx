@@ -1,7 +1,7 @@
 import { Link, NavLink, withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 
-import { logout } from '../../redux/actions/authActions';
+import { logout } from '../../redux/Actions/authActions';
 
 const locations = ['Delhi', 'Mumbai', 'Kolkata', 'Chandigarh'];
 
@@ -36,7 +36,7 @@ const Navbar = (props) => {
 					exact={true}
 					activeClassName='activeLink'
 					className='nav-link'
-					to='/about'
+					to='/about-us'
 				>
 					About Hitch
 				</NavLink>
@@ -49,7 +49,7 @@ const Navbar = (props) => {
 							exact={true}
 							activeClassName='activeLink'
 							className='nav-link'
-							to='/bookmarks'
+							to='/events'
 						>
 							<i className='far fa-heart fa-2x icon'></i>
 						</NavLink>
@@ -72,7 +72,7 @@ const Navbar = (props) => {
 									<Link to='/dashboard'>Dashboard</Link>
 								</li>
 								<li>
-									<Link to='/eventhistory'>My Events</Link>
+									<Link to='/events'>My Events</Link>
 								</li>
 								<li>
 									<Link to='/profile/edit'>Edit Profile</Link>
@@ -88,32 +88,32 @@ const Navbar = (props) => {
 					</div>
 				</>
 			) : (
-				<>
-					<div>
-						<NavLink
-							exact={true}
-							activeClassName='activeLink'
-							className='nav-link'
-							to='/templogin'
-						>
-							Temp Login
+					<>
+						<div>
+							<NavLink
+								exact={true}
+								activeClassName='activeLink'
+								className='nav-link'
+								to='/templogin'
+							>
+								Temp Login
 						</NavLink>
-					</div>
-					<div>
-						<NavLink
-							exact={true}
-							activeClassName='activeLink'
-							className='nav-link'
-							to='/register'
-						>
-							Register
+						</div>
+						<div>
+							<NavLink
+								exact={true}
+								activeClassName='activeLink'
+								className='nav-link'
+								to='/register'
+							>
+								Register
 						</NavLink>
-					</div>
-				</>
-			)}
+						</div>
+					</>
+				)}
 
 			<div>
-				<NavLink exact={true} activeClassName='activeLink' className='btn' to='/host'>
+				<NavLink exact={true} activeClassName='activeLink' className='btn' to='/host-event'>
 					Host
 				</NavLink>
 			</div>
