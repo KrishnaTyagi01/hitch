@@ -5,16 +5,12 @@ import Sections from './Sections';
 import Button1 from './Button1';
 import axios from 'axios';
 import { connect } from 'react-redux';
-// import { useRef } from 'react/cjs/react.development';
 
 const HostEvent = (props) => {
     const [selectedFile, setSelectedFile] = useState();
     const [preview, setPreview] = useState();
     const imgRef = useRef(null);
 
-
-
-    // create a preview as a side effect, whenever selected file is changed
     useEffect(() => {
         if (!selectedFile) {
             setPreview(undefined);
@@ -24,7 +20,6 @@ const HostEvent = (props) => {
         const objectUrl = URL.createObjectURL(selectedFile);
         setPreview(objectUrl);
 
-        // free memory when ever this component is unmounted
         return () => URL.revokeObjectURL(objectUrl);
     }, [selectedFile]);
 
@@ -34,7 +29,6 @@ const HostEvent = (props) => {
             return;
         }
 
-        // I've kept this example simple by using the first image instead of multiple
         setSelectedFile(e.target.files[0]);
     }
 
@@ -83,10 +77,6 @@ const HostEvent = (props) => {
         })
 
         console.log(res);
-        // for (var pair of form_data.entries()) {
-        //     console.log(pair[0] + ', ' + pair[1]);
-        // }
-
 
     }
 
