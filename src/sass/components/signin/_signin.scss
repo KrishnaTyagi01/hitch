@@ -1,10 +1,25 @@
+.registerContainer{
+	background: var(--color-primary-1);
+	// background: #2B244D;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+
+}
+
 .signin{
 	width: 525px;
 	min-height: 298px;
-	background: var(--color-primary-1);
+	margin-top:50px;
+	padding-bottom: 20px;
+	margin-bottom: 50px;
+	// background: var(--color-primary-1);
+	background: #2B244D;
+
 	border-radius: 10px;
-	display: flex;
+	display: inline-flex;
 	flex-direction: column;
+	// display: inline;
 	align-items: center;
 	&__heading{
 		margin-top: 33px;
@@ -20,15 +35,16 @@
 
 	&__mid{
 		width: 458px;
-		margin-top: 30px;
-		// background-color: red;
+		margin-top: 10px;
+		display: inline-block;
 		&--before{
 			font-family: 'Montserrat', sans-serif;
 			font-style: normal;
 			font-weight: normal;
 			font-size: 18px;
 			line-height: 22px;
-		  
+			display: inline-block;
+			margin-top: 20px;
 			color: #E6E4F2;
 			
 		}
@@ -48,7 +64,7 @@
 			}
 			&::placeholder{
 				// font-family: 'League Script', cursive;
-				padding-left: 15px;
+				// padding-left: 15px;
 				font-style: normal;
 				font-weight: normal;
 				font-size: 12px;
@@ -63,6 +79,7 @@
 	&__btn{
 		width: 281px;
 		height: 46px;
+		cursor: pointer;
 		background: #39EAB4;
 		border-radius: 10px;
 		font-family: 'Montserrat', sans-serif;

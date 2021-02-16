@@ -1,21 +1,37 @@
 import { useState, useEffect } from "react";
 import filters from "./filters.json";
 import EventCardNew from "../Common/EventCard";
-// import axios from "axios";
+import axios from "axios";
 import { dummyEvents } from "./events";
 import Filter from "../myEvents/Filter";
+import { Link } from 'react-router-dom';
+import MyEventCard from '../myEvents/MyEventCard';
 
 export default function Discover() {
-	// const [state, setState] = useState({
-	// 	category: [],
-	// 	eventType: [],
-	// 	weekend: null
-	// });
-	const [events, setEvents] = useState(null);
+
+
+	const [events, setEvents] = useState([]);
 
 	useEffect(() => {
-		setEvents(dummyEvents);
+		const getAllEvents = async () => {
+			let res = await axios.get(`http://167.71.237.202/events/`);
+			res = res.data;
+			setEvents(res);
+		}
+		getAllEvents();
 	}, []);
+
+	const MyEvents = events.map(event => {
+		return (
+			<Link to={{
+				pathname: "/event-details",
+				state: { event: event }
+			}}
+			>
+				<MyEventCard title={event.title} desc={event.description} img={event.image} date={event.scheduled_date} />
+			</Link>
+		)
+	})
 
 	const updateFilter = (e) => {
 		console.log(e.target.name, e.target.value);
@@ -48,9 +64,7 @@ export default function Discover() {
 					<Filter />
 				</div>
 				<div className="discover-events">
-					{events?.map((event) => (
-						<EventCardNew event={event} key={event.id} />
-					))}
+					{MyEvents}
 				</div>
 			</div>
 		</div>

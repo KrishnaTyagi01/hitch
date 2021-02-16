@@ -94,9 +94,9 @@ const Navbar = (props) => {
 								exact={true}
 								activeClassName='activeLink'
 								className='nav-link'
-								to='/templogin'
+								to='/login'
 							>
-								Temp Login
+								Login
 						</NavLink>
 						</div>
 						<div>

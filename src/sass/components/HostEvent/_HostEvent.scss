@@ -121,6 +121,7 @@
             position: relative;
             // margin-top: 20px;
             // margin-bottom: 20px;
+           
             &_header{
                 font-family: Montserrat;
                 font-style: normal;
@@ -147,46 +148,82 @@
                 margin-bottom: 60px;
             }
 
-            &_picture_box{
-                &:hover{
-                    background-color: rgba(128, 128, 128, 0.096);
-                }
-                width: 100%;
-                height: 346px;
-                border: 5px dashed #877CC0;
-                box-sizing: border-box;
-                border-radius: 20px;
-                justify-content: center;
-                align-items: center;
+            .picturebox_container{
+                // width: 100%;
+                // height: 100%;
                 display: flex;
-                &_circle{
-                    width: 114px;
-                    height: 114px;
-                    border-radius: 50%;
+                justify-content: center;
+                &_picture_box{
+                    &:hover{
+                        background-color: rgba(128, 128, 128, 0.096);
+                    }
+                    width: 600px;
+                    height: 600px;
                     border: 5px dashed #877CC0;
                     box-sizing: border-box;
-                    display:flex;
+                    border-radius: 20px;
                     justify-content: center;
                     align-items: center;
-
-                    div{
-                        // all:unset;
-                        margin-left: -10px;
-                        width: 39px;
-                        height: 102px;
-                        font-family: Poppins;
-                        font-style: normal;
-                        font-weight: 500;
-                        font-size: 68px;
-                        line-height: 102px;
-                        /* identical to box height */
-                        color: #877CC0;
+                    display: flex;
+                    &_circle{
+                        width: 114px;
+                        height: 114px;
+                        border-radius: 50%;
+                        border: 5px dashed #877CC0;
+                        box-sizing: border-box;
+                        display:flex;
+                        justify-content: center;
+                        align-items: center;
+    
+                        div{
+                            // all:unset;
+                            margin-left: -10px;
+                            width: 39px;
+                            height: 102px;
+                            font-family: Poppins;
+                            font-style: normal;
+                            font-weight: 500;
+                            font-size: 68px;
+                            line-height: 102px;
+                            /* identical to box height */
+                            color: #877CC0;
+                        }
                     }
-                    
-
+                    .picture{
+                        border-radius: 10px;
+                        width: 100%;
+                        height: 100%;
+                        background-color: var(--color-primary-2);
+                        display: flex;
+                        justify-content: center;
+                        align-items: center;
+                    }
+                    img{
+                        // background-color: red;
+                        min-width: 0;
+                        min-height: 0;
+                        max-width: 600px;		
+                        max-height: 600px;
+                        width: initial !important;
+                        border-radius: 10px;
+    
+                    }
+    
                 }
-
             }
+
+            &_chooseFile{
+                // display: inline-block;
+                display: flex;
+                justify-content: center;
+                input{
+                    width: 250px;
+                    border-radius: 10px;
+                }
+                margin-top:30px;
+                
+            }
+            
 
             &_all_pictures{
                 display: flex;
@@ -453,10 +490,6 @@
 
 
 
-
-
-
-
     .event_pricePlan{
         position: relative;
         margin-bottom: 100px;
@@ -518,12 +551,28 @@
             color: #E6E4F2;
         }
 
-        textarea{
+        div:nth-of-type(2){
             width: 100%;
             height: 286.57px;
             margin-right: 50px;
             background: #2B244D;
             border-radius: 10px;
+
+            .addTag{
+                width: 93.5px;
+                height: 34.41px;
+                background: rgba(57, 234, 180, 0.35);
+                margin: 10.8px;
+                // margin-bottom: 15.05px;
+                border-radius: 1000px;
+                border: none;
+                font-family: 'Kumbh Sans', sans-serif;
+                font-style: normal;
+                font-weight: 300;
+                font-size: 16px;
+                line-height: 16px;
+                color: #39EAB4;
+            }
         }
 
         span{

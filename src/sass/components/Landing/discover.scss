@@ -49,16 +49,23 @@
 					
 					text-align: center;
 					// width: 110px;
+					cursor: pointer;
 					padding: 12px 0;
 					margin: 0 auto;
 					background-color: var(--color-secondary-2);
-				border: none;
-					
+					border: none;
+					&:focus{
+						outline: none;
+					}
 					/* for Firefox */
-					-moz-appearance: none;
+					// -moz-appearance: none;
 					/* for Chrome */
-					-webkit-appearance: none;
+					// -webkit-appearance: none;
 				
+				}
+
+				option{
+					cursor: pointer;
 				}
 			}
 		}
@@ -73,6 +80,7 @@
 		.filters {
 			grid-area: left;
 			// background-color: var(--color-primary-2);
+			margin-top: -20px;
 			padding: 18px;
 			width: 315px;
 		}
@@ -86,4 +94,8 @@
 		}
 
 	}
+}
+
+button:focus{
+	outline: none;
 }

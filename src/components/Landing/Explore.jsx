@@ -8,15 +8,16 @@ export default function Explore() {
 	const prevButton = useRef(null)
 	const nextButton = useRef(null)
 
-	
+
+
 	const loadPrev = () => {
 
 		// const childDivs = categoriesDiv.current.children
 		const translateValue = getComputedStyle(categoriesDiv.current).getPropertyValue('--explore-translate-value')
 		console.log(translateValue);
 
-		if(start!==0) {
-			setStart(start-1)
+		if (start !== 0) {
+			setStart(start - 1)
 			categoriesDiv.current.style.setProperty('--explore-translate-value', `calc( ${translateValue} + 366px )`)
 			console.log(translateValue);
 		}
@@ -31,12 +32,12 @@ export default function Explore() {
 		// const childDivs = categoriesDiv.current.children
 		let translateValue = getComputedStyle(categoriesDiv.current).getPropertyValue('--explore-translate-value')
 		console.log(translateValue);
-		
-		if(start!==categories.length-3) {
-			setStart(start+1)
+
+		if (start !== categories.length - 3) {
+			setStart(start + 1)
 			categoriesDiv.current.style.setProperty('--explore-translate-value', `calc( ${translateValue} - 366px )`)
 			console.log(translateValue);
-		} 
+		}
 		else {
 			console.log('reached last one')
 			// nextButton.current.style.setProperty('cursor', 'not-allowed')
@@ -49,27 +50,27 @@ export default function Explore() {
 			<div className='categories-container'>
 
 				<div className='categories' ref={categoriesDiv}>
-				{ categories.map((category, index) =>
-					<div 
-						key={index}
-						className={`category ${index === start ? 'active' : ''}`}
-						style={{ backgroundImage: `url( ${category.picture} )` }}
+					{categories.map((category, index) =>
+						<div
+							key={index}
+							className={`category ${index === start ? 'active' : ''}`}
+							style={{ backgroundImage: `url( ${category.picture} )` }}
 						>
-						<p>{category.name}</p>
-					</div>
-				)}
+							<p>{category.name}</p>
+						</div>
+					)}
 				</div>
-				
-				<button 
+
+				<button
 					className={`prev ${start === 0 ? 'not-allowed' : ''}`}
 					onClick={loadPrev}
 					ref={prevButton}
 				>
 					&#10094;
 				</button>
-				<button 
-					className={`next ${start === (categories.length-3) ? 'not-allowed' : ''}`}
-					onClick={loadNext} 
+				<button
+					className={`next ${start === (categories.length - 3) ? 'not-allowed' : ''}`}
+					onClick={loadNext}
 					ref={nextButton}
 				>
 					&#10095;

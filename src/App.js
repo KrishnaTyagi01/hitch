@@ -35,6 +35,8 @@ import eventsPage from './components/myEvents/eventsPage';
 import AboutUs from './components/AboutUs/AboutUs';
 import HostEvent from './components/HostEvent/HostEvent';
 import Temp from './components/Dashboard/Temp';
+import Login from './pages/Login';
+import Otp_Page from './pages/otp_page';
 
 function App() {
 	return (
@@ -57,6 +59,9 @@ function App() {
 					<Route exact path="/about-us" component={AboutUs}></Route>
 					<Route exact path="/host-event" component={HostEvent}></Route>
 					<Route exact path="/dashboard" component={Temp}></Route>
+					<Route exact path="/login" component={Login}></Route>
+					<Route exact path="/otp_page" render={(props) => <Otp_Page {...props} />}> </Route>
+					{/* // <Route path="/test/new" render={(props) => <NewTestComp {...props}/>}/> */}
 					<Route component={Page404} />
 				</Switch>
 				{/* <Footer /> */}
