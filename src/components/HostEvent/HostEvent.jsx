@@ -6,6 +6,7 @@ import Button1 from './Button1';
 import axios from 'axios';
 import ReactDOM from 'react-dom';
 import { connect } from 'react-redux';
+import { Redirect } from 'react-router-dom';
 
 const HostEvent = (props) => {
     const [selectedFile, setSelectedFile] = useState();
@@ -36,6 +37,7 @@ const HostEvent = (props) => {
     const [Tags, setTags] = useState([]);
     const [tagValue, setTagValue] = useState('');
 
+    const [viewEvent, setViewEvent] = useState(false);
     const handleEnter = (e) => {
         if (e.keyCode === 13) {
             setTags(prevState => ([...prevState, e.target.value]));
@@ -66,6 +68,26 @@ const HostEvent = (props) => {
         });
     }, [selectedFile]);
 
+    const getDate = () => {
+        return DateY1 + DateY2 + DateY3 + DateY4 + '-' + DateM1 + DateM2 + '-' + DateD1 + DateD2;
+    }
+
+    const getTime = () => {
+        return TimeH1 + TimeH2 + ':' + TimeM1 + TimeM2;
+    }
+
+    const getTags = () => {
+        let ans = "["
+        for (let i = 0; i < Tags.length; ++i) {
+            ans += "\"";
+            ans += Tags[i];
+            ans += "\"";
+            if (i !== Tags.length - 1) ans += ","
+        }
+        ans += "]";
+        return ans;
+    }
+
     const onSelectFile = e => {
         if (!e.target.files || e.target.files.length === 0) {
             setSelectedFile(undefined);
@@ -78,26 +100,8 @@ const HostEvent = (props) => {
 
     const postEvent = async (e) => {
         e.preventDefault();
-        const getDate = () => {
-            return DateY1 + DateY2 + DateY3 + DateY4 + '-' + DateM1 + DateM2 + '-' + DateD1 + DateD2;
-        }
+        // console.log('messi')
 
-        const getTime = () => {
-            return TimeH1 + TimeH2 + ':' + TimeM1 + TimeM2;
-        }
-
-        const getTags = () => {
-            let ans = "["
-            for (let i = 0; i < Tags.length; ++i) {
-                ans += "\"";
-                ans += Tags[i];
-                ans += "\"";
-                if (i !== Tags.length - 1) ans += ","
-            }
-            ans += "]";
-            // console.log(ans);
-            return ans;
-        }
 
         let form_data = new FormData();
         form_data.append('image', Image);
@@ -113,14 +117,14 @@ const HostEvent = (props) => {
                 Authorization: `Token ${props.token}`,
             }
         })
+    }
 
-        console.log(res);
+    const viewTempEvent = (e) => {
+        e.preventDefault();
+        setViewEvent(true);
     }
 
     const allTags = () => {
-        // console.log(Tags);
-
-
         return (
             Tags.map(tagName => {
                 return <input className="addTag" value={`#${tagName}`}></input>;
@@ -316,11 +320,25 @@ const HostEvent = (props) => {
                     {/* ============================= EVENT LOCATION =========================  */}
                     {/* ============================= EVENT LOCATION =========================  */}
                     <section id="view"></section>
-                    <button className="ViewEvent" onClick={(e) => e.preventDefault()}>
+                    <button type="button" className="ViewEvent" onClick={viewTempEvent}>
                         View your event
+                        {viewEvent ? <Redirect to={{
+                            pathname: '/event-details',
+                            state: {
+                                event: {
+                                    image: preview,
+                                    title: Title,
+                                    description: Tagline,
+                                    scheduled_time: getTime(),
+                                    scheduled_date: getDate(),
+                                    tags: Tags,
+                                }
+                            }
+                        }} /> : null}
+
                     </button>
                     <section id="post"></section>
-                    <button className="PostEvent" onClick={postEvent}>
+                    <button type="button" className="PostEvent" onClick={postEvent}>
                         Post event
                     </button>
 

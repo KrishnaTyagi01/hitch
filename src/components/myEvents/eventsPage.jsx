@@ -20,7 +20,7 @@ const MainComponent = () => {
         getAllEvents();
     }, [])
 
-    console.log(events);
+    // console.log(events);
 
     const MyEvents = events.map(event => {
         return (
@@ -38,13 +38,18 @@ const MainComponent = () => {
         setEvents(events);
     }
 
+    const onFilterChange = (events) => {
+        setEvents(events);
+    }
+
+
     return (
         <div className="eventsPage">
             <Navbar />
             <Upper onButtonClick={onButtonClick} />
             <div className="eventsPage__content">
                 <div className="eventsPage__content--filter">
-                    <Filter />
+                    <Filter onFilterChange={onFilterChange} />
                 </div>
                 <section className="eventsPage__content--events">
                     {MyEvents}
