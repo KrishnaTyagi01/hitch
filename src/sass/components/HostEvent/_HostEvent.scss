@@ -29,7 +29,7 @@
     }
 
     .sections{
-        flex-basis: 500px;
+        flex-basis: 470px;
         margin-left: 20px;
         position: relative;
         top:-250px;
@@ -40,6 +40,7 @@
         // width: 100%;
         min-width: 0;
         padding-right: 20px ;
+        padding-left: 20px;
         display: flex;
         flex-direction: column;
         justify-content: space-evenly;
@@ -157,8 +158,13 @@
                     &:hover{
                         background-color: rgba(128, 128, 128, 0.096);
                     }
-                    width: 600px;
-                    height: 600px;
+                    &:before {
+                        content: "";
+                        display: block;
+                        padding-top: 100%;
+                        /* initial ratio of 1:1*/
+                    }
+                    width: Min(600px,90%);
                     border: 5px dashed #877CC0;
                     box-sizing: border-box;
                     border-radius: 20px;
@@ -320,6 +326,9 @@
 
 
         // =========== EVENT SCHEDULE ======================== 
+
+// NOTE : SOME CSS IS WRITTEN IN .JSX FILE TOO !!! =======================
+
         .event_schedule{
             &_header{
                 // width: 254px;
@@ -349,12 +358,6 @@
 
                 &_blanks{
                     display: flex;
-
-                    div:nth-of-type(2){
-                        position: absolute;
-                        margin-top: 35px;
-                        right: 30px;
-                    }
                     
                     input{
                         display: inline-block;
@@ -372,13 +375,7 @@
 
 
                         color: #877CC0;
-                        &:nth-child(2){
-                            margin-right: 50px;
-                        }
-
-                        &:nth-child(4){
-                            margin-right: 50px;
-                        }
+                        
                     }
                     .day{
                         width: 48.75px;
@@ -557,6 +554,18 @@
             margin-right: 50px;
             background: #2B244D;
             border-radius: 10px;
+            overflow-y:auto;
+            &::-webkit-scrollbar {
+                width: 5px;
+        
+            }
+            &::-webkit-scrollbar-track {
+                background:  var(--color-primary-1); 
+            }
+            
+            &::-webkit-scrollbar-thumb {
+                background: rgb(82, 70, 144) ; 
+            }
 
             .addTag{
                 width: 93.5px;
@@ -634,6 +643,7 @@
 
     .ViewEvent{
         // width: 818px;
+        cursor: pointer;
         height: 51.43px;
         background-color: #171429;
         border: 1.5px solid #39EAB4;
@@ -653,6 +663,7 @@
     .PostEvent{
         // width: 818px;
         height: 51.43px;
+        cursor: pointer;
 
         background: #39EAB4;
         box-shadow: 0px 0px 14px rgba(88, 88, 88, 0.25);
@@ -667,10 +678,31 @@
     }
 
 
+    }
+}
+
+@media(max-width:850px){
+    .hostEvent{
+
+        .header{
+            display: flex;
+            justify-content: center;
+            align-items: flex-end;
+            span{
+                position: unset;
+                margin-bottom: 50px;
+            }
+        }
 
 
 
 
-
+        .maincontainer{
+            display: grid;
+            grid-template-columns: 1fr;
+            .sections{
+                display: none;
+            }
+        }
     }
 }

@@ -43,18 +43,18 @@ const EventDetailsPage = (props) => {
 					<section className="eventDetailsPage__overview">
 						<Overview description={props.location.state.event.description} />
 					</section>
-					<section className="eventDetailsPage__speakers">
+					{/* <section className="eventDetailsPage__speakers">
 						<Speakers />
-					</section>
+					</section> */}
 					<section className="eventDetailsPage__eventdetails">
 						<EventDetails event={props.location.state.event} />
 					</section>
-					<section className="eventDetailsPage__timeline">
-						<Timeline />
-					</section>
-					<section className="eventDetailsPage__messageboard">
+					{/* <section className="eventDetailsPage__timeline">
+							<Timeline />
+						</section> */}
+					{/* <section className="eventDetailsPage__messageboard">
 						<MessageBoard />
-					</section>
+					</section> */}
 					<section className="eventDetailsPage__organizersmessage">
 						<OrganizersMessage />
 					</section>

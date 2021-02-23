@@ -24,23 +24,22 @@
 	&__btns{
 		margin-top: 30.11px;
 		margin-bottom: 11px;
-		// background-color: red;
+		padding-left: 20px;
 		display: flex;
-		justify-content: center;
-		// flex-wrap: wrap;
-		// margin: 0 auto;
+		justify-content: flex-start;
 		flex-wrap: wrap;
+		align-items: flex-start;
 
 		width: 100%;
 		&--btn{
-			width: 93.5px;
+			// width: 93.5px;
 			height: 34.41px;
 			background: rgba(57, 234, 180, 0.35);
 			margin-right: 17.8px;
 			margin-bottom: 15.05px;
 			border-radius: 1000px;
 			border: none;
-
+			min-width: 60px;
 			font-family: 'Kumbh Sans', sans-serif;
 			font-style: normal;
 			font-weight: 300;
@@ -48,6 +47,8 @@
 			line-height: 16px;
 			
 			color: #39EAB4;
+
+			padding:8px;
 			
 	   }
 	}

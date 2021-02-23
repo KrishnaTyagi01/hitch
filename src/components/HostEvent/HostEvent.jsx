@@ -199,11 +199,11 @@ const HostEvent = (props) => {
                         </div>
                         <div className="event_hosts_cards">
                             <div className="event_hosts_card"></div>
-                            <div className="event_hosts_addCard" >
+                            {/* <div className="event_hosts_addCard" >
                                 <div className="event_hosts_addCard_circle">
                                     <div>+</div>
                                 </div>
-                            </div>
+                            </div> */}
                         </div>
                     </div>
                     {/* ======================= EVENT SCHEDULE  =============================================  */}
@@ -219,16 +219,21 @@ const HostEvent = (props) => {
                             </div>
                             <div className="event_schedule_date_blanks">
                                 <div className="date_blanks">
-                                    <input value={DateD1} maxLength="1" onChange={(e) => setDateD1(e.target.value)} className="day" placeholder="D"></input>
-                                    <input value={DateD2} maxLength="1" onChange={(e) => setDateD2(e.target.value)} className="day" placeholder="D"></input>
+                                    <div style={{ display: 'inline-block' }}>
+                                        <input value={DateD1} maxLength="1" onChange={(e) => setDateD1(e.target.value)} className="day" placeholder="D"></input>
+                                        <input style={{ marginRight: '50px', }} value={DateD2} maxLength="1" onChange={(e) => setDateD2(e.target.value)} className="day" placeholder="D"></input>
+                                    </div>
+                                    <div style={{ display: 'inline-block' }}>
+                                        <input value={DateM1} maxLength="1" onChange={(e) => setDateM1(e.target.value)} className="month" placeholder="M"></input>
+                                        <input style={{ marginRight: '50px', }} value={DateM2} maxLength="1" onChange={(e) => setDateM2(e.target.value)} className="month" placeholder="M"></input>
+                                    </div>
+                                    <div style={{ display: 'inline-block' }}>
 
-                                    <input value={DateM1} maxLength="1" onChange={(e) => setDateM1(e.target.value)} className="month" placeholder="M"></input>
-                                    <input value={DateM2} maxLength="1" onChange={(e) => setDateM2(e.target.value)} className="month" placeholder="M"></input>
-
-                                    <input value={DateY1} maxLength="1" onChange={(e) => setDateY1(e.target.value)} className="year" placeholder="Y"></input>
-                                    <input value={DateY2} maxLength="1" onChange={(e) => setDateY2(e.target.value)} className="year" placeholder="Y"></input>
-                                    <input value={DateY3} maxLength="1" onChange={(e) => setDateY3(e.target.value)} className="year" placeholder="Y"></input>
-                                    <input value={DateY4} maxLength="1" onChange={(e) => setDateY4(e.target.value)} className="year" placeholder="Y"></input>
+                                        <input value={DateY1} maxLength="1" onChange={(e) => setDateY1(e.target.value)} className="year" placeholder="Y"></input>
+                                        <input value={DateY2} maxLength="1" onChange={(e) => setDateY2(e.target.value)} className="year" placeholder="Y"></input>
+                                        <input value={DateY3} maxLength="1" onChange={(e) => setDateY3(e.target.value)} className="year" placeholder="Y"></input>
+                                        <input value={DateY4} maxLength="1" onChange={(e) => setDateY4(e.target.value)} className="year" placeholder="Y"></input>
+                                    </div>
                                 </div>
                                 {/* <div className="button">
                                     <Button1 />

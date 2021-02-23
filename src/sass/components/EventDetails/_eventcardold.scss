@@ -139,11 +139,19 @@
 		}
 	}
 
+	.registerBtn{
+		width:100%;
+		display: flex;
+		justify-content: center;
+	}
+
 	&__button {
 		background: #39eab4;
 		border-radius: 10px;
 		margin-top: 1rem;
-		// width: 291px;
+		cursor: pointer;
+		padding: 3px 6px;
+		
 		border: none;
 		height: 37px;
 		font-family: 'Kumbh Sans', sans-serif;

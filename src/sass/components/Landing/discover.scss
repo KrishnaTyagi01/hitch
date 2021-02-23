@@ -99,3 +99,25 @@
 button:focus{
 	outline: none;
 }
+
+@media(max-width:630px){
+	.landing-discover{
+		.body{
+			display:flex;
+			flex-direction: column;
+			justify-content: center;
+			align-items: center;
+		}
+
+		.header{
+			display: flex;
+			flex-direction: column;
+			justify-content: center;
+			align-items: center;
+			h2{
+				margin-bottom: 20px;
+			}
+		}
+	}
+	
+}

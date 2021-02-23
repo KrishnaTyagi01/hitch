@@ -368,7 +368,7 @@ html, body, #root {
   z-index: 2;
   left: 0;
   bottom: -25px;
-  width: 645px;
+  width: Min(645px, 100vw);
   color: #FFFFFF;
   background-color: #2B244D;
   box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.5);
@@ -555,6 +555,20 @@ html, body, #root {
 button:focus {
   outline: none; }
 
+@media (max-width: 630px) {
+  .landing-discover .body {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center; }
+  .landing-discover .header {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center; }
+    .landing-discover .header h2 {
+      margin-bottom: 20px; } }
+
 .eventcard {
   width: 310px;
   height: 429.25px;
@@ -660,10 +674,16 @@ button:focus {
       line-height: 16px;
       color: #eb9947;
       margin-top: 9px; }
+  .eventcard .registerBtn {
+    width: 100%;
+    display: flex;
+    justify-content: center; }
   .eventcard__button {
     background: #39eab4;
     border-radius: 10px;
     margin-top: 1rem;
+    cursor: pointer;
+    padding: 3px 6px;
     border: none;
     height: 37px;
     font-family: 'Kumbh Sans', sans-serif;
@@ -818,24 +838,27 @@ button:focus {
   .tags__btns {
     margin-top: 30.11px;
     margin-bottom: 11px;
+    padding-left: 20px;
     display: flex;
-    justify-content: center;
+    justify-content: flex-start;
     flex-wrap: wrap;
+    align-items: flex-start;
     width: 100%; }
     .tags__btns--btn {
-      width: 93.5px;
       height: 34.41px;
       background: rgba(57, 234, 180, 0.35);
       margin-right: 17.8px;
       margin-bottom: 15.05px;
       border-radius: 1000px;
       border: none;
+      min-width: 60px;
       font-family: 'Kumbh Sans', sans-serif;
       font-style: normal;
       font-weight: 300;
       font-size: 16px;
       line-height: 16px;
-      color: #39EAB4; }
+      color: #39EAB4;
+      padding: 8px; }
 
 .overview {
   width: 829.5px;
@@ -2088,6 +2111,18 @@ button:focus {
     position: relative;
     z-index: 10; }
 
+@media (max-width: 870px) {
+  .eventsPage .upper__container {
+    margin-left: 0px; }
+    .eventsPage .upper__container--head {
+      margin-left: 40%; }
+  .eventsPage__content {
+    display: flex;
+    flex-direction: column;
+    align-items: center; }
+    .eventsPage__content--filter {
+      margin-top: 20px; } }
+
 .myEventCardContainer {
   height: 250px;
   width: 250px;
@@ -2172,7 +2207,7 @@ button:focus {
   z-index: 2;
   left: 0;
   bottom: -25px;
-  width: 645px;
+  width: Min(645px, 100vw);
   color: #FFFFFF;
   background-color: #2B244D;
   box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.5);
@@ -2736,6 +2771,84 @@ button:focus {
     padding-top: 222px;
     padding-bottom: 212px; }
 
+.registerEvent {
+  background: linear-gradient(to bottom, #524690 -64.51%, #171429 100%); }
+  .registerEvent button {
+    border: none;
+    cursor: pointer; }
+  .registerEvent_body {
+    margin-top: 100px;
+    margin-bottom: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column; }
+    .registerEvent_body .header {
+      font-family: Montserrat;
+      font-style: normal;
+      font-weight: 500;
+      font-size: 20px;
+      line-height: 24px;
+      color: #E6E4F2;
+      margin-bottom: 30px; }
+    .registerEvent_body .tickets {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center; }
+      .registerEvent_body .tickets .addTicket div {
+        display: inline-block; }
+      .registerEvent_body .tickets .addTicket {
+        margin-bottom: 20px;
+        font-family: Montserrat;
+        font-style: normal;
+        font-weight: normal;
+        font-size: 16px;
+        line-height: 20px;
+        color: #E6E4F2;
+        border: 1px solid #39EAB4;
+        box-sizing: border-box;
+        width: Min(100%, 1000px);
+        border-radius: 10px;
+        padding: 10px 10px;
+        display: grid;
+        grid-template-columns: 0.2fr 1fr 1fr 1fr 0.1fr 1fr;
+        grid-template-rows: 1fr; }
+        .registerEvent_body .tickets .addTicket input {
+          background-color: transparent;
+          border: none;
+          font-family: Montserrat;
+          font-style: normal;
+          font-weight: normal;
+          font-size: 16px;
+          line-height: 20px;
+          margin-right: 5px;
+          color: #E6E4F2; }
+      .registerEvent_body .tickets .addParticipantBtn {
+        width: 291px;
+        height: 37px;
+        margin-top: 30px;
+        font-family: Montserrat;
+        font-style: normal;
+        font-weight: 500;
+        font-size: 16px;
+        line-height: 20px;
+        color: #39EAB4;
+        background: rgba(57, 234, 180, 0.2);
+        border-radius: 10px; }
+  .registerEvent .registerEventButton {
+    width: 268px;
+    height: 37px;
+    margin-top: 100px;
+    font-family: Montserrat;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 20px;
+    color: #2B244D;
+    background: #39EAB4;
+    border-radius: 10px; }
+
 .hostEvent {
   background: #171429;
   position: relative;
@@ -2759,7 +2872,7 @@ button:focus {
     display: flex;
     width: 100%; }
   .hostEvent .sections {
-    flex-basis: 500px;
+    flex-basis: 470px;
     margin-left: 20px;
     position: relative;
     top: -250px; }
@@ -2767,6 +2880,7 @@ button:focus {
     flex-basis: 100%;
     min-width: 0;
     padding-right: 20px;
+    padding-left: 20px;
     display: flex;
     flex-direction: column;
     justify-content: space-evenly; }
@@ -2849,8 +2963,7 @@ button:focus {
         display: flex;
         justify-content: center; }
         .hostEvent .sec_container .event_pictures .picturebox_container_picture_box {
-          width: 600px;
-          height: 600px;
+          width: Min(600px, 90%);
           border: 5px dashed #877CC0;
           box-sizing: border-box;
           border-radius: 20px;
@@ -2859,6 +2972,11 @@ button:focus {
           display: flex; }
           .hostEvent .sec_container .event_pictures .picturebox_container_picture_box:hover {
             background-color: rgba(128, 128, 128, 0.096); }
+          .hostEvent .sec_container .event_pictures .picturebox_container_picture_box:before {
+            content: "";
+            display: block;
+            padding-top: 100%;
+            /* initial ratio of 1:1*/ }
           .hostEvent .sec_container .event_pictures .picturebox_container_picture_box_circle {
             width: 114px;
             height: 114px;
@@ -2983,10 +3101,6 @@ button:focus {
       color: #E6E4F2; }
     .hostEvent .sec_container .event_schedule_date_blanks {
       display: flex; }
-      .hostEvent .sec_container .event_schedule_date_blanks div:nth-of-type(2) {
-        position: absolute;
-        margin-top: 35px;
-        right: 30px; }
       .hostEvent .sec_container .event_schedule_date_blanks input {
         display: inline-block;
         margin-right: 10px;
@@ -3000,10 +3114,6 @@ button:focus {
         justify-content: center;
         align-items: center;
         color: #877CC0; }
-        .hostEvent .sec_container .event_schedule_date_blanks input:nth-child(2) {
-          margin-right: 50px; }
-        .hostEvent .sec_container .event_schedule_date_blanks input:nth-child(4) {
-          margin-right: 50px; }
       .hostEvent .sec_container .event_schedule_date_blanks .day {
         width: 48.75px;
         height: 65px;
@@ -3113,7 +3223,14 @@ button:focus {
         height: 286.57px;
         margin-right: 50px;
         background: #2B244D;
-        border-radius: 10px; }
+        border-radius: 10px;
+        overflow-y: auto; }
+        .hostEvent .sec_container .event_tags div:nth-of-type(2)::-webkit-scrollbar {
+          width: 5px; }
+        .hostEvent .sec_container .event_tags div:nth-of-type(2)::-webkit-scrollbar-track {
+          background: var(--color-primary-1); }
+        .hostEvent .sec_container .event_tags div:nth-of-type(2)::-webkit-scrollbar-thumb {
+          background: #524690; }
         .hostEvent .sec_container .event_tags div:nth-of-type(2) .addTag {
           width: 93.5px;
           height: 34.41px;
@@ -3154,6 +3271,7 @@ button:focus {
         line-height: 18px;
         color: #EB9947; }
     .hostEvent .sec_container .ViewEvent {
+      cursor: pointer;
       height: 51.43px;
       background-color: #171429;
       border: 1.5px solid #39EAB4;
@@ -3168,6 +3286,7 @@ button:focus {
       margin-bottom: 50px; }
     .hostEvent .sec_container .PostEvent {
       height: 51.43px;
+      cursor: pointer;
       background: #39EAB4;
       box-shadow: 0px 0px 14px rgba(88, 88, 88, 0.25);
       border-radius: 5px;
@@ -3178,6 +3297,20 @@ button:focus {
       line-height: 24px;
       margin-bottom: 100px;
       color: #2B244D; }
+
+@media (max-width: 850px) {
+  .hostEvent .header {
+    display: flex;
+    justify-content: center;
+    align-items: flex-end; }
+    .hostEvent .header span {
+      position: unset;
+      margin-bottom: 50px; }
+  .hostEvent .maincontainer {
+    display: grid;
+    grid-template-columns: 1fr; }
+    .hostEvent .maincontainer .sections {
+      display: none; } }
 
 .confirm_button1 {
   width: 131px;
@@ -3245,7 +3378,7 @@ a:hover {
     background: linear-gradient(to left, #524690 -64.51%, #171429 100%); }
     .AboutUs__welcome--heading {
       position: absolute;
-      top: 100px;
+      top: 70px;
       left: 60px;
       font-family: Montserrat;
       font-style: normal;
@@ -3256,9 +3389,10 @@ a:hover {
     .AboutUs__welcome--body {
       overflow: hidden;
       position: absolute;
-      top: 160px;
+      top: 130px;
       left: 60px;
-      width: 590px;
+      width: Min(590px, 80%);
+      margin-right: 20px;
       height: auto;
       font-family: Montserrat;
       font-style: normal;
@@ -3300,8 +3434,19 @@ a:hover {
     .AboutUs__whatWeDo--cards {
       margin-top: 80px;
       margin-bottom: 80px;
-      display: flex;
-      justify-content: space-evenly; }
+      width: 100%;
+      display: grid;
+      grid-template-columns: 400px 400px 400px;
+      grid-gap: 20px;
+      overflow-x: auto; }
+      .AboutUs__whatWeDo--cards::-webkit-scrollbar {
+        width: 0px;
+        height: 5px;
+        margin-top: 4px; }
+      .AboutUs__whatWeDo--cards::-webkit-scrollbar-track {
+        background: var(--color-primary-1); }
+      .AboutUs__whatWeDo--cards::-webkit-scrollbar-thumb {
+        background: #524690; }
   .AboutUs__whyChoose {
     background: linear-gradient(to right, #524690 -64.51%, #171429 100%);
     height: 390px;
@@ -3364,7 +3509,8 @@ a:hover {
   background-color: #2B244D;
   width: 400px;
   height: 540px;
-  border-radius: 5%; }
+  border-radius: 5%;
+  margin-right: 20px; }
   .AboutUsCard--heading {
     font-family: Montserrat;
     font-style: normal;
@@ -3429,6 +3575,20 @@ a:hover {
       text-decoration: none; }
     .AboutUsCard__lastRow--card3 a {
       text-decoration: none; }
+
+@media (max-width: 975px) {
+  .AboutUs__welcome--person1 {
+    display: none; }
+  .AboutUs__welcome--person2 {
+    display: none; } }
+
+@media (max-width: 845px) {
+  .AboutUs__whyChoose__image {
+    display: none; }
+  .AboutUs__whyChoose__content {
+    padding-top: 60px;
+    position: unset;
+    margin-left: 30px; } }
 
 .teamMember {
   width: 362.6px;

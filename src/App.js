@@ -37,6 +37,7 @@ import HostEvent from './components/HostEvent/HostEvent';
 import Temp from './components/Dashboard/Temp';
 import Login from './pages/Login';
 import Otp_Page from './pages/otp_page';
+import RegisterEvent from './pages/RegisterEvent';
 
 function App() {
 	return (
@@ -62,6 +63,7 @@ function App() {
 					<Route exact path="/login" component={Login}></Route>
 					<Route exact path="/otp_page" render={(props) => <Otp_Page {...props} />}> </Route>
 					{/* // <Route path="/test/new" render={(props) => <NewTestComp {...props}/>}/> */}
+					<Route exact path="/register-event" component={RegisterEvent} />
 					<Route component={Page404} />
 				</Switch>
 				{/* <Footer /> */}

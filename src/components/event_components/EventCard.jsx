@@ -1,13 +1,30 @@
 import React from 'react';
 import Moment from 'moment';
+import { Link } from 'react-router-dom';
 
 const EventCard = (props) => {
+	var currency_symbols = {
+		'USD': '$', // US Dollar
+		'EUR': '€', // Euro
+		'GBP': '£', // British Pound Sterling
+		'ILS': '₪', // Israeli New Sheqel
+		'INR': '₹', // Indian Rupee
+		'JPY': '¥', // Japanese Yen
+		'KRW': '₩', // South Korean Won
+		'NGN': '₦', // Nigerian Naira
+		'PHP': '₱', // Philippine Peso
+		'PLN': 'zł', // Polish Zloty
+		'PYG': '₲', // Paraguayan Guarani
+		'THB': '฿', // Thai Baht
+		'UAH': '₴', // Ukrainian Hryvnia
+		'VND': '₫', // Vietnamese Dong
+	};
+
+	const price = props.event.ticket_price === 0 ? 'FREE' : currency_symbols['INR'] + props.event.ticket_price;
 	return (
 		<>
 			<div className="eventcard">
 				<div className="eventcard__wrapper">
-
-
 					<span className="eventcard__category">Featured in Concerts</span>
 
 					<div className="eventcard__eventname">
@@ -28,16 +45,25 @@ const EventCard = (props) => {
 					<div className="eventcard__lower">
 						<div className="eventcard__lower--entrybox">
 							<span className="eventcard__lower--entry">ENTRY</span>
-							<span className="eventcard__lower--entrytype">{props.event.ticket_price === 0 ? 'FREE' : props.event.ticket_price}</span>
+							<span className="eventcard__lower--entrytype">{price}</span>
 						</div>
 
-						<div className="eventcard__lower--time">
+						{/* <div className="eventcard__lower--time">
 							<span className="eventcard__lower--start"> EVENT STARTS IN</span>
 							<span className="eventcard__lower--entrytime">01D: 08H: 30M: 25S</span>
-						</div>
+						</div> */}
 					</div>
 
-					<button className="eventcard__button">Register for this event</button>
+					<div className="registerBtn">
+						<Link style={{ width: "100 %" }} to={{
+							pathname: "/register-event",
+							state: {
+								event: props.event,
+							}
+						}}>
+							<button type="button" className="eventcard__button">Register for this event</button>
+						</Link>
+					</div>
 				</div>
 			</div>
 		</>

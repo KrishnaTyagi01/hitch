@@ -37,6 +37,10 @@ export default function Discover() {
 		console.log(e.target.name, e.target.value);
 	};
 
+	const onFilterChange = (events) => {
+		setEvents(events);
+	}
+
 	return (
 		<div className="landing-discover">
 			<div className="header">
@@ -61,7 +65,7 @@ export default function Discover() {
 
 			<div className="body">
 				<div className="filters">
-					<Filter />
+					<Filter onFilterChange={onFilterChange} />
 				</div>
 				<div className="discover-events">
 					{MyEvents}
