@@ -2,16 +2,15 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { Link, NavLink, withRouter } from 'react-router-dom';
 
-import { logout } from '../../redux/Actions/authActions';
+import { logout } from '../../redux/actions/authActions';
 
 const Nav = (props) => {
 	return (
-		<div className="hostnav">
-			<div className="navbar__logo" style={{ paddingLeft: "20px" }}>
-				<span className="navbar__logo--text">H!tch</span>
+		<div className='hostnav'>
+			<div className='navbar__logo' style={{ paddingLeft: '20px' }}>
+				<span className='navbar__logo--text'>H!tch</span>
 			</div>
-			<span className="hostnav__head">Host Dashboard</span>
-
+			<span className='hostnav__head'>Host Dashboard</span>
 
 			{props.username ? (
 				<div className='profileDropdown' tabIndex='-1'>
@@ -42,51 +41,48 @@ const Nav = (props) => {
 							</li>
 							<li className='logout' onClick={props.logout}>
 								Log Out
-								</li>
+							</li>
 						</ul>
 					</div>
 				</div>
 			) : (
-					<>
-						<div>
-							<NavLink
-								exact={true}
-								activeClassName='activeLink'
-								className='nav-link'
-								to='/templogin'
-							>
-								Temp Login
+				<>
+					<div>
+						<NavLink
+							exact={true}
+							activeClassName='activeLink'
+							className='nav-link'
+							to='/templogin'
+						>
+							Temp Login
 						</NavLink>
-						</div>
-						<div>
-							<NavLink
-								exact={true}
-								activeClassName='activeLink'
-								className='nav-link'
-								to='/register'
-							>
-								Register
+					</div>
+					<div>
+						<NavLink
+							exact={true}
+							activeClassName='activeLink'
+							className='nav-link'
+							to='/register'
+						>
+							Register
 						</NavLink>
-						</div>
-					</>
-				)}
+					</div>
+				</>
+			)}
 
-
-
-			<Link to="/host-event">
-				<span className="hostnav__right">
-					<button className="navbar__host--btn">Host</button>
+			<Link to='/host-event'>
+				<span className='hostnav__right'>
+					<button className='navbar__host--btn'>Host</button>
 				</span>
 			</Link>
-
 		</div>
-	)
-}
+	);
+};
 
 const mapStateToProps = (state) => {
 	return {
-		username: state.authState.username,
-	}
-}
+		username: state.authState.username
+	};
+};
 
 export default connect(mapStateToProps, { logout })(withRouter(Nav));

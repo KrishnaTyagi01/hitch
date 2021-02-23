@@ -1,9 +1,9 @@
 import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
 
-import { getEvents, incCount } from '../../redux/Actions/commonActions';
-import { login, logout } from '../../redux/Actions/authActions';
-import { getSelfProfile } from '../../redux/Actions/profileActions';
+import { getEvents, incCount } from '../../redux/actions/commonActions';
+import { login, logout } from '../../redux/actions/authActions';
+import { getSelfProfile } from '../../redux/actions/profileActions';
 
 function Test(props) {
 	return (

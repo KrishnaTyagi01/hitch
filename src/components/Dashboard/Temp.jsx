@@ -10,43 +10,39 @@ import Events from './Page_Events';
 // import { useState } from 'react';
 
 const Temp = () => {
-    const [idx, setIdx] = useState(0);
+	const [idx, setIdx] = useState(0);
 
-    const renderIt = () => {
-        switch (idx) {
-            case 0:
-                return <ReviewPage />;
-            case 1:
-                return <Notif />;
-            case 2:
-                return <Events />;
-            case 3:
-                return <Messages />;
-            case 4:
-                return <PricingPlan />;
-        }
-    }
+	const renderIt = () => {
+		switch (idx) {
+			case 0:
+				return <ReviewPage />;
+			case 1:
+				return <Notif />;
+			case 2:
+				return <Events />;
+			case 3:
+				return <Messages />;
+			case 4:
+				return <PricingPlan />;
+		}
+	};
 
-    const onButtonClick = (curr_idx) => {
-        console.log(curr_idx);
-        setIdx(curr_idx);
-    }
+	const onButtonClick = (curr_idx) => {
+		console.log(curr_idx);
+		setIdx(curr_idx);
+	};
 
-    return (
-        <div className="mainDashboardContainer">
-            <Nav />
-            <div className="mainDashboardContainer_grid">
-                <div>
-                    <Sidebar onButtonClick={onButtonClick} />
-                </div>
-                <div className="mainDashboardContainer_grid_content">
-                    {renderIt()}
-                </div>
-            </div>
-
-
-        </div>
-    );
-}
+	return (
+		<div className='mainDashboardContainer'>
+			<Nav />
+			<div className='mainDashboardContainer_grid'>
+				<div>
+					<Sidebar onButtonClick={onButtonClick} />
+				</div>
+				<div className='mainDashboardContainer_grid_content'>{renderIt()}</div>
+			</div>
+		</div>
+	);
+};
 
 export default Temp;

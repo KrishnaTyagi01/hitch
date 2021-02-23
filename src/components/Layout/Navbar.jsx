@@ -1,7 +1,7 @@
 import { Link, NavLink, withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 
-import { logout } from '../../redux/Actions/authActions';
+import { logout } from '../../redux/actions/authActions';
 
 const locations = ['Delhi', 'Mumbai', 'Kolkata', 'Chandigarh'];
 
@@ -88,32 +88,37 @@ const Navbar = (props) => {
 					</div>
 				</>
 			) : (
-					<>
-						<div>
-							<NavLink
-								exact={true}
-								activeClassName='activeLink'
-								className='nav-link'
-								to='/login'
-							>
-								Login
+				<>
+					<div>
+						<NavLink
+							exact={true}
+							activeClassName='activeLink'
+							className='nav-link'
+							to='/login'
+						>
+							Login
 						</NavLink>
-						</div>
-						<div>
-							<NavLink
-								exact={true}
-								activeClassName='activeLink'
-								className='nav-link'
-								to='/register'
-							>
-								Register
+					</div>
+					<div>
+						<NavLink
+							exact={true}
+							activeClassName='activeLink'
+							className='nav-link'
+							to='/register'
+						>
+							Register
 						</NavLink>
-						</div>
-					</>
-				)}
+					</div>
+				</>
+			)}
 
 			<div>
-				<NavLink exact={true} activeClassName='activeLink' className='btn' to='/host-event'>
+				<NavLink
+					exact={true}
+					activeClassName='activeLink'
+					className='btn'
+					to='/host-event'
+				>
 					Host
 				</NavLink>
 			</div>
