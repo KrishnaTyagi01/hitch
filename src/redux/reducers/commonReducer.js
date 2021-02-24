@@ -1,4 +1,4 @@
-import { GET_EVENTS, GET_EVENT, GET_PROFILE, INC_COUNT } from '../types';
+import { GET_EVENTS, GET_EVENT, GET_PROFILE, INC_COUNT, CLEAR_STATE } from '../types';
 
 const initialState = {
 	events: null,
@@ -28,6 +28,10 @@ export default function eventReducer(state = initialState, action) {
 			return {
 				...state,
 				count: state.count + action.payload
+			};
+		case CLEAR_STATE:
+			return {
+				...initialState
 			};
 		default:
 			return state;

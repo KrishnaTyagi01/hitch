@@ -3,15 +3,22 @@ import thunk from 'redux-thunk';
 // import throttle from "lodash/throttle";
 
 import rootReducer from './reducers';
-import { loadUser, saveUser } from '../localStorage';
+import { loadUser } from '../localStorage';
 
 const middleware = [thunk];
 
 const authState = 'authState';
-const persistedUser = loadUser();
-console.log(persistedUser);
+
+const userData = loadUser();
 const initialState = {
-	[authState]: persistedUser
+	[authState]:
+		userData === undefined
+			? undefined
+			: {
+					...userData?.persistedUser,
+					isAuthenticated: userData?.isAuthenticated,
+					authMessage: userData?.authMessage
+			  }
 };
 
 const store = createStore(

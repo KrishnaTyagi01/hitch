@@ -1,16 +1,24 @@
+import { useEffect } from 'react';
 import { Link, NavLink, withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 
 import { logout } from '../../redux/actions/authActions';
+import { getSelfProfile } from '../../redux/actions/profileActions';
 
 const locations = ['Delhi', 'Mumbai', 'Kolkata', 'Chandigarh'];
 
 const Navbar = (props) => {
+	useEffect(() => {
+		if (props.isAuthenticated) {
+			props.getSelfProfile();
+		}
+	}, []);
+
 	return (
 		<nav className='navbar'>
-			<div className='logo'>
-				<Link to='/'>H!tch</Link>
-			</div>
+			<Link to='/' className='logo'>
+				H!tch
+			</Link>
 			<div className='select-wrapper'>
 				<select className='location-dropdown'>
 					<option value='Online' defaultValue>
@@ -22,49 +30,45 @@ const Navbar = (props) => {
 						</option>
 					))}
 				</select>
+				<i className='fa fa-chevron-down select-icon'></i>
 			</div>
 			<div className='search-wrapper'>
+				<i className='fa fa-search search-icon'></i>
 				<input placeholder='Search' />
 			</div>
-			<div>
-				<NavLink exact={true} activeClassName='activeLink' className='nav-link' to='/'>
-					Home
-				</NavLink>
-			</div>
-			<div>
-				<NavLink
-					exact={true}
-					activeClassName='activeLink'
-					className='nav-link'
-					to='/about'
-				>
-					About Hitch
-				</NavLink>
-			</div>
+			<NavLink exact={true} activeClassName='active-link' className='nav-link' to='/'>
+				Home
+			</NavLink>
+			<NavLink
+				exact={true}
+				activeClassName='active-link'
+				className='nav-link'
+				to='/about'
+			>
+				About Hitch
+			</NavLink>
 
-			{props.username ? (
+			{props.isAuthenticated ? (
 				<>
-					<div>
-						<NavLink
-							exact={true}
-							activeClassName='activeLink'
-							className='nav-link'
-							to='/bookmarks'
-						>
-							<i className='far fa-heart fa-2x icon'></i>
-						</NavLink>
-					</div>
-					<div className='profileDropdown' tabIndex='-1'>
+					<NavLink
+						exact={true}
+						activeClassName='active-link'
+						className='nav-link'
+						to='/bookmarks'
+					>
+						<i className='far fa-heart fa-2x icon'></i>
+					</NavLink>
+					<div className='profile-dropdown' tabIndex='-1'>
 						<span>
-							<i className='fas fa-user-circle icon'></i>
+							<i className='fas fa-user-circle profile-icon'></i>
 						</span>
-						<div className='profileOptions'>
-							<div className='profileDetails'>
+						<div className='profile-options'>
+							<div className='profile-details'>
 								<img src='/static/avatar.jpg' alt='profile picture' />
 								<h3>John Doe</h3>
 							</div>
 							<hr />
-							<ul class='profileLinks'>
+							<ul className='profile-links'>
 								<li>
 									<Link to='/profile'>View Profile</Link>
 								</li>
@@ -89,40 +93,34 @@ const Navbar = (props) => {
 				</>
 			) : (
 				<>
-					<div>
-						<NavLink
-							exact={true}
-							activeClassName='activeLink'
-							className='nav-link'
-							to='/templogin'
-						>
-							Temp Login
-						</NavLink>
-					</div>
-					<div>
-						<NavLink
-							exact={true}
-							activeClassName='activeLink'
-							className='nav-link'
-							to='/register'
-						>
-							Register
-						</NavLink>
-					</div>
+					<NavLink
+						exact={true}
+						activeClassName='active-link'
+						className='nav-link'
+						to='/loginold'
+					>
+						Login
+					</NavLink>
+					<NavLink
+						exact={true}
+						activeClassName='active-link'
+						className='nav-link'
+						to='/registerold'
+					>
+						Register
+					</NavLink>
 				</>
 			)}
 
-			<div>
-				<NavLink exact={true} activeClassName='activeLink' className='btn' to='/host'>
-					Host
-				</NavLink>
-			</div>
+			<NavLink exact={true} activeClassName='active-link' className='btn' to='/host'>
+				Host
+			</NavLink>
 		</nav>
 	);
 };
 
 const mapStateToProps = (state) => ({
-	username: state.authState.username
+	isAuthenticated: state.authState.isAuthenticated
 });
 
-export default connect(mapStateToProps, { logout })(withRouter(Navbar));
+export default connect(mapStateToProps, { logout, getSelfProfile })(withRouter(Navbar));

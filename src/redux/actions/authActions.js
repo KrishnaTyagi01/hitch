@@ -8,7 +8,8 @@ import {
 	LOGIN_SUCCESS,
 	LOGOUT,
 	LOGOUT_SUCCESS,
-	AUTH_ERROR
+	AUTH_ERROR,
+	CLEAR_STATE
 } from '../types';
 
 export const tokenConfig = (getState) => {
@@ -25,10 +26,11 @@ export const register = (userdetails, next) => async (dispatch) => {
 		const response = await axios.post('/api/register/', userdetails);
 		console.log(response);
 		const { name, username, token, status } = response;
-		// saveUser({ name, username, token }, next);
+		saveUser({ name, username, token });
+		next();
 		dispatch({
 			type: REGISTER,
-			payload: { name, username, token }
+			payload: { name, username, token, status }
 		});
 		dispatch({
 			type: REGISTER_SUCCESS,
@@ -42,16 +44,17 @@ export const register = (userdetails, next) => async (dispatch) => {
 export const login = (user, next) => async (dispatch) => {
 	try {
 		const response = await axios.post('/api/login/', user);
-		const { name, username, token, success } = response.data;
-		saveUser({ name, username, token }, next);
+		const { name, username, token, expiry, success } = response.data;
+		saveUser({ name, username, token, expiry });
 		dispatch({
 			type: LOGIN,
-			payload: { name, username, token }
+			payload: { name, username, token, expiry, success }
 		});
 		dispatch({
 			type: LOGIN_SUCCESS,
 			payload: { success }
 		});
+		next();
 	} catch (error) {
 		errorHandler(error);
 	}
@@ -63,11 +66,15 @@ export const logout = () => async (dispatch, getState) => {
 		removeUser();
 		dispatch({
 			type: LOGOUT,
-			payload: { name: null, username: null, token: null }
+			payload: null
 		});
 		dispatch({
 			type: LOGOUT_SUCCESS,
-			payload: { temp: response.data, message: 'logged out' }
+			payload: { temp: response, message: 'logged out' }
+		});
+		dispatch({
+			type: CLEAR_STATE,
+			payload: null
 		});
 	} catch (error) {
 		errorHandler(error);

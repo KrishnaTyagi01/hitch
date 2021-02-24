@@ -8,12 +8,14 @@ import {
 	GET_WISHLIST,
 	ADD_TO_WISHLIST,
 	REMOVE_FROM_WISHLIST,
-	DELETE_WISHLIST
+	DELETE_WISHLIST,
+	CLEAR_STATE
 } from '../types';
 
 const initialState = {
 	profile: null,
-	detail: null
+	detail: null,
+	actionSuccess: null
 };
 
 export default function profileReducer(state = initialState, action) {
@@ -55,7 +57,7 @@ export default function profileReducer(state = initialState, action) {
 		case ADD_TO_WISHLIST:
 			return {
 				...state,
-				message: 'Logged out'
+				actionSuccess: action.payload.success
 			};
 		case REMOVE_FROM_WISHLIST:
 			return {
@@ -66,6 +68,10 @@ export default function profileReducer(state = initialState, action) {
 			return {
 				...state,
 				message: 'Logged out'
+			};
+		case CLEAR_STATE:
+			return {
+				...initialState
 			};
 		default:
 			return state;
