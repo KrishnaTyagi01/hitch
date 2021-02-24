@@ -16,6 +16,12 @@ export const USER_LOADED = 'USER_LOADED';
 export const USER_LOADING = 'USER_LOADING';
 export const AUTH_ERROR = 'AUTH_ERROR';
 
+// User actions
+export const ACTIVATE_LOGIN_PROMPT = 'ACTIVATE_LOGIN_PROMPT';
+export const DEACTIVATE_LOGIN_PROMPT = 'DEACTIVATE_LOGIN_PROMPT';
+export const SET_REFERRER = 'SET_REFERRER';
+export const CLEAR_STATE = 'CLEAR_STATE';
+
 // Common actions
 export const GET_EVENTS = 'GET_EVENTS';
 export const GET_EVENT = 'GET_EVENT';
@@ -32,6 +38,7 @@ export const GET_WISHLIST = 'GET_WISHLIST';
 export const ADD_TO_WISHLIST = 'ADD_TO_WISHLIST';
 export const REMOVE_FROM_WISHLIST = 'REMOVE_FROM_WISHLIST';
 export const DELETE_WISHLIST = 'DELETE_WISHLIST';
+export const ADD_TO_CALENDER = 'ADD_TO_CALENDER';
 
 // Event actions
 export const CREATE_EVENT = 'CREATE_EVENT';

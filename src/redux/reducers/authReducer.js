@@ -10,7 +10,10 @@ import {
 const initialState = {
 	name: null,
 	username: null,
-	token: null
+	token: null,
+	expiry: null,
+	isAuthenticated: false,
+	authMessage: null
 };
 
 export default function authReducer(state = initialState, action) {
@@ -20,25 +23,29 @@ export default function authReducer(state = initialState, action) {
 				...state,
 				name: action.payload.name,
 				username: action.payload.username,
-				token: action.payload.token
+				token: action.payload.token,
+				isAuthenticated: true,
+				authMessage: action.payload.status
 			};
 		case LOGIN:
 			return {
 				...state,
 				name: action.payload.name,
 				username: action.payload.username,
-				token: action.payload.token
+				token: action.payload.token,
+				expiry: action.payload.expiry,
+				isAuthenticated: action.payload.success,
+				authMessage: `Logged in with ${action.payload.username}`
 			};
 		case LOGOUT:
 			return {
-				...state,
-				name: action.payload.name,
-				username: action.payload.username,
-				token: action.payload.token
+				...initialState,
+				authMessage: 'Logged out'
 			};
 		case AUTH_ERROR:
 			return {
-				...initialState
+				...initialState,
+				authMessage: 'Authorization failed'
 			};
 		default:
 			return state;

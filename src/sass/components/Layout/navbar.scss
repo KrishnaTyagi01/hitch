@@ -1,10 +1,13 @@
 .navbar {
+	position: relative;
+	z-index: 1;
 	display: flex;
 	justify-content: space-around;
 	align-items: center;
-	height: 54px;
 	color: #ffffff;
 	background-color: var(--color-primary-1);
+	padding: 0 45px;
+	height: 54px;
 	box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.2);
 	font-size: 14px;
 	// backdrop-filter: blur(20px);
@@ -18,65 +21,56 @@
 
 	.select-wrapper {
 		position: relative;
-		border: 1px solid #ffffff;
 
 		select {
 			display: block;
-			width: 100%;
+			z-index: 1;
+			position: relative;
+			color: #ffffff;
+			background: transparent;
 			padding: 8px 16px;
-			border: none;
+			border: 1.5px solid #ffffff;
+			border-radius: 5px;
+			width: 100%;
 			outline: none;
 			appearance: none;
 			-webkit-appearance: none;
 			-ms-appearance: none;
 			-moz-appearance: none;
-			position: relative;
-			z-index: 1;
-			background: transparent;
-			cursor: pointer;
+			transition: 0.1s;
 			// pointer-events: none
 
+			&:focus,
+			&:active {
+				box-shadow: 0 0 8px var(--color-grey-3);
+				// outline: 4px solid white;
+			}
+
 			option {
-				background-color: rgba(23, 20, 41, 0.5);
+				background-color: var(--color-primary-1);
+				padding: 10px;
 			}
 		}
 
-		// .location-dropdown {
-		// 	color: #ffffff;
-		// 	background-color: inherit;
-		// 	width: 115px;
-		// 	height: 30px;
-		// 	border: 1.5px solid #ffffff;
-		// 	box-sizing: border-box;
-		// 	border-radius: 5px;
-		// 	outline: none;
-
-		// 	font-style: normal;
-		// 	font-weight: normal;
-		// 	line-height: 14px;
-
-		// 	text-align-last: center;
-
-		// 	option {
-		// 		background-color: rgba(23, 20, 41, 0.5);
-		// 	}
-		// }
-
-		i {
+		.select-icon {
 			position: absolute;
-			top: 25%;
+			top: 30%;
 			right: 15px;
-			transition: 0.5s;
+			transition: al1 0.2s;
 		}
 	}
 
 	.search-wrapper {
-		display: flex;
-		place-items: center;
+		display: block;
+		z-index: 1;
+		position: relative;
+		color: #ffffff;
+		background: transparent;
 
-		.searchIcon {
-			padding: auto;
-			margin-right: 12px;
+		.search-icon {
+			position: absolute;
+			top: 30%;
+			left: 15px;
 		}
 
 		input {
@@ -85,14 +79,16 @@
 			border: none;
 			box-sizing: border-box;
 			border-radius: 5px;
-			width: 400.5px;
+			width: 400px;
 			outline: none;
-			padding: 8px;
+			padding: 8px 8px 8px 44px;
 			border: 1.5px solid #ffffff;
+			transition: 0.1s;
 
 			&:focus,
 			&:active {
-				border: 1.5px solid #ffffff;
+				box-shadow: 0 0 8px var(--color-grey-3);
+				// outline: 4px solid white;
 			}
 
 			&::placeholder {
@@ -107,7 +103,7 @@
 		padding: 8px 16px;
 		border: none;
 		border-radius: 20px;
-		transition: 0.2s;
+		transition: 0.1s;
 	}
 
 	.nav-icon {
@@ -116,115 +112,108 @@
 		background: transparent;
 	}
 
-	.icon {
-		font-size: 20px;
-	}
-
-	.activeLink {
+	.active-link {
 		color: var(--color-primary-1);
 		background: var(--color-secondary-3);
 	}
 
-	.activeIcon {
+	.active-icon {
 		background: var(--color-secondary-3);
 	}
 
-	
-
-	.btn {
-		color: #171429;
-		background: var(--color-secondary-3);
-		padding: 8px 32px;
-		border: none;
-		border-radius: 5px;
-	}
-}
-
-.profileDropdown {
-	position: relative;
-	color: var(--color-secondary-3);
-	font-size: 16px;
-	pointer-events: auto;
-
-	&:focus-within .profileOptions {
-		opacity: 1;
+	.profile-dropdown {
+		position: relative;
+		color: var(--color-secondary-3);
+		font-size: 16px;
 		pointer-events: auto;
-	}
 
-	.icon {
-		cursor: pointer;
-	}
-
-	.profileOptions {
-		position: absolute;
-		z-index: 2;
-		top: 55px;
-		left: 50%;
-		transform: translateX(-50%);
-		color: white;
-		background-color: var(--color-primary-2);
-		padding: 20px 30px;
-		width: 250px;
-		border-radius: 10px;
-		// box-shadow: 0 0 4px rgba(0, 0, 0, 0.2);
-		box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.5);
-		opacity: 0;
-		transition: opacity 0.15s ease-out;
-		pointer-events: none;
-
-		.profileDetails {
-			display: flex;
-			flex-direction: column;
-			justify-content: center;
-			align-items: center;
-
-			img {
-				width: 64px;
-				border-radius: 50%;
-			}
-
-			h3 {
-				font-size: 22px;
-				font-weight: 500;
-				margin: 15px auto;
-			}
+		&:focus-within .profile-options {
+			opacity: 1;
+			pointer-events: auto;
 		}
 
-		hr {
-			color: var(--color-grey-3);
+		.profile-icon {
+			font-size: 20px;
+			cursor: pointer;
+			padding: 10px;
 		}
 
-		.profileLinks {
-			li {
-				list-style: none;
-				text-align: center;
-				margin-top: 12px;
-				width: 100%;
+		.profile-options {
+			position: absolute;
+			z-index: 2;
+			top: 55px;
+			left: 50%;
+			transform: translateX(-50%);
+			color: white;
+			background-color: var(--color-primary-2);
+			padding: 20px 30px;
+			width: 250px;
+			border-radius: 10px;
+			// box-shadow: 0 0 4px rgba(0, 0, 0, 0.2);
+			box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.5);
+			opacity: 0;
+			transition: opacity 0.2s ease-out;
+			pointer-events: none;
 
-				a {
-					display: inline-block;
-					padding: 6px;
+			.profile-details {
+				display: flex;
+				flex-direction: column;
+				justify-content: center;
+				align-items: center;
+
+				img {
+					width: 64px;
+					border-radius: 50%;
+				}
+
+				h3 {
+					font-size: 22px;
+					font-weight: 500;
+					margin: 15px auto;
+				}
+
+				hr {
+					color: var(--color-grey-3);
+				}
+			}
+
+			.profile-links {
+				li {
+					list-style: none;
+					text-align: center;
+					margin-top: 12px;
 					width: 100%;
+
+					a {
+						display: inline-block;
+						padding: 6px;
+						width: 100%;
+						border-radius: 5px;
+						transition: 0.1s;
+
+						&:hover {
+							background-color: var(--color-primary-3);
+							// border: 1px solid var(--color-secondary-3);
+						}
+					}
+				}
+				li.logout {
+					color: var(--color-semantic-1);
+					padding: 6px;
 					border-radius: 5px;
 					transition: 0.1s;
 
 					&:hover {
-						background-color: var(--color-primary-3);
-						// border: 1px solid var(--color-secondary-3);
+						cursor: pointer;
+						background-color: var(--color-semantic-2);
 					}
 				}
 			}
-			li.logout {
-				color: var(--color-semantic-1);
-				padding: 6px;
-				border-radius: 5px;
-				transition: 0.1s;
-
-				&:hover {
-					cursor: pointer;
-					background-color: var(--color-semantic-2);
-				}
-			}
 		}
+	}
+
+	.icon {
+		cursor: pointer;
+		font-size: 20px;
 	}
 }

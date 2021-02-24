@@ -1,12 +1,18 @@
-* {
+html {
+	box-sizing: border-box;
+}
+
+*,
+*::before,
+*::after {
 	padding: 0;
 	margin: 0;
 	box-sizing: border-box;
 	-webkit-text-size-adjust: none;
-	
 }
 
 body {
+	position: relative;
 	font-family: sans-serif;
 }
 
@@ -34,7 +40,9 @@ a {
 	--color-grey-3: #9794a7;
 }
 
-html,body,#root{
+html,
+body,
+#root {
 	width: 100%;
 	height: 100%;
 	overflow-x: hidden;
@@ -53,6 +61,10 @@ html,body,#root{
 //================ Layout ====================//
 @import 'components/Layout/navbar';
 @import 'components/Layout/footer';
+
+//================ Onboarding ====================//
+@import 'components/Onboarding/loginOld';
+@import 'components/Onboarding/registerOld';
 
 //================ Landing ====================//
 @import 'components/Landing/hero.scss';
@@ -97,38 +109,37 @@ html,body,#root{
 //================ My Events ==================//
 //================ Dashboard ==================//
 @import 'pages/page404';
-@import "components/myEvents/filter";
-@import "components/myEvents/upper";
-@import "components/myEvents/eventsPage";
-@import "components/myEvents/myEventCard";
+@import 'components/myEvents/filter';
+@import 'components/myEvents/upper';
+@import 'components/myEvents/eventsPage';
+@import 'components/myEvents/myEventCard';
 
 //================ Landing ====================//
-@import "components/Landing/showinfocard";
+@import 'components/Landing/showinfocard';
 
 //================ Dashboard ==================//
-@import "components/Dashboard/sidebar";
-@import "components/Dashboard/nav";
-@import "components/Dashboard/reviewBox";
-@import "components/Dashboard/message";
-@import "components/Dashboard/base";
-@import "components/Dashboard/pricingplan";
-@import "components/Dashboard/Temp";
-@import "components/Dashboard/page_notification";
-@import "components/Dashboard/page_messages";
-@import "components/Dashboard/page_overview";
+@import 'components/Dashboard/sidebar';
+@import 'components/Dashboard/nav';
+@import 'components/Dashboard/reviewBox';
+@import 'components/Dashboard/message';
+@import 'components/Dashboard/base';
+@import 'components/Dashboard/pricingplan';
+@import 'components/Dashboard/Temp';
+@import 'components/Dashboard/page_notification';
+@import 'components/Dashboard/page_messages';
+@import 'components/Dashboard/page_overview';
 
 // ============== PAGES  ======================//
-@import "pages/eventdetailspage";
-@import "pages/profile";
-@import "pages/hostintropage";
-@import "pages/registerEvent";
+@import 'pages/eventdetailspage';
+@import 'pages/profile';
+@import 'pages/hostintropage';
+@import 'pages/registerEvent';
 
 //====================HOST EVENT ======================//
-@import "components/HostEvent/HostEvent";
-@import "components/HostEvent/Button1";
-@import "components/HostEvent/Sections";
+@import 'components/HostEvent/HostEvent';
+@import 'components/HostEvent/Button1';
+@import 'components/HostEvent/Sections';
 
 // ===================ABOUT US ========================//
-@import "pages/aboutUs/aboutUs";
-@import "pages/aboutUs/teamCard";
-
+@import 'pages/aboutUs/aboutUs';
+@import 'pages/aboutUs/teamCard';

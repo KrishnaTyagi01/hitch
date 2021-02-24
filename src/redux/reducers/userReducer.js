@@ -18,10 +18,16 @@ import {
 	RESET_PASSWORD,
 	RESET_PASSWORD_CONFIRM,
 	USER_LOADED,
-	USER_LOADING
+	USER_LOADING,
+	SET_REFERRER,
+	LOGIN_PROMPT_ACTIVE,
+	ACTIVATE_LOGIN_PROMPT,
+	DEACTIVATE_LOGIN_PROMPT,
+	CLEAR_STATE
 } from '../types';
 
 const initialState = {
+	isLoggedIn: null,
 	userExists: null,
 	isEmail: null,
 	OTPValidated: null,
@@ -30,7 +36,9 @@ const initialState = {
 	loginSuccess: null,
 	isLoading: false,
 	message: null,
-	temp: null
+	temp: null,
+	referrer: null,
+	loginPromptActive: false
 };
 
 export default function userReducer(state = initialState, action) {
@@ -51,7 +59,8 @@ export default function userReducer(state = initialState, action) {
 		case LOGIN_SUCCESS:
 			return {
 				...state,
-				loginSuccess: action.payload.success
+				loginSuccess: action.payload.success,
+				isLoggedIn: true
 			};
 		case REGISTER_SUCCESS:
 			return {
@@ -62,6 +71,7 @@ export default function userReducer(state = initialState, action) {
 		case LOGOUT_SUCCESS:
 			return {
 				...state,
+				isLoggedIn: false,
 				message: action.payload.message,
 				temp: action.payload.temp
 			};
@@ -96,6 +106,25 @@ export default function userReducer(state = initialState, action) {
 				...state,
 				isLoading: false,
 				user: action.payload
+			};
+		case SET_REFERRER:
+			return {
+				...state,
+				referrer: action.payload
+			};
+		case ACTIVATE_LOGIN_PROMPT:
+			return {
+				...state,
+				loginPromptActive: action.payload
+			};
+		case DEACTIVATE_LOGIN_PROMPT:
+			return {
+				...state,
+				loginPromptActive: action.payload
+			};
+		case CLEAR_STATE:
+			return {
+				...initialState
 			};
 		default:
 			return state;

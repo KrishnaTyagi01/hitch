@@ -1,21 +1,21 @@
-.eventattended{
+.eventattended {
 	// width: 822px;
 	width: 100%;
 	background-color: var(--color-primary-1);
-	&__upper{
+	&__upper {
 		display: flex;
 		justify-content: space-between;
-		&--heading{
+		&--heading {
 			font-family: 'Kumbh Sans', sans-serif;
 			font-style: normal;
 			font-weight: normal;
 			font-size: 20px;
 			line-height: 20px;
-			
-			color: #FFFFFF;
+
+			color: #ffffff;
 		}
 
-		&--btn{
+		&--btn {
 			border: none;
 			width: 131px;
 			height: 37px;
@@ -26,20 +26,21 @@
 			font-weight: normal;
 			font-size: 16px;
 			line-height: 16px;
-			color: #39EAB4;
+			color: #39eab4;
 			margin-bottom: 20.23px;
-			
-			&:focus,&:active{
+
+			&:focus,
+			&:active {
 				border: none;
 				outline: none;
 			}
 		}
-
 	}
 
-	&__cards{
+	&__cards {
 		display: flex;
 		justify-content: space-between;
+		flex-wrap: wrap;
 		// &--card{
 
 		// }

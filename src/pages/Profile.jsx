@@ -1,21 +1,19 @@
 import { useEffect, useState } from 'react';
+import { connect } from 'react-redux';
 
-import About from '../components/profile_components/About'
-import EventAttended from '../components/profile_components/EventAttended'
-import HeaderSection from '../components/profile_components/HeaderSection'
-import Hero from '../components/profile_components/Hero'
-import HostedEvents from '../components/profile_components/HostedEvents'
-import ProfileCard from '../components/profile_components/ProfileCard'
-import { ConnectionButton, FollowButton } from '../components/profile_components/Buttons'
+import About from '../components/profile_components/About';
+import EventAttended from '../components/profile_components/EventAttended';
+import HeaderSection from '../components/profile_components/HeaderSection';
+import Hero from '../components/profile_components/Hero';
+import HostedEvents from '../components/profile_components/HostedEvents';
+import ProfileCard from '../components/profile_components/ProfileCard';
+import { ConnectionButton, FollowButton } from '../components/profile_components/Buttons';
 
 import { isAuthenticated } from '../API/Auth';
 import { getSelfProfile } from '../API/User';
-import Navbar from '../components/Layout/Navbar';
-import Footer from '../components/Layout/Footer';
+import { dummyEvents } from './events';
 
-
-const Profile = () => {
-
+const Profile = (props) => {
 	const { token } = isAuthenticated();
 	const [values, setValues] = useState({
 		about: '',
@@ -37,15 +35,17 @@ const Profile = () => {
 		professional_interests: '',
 		url: '',
 		username: ''
-	})
+	});
 	console.log(values);
+
+	// const { hosted_events } = props.profile;
+
 	useEffect(() => {
 		getSelfProfile(token)
-			.then(res => {
+			.then((res) => {
 				if (res.error) {
-					console.log(res.error)
-				}
-				else {
+					console.log(res.error);
+				} else {
 					setValues({
 						...values,
 						about: res.about,
@@ -67,53 +67,63 @@ const Profile = () => {
 						professional_interests: res.professional_interests,
 						url: res.url,
 						username: res.username
-					})
+					});
 				}
 			})
-			.catch(err => {
+			.catch((err) => {
 				console.log(err);
-			})
-	}, [])
+			});
+	}, []);
 
-	console.log(values)
+	console.log(values);
 
 	return (
-		<section className="profilepage">
-			<Navbar />
-			<div className="profile_top">
+		<section className='profilepage'>
+			<div className='profile_top'>
 				<Hero values={values} setValues={setValues} />
 				<HeaderSection values={values} setValues={setValues} />
 			</div>
-			<div className="profile">
-
-				<div className="profile__left">
-					<div className="profile__left--profilecard">
+			<div className='profile'>
+				<div className='profile__left'>
+					<div className='profile__left--profilecard'>
 						<ProfileCard values={values} setValues={setValues} />
 					</div>
-					<div className="profile__left--connectionbtn">
+					<div className='profile__left--connectionbtn'>
 						<ConnectionButton values={values} setValues={setValues} />
 					</div>
-					<div className="profile__left--followbtn">
+					<div className='profile__left--followbtn'>
 						<FollowButton values={values} setValues={setValues} />
 					</div>
 				</div>
 
-				<div className="profile__right">
-					<div className="profile__right--about">
+				<div className='profile__right'>
+					<div className='profile__right--about'>
 						<About values={values} setValues={setValues} />
 					</div>
-					<div className="profile__right--hostedevents">
-						<HostedEvents values={values} setValues={setValues} />
+					<div className='profile__right--hostedevents'>
+						<HostedEvents
+							values={values}
+							setValues={setValues}
+							hosted_events={dummyEvents}
+						/>
 					</div>
-					<div className="profile__right--eventsattended">
-						<EventAttended values={values} setValues={setValues} />
+					<div className='profile__right--eventsattended'>
+						<EventAttended
+							values={values}
+							setValues={setValues}
+							dummyEvents={dummyEvents}
+						/>
 					</div>
 				</div>
-
 			</div>
 			<Footer />
 		</section>
-	)
-}
+	);
+};
 
-export default Profile;
+const mapStateToProps = (state) => ({
+	isAuthenticated: state.authState.isAuthenticated,
+	profile: state.profileState.profile
+});
+
+export default connect(mapStateToProps, {})(Profile);
