@@ -6,6 +6,13 @@ import { login } from '../../redux/actions/authActions';
 import { getSelfProfile } from '../../redux/actions/profileActions';
 
 const LoginComponentOld = (props) => {
+	const isLoggedIn = () => {
+		if (props.isAuthenticated) {
+			console.log('already logged in');
+			return <Redirect to='/profile' />;
+		}
+	};
+
 	const [state, setState] = useState({
 		email: '',
 		password: ''
@@ -65,11 +72,14 @@ const LoginComponentOld = (props) => {
 				</div>
 				<button type='submit'>Submit</button>
 			</form>
+			{isLoggedIn()}
 		</div>
 	);
 };
 
-const mapStateToProps = (state) => ({});
+const mapStateToProps = (state) => ({
+	isAuthenticated: state.authState.isAuthenticated
+});
 
 export default connect(mapStateToProps, { login, getSelfProfile })(
 	withRouter(LoginComponentOld)

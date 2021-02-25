@@ -105,7 +105,12 @@ const EventCard = (props) => {
 				)}
 			</div>
 
-			<Link to={`/events/${id}`}>
+			<Link
+				to={{
+					pathname: `/event/${id}`,
+					state: { event: props.event }
+				}}
+			>
 				<div className='bottom-details'>
 					<div className='date'>
 						<p className='month'>SEP</p>

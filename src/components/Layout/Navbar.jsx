@@ -54,7 +54,7 @@ const Navbar = (props) => {
 						exact={true}
 						activeClassName='active-link'
 						className='nav-link'
-						to='/bookmarks'
+						to='/my-events'
 					>
 						<i className='far fa-heart fa-2x icon'></i>
 					</NavLink>
@@ -97,7 +97,7 @@ const Navbar = (props) => {
 						exact={true}
 						activeClassName='active-link'
 						className='nav-link'
-						to='/loginold'
+						to='/login'
 					>
 						Login
 					</NavLink>
@@ -105,14 +105,14 @@ const Navbar = (props) => {
 						exact={true}
 						activeClassName='active-link'
 						className='nav-link'
-						to='/registerold'
+						to='/register'
 					>
 						Register
 					</NavLink>
 				</>
 			)}
 
-			<NavLink exact={true} activeClassName='active-link' className='btn' to='/host'>
+			<NavLink exact={true} activeClassName='active-link' className='btn' to='/hostintro'>
 				Host
 			</NavLink>
 		</nav>

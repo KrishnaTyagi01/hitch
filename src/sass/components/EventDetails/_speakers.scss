@@ -1,22 +1,22 @@
-.speakers{
+.speakers {
 	width: 650px;
 	background-color: var(--color-primary-1);
-	&__header{
+	.header {
 		font-family: 'Kumbh Sans', sans-serif;
 		font-style: normal;
 		font-weight: bold;
 		font-size: 24px;
 		line-height: 24px;
 		text-transform: uppercase;
-		color: #FFFFFF;
-		margin-bottom:38.25px;
+		color: #ffffff;
+		margin-bottom: 38.25px;
 	}
 
-	&__cards{
+	.cards {
 		width: 100%;
 		display: flex;
 		justify-content: space-between;
-	   
+
 		flex-wrap: wrap;
 	}
-} 
+}

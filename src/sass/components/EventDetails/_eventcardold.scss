@@ -1,4 +1,4 @@
-.eventcard {
+.ticket-card {
 	width: 310px;
 	height: 429.25px;
 	background-color: var(--color-primary-2);
@@ -6,7 +6,7 @@
 	border-radius: 10px;
 	color: white;
 
-	&__wrapper {
+	.wrapper {
 		height: 100%;
 		padding-left: 19px;
 		padding-right: 19px;
@@ -16,7 +16,7 @@
 		justify-content: space-around;
 	}
 
-	&__category {
+	.category {
 		font-family: 'Kumbh Sans', sans-serif;
 		font-style: normal;
 		font-weight: bold;
@@ -27,7 +27,7 @@
 		// padding-bottom: 21px !important;
 	}
 
-	&__eventname {
+	.eventname {
 		display: flex;
 		flex-direction: column;
 
@@ -40,12 +40,12 @@
 		line-height: 135.9%;
 		color: #ffffff;
 
-		&--hostname {
+		.hostname {
 			text-transform: uppercase;
 		}
 	}
 
-	&__date {
+	.date {
 		font-family: 'Kumbh Sans', sans-serif;
 		font-style: normal;
 		font-weight: 300;
@@ -54,7 +54,7 @@
 		color: #e6e4f2;
 	}
 
-	&__eventdate {
+	.eventdate {
 		font-family: 'Kumbh Sans', sans-serif;
 		font-style: normal;
 		font-weight: bold;
@@ -64,7 +64,7 @@
 		color: #39eab4;
 	}
 
-	&__start {
+	.start {
 		font-family: 'Kumbh Sans', sans-serif;
 		font-style: normal;
 		font-weight: 300;
@@ -73,7 +73,7 @@
 		color: #e6e4f2;
 	}
 
-	&__eventtime {
+	.eventtime {
 		font-family: 'Kumbh Sans', sans-serif;
 		font-style: normal;
 		font-weight: bold;
@@ -84,16 +84,16 @@
 		color: #ecea47;
 	}
 
-	&__lower {
+	.lower {
 		display: flex;
 		justify-content: space-between;
 		width: 100%;
-		&--entrybox {
+		.entrybox {
 			display: flex;
 			flex-direction: column;
 		}
 
-		&--entry {
+		.entry {
 			font-family: 'Kumbh Sans', sans-serif;
 			font-style: normal;
 			font-weight: 300;
@@ -103,7 +103,7 @@
 			color: #e6e4f2;
 		}
 
-		&--entrytype {
+		.entrytype {
 			font-family: 'Kumbh Sans', sans-serif;
 			font-style: normal;
 			font-weight: bold;
@@ -113,12 +113,12 @@
 			margin-top: 9px;
 		}
 
-		&--time {
+		.time {
 			display: flex;
 			flex-direction: column;
 		}
 
-		&--start {
+		.start {
 			font-family: 'Kumbh Sans', sans-serif;
 			font-style: normal;
 			font-weight: 300;
@@ -128,7 +128,7 @@
 			color: #e6e4f2;
 		}
 
-		&--entrytime {
+		.entrytime {
 			font-family: 'Kumbh Sans', sans-serif;
 			font-style: normal;
 			font-weight: bold;
@@ -139,19 +139,19 @@
 		}
 	}
 
-	.registerBtn{
-		width:100%;
+	.registerBtn {
+		width: 100%;
 		display: flex;
 		justify-content: center;
 	}
 
-	&__button {
+	.button {
 		background: #39eab4;
 		border-radius: 10px;
 		margin-top: 1rem;
 		cursor: pointer;
 		padding: 3px 6px;
-		
+
 		border: none;
 		height: 37px;
 		font-family: 'Kumbh Sans', sans-serif;

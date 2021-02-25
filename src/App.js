@@ -1,34 +1,45 @@
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
 import { Provider } from 'react-redux';
 
+import PrivateRoute from './components/Common/PrivateRoute';
 import Navbar from './components/Layout/Navbar';
 import Footer from './components/Layout/Footer';
 import Home from './pages/Home';
-import LoginOld from './pages/LoginOld';
-import Signup from './pages/Signup';
-import Signin from './pages/Signin';
-import RegisterOld from './pages/RegisterOld';
-import Check from './pages/Check';
+import Login from './pages/Login';
+import Register from './pages/Register';
 import Otp from './pages/Otp';
-import EventDetailsPage from './pages/EventDetailsPage';
+import EventPage from './pages/EventPage';
 import Profile from './pages/Profile';
 import HostIntro from './pages/HostIntro';
 import Page404 from './pages/Page404';
-import PrivateRoute from './components/Common/PrivateRoute';
-
-import store from './redux/store';
-import '@fortawesome/fontawesome-free/css/all.min.css';
-import './App.css';
 
 import eventsPage from './components/myEvents/eventsPage';
 import AboutUs from './components/AboutUs/AboutUs';
 import HostEvent from './components/HostEvent/HostEvent';
 import Temp from './components/Dashboard/Temp';
-import Login from './pages/Login';
 import Otp_Page from './pages/otp_page';
 import RegisterEvent from './pages/RegisterEvent';
 
+// import Filter from './components/myEvents/Filter'
+// import Upper from './components/myEvents/Upper';
+
+import store from './redux/store';
+import '@fortawesome/fontawesome-free/css/all.min.css';
+import './App.css';
+
 function App() {
+	// function _ScrollToTop(props) {
+	// 	const { pathname } = useLocation();
+	// 	useEffect(() => {
+	// 		window.scrollTo(0, 0);
+	// 	}, [pathname]);
+	// 	return props.children;
+	// }
+
+	// const ScrollToTop = withRouter(_ScrollToTop);
+	// <ScrollToTop >
+	// </ScrollToTop>
+
 	return (
 		<Provider store={store}>
 			<BrowserRouter>
@@ -37,33 +48,25 @@ function App() {
 
 					<Switch>
 						<Route exact path='/' component={Home} />
-						<Route exact path='/eventdetails' component={EventDetailsPage} />
-						<Route exact path='/events/:id' component={EventDetailsPage} />
-						<Route exact path='/check' component={Check} />
-						<Route exact path='/signup' component={Signup} />
-						<Route exact path='/signin' render={(props) => <Signin {...props} />} />
-						<Route exact path='/loginold' render={(props) => <LoginOld {...props} />} />
+						<Route exact path='/login' component={Login} />
+						<Route exact path='/register' component={Register} />
+						<Route exact path='/otp' render={(props) => <Otp {...props} />} />
+						<Route exact path='/otp_page' render={(props) => <Otp_Page {...props} />} />
+
+						<Route exact path='/about' component={AboutUs} />
+						<Route exact path='/hostintro' component={HostIntro} />
 						<Route
 							exact
-							path='/registerold'
-							render={(props) => <RegisterOld {...props} />}
+							path='/event/:eventID'
+							render={(props) => <EventPage {...props} />}
 						/>
-						<Route exact path='/otp' render={(props) => <Otp {...props} />} />
-						<PrivateRoute exact path='/profile' component={Profile} />
-						<Route exact path='/hostintro' component={HostIntro} />
+						<Route exact path='/my-events' component={eventsPage} />
 
-						<Route exact path='/register' component={Register} />
-						<Route exact path='/event-details' component={EventDetailsPage} />
-						<Route exact path='/events' component={eventsPage}></Route>
-						<Route exact path='/about-us' component={AboutUs}></Route>
-						<Route exact path='/host-event' component={HostEvent}></Route>
-						<Route exact path='/dashboard' component={Temp}></Route>
-						<Route exact path='/login' component={Login}></Route>
-						<Route exact path='/otp_page' render={(props) => <Otp_Page {...props} />}>
-							{' '}
-						</Route>
-						{/* // <Route path="/test/new" render={(props) => <NewTestComp {...props}/>}/> */}
-						<Route exact path='/register-event' component={RegisterEvent} />
+						<PrivateRoute exact path='/profile' component={Profile} />
+						<PrivateRoute exact path='/dashboard' component={Temp} />
+						<PrivateRoute exact path='/host-event' component={HostEvent} />
+						<PrivateRoute exact path='/register-event' component={RegisterEvent} />
+
 						<Route component={Page404} />
 					</Switch>
 
@@ -71,51 +74,6 @@ function App() {
 				</div>
 			</BrowserRouter>
 		</Provider>
-
-		// =======
-		// import Profile from './pages/Profile'
-		// import HostIntro from './pages/HostIntro'
-		// // import { BrowserRouter, Switch, Route } from 'react-router-dom';
-		// import PrivateRoute from './API/ProtectedRoute'
-		// import Filter from './components/myEvents/Filter'
-		// import Upper from './components/myEvents/Upper';
-		// import eventsPage from './components/myEvents/eventsPage';
-
-		// function _ScrollToTop(props) {
-		// 	const { pathname } = useLocation();
-		// 	useEffect(() => {
-		// 		window.scrollTo(0, 0);
-		// 	}, [pathname]);
-		// 	return props.children;
-		// }
-
-		// const ScrollToTop = withRouter(_ScrollToTop);
-
-		// function App() {
-		// 	return (
-		// 		<BrowserRouter>
-		// 			<Switch>
-		// 				<ScrollToTop >
-		// <Route exact path="/event-details" component={EventDetailsPage} />
-		// {/* <Route exact path="/event-details" render={(props) => <EventDetailsPage {...props} />} /> */}
-		// <Route exact path="/check"><Check /></Route>
-		// {/* <Route exact path="/landing"><Landing /></Route> */}
-		// <Route exact path="/signup"> <Signup /></Route>
-		// <Route exact path="/"> <Signup /></Route>
-		// <Route exact path="/signin" render={props => <Signin {...props} />} />
-		// <Route exact path="/register"> <Register /></Route>
-		// <Route exact path="/otp" render={props => <Otp {...props} />} />
-		// <PrivateRoute exact path="/profile" component={Profile} />
-		// <Route exact path="/hostintro"> <HostIntro /></Route>
-		// <Route exact path="/events" component={eventsPage}></Route>
-		// <Route exact path="/about-us" component={AboutUs}></Route>
-		// <Route exact path="/host-event" component={HostEvent}></Route>
-		// <Route exact path="/dashboard" component={Temp}></Route>
-		// 				</ScrollToTop>
-		// 			</Switch>
-		// 		</BrowserRouter>
-
-		// >>>>>>> my_branch
 	);
 }
 

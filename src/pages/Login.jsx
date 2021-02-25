@@ -1,100 +1,86 @@
-import React from 'react';
+import { useState } from 'react';
 import { connect } from 'react-redux';
+import { withRouter, useHistory, Redirect } from 'react-router-dom';
 
-import { getEvents, incCount } from '../redux/actions/commonActions';
-import { login, logout } from '../redux/actions/authActions';
+import { login } from '../redux/actions/authActions';
 import { getSelfProfile } from '../redux/actions/profileActions';
-import { useState } from 'react/cjs/react.development';
-import Navbar from '../components/Layout/Navbar';
-import Footer from '../components/Layout/Footer';
-import { Redirect } from 'react-router-dom';
 
-const Login = (props) => {
-	const [user, setUser] = useState('');
-	const [pass, setPass] = useState('');
-
-	const onLogin = () => {
-		props.login({ username: user, password: pass }, () => {
-			console.log('login request sent');
-		});
-	};
-
+const LoginComponentOld = (props) => {
 	const isLoggedIn = () => {
-		if (props.name && props.username && props.token) {
-			console.log('logged in');
+		if (props.isAuthenticated) {
+			console.log('already logged in');
 			return <Redirect to='/profile' />;
 		}
 	};
 
-	return (
-		<>
-			<Navbar />
-			<div className='registerContainer'>
-				<div className='signin'>
-					<h2 className='signin__heading'>Login</h2>
-					<div className='signin__mid'>
-						<label className='signin__mid--before'>Username</label>
-						<input
-							className='signin__mid--input'
-							value={user}
-							onChange={(e) => setUser(e.target.value)}
-							id='username'
-							placeholder='Username'
-							type='text'
-						/>
-					</div>
-					<div className='signin__mid'>
-						<label className='signin__mid--before'>Password</label>
-						<input
-							className='signin__mid--input'
-							id='pass'
-							value={pass}
-							onChange={(e) => setPass(e.target.value)}
-							placeholder='Password'
-							type='password'
-						/>
-					</div>
-					<button className='signin__btn' onClick={onLogin}>
-						Enter
-					</button>
-					{isLoggedIn()}
-				</div>
-			</div>
-			<Footer />
-		</>
-	);
+	const [state, setState] = useState({
+		email: '',
+		password: ''
+	});
+	const [showPassword, setShowPassword] = useState(false);
 
-	// <div className="registerContainer">
-	// 		<div className="signin">
-	// 			<h2 className="signin__heading">Register User</h2>
-	// 			<div className="signin__mid">
-	// 				{/* <span className="signin__mid--before">Name</span>
-	// 				<input onChange={handleChange('name')} type="text" className="signin__mid--input"
-	// 					placeholder="Enter Your Name Here" /> */}
-	// 				<span className="signin__mid--before">Email or Phone Number</span>
-	// 				<input onChange={handleChange('email')} type="text" className="signin__mid--input"
-	// 					placeholder="Enter Your Email or Phone Number Here" />
-	// 				<span className="signin__mid--before">Password</span>
-	// 				<input onChange={handleChange('password')} type="password" className="signin__mid--input"
-	// 					placeholder="Enter Your Password" />
-	// 			</div>
-	// 			<button onClick={handleClick} className="signin__btn">Enter</button>
-	// 		</div>
+	const handleChange = (e) => {
+		setState({ ...state, [e.target.name]: e.target.value });
+	};
+
+	let history = useHistory();
+
+	const handleSubmit = (e) => {
+		e.preventDefault();
+		props.login({ username: state.email, password: state.password }, () => {
+			props.getSelfProfile();
+			history.push(props.location.referrer ?? '/');
+		});
+	};
+
+	return (
+		<div className='login'>
+			<form className='form-container' onSubmit={handleSubmit}>
+				<h2 className='heading'>Login</h2>
+
+				<div className='field'>
+					<label>Email</label>
+					<input
+						required
+						type='text'
+						name='email'
+						onChange={handleChange}
+						placeholder='Enter Your Email Here'
+					/>
+				</div>
+				<div className='field'>
+					<label>Password</label>
+					<input
+						required
+						type={showPassword ? 'text' : 'password'}
+						name='password'
+						onChange={handleChange}
+						placeholder='Enter Your Password'
+					/>
+					<span
+						className='toggle-password'
+						onClick={() => {
+							setShowPassword(!showPassword);
+						}}
+					>
+						{!showPassword ? (
+							<i className='fas fa-eye-slash'></i>
+						) : (
+							<i className='fas fa-eye'></i>
+						)}
+					</span>
+				</div>
+				<button type='submit'>Submit</button>
+			</form>
+			{isLoggedIn()}
+		</div>
+	);
 };
 
 const mapStateToProps = (state) => ({
-	events: state.eventState.events,
-	count: state.eventState.count,
-	name: state.authState.name,
-	username: state.authState.username,
-	token: state.authState.token,
-	detail: state.profileState.detail
+	isAuthenticated: state.authState.isAuthenticated
 });
 
-export default connect(mapStateToProps, {
-	login,
-	logout,
-	getEvents,
-	incCount,
-	getSelfProfile
-})(Login);
+export default connect(mapStateToProps, { login, getSelfProfile })(
+	withRouter(LoginComponentOld)
+);
