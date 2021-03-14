@@ -1,24 +1,36 @@
+
+export const isTokenExpired = (expiry) => Date.now() >= Date.parse(expiry);
+
 export const loadUser = () => {
 	if (typeof window !== 'undefined') {
 		try {
 			const serializedUser = localStorage.getItem('user');
 			if (serializedUser === null) {
 				return undefined;
+			} else if (isTokenExpired(JSON.parse(serializedUser).expiry)) {
+				return {
+					persistedUser: null,
+					isAuthenticated: false,
+					authMessage: 'Session expired. Please login again'
+				};
+			} else {
+				return {
+					persistedUser: JSON.parse(serializedUser),
+					isAuthenticated: true,
+					authMessage: 'session restored'
+				};
 			}
-			console.log(serializedUser);
-			return JSON.parse(serializedUser);
 		} catch (err) {
 			return undefined;
 		}
 	}
 };
 
-export const saveUser = (user, next) => {
+export const saveUser = (user) => {
 	if (typeof window !== 'undefined') {
 		try {
 			const serializedUser = JSON.stringify(user);
 			localStorage.setItem('user', serializedUser);
-			next();
 		} catch (err) {
 			console.log(err);
 		}

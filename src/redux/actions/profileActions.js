@@ -1,3 +1,4 @@
+
 import axios from 'axios';
 
 import { errorHandler } from './errorHandler';
@@ -11,8 +12,20 @@ import {
 	GET_WISHLIST,
 	ADD_TO_WISHLIST,
 	REMOVE_FROM_WISHLIST,
-	DELETE_WISHLIST
+	DELETE_WISHLIST,
+	ADD_TO_CALENDER,
+	REMOVE_FROM_CALENDER
 } from '../types';
+
+export const editProfileConfig = (getState) => {
+	const config = { headers: {} };
+	const token = getState().authState.token;
+	if (token) {
+		config.headers['Authorization'] = `Token ${token}`;
+		config.headers['Content-Type'] = 'multipart/form-data';
+	}
+	return config;
+};
 
 export const getSelfProfile = () => async (dispatch, getState) => {
 	try {
@@ -22,19 +35,25 @@ export const getSelfProfile = () => async (dispatch, getState) => {
 			payload: response.data
 		});
 	} catch (error) {
-		errorHandler(error);
+		errorHandler(error, dispatch);
 	}
 };
 
-export const editProfile = () => async (dispatch, getState) => {
+export const editProfile = (id, data, next) => async (dispatch, getState) => {
 	try {
-		const response = await axios.put('/profiles/self/', tokenConfig(getState));
+		console.log({ id, data });
+		const response = await axios.put(
+			`/profiles/${id}/`,
+			data,
+			editProfileConfig(getState)
+		);
 		dispatch({
 			type: EDIT_PROFILE,
 			payload: response.data
 		});
+		next();
 	} catch (error) {
-		errorHandler(error);
+		errorHandler(error, dispatch);
 	}
 };
 
@@ -46,7 +65,7 @@ export const getHostedEvents = () => async (dispatch, getState) => {
 			payload: response.data
 		});
 	} catch (error) {
-		errorHandler(error);
+		errorHandler(error, dispatch);
 	}
 };
 
@@ -58,7 +77,7 @@ export const getAttendedEvents = () => async (dispatch, getState) => {
 			payload: response.data
 		});
 	} catch (error) {
-		errorHandler(error);
+		errorHandler(error, dispatch);
 	}
 };
 
@@ -70,24 +89,25 @@ export const getUpcomingEvents = () => async (dispatch, getState) => {
 			payload: response.data
 		});
 	} catch (error) {
-		errorHandler(error);
+		errorHandler(error, dispatch);
 	}
 };
 
 export const getWishlist = () => async (dispatch, getState) => {
 	try {
-		const response = await axios.get('/profiles/wishlist', tokenConfig(getState));
+		const response = await axios.get('/profiles/wishlist/', tokenConfig(getState));
 		dispatch({
 			type: GET_WISHLIST,
 			payload: response.data
 		});
 	} catch (error) {
-		errorHandler(error);
+		errorHandler(error, dispatch);
 	}
 };
 
-export const addToWishlist = (eventID) => async (dispatch, getState) => {
+export const addToWishlist = (eventID, next) => async (dispatch, getState) => {
 	try {
+		console.log('haha wishlist');
 		const response = await axios.post(
 			'/profiles/wishlist/',
 			{ add: eventID },
@@ -97,12 +117,13 @@ export const addToWishlist = (eventID) => async (dispatch, getState) => {
 			type: ADD_TO_WISHLIST,
 			payload: response.data
 		});
+		next();
 	} catch (error) {
-		errorHandler(error);
+		errorHandler(error, dispatch);
 	}
 };
 
-export const removeFromWishlist = (eventID) => async (dispatch, getState) => {
+export const removeFromWishlist = (eventID, next) => async (dispatch, getState) => {
 	try {
 		const response = await axios.post(
 			'/profiles/wishlist/',
@@ -113,8 +134,9 @@ export const removeFromWishlist = (eventID) => async (dispatch, getState) => {
 			type: REMOVE_FROM_WISHLIST,
 			payload: response.data
 		});
+		next();
 	} catch (error) {
-		errorHandler(error);
+		errorHandler(error, dispatch);
 	}
 };
 
@@ -126,6 +148,58 @@ export const deleteWishlist = () => async (dispatch, getState) => {
 			payload: response.data
 		});
 	} catch (error) {
-		errorHandler(error);
+		errorHandler(error, dispatch);
 	}
 };
+
+export const addToCalender = (eventID, next) => async (dispatch, getState) => {
+	try {
+		console.log('add to calender');
+		// const response = await axios.post(
+		// 	'/profiles/calender/',
+		// 	{ add: eventID },
+		// 	tokenConfig(getState)
+		// );
+		// dispatch({
+		// 	type: ADD_TO_CALENDER,
+		// 	payload: response.data
+		// });
+		next();
+	} catch (error) {
+		errorHandler(error, dispatch);
+	}
+};
+
+export const removeFromCalender = (eventID, next) => async (dispatch, getState) => {
+	try {
+		console.log('remove from calender');
+		// const response = await axios.post(
+		// 	'/profiles/calender/',
+		// 	{ add: eventID },
+		// 	tokenConfig(getState)
+		// );
+		// dispatch({
+		// 	type: ADD_TO_CALENDER,
+		// 	payload: response.data
+		// });
+		next();
+	} catch (error) {
+		errorHandler(error, dispatch);
+	}
+};
+
+// ===================================================================================================
+
+// export const editProfile = (id, data) => async (dispatch, getState) => {
+// 	try {
+// 		const response = await axios.put(`/profiles/${id}/`, data, {
+// 			headers: { ...tokenConfig(getState).headers, 'Content-Type': 'multipart/form-data' }
+// 		});
+// 		dispatch({
+// 			type: EDIT_PROFILE,
+// 			payload: response.data
+// 		});
+// 	} catch (error) {
+// 		errorHandler(error, dispatch);
+// 	}
+// };

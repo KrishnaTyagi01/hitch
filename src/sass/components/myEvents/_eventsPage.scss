@@ -37,3 +37,25 @@
     }
 
 }
+
+@media(max-width:870px){
+    .eventsPage{
+        .upper{
+            &__container{
+                margin-left: 0px;
+                &--head{
+                    margin-left: 40%;
+                }
+            }
+        }
+
+        &__content{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            &--filter{
+                margin-top: 20px;
+            }
+        }
+    }
+}

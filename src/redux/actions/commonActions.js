@@ -1,7 +1,8 @@
+
 import axios from 'axios';
 
 import { errorHandler } from './errorHandler';
-import { GET_EVENTS, GET_EVENT, GET_PROFILE, INC_COUNT } from '../types';
+import { GET_EVENTS, GET_EVENT, GET_PROFILE, INC_COUNT, CLEAR_STATE } from '../types';
 
 export const getEvents = () => async (dispatch) => {
 	try {
@@ -33,6 +34,17 @@ export const getProfile = (profileID) => async (dispatch) => {
 		dispatch({
 			type: GET_PROFILE,
 			payload: response.data
+		});
+	} catch (error) {
+		errorHandler(error);
+	}
+};
+
+export const clearState = () => async (dispatch) => {
+	try {
+		dispatch({
+			type: CLEAR_STATE,
+			payload: 'cleared redux state'
 		});
 	} catch (error) {
 		errorHandler(error);

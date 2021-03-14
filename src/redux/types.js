@@ -1,3 +1,4 @@
+
 // Auth actions
 export const CHECK_USER_EXISTENCE = 'CHECK_USER_EXISTENCE';
 export const VALIDATE_OTP = 'VALIDATE_OTP';
@@ -16,10 +17,17 @@ export const USER_LOADED = 'USER_LOADED';
 export const USER_LOADING = 'USER_LOADING';
 export const AUTH_ERROR = 'AUTH_ERROR';
 
+// User actions
+export const ACTIVATE_LOGIN_PROMPT = 'ACTIVATE_LOGIN_PROMPT';
+export const DEACTIVATE_LOGIN_PROMPT = 'DEACTIVATE_LOGIN_PROMPT';
+export const SET_REFERRER = 'SET_REFERRER';
+export const CLEAR_STATE = 'CLEAR_STATE';
+
 // Common actions
 export const GET_EVENTS = 'GET_EVENTS';
 export const GET_EVENT = 'GET_EVENT';
 export const GET_PROFILE = 'GET_PROFILE';
+export const SERVER_ERROR = 'SERVER_ERROR';
 
 // Profile actions
 export const GET_SELF_PROFILE = 'GET_SELF_PROFILE';
@@ -32,11 +40,13 @@ export const GET_WISHLIST = 'GET_WISHLIST';
 export const ADD_TO_WISHLIST = 'ADD_TO_WISHLIST';
 export const REMOVE_FROM_WISHLIST = 'REMOVE_FROM_WISHLIST';
 export const DELETE_WISHLIST = 'DELETE_WISHLIST';
+export const ADD_TO_CALENDER = 'ADD_TO_CALENDER';
 
 // Event actions
 export const CREATE_EVENT = 'CREATE_EVENT';
 export const EDIT_EVENT = 'EDIT_EVENT';
 export const REGISTER_FOR_EVENT = 'REGISTER_FOR_EVENT';
-export const VERIFY_PAYMENT_FOR_EVENT = 'VERIFY_PAYMENT_FOR_EVENT';
+export const PAYMENT_SUCCESS = 'PAYMENT_SUCCESS';
+export const PAYMENT_FAILURE = 'PAYMENT_FAILURE';
 
 export const INC_COUNT = 'INC_COUNT';

@@ -2,12 +2,65 @@ import 'react-modern-calendar-datepicker/lib/DatePicker.css';
 import DatePicker from 'react-modern-calendar-datepicker';
 import { Calendar } from "react-modern-calendar-datepicker";
 import { useState } from 'react';
+import { useEffect } from 'react/cjs/react.development';
+import axios from 'axios';
+import { connect } from 'react-redux';
 
-const Filter = () => {
-	const [category, setCategory] = useState(false);
+const Filter = (props) => {
+	const [category, setCategory] = useState(true);
 	const [time, setTime] = useState(false);
 	const [language, setLanguage] = useState(false);
 	const [date, setDate] = useState(false);
+	const [filterState, setFilterState] = useState({
+		category: {
+			'design': false,
+			'soccer': false,
+			'music': false,
+		},
+	});
+	// const [events, setEvents] = useState([]);
+
+	useEffect(() => {
+		let query = '[';
+		if (filterState.category['design']) query += "\"design\",";
+		if (filterState.category['soccer']) query += "\"soccer\",";
+		if (filterState.category['music']) query += "\"music\",";
+		query = query.substr(0, query.length - 1);
+		query += "]";
+		if (query.length == 1) query = '[]';
+		// console.log(query);
+		const getEvents = async () => {
+			console.log(`Token ${props.token}`);
+			let res = await axios({
+				method: 'POST',
+				url: `http://167.71.237.202/events/search/`,
+				headers: {
+					Authorization: `Token ${props.token}`,
+				},
+				data: {
+					"topics": query,
+				}
+			});
+			for (let i = 0; i < res.data.length; ++i) {
+				res.data[i].image = "http://167.71.237.202" + res.data[i].image;
+			}
+			props.onFilterChange(res.data);
+		}
+		getEvents();
+
+
+
+	}, [filterState]);
+
+	const changeFilter = (e, type) => {
+		let newstate = { ...filterState };
+		// console.log(newstate.category[type]);
+		newstate.category[type] = !newstate.category[type];
+		setFilterState(newstate);
+		e.stopPropagation();
+	}
+
+
 
 	return (
 		<div className="filter">
@@ -25,21 +78,22 @@ const Filter = () => {
 				{category ? (
 					<div className="filter__checkbox">
 						<form className="filter__form" style={{ display: "flex", flexDirection: "column" }}>
-							<label className="filter__form--span">
+							<label
+								className="filter__form--span">
 								<input className="filter__checkbox--input" type="checkbox" value="greenEggs" />
-								<span class="filter__checkbox--checkmark"></span>
+								<span onClick={e => changeFilter(e, 'design')} class="filter__checkbox--checkmark"></span>
 							Design
-						</label>
+							</label>
 							<label className="filter__form--span">
 								<input className="filter__checkbox--input" type="checkbox" value="greenEggs" />
-								<span class="filter__checkbox--checkmark"></span>
+								<span onClick={e => changeFilter(e, 'soccer')} class="filter__checkbox--checkmark"></span>
 							Football
-						</label>
+							</label>
 							<label className="filter__form--span">
 								<input className="filter__checkbox--input" type="checkbox" value="greenEggs" />
-								<span class="filter__checkbox--checkmark"></span>
+								<span onClick={e => changeFilter(e, 'music')} class="filter__checkbox--checkmark"></span>
 							Music
-						</label>
+							</label>
 						</form>
 					</div>) : null}
 
@@ -124,4 +178,10 @@ const Filter = () => {
 	)
 }
 
-export default Filter;
+const mapStateToProps = state => {
+	return {
+		token: state.authState.token,
+	}
+}
+
+export default connect(mapStateToProps)(Filter);

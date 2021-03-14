@@ -1,0 +1,33 @@
+.small-action-button {
+	color: var(--color-text-2);
+	background: var(--color-primary-2);
+	box-shadow: 0px 0px 14px rgba(0, 0, 0, 0.5);
+	border-radius: 10px;
+	display: block;
+	font-family: 'Kumbh Sans', sans-serif;
+	font-style: normal;
+	font-weight: bold;
+	font-size: 16px;
+	line-height: 16px;
+	margin-top: 13.72px;
+	max-width: 311px;
+	height: 52px;
+	border: 2px solid var(--color-primary-2);
+	box-shadow: 0px 0px 14px rgba(0, 0, 0, 0.5);
+	cursor: pointer;
+	transition: all 0.2s;
+
+	&__icon {
+		width: 20px;
+		height: 20px;
+		margin-right: 24px;
+		// background: #FFFFFF;
+	}
+
+	&:hover,
+	&:focus {
+		// box-shadow: 0 0 0 2px var(--color-primary-5);
+		// box-shadow: 0px 0px 14px rgba(0, 0, 0, 0.2);
+		border: 2px solid var(--color-primary-4);
+	}
+}

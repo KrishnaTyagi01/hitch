@@ -1,0 +1,98 @@
+.message-board {
+	margin-top: 150px;
+
+	.heading {
+		font-family: 'Kumbh Sans', sans-serif;
+		font-style: normal;
+		font-weight: bold;
+		font-size: 24px;
+		line-height: 30px;
+		margin-bottom: 43.63px;
+		color: #ffffff;
+	}
+
+	.board {
+		// background-color: var(--color-primary-2);
+		background: rgba(82, 70, 144, 0.5);
+		border: 3px solid var(--color-secondary-3);
+		border-radius: 10px;
+		width: 100%;
+		max-width: 660px;
+		height: 600px;
+		overflow: hidden;
+
+		.messages-container {
+			background-color: var(--color-primary-2);
+			padding: 20px 40px;
+			height: calc(100% - 72px);
+			overflow-y: auto;
+
+			.message {
+				color: var(--color-text-2);
+				// background-color: var(--color-primary-1);
+				background: rgba(23, 20, 41, 0.4);
+				padding: 8px;
+				margin: 10px auto;
+				width: 100%;
+
+				.profile-picture {
+					width: 10%;
+
+					img {
+						object-fit: scale-down;
+						width: 100%;
+						height: auto;
+					}
+				}
+
+				.details {
+					width: 90%;
+				}
+			}
+		}
+
+		.new-message {
+			position: sticky;
+			bottom: 0;
+			width: 100%;
+			background-color: var(--color-primary-1);
+			padding: 15px 20px;
+
+			.textarea-wrapper {
+				display: flex;
+				justify-content: space-between;
+				position: relative;
+				padding: 10px 20px;
+				background: var(--color-primary-2);
+				border-radius: 16px;
+				width: 100%;
+
+				input {
+					color: var(--color-text-2);
+					background-color: transparent;
+					font-size: 14px;
+					transition: 0.1s;
+					width: 90%;
+					resize: none;
+					background-color: transparent;
+					border: none;
+					outline: none;
+					color: var(--color-text-2);
+					font-family: inherit;
+				}
+
+				.submit-button {
+					background-color: transparent;
+					border: none;
+					cursor: pointer;
+
+					img {
+						object-fit: scale-down;
+						width: 100%;
+						height: auto;
+					}
+				}
+			}
+		}
+	}
+}

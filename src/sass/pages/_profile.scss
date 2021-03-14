@@ -1,27 +1,26 @@
-.profilepage{
+.profilepage {
 	background-color: var(--color-primary-1);
 }
 
-.profile{
+.profile {
 	background-color: var(--color-primary-1);
 	display: flex;
 	justify-content: space-between;
 	// width: 100vw;
- 
 
 	// &__top{
 	//     overflow-x: hidden;
 	// }
-	&__left{
+	&__left {
 		width: 25%;
 		margin-left: 37px;
-		// background-color: red;
-		&--profilecard{
+
+		&--profilecard {
 			margin-top: -271px;
 			margin-bottom: 19px;
 		}
 
-		&--connectionbtn{
+		&--connectionbtn {
 			margin-bottom: 24px;
 		}
 
@@ -30,24 +29,8 @@
 		// }
 	}
 
-	&__right{
+	&__right {
 		margin-right: 45px;
 		width: 65%;
-		&--about{
-			margin-top: 50.34px;
-		}
-
-		&--hostedevents{
-			margin-top: 52.45px;
-
-		}
-
-		&--eventsattended{
-			margin-top: 62.1px;
-		}
-	}
-
-	&__footer{
-		margin-top: 90px;
 	}
 }

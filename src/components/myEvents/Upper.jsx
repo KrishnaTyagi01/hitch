@@ -11,7 +11,7 @@ const Upper = (props) => {
 
 
 	useEffect(() => {
-		console.log(props.token);
+		// console.log(props.token);
 		props.onButtonClick(events);
 	}, [events])
 

@@ -1,0 +1,26 @@
+.overview {
+	width: 829.5px;
+	background-color: var(--color-primary-1);
+	margin-top: 104.73px;
+
+	&__header {
+		font-family: 'Kumbh Sans', sans-serif;
+		font-style: normal;
+		font-weight: bold;
+		font-size: 24px;
+		line-height: 24px;
+
+		color: #ffffff;
+		margin-bottom: 20px;
+	}
+
+	&__content {
+		font-family: Kumbh Sans;
+		font-style: normal;
+		font-weight: normal;
+		font-size: 16px;
+		line-height: 241.8%;
+		color: #ffffff;
+		text-align: justify;
+	}
+}
