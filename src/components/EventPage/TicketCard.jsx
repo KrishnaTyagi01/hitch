@@ -19,16 +19,11 @@ const currency_symbols = {
 	VND: '₫' // Vietnamese Dong
 };
 
-const EventCard = (props) => {
-	// const price =
-	// 	props.event?.ticket_price === 0
-	// 		? 'FREE'
-	// 		: currency_symbols['INR'] + props.event?.ticket_price;
-
+const TicketCard = (props) => {
 	return (
 		<div className='ticket-card'>
 			<div className='wrapper'>
-				<span className='category'>Featured in Concerts</span>
+				<h5 className='category'>Featured in Concerts</h5>
 
 				<div className='eventname'>
 					<span className='hostname'>{props.event?.title} </span>
@@ -36,52 +31,51 @@ const EventCard = (props) => {
 					<span className='tourdate'> Mumbai-2021</span>
 				</div>
 				<div className='datewrapper'>
-					<span className='date'>DATE</span>
+					<span className='text'>DATE</span>
 					<p className='eventdate'>
 						{Moment(props.event?.scheduled_date).format('Do MMMM YYYY')}
 					</p>
 				</div>
 
-				<div className='timewrapper'>
-					<span className='start'>START TIME</span>
-					<p className='eventtime'>
+				<div className='start-time'>
+					<span className='text'>START TIME</span>
+					<p className='time'>
 						{Moment(props.event?.scheduled_time, ['hh:mm:ss']).format('hh:mm A')}
 					</p>
 				</div>
 
+				<hr />
+
 				<div className='lower'>
-					<div className='entrybox'>
-						<span className='entry'>ENTRY FEE</span>
-						<span className='entrytype'>
+					<div className='entry-fee'>
+						<span className='text'>ENTRY FEE</span>
+						<span className='fee'>
 							{props.event?.ticket_price === 0
 								? 'FREE'
-								: `${currency_symbols['INR']} + ${props.event?.ticket_price}`}
+								: `${currency_symbols['INR']} ${props.event?.ticket_price}`}
 						</span>
 					</div>
-					<div className='time'>
-						<span className='start'> EVENT STARTS IN</span>
-						<span className='entrytime'>01D: 08H: 30M: 25S</span>
+					<div className='starts-in'>
+						<span className='text'>EVENT STARTS IN</span>
+						<span className='timer'>01D: 08H: 30M: 25S</span>
 					</div>
 				</div>
 
-				<div className='registerBtn'>
-					<Link
-						style={{ width: '100%' }}
-						to={{
-							pathname: '/register-event',
-							state: {
-								event: props.event
-							}
-						}}
-					>
-						<button type='button' className='button'>
-							Register for this event
-						</button>
-					</Link>
-				</div>
+				<Link
+					to={{
+						pathname: '/register-event',
+						state: {
+							event: props.event
+						}
+					}}
+				>
+					<button type='button' className='register-button'>
+						Register for this event
+					</button>
+				</Link>
 			</div>
 		</div>
 	);
 };
 
-export default EventCard;
+export default TicketCard;

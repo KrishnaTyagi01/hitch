@@ -37,7 +37,7 @@ export const register = (userdetails, next) => async (dispatch) => {
 			payload: { status }
 		});
 	} catch (error) {
-		errorHandler(error);
+		errorHandler(error, dispatch);
 	}
 };
 
@@ -56,12 +56,11 @@ export const login = (user, next) => async (dispatch) => {
 		});
 		next();
 	} catch (error) {
-		errorHandler(error);
+		errorHandler(error, dispatch);
 	}
 };
 
 export const logout = () => async (dispatch, getState) => {
-
 	try {
 		const response = await axios.post('/api/logout/', null, tokenConfig(getState));
 		removeUser();
@@ -78,26 +77,6 @@ export const logout = () => async (dispatch, getState) => {
 			payload: null
 		});
 	} catch (error) {
-		errorHandler(error);
-	}
-};
-
-// ============================================================
-
-export const authenticate = (data, next) => {
-	if (typeof window !== 'undefined') {
-		localStorage.setItem('userdata', JSON.stringify(data));
-		next();
-	}
-};
-
-export const isAuthenticated = () => {
-	if (typeof window == 'undefined') {
-		return false;
-	}
-	if (localStorage.getItem('userdata')) {
-		return JSON.parse(localStorage.getItem('userdata'));
-	} else {
-		return false;
+		errorHandler(error, dispatch);
 	}
 };

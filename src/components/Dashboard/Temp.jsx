@@ -34,7 +34,6 @@ const Temp = () => {
 
 	return (
 		<div className='mainDashboardContainer'>
-			<Nav />
 			<div className='mainDashboardContainer_grid'>
 				<div>
 					<Sidebar onButtonClick={onButtonClick} />

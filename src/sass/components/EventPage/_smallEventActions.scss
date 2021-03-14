@@ -1,0 +1,14 @@
+.small-event-actions {
+	display: none;
+	margin-top: 20px;
+
+	@import 'ticketCard';
+
+	@import 'actionButtons';
+}
+
+@media screen and (max-width: 1024px) {
+	.small-event-actions {
+		display: block;
+	}
+}

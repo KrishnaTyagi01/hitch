@@ -1,12 +1,10 @@
+import Moment from 'moment';
 import copyIcon from '../../icons/copyIcon.svg';
 import shareIcon from '../../icons/shareIcon.svg';
-import Moment from 'moment';
 
-const EventDetail = (props) => {
-	// console.log();
-
+const EventDetails = (props) => {
 	return (
-		<div className='eventdetails'>
+		<section className='eventdetails'>
 			<div className='eventdetails__schedule'>
 				<h3 className='eventdetails__schedule--head'>SCHEDULE</h3>
 
@@ -25,22 +23,26 @@ const EventDetail = (props) => {
 
 			<div className='eventdetails__price'>
 				<h3 className='eventdetails__price--head'>PRICE</h3>
-				<span className='eventdetails__price--body'>THIS EVENT IS</span>
-				<p className='eventdetails__price--cost'>
-					{props.event?.ticket_price === 0 ? 'FREE' : props.event?.ticket_price}
-				</p>
+				{props.event?.ticket_price === 0 ? (
+					<>
+						<span className='eventdetails__price--body'>THIS EVENT IS</span>
+						<p className='eventdetails__price--cost'>FREE</p>
+					</>
+				) : (
+					<p className='eventdetails__price--cost'>₹ {props.event?.ticket_price}</p>
+				)}
 			</div>
 
 			<div className='eventdetails__visit'>
 				<h3 className='eventdetails__visit--head'>VISIT ORGANISERS</h3>
 
-				<a href='#' className='eventdetails__visit--link'>
-					https://coldplay.live/mumbai_IN_2020
+				<a href='#' target='_blank' className='eventdetails__visit--link'>
+					{window.location.href}
 				</a>
 
 				<div className='eventdetails__visit--buttons'>
 					<button className='eventdetails__visit--sharebtn'>
-						share
+						Share
 						<img
 							className='eventdetails__visit--shareicon'
 							src={shareIcon}
@@ -48,17 +50,20 @@ const EventDetail = (props) => {
 						/>
 					</button>
 					<button className='eventdetails__visit--copybtn'>
-						copy
+						Copy
 						<img
-							className='eventdetails__visit--copyicon'
+							className='eventdetails__visit--copybtn--copyicon'
 							src={copyIcon}
-							alt='share icon'
+							alt='copy icon'
 						/>
+						<span className='eventdetails__visit--copybtn--tooltip'>
+							Copy to clipboard
+						</span>
 					</button>
 				</div>
 			</div>
-		</div>
+		</section>
 	);
 };
 
-export default EventDetail;
+export default EventDetails;

@@ -14,6 +14,11 @@ import {
 
 const initialState = {
 	profile: null,
+	hostedEvents: [],
+	attendedEvents: [],
+	upcomingEvents: [],
+	wishlist: [],
+	event_wishlist: [],
 	detail: null,
 	actionSuccess: null
 };
@@ -23,51 +28,56 @@ export default function profileReducer(state = initialState, action) {
 		case GET_SELF_PROFILE:
 			return {
 				...state,
-				profile: action.payload
+				profile: action.payload,
+				wishlist: action.payload.event_wishlist
 			};
 		case EDIT_PROFILE:
 			return {
-				...state
+				...state,
+				profile: action.payload
 			};
 		case DELETE_PROFILE:
 			return {
-				...state,
-				message: 'Logged out'
+				...state
 			};
 		case GET_HOSTED_EVENTS:
 			return {
 				...state,
-				message: 'Logged out'
+				hostedEvents: action.payload
 			};
 		case GET_ATTENDED_EVENTS:
 			return {
 				...state,
-				message: 'Logged out'
+				attendedEvents: action.payload
 			};
 		case GET_UPCOMING_EVENTS:
 			return {
 				...state,
-				message: 'Logged out'
+				upcomingEvents: action.payload
 			};
 		case GET_WISHLIST:
 			return {
 				...state,
-				message: 'Logged out'
+				event_wishlist: action.payload
 			};
 		case ADD_TO_WISHLIST:
 			return {
 				...state,
-				actionSuccess: action.payload.success
+				actionSuccess: action.payload.success,
+				wishlist: action.payload.wishlist
 			};
 		case REMOVE_FROM_WISHLIST:
 			return {
 				...state,
-				message: 'Logged out'
+				actionSuccess: action.payload.success,
+				wishlist: action.payload.wishlist
 			};
 		case DELETE_WISHLIST:
 			return {
 				...state,
-				message: 'Logged out'
+				actionSuccess: action.payload.success,
+				wishlist: action.payload.wishlist,
+				event_wishlist: []
 			};
 		case CLEAR_STATE:
 			return {

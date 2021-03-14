@@ -1,6 +1,7 @@
 import {
 	REGISTER,
 	LOGIN,
+	LOGIN_FAIL,
 	LOGOUT,
 	CHANGE_PASSWORD,
 	RESET_PASSWORD,
@@ -36,6 +37,11 @@ export default function authReducer(state = initialState, action) {
 				expiry: action.payload.expiry,
 				isAuthenticated: action.payload.success,
 				authMessage: `Logged in with ${action.payload.username}`
+			};
+		case LOGIN_FAIL:
+			return {
+				...state,
+				authMessage: action.payload.non_field_errors
 			};
 		case LOGOUT:
 			return {

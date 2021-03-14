@@ -1,0 +1,68 @@
+.eventPage {
+	background-color: var(--color-primary-1);
+
+	.back-button {
+		color: white;
+		background-color: transparent;
+		cursor: pointer;
+		padding: 8px 16px;
+		margin-top: 1rem;
+		border: none;
+		border-radius: 6px;
+		transition: 0.1s;
+
+		&:hover {
+			background-color: var(--color-primary-2);
+		}
+
+		i {
+			margin-right: 12px;
+		}
+	}
+
+	article {
+		padding: 20px 4vw;
+		display: grid;
+		grid-template-areas: 'main-content side-content';
+		grid-gap: 1rem;
+		width: auto;
+
+		main {
+			grid-area: main-content;
+			width: auto;
+			max-width: 830px;
+
+			@import 'bannerCarousel';
+			@import 'carousel';
+			@import 'eventDetails';
+			@import 'hero';
+			@import 'hostCard';
+			@import 'messageBoard';
+			@import 'organizersMessage';
+			@import 'overview';
+			@import 'hostDetails';
+			@import 'tags';
+			@import 'timeline';
+			@import 'smallEventActions';
+		}
+
+		aside {
+			grid-area: side-content;
+			width: 310px;
+			max-width: 100%;
+
+			@import 'eventActions';
+		}
+	}
+
+	@import 'similarEvents';
+}
+
+@media screen and (max-width: 1024px) {
+	.eventPage {
+		article {
+			display: flex;
+			flex-direction: column;
+		}
+	}
+}

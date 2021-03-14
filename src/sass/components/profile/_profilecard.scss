@@ -1,103 +1,101 @@
-.profilecard{
+.profilecard {
 	width: 336px;
 	// width: 100%;
-	background: #2B244D;
+	background: #2b244d;
 	box-shadow: 0px 0px 24px rgba(0, 0, 0, 0.45);
 	border-radius: 10px;
 	display: flex;
 	justify-content: center;
 
-	&__wrapper{
+	&__wrapper {
 		display: flex;
 		flex-direction: column;
 		align-items: center;
 		width: 286.49px;
 	}
 
-	&__upper{
+	&__upper {
 		width: 100%;
 		display: flex;
 		justify-content: space-between;
 		align-items: center;
 		margin-bottom: 45.32px;
 		margin-top: 30.93px;
-		&--leftarrowicon{
+		&--leftarrowicon {
 			margin-right: 12.88px;
 			margin-top: -2px;
 		}
-		&--left{
+		&--left {
+			color: var(--color-text-2);
+			background-color: transparent;
 			font-family: 'Kumbh Sans', sans-serif;
 			font-style: normal;
 			font-weight: normal;
 			font-size: 16px;
 			line-height: 16px;
-			color: #FFFFFF;
+			padding: 8px 16px;
+			border: none;
+			border-radius: 6px;
+			cursor: pointer;
 
-			&:hover{
-				color: #ffffff;
+			&:hover {
+				background-color: var(--color-primary-2);
 			}
 		}
 
-		&--yellowdoticon{
-		margin-left: 5.04px;
+		&--yellowdoticon {
+			margin-left: 5.04px;
 		}
 		// &--right{
 
 		// }
 	}
 
-	&__mid{
+	&__mid {
 		width: 100%;
-		border-bottom:1px solid rgba(230, 228, 242, 0.5);
+		border-bottom: 1px solid rgba(230, 228, 242, 0.5);
 		display: flex;
 		flex-direction: column;
 		align-items: center;
 
 		margin-bottom: 62px;
-		
-	   
-		&--pic{
+
+		&--pic {
 			margin-bottom: 37.75px;
-		   
 			width: 130px;
 			height: 130px;
-		
+			border-radius: 50%;
 		}
 
-		&--name{
+		&--name {
 			padding-bottom: 40px;
-			// margin-left: ; 
+			// margin-left: ;
 			font-family: 'Kumbh Sans', sans-serif;
 			font-style: normal;
 			font-weight: bold;
 			font-size: 24px;
 			line-height: 24px;
-			
-			color: #FFFFFF;
-			
+
+			color: #ffffff;
 		}
 	}
 
-
-	&__lower{
+	&__lower {
 		width: 100%;
 		margin-bottom: 10.57px;
 
-		&--item{
+		&--item {
 			width: 100%;
 			margin-bottom: 45px;
- 
 		}
 
-		&--icon{
+		&--icon {
 			margin-left: 31.26px;
 			width: 25px;
 			height: 25px;
 		}
 
-
-
-		&--text{
+		&--text {
 			margin-left: 58.48px;
 			font-family: 'Kumbh Sans', sans-serif;
 			font-style: normal;
@@ -105,19 +103,17 @@
 			font-size: 15px;
 			line-height: 16px;
 			/* identical to box height */
-			
-			
-			color: #FFFFFF;
-			
+
+			color: #ffffff;
 		}
 	}
 }
 
-#profile__lower--locationtext{
+#profile__lower--locationtext {
 	font-family: 'Kumbh Sans', sans-serif;
 	font-style: normal;
 	font-weight: normal;
 	font-size: 16px;
 	line-height: 16px;
-	color: #1DA1F2;
+	color: #1da1f2;
 }

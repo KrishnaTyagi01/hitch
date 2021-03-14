@@ -1,0 +1,204 @@
+.eventRegistration {
+	background: linear-gradient(to bottom, #524690 -64.51%, #171429 100%);
+	padding: 80px 0;
+	// transform: rotate(-180deg);
+	min-height: calc(100vh - 54px);
+	font-family: Montserrat;
+
+	button {
+		font-family: inherit;
+		border: none;
+		cursor: pointer;
+	}
+
+	&__header {
+		text-align: center;
+		color: var(--color-text-2);
+		margin: 40px auto;
+
+		h2 {
+			margin: 10px 0;
+		}
+	}
+
+	&__form {
+		// height: 1000px;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		flex-direction: column;
+
+		&__header {
+			font-style: normal;
+			font-weight: 500;
+			font-size: 20px;
+			line-height: 24px;
+			color: var(--color-text-2);
+			margin-bottom: 30px;
+		}
+
+		&__entries {
+			display: flex;
+			flex-direction: column;
+			justify-content: center;
+			align-items: center;
+
+			.entry {
+				// display: grid;
+				// grid-template-columns: 0.2fr 1fr 1fr 1fr 0.1fr 1fr;
+				// grid-template-rows: 1fr;
+				display: flex;
+				flex-wrap: wrap;
+				justify-content: space-between;
+				font-style: normal;
+				font-weight: normal;
+				font-size: 16px;
+				line-height: 20px;
+				color: var(--color-text-2);
+				// width: Min(100%, 1000px);
+				padding: 10px;
+				border: 2px solid var(--color-secondary-1);
+				border-radius: 10px;
+				margin-bottom: 20px;
+				transition: 0.2s;
+
+				&:focus-within {
+					border: 2px solid var(--color-secondary-3);
+				}
+
+				.entry-number {
+					font-weight: 600;
+					padding: 10px;
+				}
+
+				input {
+					background-color: transparent;
+					font-style: normal;
+					font-weight: normal;
+					font-size: 16px;
+					line-height: 20px;
+					margin-right: 5px;
+					color: var(--color-text-2);
+					padding: 10px;
+					border: none;
+					border-radius: 6px;
+					transition: all 0.2s;
+					outline: none;
+
+					&:focus {
+						background-color: var(--color-primary-1);
+						// border: 1px solid var(--color-secondary-3);
+					}
+				}
+
+				select.gender-dropdown {
+					display: inline;
+					color: var(--color-text-2);
+					font-family: Montserrat;
+					background-color: transparent;
+					background-position: 64px center;
+					background-size: 16px;
+					background-repeat: no-repeat;
+					padding: 10px;
+					border: none;
+					border-radius: 6px;
+					width: 90px;
+					margin-right: 20px;
+					outline: none;
+					appearance: none;
+					-webkit-appearance: none;
+					-ms-appearance: none;
+					-moz-appearance: none;
+					transition: 0.2s;
+					// pointer-events: none
+
+					&:focus,
+					&:active {
+						background-color: var(--color-primary-1);
+						// box-shadow: 0 0 8px var(--color-grey-3);
+						// outline: 4px solid white;
+					}
+
+					option {
+						color: var(--color-text-2);
+						background-color: var(--color-primary-1);
+						font-family: inherit;
+						padding: 10px;
+					}
+				}
+
+				.removeParticipantBtn {
+					display: inline;
+					color: var(--color-text-2);
+					background-color: var(--color-semantic-1);
+					font-size: 16px;
+					padding: 8px 16px;
+					border-radius: 6px;
+					opacity: 0.9;
+					transition: 0.2s;
+
+					&:hover,
+					&:focus {
+						opacity: 1;
+					}
+				}
+			}
+
+			.addParticipantBtn {
+				width: 291px;
+				height: 37px;
+				margin-top: 30px;
+
+				font-style: normal;
+				font-weight: 500;
+				font-size: 16px;
+				line-height: 20px;
+
+				color: var(--color-secondary-3);
+				background: rgba(57, 234, 180, 0.2);
+				border-radius: 10px;
+				opacity: 0.9;
+				transition: 0.2s;
+
+				&:hover {
+					opacity: 1;
+				}
+			}
+		}
+	}
+
+	&__bottom-buttons {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		gap: 20px;
+		margin-top: 100px;
+
+		.registerEventButton {
+			width: 268px;
+			height: 37px;
+			font-style: normal;
+			font-weight: 600;
+			font-size: 16px;
+			line-height: 20px;
+
+			color: #2b244d;
+			background: var(--color-secondary-3);
+			border-radius: 10px;
+			opacity: 0.9;
+			transition: 0.2s;
+
+			&:hover {
+				opacity: 1;
+			}
+		}
+
+		.totalPrice {
+			color: var(--color-secondary-3);
+			background-color: transparent;
+			padding: 10px;
+			border: 1px solid var(--color-secondary-3);
+			border-radius: 5px;
+		}
+	}
+}

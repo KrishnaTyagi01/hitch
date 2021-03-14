@@ -58,56 +58,6 @@
 				color: var(--color-semantic-1);
 			}
 		}
-
-		.login-prompt {
-			// display: none;
-			visibility: hidden;
-			position: absolute;
-			top: 45px;
-			left: 0;
-			color: inherit;
-			background-color: var(--color-primary-2);
-			padding: 4px;
-			width: 100%;
-			transform: scale(80%);
-			transition: transform 0.2s;
-
-			.content {
-				display: flex;
-				flex-direction: column;
-				justify-content: space-around;
-				align-items: center;
-
-				.header {
-					padding: 10px;
-				}
-
-				.redirect-link {
-					text-align: center;
-					color: var(--color-primary-1);
-					background-color: var(--color-secondary-2);
-					padding: 8px 16px;
-					margin-bottom: 6px;
-					border-radius: 5px;
-					width: 60%;
-				}
-			}
-
-			&:focus-within,
-			&:hover {
-				// display: block;
-				visibility: visible;
-				opacity: 1;
-				transform: scale(100%);
-			}
-		}
-
-		.action-icons.not-authenticated:focus-within + .login-prompt {
-			// display: block;
-			visibility: visible;
-			opacity: 1;
-			transform: scale(100%);
-		}
 	}
 
 	.bottom-details {

@@ -1,9 +1,10 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { connect } from 'react-redux';
 import { withRouter, useHistory, Redirect } from 'react-router-dom';
 
 import { login } from '../redux/actions/authActions';
 import { getSelfProfile } from '../redux/actions/profileActions';
+import { deactivateLoginPrompt } from '../redux/actions/userActions';
 
 const LoginComponentOld = (props) => {
 	const isLoggedIn = () => {
@@ -32,6 +33,10 @@ const LoginComponentOld = (props) => {
 			history.push(props.location.referrer ?? '/');
 		});
 	};
+
+	useEffect(() => {
+		props.deactivateLoginPrompt();
+	}, []);
 
 	return (
 		<div className='login'>
@@ -81,6 +86,6 @@ const mapStateToProps = (state) => ({
 	isAuthenticated: state.authState.isAuthenticated
 });
 
-export default connect(mapStateToProps, { login, getSelfProfile })(
+export default connect(mapStateToProps, { login, getSelfProfile, deactivateLoginPrompt })(
 	withRouter(LoginComponentOld)
 );

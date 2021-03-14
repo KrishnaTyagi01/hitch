@@ -1,0 +1,47 @@
+.tags-container {
+	// width: 828px;
+	// min-height: 159.13px;
+	margin-top: 78.55px;
+
+	.heading {
+		font-family: 'Kumbh Sans', sans-serif;
+		margin-bottom: 2rem;
+		font-style: normal;
+		font-weight: bold;
+		font-size: 24px;
+		line-height: 24px;
+		text-transform: uppercase;
+		color: #ffffff;
+	}
+
+	.tags {
+		display: flex;
+		justify-content: flex-start;
+		align-items: flex-start;
+		flex-wrap: wrap;
+		background-color: var(--color-primary-2);
+		padding: 30px;
+		border-radius: 10px;
+		width: 100%;
+		margin-top: 30.11px;
+		margin-bottom: 11px;
+
+		.tag {
+			// width: 93.5px;
+			height: 34.41px;
+			background: rgba(57, 234, 180, 0.35);
+			margin-right: 17.8px;
+			margin-bottom: 15.05px;
+			border-radius: 1000px;
+			border: none;
+			min-width: 60px;
+			font-family: 'Kumbh Sans', sans-serif;
+			font-style: normal;
+			font-weight: 300;
+			font-size: 16px;
+			line-height: 16px;
+			color: var(--color-secondary-3);
+			padding: 8px 20px;
+		}
+	}
+}

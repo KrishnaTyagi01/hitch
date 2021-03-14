@@ -1,10 +1,18 @@
-import { GET_EVENTS, GET_EVENT, GET_PROFILE, INC_COUNT, CLEAR_STATE } from '../types';
+import {
+	GET_EVENTS,
+	GET_EVENT,
+	GET_PROFILE,
+	INC_COUNT,
+	CLEAR_STATE,
+	SERVER_ERROR
+} from '../types';
 
 const initialState = {
 	events: null,
 	event: null,
 	profile: null,
-	count: 0
+	count: 0,
+	message: ''
 };
 
 export default function eventReducer(state = initialState, action) {
@@ -29,9 +37,15 @@ export default function eventReducer(state = initialState, action) {
 				...state,
 				count: state.count + action.payload
 			};
+		case SERVER_ERROR:
+			return {
+				...initialState,
+				message: 'Server error. Please try again'
+			};
 		case CLEAR_STATE:
 			return {
-				...initialState
+				...initialState,
+				message: action.payload
 			};
 		default:
 			return state;

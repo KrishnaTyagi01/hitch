@@ -1,69 +1,82 @@
 import { useState, useEffect } from 'react';
 import axios from 'axios';
 
-import TicketCard from '../components/EventPage/TicketCard';
-import MyCarousel from '../components/EventPage/Carousel';
+// import MyCarousel from '../components/EventPage/Carousel';
+import BannerCarousel from '../components/EventPage/BannerCarousel';
 import Tags from '../components/EventPage/Tags';
-import Speakers from '../components/EventPage/Speakers';
+import HostDetails from '../components/EventPage/HostDetails';
 import Overview from '../components/EventPage/Overview';
 import EventDetails from '../components/EventPage/EventDetails';
 import MessageBoard from '../components/EventPage/MessageBoard';
 import OrganizersMessage from '../components/EventPage/OrganizersMessage';
-import SimilarEventSection from '../components/EventPage/SimilarEventSection';
+import SimilarEvents from '../components/EventPage/SimilarEvents';
 import Timeline from '../components/EventPage/Timeline';
-// import MapSection from '../components/event_components/Maps';
-import { AddToCalenderBtn, BookmarkBtn } from '../components/EventPage/Buttons';
+// import MapSection from '../components/EventPage/Maps';
+import EventActions from '../components/EventPage/EventActions';
+import SmallEventActions from '../components/EventPage/SmallEventActions';
+import Loading from '../components/Common/Loading';
+import Page404 from './Page404';
+
+import errorHandler from '../API/errorHandler';
 
 const EventPage = (props) => {
-	const [event, setEvent] = useState(null);
-
 	const { eventID } = props.match.params;
+	const [event, setEvent] = useState(null);
+	const [httpStatusCode, setHttpStatusCode] = useState();
+
 	const getEvent = async (eventID) => {
-		const res = await axios.get(`/events/${eventID}/`);
-		setEvent(res.data);
+		try {
+			const res = await axios.get(`/events/${eventID}/`);
+			setEvent(res.data);
+		} catch (error) {
+			setHttpStatusCode(error.response.status);
+			// errorHandler(error);
+		}
 	};
 
 	useEffect(() => {
-		if (props.location.state.event) setEvent(props.location.state.event);
+		if (props.location.state?.event) setEvent(props.location.state.event);
 		else getEvent(eventID);
 	}, [eventID]);
 
+	if (httpStatusCode === 404) {
+		return <Page404 />;
+	}
+
 	return (
 		<div className='eventPage'>
-			<div className='inner'>
-				<section className='hero'>
-					<div className='left'>
-						<MyCarousel imgURL={event?.image} />
+			{!event ? (
+				<Loading />
+			) : (
+				<>
+					<div style={{ padding: '0 4vw' }}>
+						<button className='back-button' onClick={props.history.goBack}>
+							<i className='fa fa-chevron-left'></i>
+							Back
+						</button>
 					</div>
-					<aside className='right collapsable-card'>
-						<TicketCard event={event} />
-						<AddToCalenderBtn />
-						<BookmarkBtn />
-					</aside>
-				</section>
-				<section className='tags'>
-					<Tags tags={event?.tags} />
-				</section>
-				<section className='overview'>
-					<Overview description={event?.description} />
-				</section>
-				<Speakers />
-				<section className='eventdetails'>
-					<EventDetails event={event} />
-				</section>
-				<section className='timeline'>
-					<Timeline />
-				</section>
-				<section className='messageboard'>
-					<MessageBoard />
-				</section>
-				<section className='organizersmessage'>
-					<OrganizersMessage />
-				</section>
-			</div>
-			<section className='similarevents'>
-				<SimilarEventSection />
-			</section>
+					<article>
+						<main>
+							{/* <section className='hero'>
+								<MyCarousel imgURL={event?.image} />
+							</section> */}
+							<BannerCarousel images={[event?.image]} />
+							<SmallEventActions event={event} />
+							<Tags tags={event?.tags} />
+							<Overview description={event?.description} />
+							<HostDetails />
+							<EventDetails event={event} />
+							<Timeline timeline={event?.timeline} />
+							<MessageBoard messages={event?.messages} />
+							<OrganizersMessage organizersMessage={event?.organizersMessage} />
+						</main>
+						<aside>
+							<EventActions event={event} />
+						</aside>
+					</article>
+					<SimilarEvents eventID={eventID} />
+				</>
+			)}
 		</div>
 	);
 };

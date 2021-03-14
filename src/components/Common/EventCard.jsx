@@ -1,37 +1,19 @@
 import { connect } from 'react-redux';
-import { Link, useLocation } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 import {
 	getSelfProfile,
 	addToWishlist,
 	removeFromWishlist
 } from '../../redux/actions/profileActions';
+import { activateLoginPrompt } from '../../redux/actions/userActions';
 
-const LoginPrompt = (props) => {
-	return (
-		<div className='login-prompt' tabIndex='-1'>
-			<div className='content'>
-				<h6 className='header'>You must be loggedin to proceed</h6>
-				<Link
-					to={{ pathname: '/login', referrer: props.referrer }}
-					className='redirect-link'
-				>
-					Login
-				</Link>
-				<Link
-					to={{ pathname: '/register', referrer: props.referrer }}
-					className='redirect-link'
-				>
-					Register
-				</Link>
-			</div>
-		</div>
-	);
-};
+// const fixedImageURL = image.startsWith('http')
+// ? image
+// : `http://${process.env.REACT_APP_BACKENDAPI}/${image}`;
 
 const EventCard = (props) => {
 	const { id, title, description, image, scheduled_date, ticket_price } = props.event;
-	const referrer = useLocation().pathname;
 
 	return (
 		<div
@@ -53,17 +35,22 @@ const EventCard = (props) => {
 				</div>
 
 				{!props.isAuthenticated ? (
-					<>
-						<div className='action-icons not-authenticated' tabIndex='-1'>
-							<span title='Add to calendar' className='details-icon'>
-								<i className='far fa-calendar-alt'></i>
-							</span>
-							<span title='Add to wishlist' className='details-icon heart-icon'>
-								<i className='far fa-heart'></i>
-							</span>
-						</div>
-						<LoginPrompt referrer={referrer} />
-					</>
+					<div className='action-icons'>
+						<span
+							title='Add to calendar'
+							className='details-icon'
+							onClick={props.activateLoginPrompt}
+						>
+							<i className='far fa-calendar-alt'></i>
+						</span>
+						<span
+							title='Add to wishlist'
+							className='details-icon heart-icon'
+							onClick={props.activateLoginPrompt}
+						>
+							<i className='far fa-heart'></i>
+						</span>
+					</div>
 				) : (
 					<div className='action-icons'>
 						<span
@@ -117,7 +104,7 @@ const EventCard = (props) => {
 						<p className='day'>18</p>
 					</div>
 					<div>
-						<p className='title'>{title}</p>
+						<p className='title'>{title?.substring(0, 40)}</p>
 						<p className='description'>{description?.substring(0, 100)}</p>
 					</div>
 				</div>
@@ -134,5 +121,6 @@ const mapStateToProps = (state) => ({
 export default connect(mapStateToProps, {
 	getSelfProfile,
 	addToWishlist,
-	removeFromWishlist
+	removeFromWishlist,
+	activateLoginPrompt
 })(EventCard);

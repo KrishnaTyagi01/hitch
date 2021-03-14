@@ -1,36 +1,20 @@
-import { useEffect, useState } from "react/cjs/react.development";
+import { Link } from 'react-router-dom';
 
 const Tags = (props) => {
-	const [tags, setTags] = useState([]);
-
-	useEffect(() => {
-		if (props.tags && props.tags.length > 2) {
-			let temp = props.tags.substr(2, props.tags.length - 4);
-			temp = temp.replace(/\"/g, '');
-			let res = temp.split(',');
-			setTags([...res]);
-		}
-	}, [])
-
-	const myTags = tags.map(tag => {
-		// console.log(tag)
-		return <button className="tags__btns--btn">#{tag}</button>
-	})
-	// console.log(tags);
+	const tags =
+		props.tags &&
+		JSON.parse(props.tags).map((tag, index) => (
+			<Link to={`/tag/${tag}`} key={index}>
+				<span className='tag'>#{tag}</span>
+			</Link>
+		));
 
 	return (
-		<>
-			<h2 className="tags__heading">TAGS</h2>
-			<div className="tags">
-				<div className="tags__btns">
-					{myTags}
-
-				</div>
-
-
-			</div>
-		</>
-	)
-}
+		<section className='tags-container'>
+			<h2 className='heading'>TAGS</h2>
+			<div className='tags'>{tags}</div>
+		</section>
+	);
+};
 
 export default Tags;

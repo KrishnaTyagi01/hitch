@@ -14,12 +14,21 @@ html {
 
 body {
 	position: relative;
+	overflow-x: hidden;
+	background-color: var(--color-primary-1);
 	// font-family: Montserrat;
 }
 
 a {
 	text-decoration: none;
 	color: inherit;
+	outline: none;
+}
+
+button {
+	border: none;
+	outline: none;
+	cursor: pointer;
 }
 
 :root {
@@ -32,22 +41,13 @@ a {
 	--color-secondary-2: #17daa2;
 	--color-secondary-3: #39eab4;
 	--color-semantic-1: #eb4746;
-	--color-semantic-2: #eb9947;
-	--color-semantic-3: #ecea47;
+	--color-semantic-2: #ecea47;
+	--color-semantic-3: #eb9947;
 	--color-text-1: #040308;
 	--color-text-2: #e6e4f2;
 	--color-grey-1: #34323f;
 	--color-grey-2: #646176;
 	--color-grey-3: #9794a7;
-}
-
-html,
-body,
-#root {
-	width: 100%;
-	height: 100%;
-	// overflow-x: hidden;
-	// font-size: 8px;
 }
 
 // @import url('https://fonts.googleapis.com/css2?family=Kumbh+Sans:wght@300;400;700&display=swap');
@@ -57,7 +57,11 @@ body,
 // @import url('https://fonts.googleapis.com/css2?family=League+Script&display=swap');
 
 //================ Common ====================//
+@import 'components/Common/generic';
 @import 'components/Common/eventCard';
+@import 'components/Common/loginPrompt';
+@import 'components/Common/confirmationPrompt';
+@import 'components/Common/loading';
 
 //================ Layout ====================//
 @import 'components/Layout/navbar';
@@ -68,33 +72,22 @@ body,
 @import 'components/Onboarding/registerOld';
 
 //================ Landing ====================//
-@import 'components/Landing/hero.scss';
+@import 'components/Landing/hero';
 @import 'components/Landing/showinfocard';
-@import 'components/Landing/explore.scss';
-@import 'components/Landing/discover.scss';
+@import 'components/Landing/explore';
+@import 'components/Landing/discover';
 
 // ============= EVENT DETAILS SECTION ===============//
-@import 'components/EventDetails/eventcardold';
-@import 'components/EventDetails/buttons';
-@import 'components/EventDetails/carousel';
-@import 'components/EventDetails/tags';
-@import 'components/EventDetails/overview';
-@import 'components/EventDetails/hostcard';
-@import 'components/EventDetails/speakers';
-@import 'components/EventDetails/eventdetails';
-@import 'components/EventDetails/messageboard';
-@import 'components/EventDetails/organizersmessage';
-@import 'components/EventDetails/similareventcard';
-@import 'components/EventDetails/similareventsection';
-@import 'components/EventDetails/timeline';
+@import 'components/EventPage/index';
 
 // ============= PROFILE SECTION ===============//
 @import 'components/profile/profilecard';
 @import 'components/profile/headersection';
 @import 'components/profile/buttons';
 @import 'components/profile/about';
-@import 'components/profile/hostedevents';
-@import 'components/profile/eventattended';
+@import 'components/profile/hostedEvents';
+@import 'components/profile/attendedEvents';
+@import 'components/profile/wishlistEvents';
 @import 'components/profile/hero';
 
 // ============= HOST INTRO SECTION ===============//
@@ -131,10 +124,12 @@ body,
 @import 'components/Dashboard/page_overview';
 
 // ============== PAGES  ======================//
-@import 'pages/eventdetailspage';
+// @import 'pages/eventdetailspage';
 @import 'pages/profile';
+@import 'pages/editProfile';
 @import 'pages/hostintropage';
-@import 'pages/registerEvent';
+@import 'pages/eventRegistration';
+@import 'pages/confirmation';
 
 //====================HOST EVENT ======================//
 @import 'components/HostEvent/HostEvent';

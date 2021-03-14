@@ -1,0 +1,47 @@
+.addcalender {
+	background: var(--color-primary-2);
+	box-shadow: 0px 0px 14px rgba(0, 0, 0, 0.5);
+	border-radius: 10px;
+	display: block;
+	width: 311px;
+	height: 52px;
+	border: none;
+	font-family: 'Kumbh Sans', sans-serif;
+	font-style: normal;
+	font-weight: bold;
+	font-size: 16px;
+	line-height: 16px;
+	margin-top: 13.72px;
+	color: #ffffff;
+
+	&__icon {
+		width: 20px;
+		height: 20px;
+		margin-right: 24px;
+		// background: #FFFFFF;
+	}
+}
+
+.bookmarkbtn {
+	width: 311px;
+	height: 52px;
+	display: block;
+	background: var(--color-primary-2);
+	box-shadow: 0px 0px 14px rgba(0, 0, 0, 0.5);
+	border-radius: 10px;
+	margin-top: 13.72px;
+	border: none;
+	font-family: 'Kumbh Sans', sans-serif;
+	font-style: normal;
+	font-weight: bold;
+	font-size: 16px;
+	line-height: 16px;
+	color: #ffffff;
+	box-shadow: 0px 0px 14px rgba(0, 0, 0, 0.5);
+
+	&__icon {
+		width: 20px;
+		height: 20px;
+		margin-right: 24px;
+	}
+}

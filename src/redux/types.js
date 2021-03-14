@@ -26,6 +26,7 @@ export const CLEAR_STATE = 'CLEAR_STATE';
 export const GET_EVENTS = 'GET_EVENTS';
 export const GET_EVENT = 'GET_EVENT';
 export const GET_PROFILE = 'GET_PROFILE';
+export const SERVER_ERROR = 'SERVER_ERROR';
 
 // Profile actions
 export const GET_SELF_PROFILE = 'GET_SELF_PROFILE';
@@ -44,6 +45,7 @@ export const ADD_TO_CALENDER = 'ADD_TO_CALENDER';
 export const CREATE_EVENT = 'CREATE_EVENT';
 export const EDIT_EVENT = 'EDIT_EVENT';
 export const REGISTER_FOR_EVENT = 'REGISTER_FOR_EVENT';
-export const VERIFY_PAYMENT_FOR_EVENT = 'VERIFY_PAYMENT_FOR_EVENT';
+export const PAYMENT_SUCCESS = 'PAYMENT_SUCCESS';
+export const PAYMENT_FAILURE = 'PAYMENT_FAILURE';
 
 export const INC_COUNT = 'INC_COUNT';

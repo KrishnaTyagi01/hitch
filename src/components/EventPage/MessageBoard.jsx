@@ -1,75 +1,103 @@
-import userpic from '../../icons/user.png'
-import { useState } from 'react'
-const MessageBoard = () => {
-	const [messages, setMessages] = useState([''])
+import { useState } from 'react';
 
-	const addMessage = (e) => {
-		setMessages(e.target.value);
+import sendarrow from '../../icons/sendarrow.svg';
+import user from '../../icons/user.png';
+
+const messages = [
+	{
+		author: {
+			image: user,
+			name: 'user1'
+		},
+		text: 'message 1'
+	},
+	{
+		author: {
+			image: user,
+			name: 'user2'
+		},
+		text: 'message 2'
+	},
+	{
+		author: {
+			image: user,
+			name: 'user3'
+		},
+		text: 'message 3'
+	},
+	{
+		author: {
+			image: user,
+			name: 'user4'
+		},
+		text: 'message 4'
+	},
+	{
+		author: {
+			image: user,
+			name: 'user1'
+		},
+		text: 'message 1'
+	},
+	{
+		author: {
+			image: user,
+			name: 'user2'
+		},
+		text: 'message 2'
+	},
+	{
+		author: {
+			image: user,
+			name: 'user3'
+		},
+		text: 'message 3'
+	},
+	{
+		author: {
+			image: user,
+			name: 'user4'
+		},
+		text: 'message 4'
 	}
-	return (
-		<>
-			<h3 className="messageboard__heading">MESSAGE BOARD</h3>
-			<div className="boardContainer">
+];
 
-				<div className="board">
-					<div className="board__message">
-						<img src={userpic} alt="user pic" className="board__message--pic" />
-						<div className="board__message--right">
-							<h4 className="board__message--name">Tyson</h4>
-							<p className="board__message--text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Harum, expedita accusamus dolorem doloremque atque illum, assumenda delectus similique facere sint a aspernatur quae, officia quos cupiditate animi ipsum! Numquam, tempore?</p>
+const MessageBoard = (props) => {
+	const addMessage = (e) => {
+		e.preventDefault();
+		console.log('add message');
+	};
+
+	return (
+		<section className='message-board'>
+			<h3 className='heading'>MESSAGE BOARD</h3>
+			<div className='board'>
+				<div className='messages-container'>
+					{messages.map((message, index) => (
+						<div className='message' key={index}>
+							<div className='profile-picture'>
+								<img src={message.author.image} alt='profile picture' className='pic' />
+							</div>
+							<div className='details'>
+								<h4 className='author-name'>{message.author.name}</h4>
+								<p className='text'>{message.text}</p>
+							</div>
 						</div>
-					</div>
-					<div className="board__message">
-						<img src={userpic} alt="user pic" className="board__message--pic" />
-						<div className="board__message--right">
-							<h4 className="board__message--name">Tyson</h4>
-							<p className="board__message--text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Harum, expedita accusamus dolorem doloremque atque illum, assumenda delectus similique facere sint a aspernatur quae, officia quos cupiditate animi ipsum! Numquam, tempore?</p>
-						</div>
-					</div>
-					<div className="board__message">
-						<img src={userpic} alt="user pic" className="board__message--pic" />
-						<div className="board__message--right">
-							<h4 className="board__message--name">Tyson</h4>
-							<p className="board__message--text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Harum, expedita accusamus dolorem doloremque atque illum, assumenda delectus similique facere sint a aspernatur quae, officia quos cupiditate animi ipsum! Numquam, tempore?</p>
-						</div>
-					</div>
-					<div className="board__message">
-						<img src={userpic} alt="user pic" className="board__message--pic" />
-						<div className="board__message--right">
-							<h4 className="board__message--name">Tyson</h4>
-							<p className="board__message--text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Harum, expedita accusamus dolorem doloremque atque illum, assumenda delectus similique facere sint a aspernatur quae, officia quos cupiditate animi ipsum! Numquam, tempore?</p>
-						</div>
-					</div>
-					<div className="board__message">
-						<img src={userpic} alt="user pic" className="board__message--pic" />
-						<div className="board__message--right">
-							<h4 className="board__message--name">Tyson</h4>
-							<p className="board__message--text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Harum, expedita accusamus dolorem doloremque atque illum, assumenda delectus similique facere sint a aspernatur quae, officia quos cupiditate animi ipsum! Numquam, tempore?</p>
-						</div>
-					</div>
-					<div className="board__message">
-						<img src={userpic} alt="user pic" className="board__message--pic" />
-						<div className="board__message--right">
-							<h4 className="board__message--name">Tyson</h4>
-							<p className="board__message--text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Harum, expedita accusamus dolorem doloremque atque illum, assumenda delectus similique facere sint a aspernatur quae, officia quos cupiditate animi ipsum! Numquam, tempore?</p>
-						</div>
-					</div>
-					<div className="board__message">
-						<img src={userpic} alt="user pic" className="board__message--pic" />
-						<div className="board__message--right">
-							<h4 className="board__message--name">Tyson</h4>
-							<p className="board__message--text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Harum, expedita accusamus dolorem doloremque atque illum, assumenda delectus similique facere sint a aspernatur quae, officia quos cupiditate animi ipsum! Numquam, tempore?</p>
-						</div>
-					</div>
+					))}
 				</div>
-				<div className="inputbox">
-					<textarea onClick={addMessage} type="text" className="inputbox__input" placeholder="Type your message" />
+				<div className='new-message'>
+					<form onSubmit={addMessage}>
+						<div className='textarea-wrapper'>
+							<input className='message-box' placeholder='Type your message' />
+							<button type='submit' className='submit-button'>
+								<img src={sendarrow} />
+							</button>
+						</div>
+					</form>
 				</div>
 			</div>
-		</>
-
-	)
-
-}
+		</section>
+	);
+};
 
 export default MessageBoard;

@@ -109,6 +109,7 @@ const HostEvent = (props) => {
 		form_data.append('scheduled_time', getTime());
 		form_data.append('scheduled_date', getDate());
 		form_data.append('tags', getTags());
+		console.log(form_data);
 		let url = 'http://167.71.237.202/events/';
 
 		const res = await axios.post(url, form_data, {

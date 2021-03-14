@@ -3,7 +3,7 @@ import Upper from './Upper';
 import Filter from './Filter';
 import MyEventCard from './MyEventCard';
 import axios from 'axios';
-import SimilarEventSection from '../EventPage/SimilarEventSection';
+import SimilarEvents from '../EventPage/SimilarEvents';
 import { Redirect, Link } from 'react-router-dom';
 
 const MainComponent = () => {
@@ -17,8 +17,6 @@ const MainComponent = () => {
 		};
 		getAllEvents();
 	}, []);
-
-	// console.log(events);
 
 	const MyEvents = events.map((event) => {
 		return (
@@ -56,7 +54,7 @@ const MainComponent = () => {
 				<section className='eventsPage__content--events'>{MyEvents}</section>
 			</div>
 			<div className='eventsPage_carousel'>
-				<SimilarEventSection />
+				<SimilarEvents />
 			</div>
 			<div className='eventsPage_footer'></div>
 		</div>
