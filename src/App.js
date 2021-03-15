@@ -31,6 +31,8 @@ import Page404 from './pages/Page404';
 import store from './redux/store';
 import '@fortawesome/fontawesome-free/css/all.min.css';
 import './App.css';
+import EventDetails from './components/EventPage/EventDetails';
+import SearchPage from './components/SearchPage/SearchPage';
 
 function App() {
 	function ScrollToTop(props) {
@@ -59,6 +61,9 @@ function App() {
 
 						<Route exact path='/about' component={AboutUs} />
 						<Route exact path='/hostintro' component={HostIntro} />
+						<Route exact path="/search" render={(props) => <SearchPage {...props} />} />
+
+						<Route exact path="/events" component={eventsPage}></Route>
 						<Route
 							exact
 							path='/event/:eventID'

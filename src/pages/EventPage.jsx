@@ -64,10 +64,10 @@ const EventPage = (props) => {
 							<SmallEventActions event={event} />
 							<Tags tags={event?.tags} />
 							<Overview description={event?.description} />
-							<HostDetails />
+							{/* <HostDetails /> */}
 							<EventDetails event={event} />
-							<Timeline timeline={event?.timeline} />
-							<MessageBoard messages={event?.messages} />
+							{/* <Timeline timeline={event?.timeline} /> */}
+							{/* <MessageBoard messages={event?.messages} /> */}
 							<OrganizersMessage organizersMessage={event?.organizersMessage} />
 						</main>
 						<aside>

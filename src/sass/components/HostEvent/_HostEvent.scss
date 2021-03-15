@@ -67,7 +67,7 @@
         }
 
         .event_name{
-            margin:20px 0px;
+            margin:10px 0px;
             position: relative;
             width: 100%;
             height: 53px;
@@ -81,7 +81,7 @@
         }
 
         .event_tagline{
-            margin:20px 0px;
+            margin:10px 0px;
             height: 118px;
             width: 100%;
             position: relative;
@@ -99,7 +99,7 @@
         }
 
         .event_overview{
-            margin:20px 0px;
+            margin:10px 0px;
             height: 229px;
             width: 100%;
             position: relative;
@@ -116,7 +116,7 @@
         }
 
         .event_pictures{
-            margin:80px 0px;
+            margin:20px 0px;
             // height: 229px;
             width: 100%;
             position: relative;
@@ -171,30 +171,30 @@
                     justify-content: center;
                     align-items: center;
                     display: flex;
-                    &_circle{
-                        width: 114px;
-                        height: 114px;
-                        border-radius: 50%;
-                        border: 5px dashed #877CC0;
-                        box-sizing: border-box;
-                        display:flex;
-                        justify-content: center;
-                        align-items: center;
+                    // &_circle{
+                    //     width: 114px;
+                    //     height: 114px;
+                    //     border-radius: 50%;
+                    //     border: 5px dashed #877CC0;
+                    //     box-sizing: border-box;
+                    //     display:flex;
+                    //     justify-content: center;
+                    //     align-items: center;
     
-                        div{
-                            // all:unset;
-                            margin-left: -10px;
-                            width: 39px;
-                            height: 102px;
-                            font-family: Poppins;
-                            font-style: normal;
-                            font-weight: 500;
-                            font-size: 68px;
-                            line-height: 102px;
-                            /* identical to box height */
-                            color: #877CC0;
-                        }
-                    }
+                    //     div{
+                    //         // all:unset;
+                    //         margin-left: -10px;
+                    //         width: 39px;
+                    //         height: 102px;
+                    //         font-family: Poppins;
+                    //         font-style: normal;
+                    //         font-weight: 500;
+                    //         font-size: 68px;
+                    //         line-height: 102px;
+                    //         /* identical to box height */
+                    //         color: #877CC0;
+                    //     }
+                    // }
                     .picture{
                         border-radius: 10px;
                         width: 100%;
@@ -206,6 +206,9 @@
                     }
                     img{
                         // background-color: red;
+                       
+                        // width: Min(600px,90%);
+
                         min-width: 0;
                         min-height: 0;
                         max-width: 600px;		
@@ -246,14 +249,65 @@
         }
 
 
+        .duration_days{
+            &_header{
+                height: 24px;
+                margin-bottom: 15px;
+                font-family: Montserrat;
+                font-style: normal;
+                font-weight: normal;
+                font-size: 24px;
+                line-height: 29px;
+                color: #E6E4F2;
+            }
+            margin-bottom: 20px;
+            input{
+                width:200px;
+                height: 40px;
+            }
+        }
+
+        .address{
+            &_header{
+                height: 24px;
+                margin-bottom: 15px;
+                font-family: Montserrat;
+                font-style: normal;
+                font-weight: normal;
+                font-size: 24px;
+                line-height: 29px;
+                color: #E6E4F2;
+            }
+            margin-bottom: 35px;
+            textarea,input{
+                width:90%;
+                height: 50px;
+                margin-bottom: 8px;
+            }
+            div:nth-of-type(2){
+                display: flex;
+                flex-wrap: wrap;
+                input{
+                    width:unset;
+                    flex-basis: 1;
+                    margin-right: 40px;
+                }
+            }
+            input:nth-of-type(3){
+                // background-color: red;
+                width: 200px;
+            }
+        }
+
+
 
         // EVENT HOSTS 
         .event_hosts{
-            margin-bottom: 100px;
+            margin-bottom: 0px;
             &_header{
                 // width: 208px;
                 height: 24px;
-                margin-bottom: 60px;
+                margin-bottom: 15px;
                 font-family: Montserrat;
                 font-style: normal;
                 font-weight: normal;
@@ -332,8 +386,8 @@
         .event_schedule{
             &_header{
                 // width: 254px;
-                margin-bottom: 100px;
-                margin-top: 100px;
+                margin-bottom: 20px;
+                margin-top: 35px;
                 height: 24px;
                 font-family: Montserrat;
                 font-style: normal;
@@ -408,8 +462,8 @@
 
         // =============== EVENT TIME ==========================
         &_time{
-            margin-top: 60px;
-            margin-bottom: 200px;
+            margin-top: 20px;
+            margin-bottom: 35px;
             &_header{
                 height: 18px;
                     font-family: Montserrat;
@@ -484,12 +538,9 @@
 
 
 
-
-
-
     .event_pricePlan{
         position: relative;
-        margin-bottom: 100px;
+        margin-bottom: 35px;
         &_header{
             // width: 203px;
             height: 24px;
@@ -502,23 +553,10 @@
 
             color: #E6E4F2;
         }
-        .change_plan{
-            position: absolute;
-            right:100px;
-            top:0px;
-        }
-        .plan{
-            // width: 100%;
-            margin-top:50px;
-            height: 286.57px;
-            // left: 414.25px;
-            // top: 3328.22px;
-            margin-right: 100px;
-            // margin-top: 60px;
-
-            background: #2B244D;
-            box-shadow: 0px 0px 34px rgba(0, 0, 0, 0.55);
-            border-radius: 10px;
+        input{
+            margin-top: 10px;
+            width:200px;
+            height: 40px;
         }
     }
 
@@ -534,7 +572,7 @@
     // ======================== EVENT TAGS ============================
     .event_tags{
         position: relative;
-        margin-bottom: 100px;
+        margin-bottom: 35px;
         &_header{
             // width: 51px;
             margin-bottom: 40px;

@@ -132,10 +132,14 @@ button {
 @import 'pages/confirmation';
 
 //====================HOST EVENT ======================//
-@import 'components/HostEvent/HostEvent';
-@import 'components/HostEvent/Button1';
-@import 'components/HostEvent/Sections';
+@import "components/HostEvent/HostEvent";
+@import "components/HostEvent/Button1";
+@import "components/HostEvent/Sections";
+@import "components/HostEvent/imageUpload";
 
 // ===================ABOUT US ========================//
 @import 'pages/aboutUs/aboutUs';
 @import 'pages/aboutUs/teamCard';
+
+//=================== SEARCH RESULTS ========================== //
+@import "components/SearchPage/searchPage";

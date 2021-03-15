@@ -1,14 +1,12 @@
 .registerContainer{
 	background: var(--color-primary-1);
-	// background: #2B244D;
 	display: flex;
 	justify-content: center;
 	align-items: center;
-
 }
 
 .signin{
-	width: 525px;
+	width: Min(100%,525px);
 	min-height: 298px;
 	margin-top:50px;
 	padding-bottom: 20px;
@@ -34,7 +32,7 @@
 	}
 
 	&__mid{
-		width: 458px;
+		width: Min(93%,458px);
 		margin-top: 10px;
 		display: inline-block;
 		&--before{
@@ -43,14 +41,14 @@
 			font-weight: normal;
 			font-size: 18px;
 			line-height: 22px;
-			display: inline-block;
+			display:block;
 			margin-top: 20px;
 			color: #E6E4F2;
 			
 		}
 
 		&--input{
-			width: 458px;
+			width: Min(90%,458px);
 			height: 46px;
 			background: rgba(230, 228, 242, 0.2);
 			border: 1px solid #E6E4F2;
@@ -94,4 +92,18 @@
 			outline: none;
 		}
 	}
+}
+
+.otp_sent{
+	font-family: 'Montserrat', sans-serif;
+		font-style: normal;
+		font-weight: 500;
+		font-size: 18px;
+		line-height: 22px;
+		color: rgba(230, 228, 242, 0.5);
+				// background-color: ;
+				background: rgba(230, 228, 242, 0.2);
+	border-radius: 10px;
+	margin-top: 20px;
+	padding:8px 10px;
 }
