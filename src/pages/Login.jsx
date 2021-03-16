@@ -1,19 +1,12 @@
 import { useState, useEffect } from 'react';
 import { connect } from 'react-redux';
-import { withRouter, useHistory, Redirect } from 'react-router-dom';
+import { Redirect } from 'react-router-dom';
 
 import { login } from '../redux/actions/authActions';
 import { getSelfProfile } from '../redux/actions/profileActions';
 import { deactivateLoginPrompt } from '../redux/actions/userActions';
 
-const LoginComponentOld = (props) => {
-	const isLoggedIn = () => {
-		if (props.isAuthenticated) {
-			console.log('already logged in');
-			return <Redirect to='/profile' />;
-		}
-	};
-
+const Login = (props) => {
 	const [state, setState] = useState({
 		email: '',
 		password: ''
@@ -24,30 +17,38 @@ const LoginComponentOld = (props) => {
 		setState({ ...state, [e.target.name]: e.target.value });
 	};
 
-	let history = useHistory();
-
 	const handleSubmit = (e) => {
 		e.preventDefault();
 		props.login({ username: state.email, password: state.password }, () => {
 			props.getSelfProfile();
-			history.push(props.location.referrer ?? '/');
+			props.history.push(props.location.state?.referrer ?? '/');
 		});
 	};
 
 	useEffect(() => {
 		props.deactivateLoginPrompt();
-	}, []);
+	}, [props]);
+
+	if (props.isAuthenticated) {
+		console.log('already logged in');
+		return <Redirect to='/profile' />;
+	}
 
 	return (
 		<div className='login'>
-			<form className='form-container' onSubmit={handleSubmit}>
+			{props.location.state?.message ? (
+				<div className='login-message'>
+					<h4>{props.location.state.message}</h4>
+				</div>
+			) : null}
+			<form className='login-form' onSubmit={handleSubmit}>
 				<h2 className='heading'>Login</h2>
 
 				<div className='field'>
 					<label>Email</label>
 					<input
 						required
-						type='text'
+						type='email'
 						name='email'
 						onChange={handleChange}
 						placeholder='Enter Your Email Here'
@@ -77,7 +78,6 @@ const LoginComponentOld = (props) => {
 				</div>
 				<button type='submit'>Submit</button>
 			</form>
-			{isLoggedIn()}
 		</div>
 	);
 };
@@ -87,5 +87,5 @@ const mapStateToProps = (state) => ({
 });
 
 export default connect(mapStateToProps, { login, getSelfProfile, deactivateLoginPrompt })(
-	withRouter(LoginComponentOld)
+	Login
 );

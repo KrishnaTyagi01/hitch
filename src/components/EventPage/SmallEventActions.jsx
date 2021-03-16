@@ -104,13 +104,11 @@ const SmallEventActions = (props) => {
 						Add to Calender
 					</button>
 
-					{!props.event_wishlist?.includes(props.event?.id) ? (
+					{!props.wishlist?.includes(props.event?.id) ? (
 						<button
 							className='action-button'
 							onClick={() => {
-								props.addToWishlist(props.event?.id, () => {
-									props.getSelfProfile();
-								});
+								props.addToWishlist(props.event?.id);
 							}}
 						>
 							<i className='far fa-heart action-button__icon'></i>
@@ -120,9 +118,7 @@ const SmallEventActions = (props) => {
 						<button
 							className='action-button'
 							onClick={() => {
-								props.removeFromWishlist(props.event?.id, () => {
-									props.getSelfProfile();
-								});
+								props.removeFromWishlist(props.event?.id);
 							}}
 						>
 							<i className='fas fa-heart action-button__icon'></i>
@@ -137,7 +133,7 @@ const SmallEventActions = (props) => {
 
 const mapStateToProps = (state) => ({
 	isAuthenticated: state.authState.isAuthenticated,
-	event_wishlist: state.profileState.profile?.event_wishlist
+	wishlist: state.profileState.wishlist
 });
 
 export default connect(mapStateToProps, {

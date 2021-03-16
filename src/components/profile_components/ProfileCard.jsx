@@ -9,10 +9,6 @@ import yellowDotIcon from '../../icons/profile/yellowDotIcon.svg';
 import profilePicIcon from '../../icons/profile/profilePicIcon.svg';
 
 const ProfileCard = (props) => {
-	const fixedImageURL = props.profile?.image.startsWith('http')
-		? props.profile?.image
-		: `http://${process.env.REACT_APP_BACKENDAPI}/${props.profile?.image}`;
-
 	return (
 		<div className='profilecard'>
 			<div className='profilecard__wrapper'>
@@ -44,7 +40,11 @@ const ProfileCard = (props) => {
 					</span>
 				</div>
 				<div className='profilecard__mid'>
-					<img className='profilecard__mid--pic' src={fixedImageURL} alt='profile pic' />
+					<img
+						className='profilecard__mid--pic'
+						src={props.profile?.image}
+						alt='profile pic'
+					/>
 					<h3 className='profilecard__mid--name'>{props.profile?.name}</h3>
 				</div>
 				<div className='profilecard__lower'>

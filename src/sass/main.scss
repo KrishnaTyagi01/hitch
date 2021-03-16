@@ -17,6 +17,7 @@ body {
 	overflow-x: hidden;
 	background-color: var(--color-primary-1);
 	// font-family: Montserrat;
+	font-family: inherit;
 }
 
 a {
@@ -25,9 +26,16 @@ a {
 	outline: none;
 }
 
+input,
+select,
+textarea,
 button {
 	border: none;
 	outline: none;
+	font-family: inherit;
+}
+
+button {
 	cursor: pointer;
 }
 
@@ -68,8 +76,6 @@ button {
 @import 'components/Layout/footer';
 
 //================ Onboarding ====================//
-@import 'components/Onboarding/loginOld';
-@import 'components/Onboarding/registerOld';
 
 //================ Landing ====================//
 @import 'components/Landing/hero';
@@ -125,11 +131,13 @@ button {
 
 // ============== PAGES  ======================//
 // @import 'pages/eventdetailspage';
+@import 'pages/login';
+@import 'pages/register';
 @import 'pages/profile';
 @import 'pages/editProfile';
 @import 'pages/hostintropage';
 @import 'pages/eventRegistration';
-@import 'pages/confirmation';
+@import 'pages/eventTicketPage';
 
 //====================HOST EVENT ======================//
 @import "components/HostEvent/HostEvent";

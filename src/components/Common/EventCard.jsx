@@ -1,5 +1,6 @@
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
+import Moment from 'moment';
 
 import {
 	getSelfProfile,
@@ -7,10 +8,6 @@ import {
 	removeFromWishlist
 } from '../../redux/actions/profileActions';
 import { activateLoginPrompt } from '../../redux/actions/userActions';
-
-// const fixedImageURL = image.startsWith('http')
-// ? image
-// : `http://${process.env.REACT_APP_BACKENDAPI}/${image}`;
 
 const EventCard = (props) => {
 	const { id, title, description, image, scheduled_date, ticket_price } = props.event;
@@ -63,14 +60,12 @@ const EventCard = (props) => {
 							<i className='far fa-calendar-alt'></i>
 						</span>
 
-						{!props.event_wishlist?.includes(id) ? (
+						{!props.wishlist?.includes(id) ? (
 							<span
 								title='Add to wishlist'
 								className='details-icon heart-icon'
 								onClick={() => {
-									props.addToWishlist(id, () => {
-										props.getSelfProfile();
-									});
+									props.addToWishlist(id);
 								}}
 							>
 								<i className='far fa-heart'></i>
@@ -80,9 +75,7 @@ const EventCard = (props) => {
 								title='Remove from wishlist'
 								className='details-icon heart-icon'
 								onClick={() => {
-									props.removeFromWishlist(id, () => {
-										props.getSelfProfile();
-									});
+									props.removeFromWishlist(id);
 								}}
 							>
 								<i className='fas fa-heart'></i>
@@ -100,8 +93,8 @@ const EventCard = (props) => {
 			>
 				<div className='bottom-details'>
 					<div className='date'>
-						<p className='month'>SEP</p>
-						<p className='day'>18</p>
+						<p className='month'>{Moment(scheduled_date).format('MMM')}</p>
+						<p className='day'>{Moment(scheduled_date).format('D')}</p>
 					</div>
 					<div>
 						<p className='title'>{title?.substring(0, 40)}</p>
@@ -115,7 +108,7 @@ const EventCard = (props) => {
 
 const mapStateToProps = (state) => ({
 	isAuthenticated: state.authState.isAuthenticated,
-	event_wishlist: state.profileState.profile?.event_wishlist
+	wishlist: state.profileState.wishlist
 });
 
 export default connect(mapStateToProps, {

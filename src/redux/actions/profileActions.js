@@ -41,7 +41,6 @@ export const getSelfProfile = () => async (dispatch, getState) => {
 
 export const editProfile = (id, data, next) => async (dispatch, getState) => {
 	try {
-		console.log({ id, data });
 		const response = await axios.put(
 			`/profiles/${id}/`,
 			data,
@@ -105,9 +104,8 @@ export const getWishlist = () => async (dispatch, getState) => {
 	}
 };
 
-export const addToWishlist = (eventID, next) => async (dispatch, getState) => {
+export const addToWishlist = (eventID) => async (dispatch, getState) => {
 	try {
-		console.log('haha wishlist');
 		const response = await axios.post(
 			'/profiles/wishlist/',
 			{ add: eventID },
@@ -117,13 +115,12 @@ export const addToWishlist = (eventID, next) => async (dispatch, getState) => {
 			type: ADD_TO_WISHLIST,
 			payload: response.data
 		});
-		next();
 	} catch (error) {
 		errorHandler(error, dispatch);
 	}
 };
 
-export const removeFromWishlist = (eventID, next) => async (dispatch, getState) => {
+export const removeFromWishlist = (eventID) => async (dispatch, getState) => {
 	try {
 		const response = await axios.post(
 			'/profiles/wishlist/',
@@ -134,7 +131,6 @@ export const removeFromWishlist = (eventID, next) => async (dispatch, getState) 
 			type: REMOVE_FROM_WISHLIST,
 			payload: response.data
 		});
-		next();
 	} catch (error) {
 		errorHandler(error, dispatch);
 	}

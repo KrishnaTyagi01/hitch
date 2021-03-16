@@ -1,48 +1,88 @@
-import { useState, useEffect } from "react";
-import filters from "./filters.json";
-import EventCardNew from "../Common/EventCard";
-import axios from "axios";
-import { dummyEvents } from "./events";
-import Filter from "../myEvents/Filter";
+import { useState, useEffect, useRef } from 'react';
+import axios from 'axios';
 import { Link } from 'react-router-dom';
+
 import MyEventCard from '../myEvents/MyEventCard';
+import Filter from '../myEvents/Filter';
+import EventCard from '../Common/EventCard';
+import Loading from '../Common/Loading';
+import filters from './filters.json';
+import { dummyEvents } from '../../temp/events';
 
 export default function Discover() {
-
-
 	const [events, setEvents] = useState([]);
+
+	const io = useRef(null);
+	const cardContainer = useRef(null);
+
+	const lazyLoadBackgroundImage = (target) => {
+		if (cardContainer.current) {
+			io.current = new IntersectionObserver((entries, observer) => {
+				entries.forEach((entry) => {
+					if (entry.isIntersecting) {
+						entry.target.classList.add('background-loaded');
+						console.log('background loaded with IntersectionObserver');
+						observer.disconnect();
+					}
+				});
+			});
+			io.current.observe(target);
+		}
+	};
 
 	const refactorEvents = (currEvents) => {
 		let tempEvents = [...currEvents];
 		if (tempEvents.length > 0 && tempEvents[0].image[0] === '/') {
 			for (let i = 0; i < tempEvents.length; ++i) {
-				tempEvents[i].image = "http://167.71.237.202" + tempEvents[i].image;
-				tempEvents[i].url = "http://167.71.237.202" + tempEvents[i].url;
+				tempEvents[i].image = 'http://167.71.237.202' + tempEvents[i].image;
+				tempEvents[i].url = 'http://167.71.237.202' + tempEvents[i].url;
 			}
 		}
 		return tempEvents;
-	}
+	};
+
+	const getEvents = async () => {
+		try {
+			const res = await axios.get('/events/');
+			setEvents(res.data);
+		} catch (error) {
+			console.error(error);
+			// setHttpStatusCode(error.response.status);
+			// errorHandler(error);
+		}
+	};
+
+	const getAllEvents = async () => {
+		let res = await axios.get(`http://167.71.237.202/events/`);
+		res = res.data;
+		setEvents(refactorEvents(res));
+	};
 
 	useEffect(() => {
-		const getAllEvents = async () => {
-			let res = await axios.get(`http://167.71.237.202/events/`);
-			res = res.data;
-			setEvents(refactorEvents(res));
-		}
 		getAllEvents();
 	}, []);
 
-	const MyEvents = events.map(event => {
+	const MyEvents = events.map((event) => {
 		return (
-			<Link to={{
-				pathname: "/event-details",
-				state: { event: event }
-			}}
+			<Link
+				to={{
+					pathname: '/event-details',
+					state: { event: event }
+				}}
 			>
-				<MyEventCard title={event.title} desc={event.description} img={event.image} date={event.scheduled_date} />
+				<MyEventCard
+					title={event.title}
+					desc={event.description}
+					img={event.image}
+					date={event.scheduled_date}
+				/>
 			</Link>
-		)
-	})
+		);
+	});
+
+	const AAA = events.map((event) => (
+		<EventCard event={event} lazyLoadBI={true} key={event.id} />
+	));
 
 	const updateFilter = (e) => {
 		console.log(e.target.name, e.target.value);
@@ -50,11 +90,22 @@ export default function Discover() {
 
 	const onFilterChange = (events) => {
 		setEvents(refactorEvents(events));
-	}
+	};
+	useEffect(() => {
+		// getEvents();
+		setEvents(dummyEvents);
+	}, []);
+
+	// useEffect(() => {
+	// 	if (events) {
+	// 		const cards = cardContainer?.current.childNodes;
+	// 		cards?.forEach(lazyLoadBackgroundImage);
+	// 	}
+	// }, [events]);
 
 	return (
-		<div className="landing-discover">
-			<div className="header">
+		<div className='landing-discover'>
+			<div className='header'>
 				<h2>Discover</h2>
 				{/* <div className="event-filters">
 					{filters.map((filter) => (
@@ -74,14 +125,12 @@ export default function Discover() {
 				</div> */}
 			</div>
 
-			<div className="body">
-				<div className="filters">
+			<div className='body'>
+				<div className='filters'>
 					<Filter onFilterChange={onFilterChange} />
 				</div>
-				<section className="searchPage__content--events">
-					<div className="eventsGrid">
-						{MyEvents}
-					</div>
+				<section className='searchPage__content--events'>
+					<div className='eventsGrid'>{AAA}</div>
 				</section>
 			</div>
 		</div>

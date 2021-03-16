@@ -1,4 +1,4 @@
-export const locations = [
+export const eventLocations = [
 	'Delhi NCR',
 	'Bangalore',
 	'Ranchi',

@@ -73,10 +73,7 @@
 					font-size: 14px;
 					transition: 0.1s;
 					width: 90%;
-					resize: none;
 					background-color: transparent;
-					border: none;
-					outline: none;
 					color: var(--color-text-2);
 					font-family: inherit;
 				}
@@ -91,6 +88,10 @@
 						width: 100%;
 						height: auto;
 					}
+				}
+
+				&:focus-within {
+					box-shadow: 0 0 0 2px var(--color-secondary-3);
 				}
 			}
 		}

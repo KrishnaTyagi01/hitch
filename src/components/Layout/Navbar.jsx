@@ -1,13 +1,12 @@
-import { useEffect, useRef } from 'react';
-import { Link, NavLink, withRouter, useLocation } from 'react-router-dom';
+import { useRef } from 'react';
+import { Link, NavLink, useLocation } from 'react-router-dom';
 import { connect } from 'react-redux';
 
 import { logout } from '../../redux/actions/authActions';
-import { getSelfProfile } from '../../redux/actions/profileActions';
 
 import search from '../../icons/search.svg';
 import downArrow from '../../icons/downArrow.svg';
-import { locations } from '../../API/constants';
+import { eventLocations } from '../../API/constants';
 
 const Navbar = (props) => {
 	const hamburger = useRef(null);
@@ -20,12 +19,6 @@ const Navbar = (props) => {
 		sidebar?.current.classList.toggle('navbar__mobile__sidebar--closed');
 		hamburger?.current.classList.toggle('open');
 	};
-
-	useEffect(() => {
-		if (props.isAuthenticated) {
-			props.getSelfProfile();
-		}
-	}, [props.isAuthenticated]);
 
 	const NavbarLogo = () => (
 		<Link to='/' className='navbar__logo'>
@@ -96,15 +89,15 @@ const Navbar = (props) => {
 	const LocationSelector = () => (
 		<div className='navbar__location-wrapper'>
 			<select
-				className='location-dropdown'
+				className='eventLocation-dropdown'
 				style={{ backgroundImage: `url(${downArrow})` }}
 			>
 				<option value='Online' defaultValue>
 					Online
 				</option>
-				{locations.map((location) => (
-					<option key={location} value={location}>
-						{location}
+				{eventLocations.map((eventLocation) => (
+					<option key={eventLocation} value={eventLocation}>
+						{eventLocation}
 					</option>
 				))}
 			</select>
@@ -118,7 +111,7 @@ const Navbar = (props) => {
 			</span>
 			<div className='profile-options'>
 				<div className='profile-details'>
-					<img src='/static/avatar.jpg' alt='profile picture' />
+					<img src={props.profile?.image} alt='profile picture' />
 					<h3>{props.profile?.name}</h3>
 				</div>
 				<hr />
@@ -174,12 +167,9 @@ const Navbar = (props) => {
 					ref={hamburger}
 					onClick={toggleSidebar}
 				>
-					<i class='fas fa-bars'></i>
+					<i className='fas fa-bars'></i>
 					<i className='fas fa-times'></i>
 				</span>
-				{/* <button class="menu-toggle" role="button">
-					<div class="hamburger"></div>
-				</button>  */}
 				<div
 					className='navbar__mobile__sidebar navbar__mobile__sidebar--closed'
 					ref={sidebar}
@@ -200,13 +190,4 @@ const mapStateToProps = (state) => ({
 	profile: state.profileState.profile
 });
 
-export default connect(mapStateToProps, { logout, getSelfProfile })(withRouter(Navbar));
-
-/* <NavLink
-	exact={true}
-	activeClassName='active-link'
-	className='nav-link'
-	to='/my-events'
-	>
-	<i className='far fa-heart fa-2x icon'></i>
-</NavLink> */
+export default connect(mapStateToProps, { logout })(Navbar);

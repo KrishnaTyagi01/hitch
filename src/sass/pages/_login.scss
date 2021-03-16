@@ -1,10 +1,23 @@
 .login {
 	color: var(--color-text-2);
 	background-color: var(--color-primary-1);
+	font-family: 'Montserrat', sans-serif;
 	padding: 60px 30px;
+	min-height: calc(100vh - 54px);
 	// transition: all 1s;
 
-	form {
+	.login-message {
+		color: var(--color-primary-1);
+		background-color: var(--color-secondary-3);
+		text-align: center;
+		padding: 10px;
+		// border: 2px solid var(--color-secondary-1);
+		border-radius: 10px;
+		max-width: 525px;
+		margin: 10px auto;
+	}
+
+	form.login-form {
 		display: flex;
 		flex-direction: column;
 		align-items: center;
@@ -12,7 +25,6 @@
 		padding: 30px;
 		max-width: 525px;
 		border-radius: 10px;
-		min-height: 298px;
 		margin: 0 auto;
 		animation: slidein 0.2s ease;
 		-moz-animation: slidein 0.2s ease;
@@ -27,7 +39,6 @@
 		}
 
 		.heading {
-			font-family: 'Montserrat', sans-serif;
 			font-style: normal;
 			font-weight: 600;
 			font-size: 22px;
@@ -40,7 +51,6 @@
 			margin-top: 30px;
 
 			label {
-				font-family: 'Montserrat', sans-serif;
 				font-style: normal;
 				font-weight: normal;
 				font-size: 18px;
@@ -48,38 +58,27 @@
 			}
 
 			input {
-				color: inherit;
+				color: var(--color-text-2);
 				// background: rgba(230, 228, 242, 0.2);
-				background-color: var(--color-primary-5);
+				background-color: var(--color-primary-1);
 				font-size: 14px;
-				border: 1px solid #e6e4f2;
 				border-radius: 10px;
-				outline: none;
 				width: 100%;
-				height: 46px;
 				margin-top: 16px;
-				padding-left: 15px;
-
-				&:valid {
-					color: var(--color-secondary-1);
-				}
-
-				&:invalid {
-					color: var(--color-semantic-1);
-				}
+				padding: 15px;
+				transition: box-shadow 0.1s;
 
 				&:focus {
-					box-shadow: 0 0 6px var(--color-primary-5);
+					box-shadow: 0 0 0 2px var(--color-secondary-3);
 				}
 
 				&::placeholder {
-					padding-left: 15px;
 					font-style: normal;
 					font-weight: normal;
 					// line-height: 13px;
 					// margin-bottom: 17px;
 					// color: rgba(230, 228, 242, 0.5);
-					color: var(--color-text-1);
+					color: var(--color-text-2);
 				}
 			}
 
@@ -92,10 +91,6 @@
 				background-color: var(--color-primary-2);
 				padding: 6px;
 				border-radius: 50%;
-
-				&:hover {
-					background-color: var(--color-primary-1);
-				}
 			}
 		}
 
@@ -105,18 +100,16 @@
 			height: 46px;
 			background: var(--color-secondary-3);
 			border-radius: 10px;
-			font-family: 'Montserrat', sans-serif;
 			font-style: normal;
 			font-weight: 600;
 			font-size: 18px;
 			line-height: 22px;
 			margin-top: 37px;
 			color: #2b244d;
-			border: none;
-			cursor: pointer;
 
+			&:hover,
 			&:focus {
-				outline: none;
+				box-shadow: 0 0 0 2px var(--color-secondary-1);
 			}
 		}
 	}

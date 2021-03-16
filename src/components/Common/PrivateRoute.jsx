@@ -8,7 +8,15 @@ const PrivateRoute = ({ component: Component, ...rest }) => (
 			rest.isAuthenticated ? (
 				<Component {...routerProps} />
 			) : (
-				<Redirect to={{ pathname: '/login', state: { from: routerProps.location } }} />
+				<Redirect
+					to={{
+						pathname: '/login',
+						state: {
+							referrer: routerProps.location,
+							message: 'Please login to continue!'
+						}
+					}}
+				/>
 			)
 		}
 	/>

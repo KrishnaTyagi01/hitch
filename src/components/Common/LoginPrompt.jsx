@@ -33,7 +33,7 @@ const LoginPrompt = (props) => {
 
 	return (
 		<div
-			className={`login-prompt ${props.loginPromptActive ? 'show-login-prompt' : null}`}
+			className={`login-prompt ${props.loginPromptActive ? 'show-login-prompt' : ''}`}
 			ref={loginPrompt}
 		>
 			<div className='login-prompt__content' ref={loginPromptContent}>
@@ -43,7 +43,10 @@ const LoginPrompt = (props) => {
 				</button>
 				<hr />
 				<div className='prompt-links'>
-					<Link to={{ pathname: '/login', referrer: referrer }} className='redirectLink'>
+					<Link
+						to={{ pathname: '/login', state: { referrer: referrer } }}
+						className='redirectLink'
+					>
 						Login
 					</Link>
 					<Link

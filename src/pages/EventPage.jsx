@@ -1,7 +1,6 @@
 import { useState, useEffect } from 'react';
 import axios from 'axios';
 
-// import MyCarousel from '../components/EventPage/Carousel';
 import BannerCarousel from '../components/EventPage/BannerCarousel';
 import Tags from '../components/EventPage/Tags';
 import HostDetails from '../components/EventPage/HostDetails';
@@ -24,7 +23,7 @@ const EventPage = (props) => {
 	const [event, setEvent] = useState(null);
 	const [httpStatusCode, setHttpStatusCode] = useState();
 
-	const getEvent = async (eventID) => {
+	const getEvent = async () => {
 		try {
 			const res = await axios.get(`/events/${eventID}/`);
 			setEvent(res.data);
@@ -36,8 +35,8 @@ const EventPage = (props) => {
 
 	useEffect(() => {
 		if (props.location.state?.event) setEvent(props.location.state.event);
-		else getEvent(eventID);
-	}, [eventID]);
+		else getEvent();
+	}, [eventID, props]);
 
 	if (httpStatusCode === 404) {
 		return <Page404 />;
@@ -49,17 +48,12 @@ const EventPage = (props) => {
 				<Loading />
 			) : (
 				<>
-					<div style={{ padding: '0 4vw' }}>
-						<button className='back-button' onClick={props.history.goBack}>
-							<i className='fa fa-chevron-left'></i>
-							Back
-						</button>
-					</div>
+					<button className='back-button' onClick={props.history.goBack}>
+						<i className='fa fa-chevron-left'></i>
+						Back
+					</button>
 					<article>
 						<main>
-							{/* <section className='hero'>
-								<MyCarousel imgURL={event?.image} />
-							</section> */}
 							<BannerCarousel images={[event?.image]} />
 							<SmallEventActions event={event} />
 							<Tags tags={event?.tags} />

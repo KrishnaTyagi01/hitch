@@ -7,12 +7,8 @@ const Confirmed = (props) => {
 	console.log(props);
 
 	return (
-		<div className='confirmation'>
-			{!props.location.state.ticket ? (
-				<Loading />
-			) : (
-				<h3 className='confirmation__text'>{id}</h3>
-			)}
+		<div className='event-ticket-page'>
+			{!props.location.state.ticket ? <Loading /> : <h3 className='ticket-id'>{id}</h3>}
 		</div>
 	);
 };
