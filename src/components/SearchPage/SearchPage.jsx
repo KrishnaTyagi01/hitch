@@ -8,6 +8,8 @@ import axios from 'axios';
 import { Redirect, Link } from 'react-router-dom';
 // import { connect } from 'react-router-dom';
 import { connect } from 'react-redux';
+import SearchPageNavbar from './SearchPageNavbar';
+import EventCard from '../Common/EventCard';
 
 
 const SearchPage = (props) => {
@@ -49,17 +51,21 @@ const SearchPage = (props) => {
         getAllEvents();
     }, [topics]);
 
-    const MyEvents = events.map(event => {
-        return (
-            <Link to={{
-                pathname: "/event-details",
-                state: { event: event }
-            }}
-            >
-                <MyEventCard title={event.title} desc={event.description} img={event.image} date={event.scheduled_date} />
-            </Link>
-        )
-    })
+    // const MyEvents = events.map(event => {
+    //     return (
+    //         <Link to={{
+    //             pathname: "/event-details",
+    //             state: { event: event }
+    //         }}
+    //         >
+    //             <MyEventCard title={event.title} desc={event.description} img={event.image} date={event.scheduled_date} />
+    //         </Link>
+    //     )
+    // })
+
+    const AAA = events.map((event) => (
+        <EventCard event={event} lazyLoadBI={true} key={event.id} />
+    ));
 
     const getTopics = (search) => {
         if (search.length !== 0) {
@@ -81,7 +87,7 @@ const SearchPage = (props) => {
 
     return (
         <div className="searchPage">
-            <Navbar changeSearchTerm={changeSearchTerm} />
+            <SearchPageNavbar changeSearchTerm={changeSearchTerm} />
             <div className="search_header">
                 <div className="heading">
                     Search Results
@@ -93,11 +99,10 @@ const SearchPage = (props) => {
                 </div>
                 <section className="searchPage__content--events">
                     <div className="eventsGrid">
-                        {MyEvents}
+                        {AAA}
                     </div>
                 </section>
             </div>
-
         </div>
     );
 }

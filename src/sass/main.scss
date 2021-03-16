@@ -151,3 +151,12 @@ button {
 
 //=================== SEARCH RESULTS ========================== //
 @import "components/SearchPage/searchPage";
+
+input[type="text"]:focus{
+	border:1px solid #39EAB4;;
+	outline: none;
+}
+
+textarea:focus{
+	outline: 1px solid #39EAB4;
+}

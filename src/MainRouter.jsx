@@ -26,6 +26,8 @@ import Footer from './components/Layout/Footer';
 import PrivateRoute from './components/Common/PrivateRoute';
 import LoginPrompt from './components/Common/LoginPrompt';
 
+import SearchPage from './components/SearchPage/SearchPage';
+
 const ScrollToTop = () => {
 	const { pathname } = useLocation();
 	useEffect(() => {

@@ -1,14 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import Upper from './Upper';
-import Filter from './Filter';
-import Footer from '../Layout/Footer';
-import Navbar from '../Layout/Navbar';
-import MyEventCard from './MyEventCard';
 import axios from 'axios';
-// import SimilarEventSection from '../event_components/SimilarEventSection';
-import { Redirect, Link } from 'react-router-dom';
+import { connect } from 'react-redux';
+import EventCard from '../Common/EventCard';
 
-const MainComponent = () => {
+const MainComponent = (props) => {
 	const [events, setEvents] = useState([]);
 
 	const refactorEvents = (currEvents) => {
@@ -24,7 +20,11 @@ const MainComponent = () => {
 
 	useEffect(() => {
 		const getAllEvents = async () => {
-			let res = await axios.get(`http://167.71.237.202/events/`);
+			let res = await axios.get(`http://167.71.237.202/profiles/wishlist/`, {
+				headers: {
+					Authorization: `Token ${props.token}`,
+				}
+			});
 			res = res.data;
 			setEvents(refactorEvents(res));
 		}
@@ -32,17 +32,9 @@ const MainComponent = () => {
 
 	}, []);
 
-	const MyEvents = events.map(event => {
-		return (
-			<Link to={{
-				pathname: "/event-details",
-				state: { event: event }
-			}}
-			>
-				<MyEventCard title={event.title} desc={event.description} img={event.image} date={event.scheduled_date} />
-			</Link>
-		)
-	})
+	const AAA = events.map((event) => (
+		<EventCard event={event} lazyLoadBI={true} key={event.id} />
+	));
 
 	const onButtonClick = (events) => {
 		setEvents(refactorEvents(events));
@@ -59,7 +51,7 @@ const MainComponent = () => {
                 </div> */}
 				<section className="eventsPage__content--events">
 					<div className="eventsGrid">
-						{MyEvents}
+						{AAA}
 					</div>
 				</section>
 			</div>
@@ -67,4 +59,11 @@ const MainComponent = () => {
 	);
 }
 
-export default MainComponent;
+const mapStateToProps = state => {
+	return {
+		token: state.authState.token,
+	}
+}
+
+
+export default connect(mapStateToProps)(MainComponent);

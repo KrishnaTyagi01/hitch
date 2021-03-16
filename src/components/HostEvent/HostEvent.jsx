@@ -8,6 +8,11 @@ import ReactDOM from 'react-dom';
 import { connect } from 'react-redux';
 import { Redirect } from 'react-router-dom';
 import UploadImage from './UploadImage';
+// import { Checkbox } from 'semantic-ui-react';
+import DatePicker from 'react-modern-calendar-datepicker';
+import { Calendar } from "react-modern-calendar-datepicker";
+
+
 
 const HostEvent = (props) => {
 	const [selectedFile, setSelectedFile] = useState();
@@ -45,6 +50,16 @@ const HostEvent = (props) => {
 		state: '',
 		pin: '',
 	});
+
+	const defaultValue = {
+		year: 2021,
+		month: 3,
+		day: 13,
+	};
+	const [selectedDay, setSelectedDay] = useState(defaultValue);
+
+
+
 
 	const [viewEvent, setViewEvent] = useState(false);
 	const [eventPosted, setEventPosted] = useState(false);
@@ -160,9 +175,13 @@ const HostEvent = (props) => {
 		console.log(preview);
 		setPreview(preview);
 	}
+
+
+	// console.log(selectedDay);
+
+
 	return (
 		<div className="hostEvent">
-			{/* <Navbar /> */}
 			<div className="header">
 				<span>Host Your Event</span>
 			</div>
@@ -195,18 +214,6 @@ const HostEvent = (props) => {
 					{/* ======================= EVENT PICTURES =============================================  */}
 					<section id="pictures"></section>
 					<div className="event_pictures">
-						{/* <div className="event_pictures_header">
-                            <span>Pictures</span>
-                            <span id="event_pictures_header_right">Minimum 1 Required</span>
-                        </div>
-                        <div className="picturebox_container">
-                            <div className="picturebox_container_picture_box">
-                                {selectedFile && <div className="picture"><img src={preview} /></div>}
-                            </div>
-                        </div>
-                        <div className="event_pictures_chooseFile">
-                            <input ref={imgRef} type='file' onChange={(e) => { onSelectFile(e); setImage(e.target.files[0]) }} />
-                        </div> */}
 						<UploadImage onImageUpload={onImageUpload} onImageCropped={onImageCropped} />
 					</div>
 					<div className="duration_days">
@@ -224,11 +231,6 @@ const HostEvent = (props) => {
                         </div>
 						<div className="event_hosts_cards">
 							<div className="event_hosts_card"></div>
-							{/* <div className="event_hosts_addCard" >
-                                <div className="event_hosts_addCard_circle">
-                                    <div>+</div>
-                                </div>
-                            </div> */}
 						</div>
 					</div>
 					{/* ======================= EVENT SCHEDULE  =============================================  */}
@@ -242,30 +244,36 @@ const HostEvent = (props) => {
 							<div className="event_schedule_date_header">
 								Date
                             </div>
-							<div className="event_schedule_date_blanks">
-								<div className="date_blanks">
-									<div style={{ display: 'inline-block' }}>
-										<input value={DateD1} maxLength="1" onChange={(e) => setDateD1(e.target.value)} className="day" placeholder="D"></input>
-										<input style={{ marginRight: '50px', }} value={DateD2} maxLength="1" onChange={(e) => setDateD2(e.target.value)} className="day" placeholder="D"></input>
-									</div>
-									<div style={{ display: 'inline-block' }}>
-										<input value={DateM1} maxLength="1" onChange={(e) => setDateM1(e.target.value)} className="month" placeholder="M"></input>
-										<input style={{ marginRight: '50px', }} value={DateM2} maxLength="1" onChange={(e) => setDateM2(e.target.value)} className="month" placeholder="M"></input>
-									</div>
-									<div style={{ display: 'inline-block' }}>
-
-										<input value={DateY1} maxLength="1" onChange={(e) => setDateY1(e.target.value)} className="year" placeholder="Y"></input>
-										<input value={DateY2} maxLength="1" onChange={(e) => setDateY2(e.target.value)} className="year" placeholder="Y"></input>
-										<input value={DateY3} maxLength="1" onChange={(e) => setDateY3(e.target.value)} className="year" placeholder="Y"></input>
-										<input value={DateY4} maxLength="1" onChange={(e) => setDateY4(e.target.value)} className="year" placeholder="Y"></input>
-									</div>
-								</div>
-								{/* <div className="button">
-                                    <Button1 />
-                                </div> */}
-								{/* {autoTab('date_blanks')} */}
-
+							<div className="event_schedule_date_blanks" >
+								<Calendar
+									value={selectedDay}
+									onChange={setSelectedDay}
+									// colorPrimary="#9c88ff" // added this
+									calendarClassName="custom-calendar" // and this
+									calendarTodayClassName="custom-today-day" // also this
+									shouldHighlightWeekends
+								/>
 							</div>
+
+							{/* <div className="event_schedule_date_blanks">
+                                <div className="date_blanks">
+                                    <div style={{ display: 'inline-block' }}>
+                                        <input value={DateD1} maxLength="1" onChange={(e) => setDateD1(e.target.value)} className="day" placeholder="D"></input>
+                                        <input style={{ marginRight: '50px', }} value={DateD2} maxLength="1" onChange={(e) => setDateD2(e.target.value)} className="day" placeholder="D"></input>
+                                    </div>
+                                    <div style={{ display: 'inline-block' }}>
+                                        <input value={DateM1} maxLength="1" onChange={(e) => setDateM1(e.target.value)} className="month" placeholder="M"></input>
+                                        <input style={{ marginRight: '50px', }} value={DateM2} maxLength="1" onChange={(e) => setDateM2(e.target.value)} className="month" placeholder="M"></input>
+                                    </div>
+                                    <div style={{ display: 'inline-block' }}>
+                                        <input value={DateY1} maxLength="1" onChange={(e) => setDateY1(e.target.value)} className="year" placeholder="Y"></input>
+                                        <input value={DateY2} maxLength="1" onChange={(e) => setDateY2(e.target.value)} className="year" placeholder="Y"></input>
+                                        <input value={DateY3} maxLength="1" onChange={(e) => setDateY3(e.target.value)} className="year" placeholder="Y"></input>
+                                        <input value={DateY4} maxLength="1" onChange={(e) => setDateY4(e.target.value)} className="year" placeholder="Y"></input>
+                                    </div>
+                                </div>
+                                
+                            </div> */}
 						</div>
 						<div className="event_schedule_time">
 							<div className="event_schedule_time_header">
@@ -297,12 +305,24 @@ const HostEvent = (props) => {
 
 					{/* ============================= EVENT PRICE PLAN =========================  */}
 					{/* ============================= EVENT PRICE PLAN =========================  */}
+
+
 					<section id="pricing"></section>
 					<div className="event_pricePlan">
 						<div className="event_pricePlan_header">
 							Price
                         </div>
-						<input value={price} onChange={e => setPrice(e.target.value)} type="text" placeholder="Price" />
+						<div className="filter__checkbox">
+							<form className="filter__form" style={{ display: "flex", flexDirection: "column" }}>
+								<label
+									className="filter__form--span">
+									<input className="filter__checkbox--input" type="checkbox" value="greenEggs" />
+									<span class="filter__checkbox--checkmark"></span>
+								Free Event ?
+					    </label>
+							</form>
+						</div>
+						<input value={price} onChange={e => setPrice(e.target.value)} type="text" placeholder="Price (Rupees)" />
 					</div>
 
 					{/* ============================= EVENT TAGS =========================  */}
@@ -321,6 +341,7 @@ const HostEvent = (props) => {
 								className="addTag"
 								type="text"
 								maxLength="8"
+								placeholder="Type"
 							/>
 						</div>
 						{/* <span><Button1 /></span> */}
@@ -352,41 +373,42 @@ const HostEvent = (props) => {
 					{/* ============================= EVENT LOCATION =========================  */}
 
 
-
-
-					<section id="view"></section>
-					<button type="button" className="ViewEvent" onClick={viewTempEvent}>
-						View your event
+					<div className="eventButtons">
+						<section id="view"></section>
+						<button type="button" className="ViewEvent" onClick={viewTempEvent}>
+							Preview event
                         {viewEvent ?
-							// <Link to="route" target="_blank" onClick={(event) => {event.preventDefault(); window.open(this.makeHref("route"));}} />
+								// <Link to="route" target="_blank" onClick={(event) => {event.preventDefault(); window.open(this.makeHref("route"));}} />
 
-							<Redirect
-								// target="_blank"
-								// onClick={(event) => { event.preventDefault(); window.open(this.makeHref("/event-details")); }}
-								to={{
-									pathname: '/event-details',
-									state: {
-										event: {
-											image: preview,
-											title: Title,
-											description: Tagline,
-											scheduled_time: getTime(),
-											scheduled_date: getDate(),
-											tags: getTags(),
-											ticket_price: 0,
+								<Redirect
+									// target="_blank"
+									// onClick={(event) => { event.preventDefault(); window.open(this.makeHref("/event-details")); }}
+									to={{
+										pathname: '/event-details',
+										state: {
+											event: {
+												image: preview,
+												title: Title,
+												description: Tagline,
+												scheduled_time: getTime(),
+												scheduled_date: getDate(),
+												tags: getTags(),
+												ticket_price: 0,
+											}
 										}
-									}
-								}} /> : null}
+									}} /> : null}
 
-					</button>
-					<section id="post"></section>
-					<button type="button" className="PostEvent" onClick={postEvent}>
-						Post event
-                    </button>
+						</button>
+						<section id="post"></section>
+						<button type="button" className="PostEvent" onClick={postEvent}>
+							Post event
+                        </button>
+					</div>
+
+
 					{eventPosted ? <Redirect to="/events" /> : null}
 				</form>
 			</div>
-			{/* <Footer /> */}
 		</div>
 	)
 }

@@ -26,7 +26,11 @@ const Upper = (props) => {
 	const Bookmark = () => {
 		makeActive(ref1);
 		const getAllEvents = async () => {
-			let res = await axios.get(`http://167.71.237.202/events/`);
+			let res = await axios.get(`http://167.71.237.202/profiles/wishlist/`, {
+				headers: {
+					Authorization: `Token ${props.token}`,
+				}
+			});
 			res = res.data;
 			setEvents(res);
 		}
@@ -86,7 +90,7 @@ const Upper = (props) => {
 				<h3 className="upper__container--head">My Events</h3>
 				<div className="upper__container--category">
 					<button ref={ref1} onClick={Bookmark} className="upper__container--btnactive">
-						Bookmark
+						Bookmarks
 					</button>
 					<button ref={ref2} onClick={Hosted} className="upper__container--btn">
 						Your Hosted Events
@@ -108,5 +112,6 @@ const mapStateToProps = state => {
 		token: state.authState.token,
 	}
 }
+
 
 export default connect(mapStateToProps)(Upper);

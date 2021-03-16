@@ -90,7 +90,7 @@ const RegisterComponent = (props) => {
 				{otpSent ?
 					<>
 						<div className="otp_sent">
-							OTP Sent Successfully
+							{`OTP Sent to ${email}`}
 						</div>
 						<div className="signin__mid">
 							<span className="signin__mid--before">OTP</span>

@@ -7,6 +7,7 @@ import { logout } from '../../redux/actions/authActions';
 import search from '../../icons/search.svg';
 import downArrow from '../../icons/downArrow.svg';
 import { eventLocations } from '../../API/constants';
+import SearchBar from './SearchBar';
 
 const Navbar = (props) => {
 	const hamburger = useRef(null);
@@ -50,7 +51,7 @@ const Navbar = (props) => {
 				exact={true}
 				activeClassName='active-link'
 				className='nav-link'
-				to='/hostintro'
+				to='/host-event'
 				onClick={toggleSidebar}
 			>
 				Host
@@ -80,11 +81,11 @@ const Navbar = (props) => {
 		</div>
 	);
 
-	const SearchBar = () => (
-		<div className='navbar__search-wrapper'>
-			<input placeholder='Search' style={{ backgroundImage: `url(${search})` }} />
-		</div>
-	);
+	// const SearchBar = () => (
+	// 	<div className='navbar__search-wrapper'>
+	// 		<input placeholder='Search' style={{ backgroundImage: `url(${search})` }} />
+	// 	</div>
+	// );
 
 	const LocationSelector = () => (
 		<div className='navbar__location-wrapper'>
@@ -141,6 +142,11 @@ const Navbar = (props) => {
 		</div>
 	);
 
+
+	if (pathname.startsWith('/search')) {
+		return null;
+	}
+
 	return (
 		<nav className='navbar'>
 			<div className='navbar__desktop'>
@@ -150,7 +156,7 @@ const Navbar = (props) => {
 					{!pathname.startsWith('/dashboard') ? (
 						<>
 							<LocationSelector />
-							<SearchBar />
+							<SearchBar changeSearchTerm={props.changeSearchTerm} />
 							<NavbarLinks />
 						</>
 					) : (
