@@ -1,25 +1,20 @@
+@use 'bannerCarousel';
+@use 'carousel';
+@use 'eventDetails';
+@use 'hero';
+@use 'hostCard';
+@use 'messageBoard';
+@use 'organizersMessage';
+@use 'overview';
+@use 'hostDetails';
+@use 'tags';
+@use 'timeline';
+@use 'smallEventActions';
+@use 'eventActions';
+@use 'similarEvents';
+
 .eventPage {
 	background-color: var(--color-primary-1);
-
-	.back-button {
-		color: white;
-		background-color: transparent;
-		cursor: pointer;
-		padding: 8px 16px;
-		border: none;
-		border-radius: 6px;
-		transition: 0.1s;
-		margin: 0 4vw;
-		margin-top: 1rem;
-
-		&:hover {
-			background-color: var(--color-primary-2);
-		}
-
-		i {
-			margin-right: 12px;
-		}
-	}
 
 	article {
 		padding: 20px 4vw;
@@ -32,31 +27,14 @@
 			grid-area: main-content;
 			width: auto;
 			max-width: 830px;
-
-			@import 'bannerCarousel';
-			@import 'carousel';
-			@import 'eventDetails';
-			@import 'hero';
-			@import 'hostCard';
-			@import 'messageBoard';
-			@import 'organizersMessage';
-			@import 'overview';
-			@import 'hostDetails';
-			@import 'tags';
-			@import 'timeline';
-			@import 'smallEventActions';
 		}
 
 		aside {
 			grid-area: side-content;
 			width: 310px;
 			max-width: 100%;
-
-			@import 'eventActions';
 		}
 	}
-
-	@import 'similarEvents';
 }
 
 @media screen and (max-width: 1024px) {

@@ -1,0 +1,45 @@
+.custom-button {
+	color: var(--color-text-2);
+	font-size: 16px;
+	padding: 12px 24px;
+	border-radius: 10px;
+	margin: 0 10px;
+	transition: all 0.2s;
+
+	&:hover,
+	&:focus {
+		box-shadow: 0 0 0 2px var(--color-primary-5);
+	}
+}
+
+.submit {
+	background-color: var(--color-secondary-1);
+}
+
+.cancel {
+	background-color: var(--color-semantic-1);
+}
+
+.confirm {
+	background-color: var(--color-primary-3);
+}
+
+.back-button {
+	color: white;
+	background-color: transparent;
+	cursor: pointer;
+	padding: 8px 16px;
+	border: none;
+	border-radius: 6px;
+	transition: 0.1s;
+	margin: 0 4vw;
+	margin-top: 1rem;
+
+	&:hover {
+		background-color: var(--color-primary-2);
+	}
+
+	i {
+		margin-right: 12px;
+	}
+}

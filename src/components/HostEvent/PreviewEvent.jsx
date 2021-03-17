@@ -46,7 +46,7 @@ const PreviewEvent = (props) => {
     //     return <Page404 />;
     // }
 
-    console.log('hello');
+    // console.log('hello');
 
 
     return (

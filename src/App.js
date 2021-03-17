@@ -5,7 +5,7 @@ import MainRouter from './MainRouter';
 import { getSelfProfile } from './redux/actions/profileActions';
 
 import '@fortawesome/fontawesome-free/css/all.min.css';
-import './App.css';
+import './css/App.css';
 
 function App(props) {
 	let { isAuthenticated, getSelfProfile } = props;

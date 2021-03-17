@@ -3,35 +3,36 @@
 	"version": "0.1.0",
 	"private": true,
 	"dependencies": {
-		"@fortawesome/fontawesome-free": "^5.15.2",
+		"@fortawesome/fontawesome-free": "^5.15.3",
 		"@react-google-maps/api": "^2.1.1",
-		"@testing-library/jest-dom": "^5.11.6",
-		"@testing-library/react": "^11.2.2",
-		"@testing-library/user-event": "^12.2.2",
+		"@testing-library/jest-dom": "^5.11.9",
+		"@testing-library/react": "^11.2.5",
+		"@testing-library/user-event": "^13.0.0",
 		"axios": "^0.21.1",
 		"moment": "^2.29.1",
-		"nanoid": "^3.1.18",
+		"nanoid": "^3.1.22",
 		"node-sass": "^5.0.0",
 		"react": "^17.0.1",
-		"react-calendar": "^3.3.0",
+		"react-calendar": "^3.3.1",
 		"react-dom": "^17.0.1",
-		"react-elastic-carousel": "^0.9.5",
+		"react-elastic-carousel": "^0.11.2",
 		"react-geocode": "^0.2.3",
 		"react-google-autocomplete": "^1.2.6",
 		"react-image-crop": "^8.6.6",
 		"react-modern-calendar-datepicker": "^3.1.6",
 		"react-redux": "^7.2.2",
-		"react-responsive-carousel": "^3.2.11",
+		"react-responsive-carousel": "^3.2.14",
 		"react-router-dom": "^5.2.0",
-		"react-scripts": "4.0.0",
+		"react-scripts": "4.0.3",
 		"redux": "^4.0.5",
 		"redux-thunk": "^2.3.0",
 		"styled-components": "^5.2.1",
-		"web-vitals": "^0.2.4"
+		"web-vitals": "^1.1.1"
 	},
 	"scripts": {
 		"compile:sass": "node-sass src/sass/main.scss src/App.css",
 		"watch:sass": "nodemon -e scss -x \"npm run compile:sass\"",
+		"sass-watch": "sass --watch src/sass/main.scss:src/css/App.css",
 		"start": "react-scripts start",
 		"build": "react-scripts build",
 		"test": "react-scripts test",
@@ -56,6 +57,7 @@
 		]
 	},
 	"devDependencies": {
-		"file-loader": "^6.2.0"
+		"file-loader": "^6.2.0",
+		"sass": "^1.32.8"
 	}
 }
