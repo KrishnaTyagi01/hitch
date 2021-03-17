@@ -13,6 +13,7 @@
         font-weight: normal;
         font-size: 16px;
         line-height: 20px;
+        margin-right: 15px;
     
         color: #39EAB4;
         
@@ -27,6 +28,7 @@
 .doCrop{
     // background-color: rgba(255, 255, 255, 0.082);
     background:rgba(1,1,1,0.5);
+    // margin-bottom: 40px;
 }
 
 input[type="file"]{
@@ -46,4 +48,14 @@ input[type="file"]{
     // background-color: ;
     padding: 7px 7px;
     border-radius: 15px;
+}
+
+.squareInfo{
+    font-family: Montserrat;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 14px;
+    line-height: 29px;
+    color: #E6E4F2;
+    text-align: center;
 }

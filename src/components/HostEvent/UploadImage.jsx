@@ -112,7 +112,9 @@ class UploadImage extends PureComponent {
                     <span>Pictures</span>
                     <span id="event_pictures_header_right">Minimum 1 Required</span>
                 </div>
-
+                {!src && (
+                    <div className="squareInfo"> Ideally Square Image</div>
+                )}
 
                 {src && !cropDone && (
                     <div className="doCropArea">
@@ -133,11 +135,13 @@ class UploadImage extends PureComponent {
                         </div>
                     </div>
                 )}
-                {src && !cropDone &&
-                    < button type="button" onClick={this.onConfirmCrop}>Confirm</button>
-                }
 
-                <div style={{ marginTop: '20px' }}>
+                <div style={{ marginTop: '20px', display: 'flex', justifyContent: 'center' }}>
+
+                    {src && !cropDone &&
+                        < button type="button" onClick={this.onConfirmCrop}>Confirm</button>
+                    }
+
                     <label for="image" className="image">Choose File</label>
                     <input type="file" id="image" accept="image/*"
                         onChange={this.onSelectFile}

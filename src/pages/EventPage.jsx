@@ -54,6 +54,7 @@ const EventPage = (props) => {
 					</button>
 					<article>
 						<main>
+
 							<BannerCarousel images={[event?.image]} />
 							<SmallEventActions event={event} />
 							<Tags tags={event?.tags} />

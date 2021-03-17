@@ -1,0 +1,22 @@
+.previewModal{
+    position: fixed;
+    z-index: 100;
+    top: 0;
+    left: 0;
+    width:100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.6);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+    .eventPage{
+        width: 100%;
+        // height: 100%;
+    }
+}
+.hostEvent .sec_container .previewModal span{
+    position: unset;
+    z-index: unset;
+    right: unset;
+}

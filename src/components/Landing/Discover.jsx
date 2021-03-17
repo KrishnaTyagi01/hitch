@@ -62,24 +62,6 @@ export default function Discover() {
 		getAllEvents();
 	}, []);
 
-	// const MyEvents = events.map((event) => {
-	// 	return (
-	// 		<Link
-	// 			to={{
-	// 				pathname: '/event-details',
-	// 				state: { event: event }
-	// 			}}
-	// 		>
-	// 			<MyEventCard
-	// 				title={event.title}
-	// 				desc={event.description}
-	// 				img={event.image}
-	// 				date={event.scheduled_date}
-	// 			/>
-	// 		</Link>
-	// 	);
-	// });
-
 	const AAA = events.map((event) => (
 		<EventCard event={event} lazyLoadBI={true} key={event.id} />
 	));

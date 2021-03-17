@@ -12,6 +12,8 @@ const Filter = (props) => {
 	// const [language, setLanguage] = useState(false);
 	const [location, setLocation] = useState(false);
 	const [date, setDate] = useState(false);
+	const [temp_category, setTemp_Category] = useState('');
+	const [temp_location, setTemp_Location] = useState('');
 
 	const defaultFrom = {
 		year: 2000,
@@ -232,7 +234,7 @@ const Filter = (props) => {
 	}
 
 	const responsiveFilter = () => {
-		if (window.innerWidth <= 870) {
+		if (window.innerWidth <= 1050) {
 			if (date) {
 				return (
 					<Calendar
@@ -300,7 +302,7 @@ const Filter = (props) => {
 						<div className="filter__subtype--name">Category</div>
 						<i onClick={() => {
 							setCategory(!category);
-							if (window.innerWidth <= 870) {
+							if (window.innerWidth <= 1050) {
 								setLocation(false);
 								setDate(false);
 							}
@@ -310,12 +312,20 @@ const Filter = (props) => {
 						{/* <i onClick={() => setCategory(!category)} style={{ fontSize: "7.5px", color: "#ffffff" }} class="fas fa-chevron-down " /> */}
 					</div>
 
-					{category && window.innerWidth > 870 ? (
+					{category && window.innerWidth > 1050 ? (
 						<div className="filter__checkbox">
-							<form className="filter__form" style={{ display: "flex", flexDirection: "column" }}>
-								<div className="_search">
-									<input type="text" value={filterState.categories.search} onChange={e => onChangeSearch(e, 'categories')}></input>
-								</div>
+							<div className="filter__form" style={{ display: "flex", flexDirection: "column" }}>
+								<form className="_search" onSubmit={(e) => {
+									e.preventDefault();
+									let newstate = { ...filterState };
+									newstate.categories.search = temp_category;
+									setFilterState(newstate);
+									e.stopPropagation();
+									// console.log('Hello');
+								}}>
+									<input type="text" value={temp_category} onChange={e => setTemp_Category(e.target.value)}></input>
+									<button type="submit">Search</button>
+								</form>
 								<label
 									className="filter__form--span">
 									<input className="filter__checkbox--input" checked={filterState.categories.design} type="checkbox" value="greenEggs" />
@@ -332,7 +342,7 @@ const Filter = (props) => {
 									<span onClick={e => changeFilter(e, 'categories', 'music')} class="filter__checkbox--checkmark"></span>
 								Music
 								</label>
-							</form>
+							</div>
 						</div>) : null}
 
 				</div>
@@ -343,7 +353,7 @@ const Filter = (props) => {
 						<div className="filter__subtype--name">Location</div>
 						<i onClick={() => {
 							setLocation(!location);
-							if (window.innerWidth <= 870) {
+							if (window.innerWidth <= 1050) {
 								setCategory(false);
 								setDate(false);
 							}
@@ -352,14 +362,22 @@ const Filter = (props) => {
 						/>
 					</div>
 
-					{location && window.innerWidth > 870 ? (
+					{location && window.innerWidth > 1050 ? (
 						<div className="filter__checkbox">
-							<form className="filter__form" style={{ display: "flex", flexDirection: "column" }}>
-								<div className="_search">
-									<input type="text" value={filterState.locations.search} onChange={e => onChangeSearch(e, 'locations')} ></input>
-								</div>
+							<div className="filter__form" style={{ display: "flex", flexDirection: "column" }}>
+								<form className="_search" onSubmit={(e) => {
+									e.preventDefault();
+									let newstate = { ...filterState };
+									newstate.locations.search = temp_location;
+									setFilterState(newstate);
+									e.stopPropagation();
+									// console.log('Hello');
+								}}>
+									<input type="text" value={temp_location} onChange={e => setTemp_Location(e.target.value)} ></input>
+									<button type="submit" >Search</button>
+								</form>
 								{cityFilters}
-							</form>
+							</div>
 						</div>) : null}
 				</div>
 
@@ -432,7 +450,7 @@ const Filter = (props) => {
 						<div className="filter__subtype--name">Date</div>
 						<i onClick={() => {
 							setDate(!date);
-							if (window.innerWidth <= 870) {
+							if (window.innerWidth <= 1050) {
 								setCategory(false);
 								setLocation(false);
 							}
@@ -446,7 +464,7 @@ const Filter = (props) => {
 						<div>{`To: ${getDate('end') === null || getDate('start').substr(0, 4) === '2000' ? '-' : getDate('end')}`}</div>
 					</div>
 
-					{date && window.innerWidth > 870 ? (
+					{date && window.innerWidth > 1050 ? (
 						<Calendar
 							value={selectedDayRange}
 							onChange={setSelectedDayRange}

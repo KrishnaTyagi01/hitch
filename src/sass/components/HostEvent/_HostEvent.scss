@@ -46,7 +46,7 @@
         justify-content: space-evenly;
 
         input,textarea{
-            border-style: none;
+            // border-style: none;
             border-radius: 10px;
             padding-left: 10px;
             background-color:#2B244D ;
@@ -435,6 +435,9 @@
                     //     justify-content: center;
                     //     align-items:center;
 
+                    .Calendar{
+                        background: #2b244d;
+                    }
 
                     //     color: #877CC0;
                         
@@ -542,6 +545,27 @@
                 }
             }
         }
+
+        .curr_date{
+            width:150px;
+            height: 30px;
+            font-family: 'Montserrat', sans-serif;
+            font-style: normal;
+            font-weight: 500;
+            font-size: 18px;
+            line-height: 22px;
+            color: rgba(230, 228, 242, 0.5);
+				// background-color: ;
+            background: rgba(230, 228, 242, 0.2);
+	        border-radius: 10px;
+	        padding:6px 10px;
+            text-align: center;
+            margin-top: 20px;
+            margin-left:85px;
+
+        }
+
+
     }
 
 
@@ -621,6 +645,7 @@
                 // margin-bottom: 15.05px;
                 border-radius: 1000px;
                 border: none;
+                
                 font-family: 'Kumbh Sans', sans-serif;
                 font-style: normal;
                 font-weight: 300;
@@ -754,4 +779,10 @@
             }
         }
     }
+}
+
+
+
+.Calendar__day.-today:not(.-selectedStart):not(.-selectedEnd):not(.-selectedBetween){
+    color:orange;
 }

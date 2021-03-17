@@ -11,6 +11,7 @@ import UploadImage from './UploadImage';
 // import { Checkbox } from 'semantic-ui-react';
 import DatePicker from 'react-modern-calendar-datepicker';
 import { Calendar } from "react-modern-calendar-datepicker";
+import PreviewEvent from './PreviewEvent';
 
 
 
@@ -24,19 +25,24 @@ const HostEvent = (props) => {
 	const [Tagline, setTagline] = useState('');
 	const [Overview, setOverview] = useState('');
 
-	const [DateD1, setDateD1] = useState('');
-	const [DateD2, setDateD2] = useState('');
-	const [DateM1, setDateM1] = useState('');
-	const [DateM2, setDateM2] = useState('');
-	const [DateY1, setDateY1] = useState('');
-	const [DateY2, setDateY2] = useState('');
-	const [DateY3, setDateY3] = useState('');
-	const [DateY4, setDateY4] = useState('');
+	// const [DateD1, setDateD1] = useState('');
+	// const [DateD2, setDateD2] = useState('');
+	// const [DateM1, setDateM1] = useState('');
+	// const [DateM2, setDateM2] = useState('');
+	// const [DateY1, setDateY1] = useState('');
+	// const [DateY2, setDateY2] = useState('');
+	// const [DateY3, setDateY3] = useState('');
+	// const [DateY4, setDateY4] = useState('');
 
 	const [TimeH1, setTimeH1] = useState('');
 	const [TimeH2, setTimeH2] = useState('');
 	const [TimeM1, setTimeM1] = useState('');
 	const [TimeM2, setTimeM2] = useState('');
+
+	const [DurationH1, setDurationH1] = useState('');
+	const [DurationH2, setDurationH2] = useState('');
+	const [DurationM1, setDurationM1] = useState('');
+	const [DurationM2, setDurationM2] = useState('');
 
 	const [Image, setImage] = useState(null);
 	const [Tags, setTags] = useState([]);
@@ -56,10 +62,7 @@ const HostEvent = (props) => {
 		month: 3,
 		day: 13,
 	};
-	const [selectedDay, setSelectedDay] = useState(defaultValue);
-
-
-
+	const [selectedDay, setSelectedDay] = useState(null);
 
 	const [viewEvent, setViewEvent] = useState(false);
 	const [eventPosted, setEventPosted] = useState(false);
@@ -94,8 +97,23 @@ const HostEvent = (props) => {
 		});
 	}, [selectedFile]);
 
+	// const getDate = () => {
+	// 	return DateY1 + DateY2 + DateY3 + DateY4 + '-' + DateM1 + DateM2 + '-' + DateD1 + DateD2;
+	// }
 	const getDate = () => {
-		return DateY1 + DateY2 + DateY3 + DateY4 + '-' + DateM1 + DateM2 + '-' + DateD1 + DateD2;
+		if (selectedDay === null)
+			return null;
+
+		let ans = '';
+		ans += selectedDay.year;
+		ans += '-';
+		ans += selectedDay.month;
+		ans += '-';
+		ans += selectedDay.day;
+		return ans;
+	}
+	const getDuration = () => {
+		return DurationH1 + DurationH2 + ':' + DurationM1 + DurationM2;
 	}
 
 	const getTime = () => {
@@ -119,13 +137,13 @@ const HostEvent = (props) => {
 		return ans;
 	}
 
-	const onSelectFile = e => {
-		if (!e.target.files || e.target.files.length === 0) {
-			setSelectedFile(undefined);
-			return;
-		}
-		setSelectedFile(e.target.files[0]);
-	}
+	// const onSelectFile = e => {
+	// 	if (!e.target.files || e.target.files.length === 0) {
+	// 		setSelectedFile(undefined);
+	// 		return;
+	// 	}
+	// 	setSelectedFile(e.target.files[0]);
+	// }
 
 
 	const postEvent = async (e) => {
@@ -140,7 +158,9 @@ const HostEvent = (props) => {
 		form_data.append('scheduled_time', getTime());
 		form_data.append('scheduled_date', getDate());
 		form_data.append('tags', getTags());
+		form_data.append('ticket_price', price);
 		form_data.append('address', getAddress());
+		form_data.append('duration', getDuration());
 
 		let url = 'http://167.71.237.202/events/';
 
@@ -176,8 +196,17 @@ const HostEvent = (props) => {
 		setPreview(preview);
 	}
 
+	const tempEvent = {
+		image: preview,
+		title: Title,
+		description: Tagline,
+		scheduled_time: getTime(),
+		scheduled_date: getDate(),
+		tags: getTags(),
+		ticket_price: price,
+		duration: getDuration(),
+	};
 
-	// console.log(selectedDay);
 
 
 	return (
@@ -216,12 +245,7 @@ const HostEvent = (props) => {
 					<div className="event_pictures">
 						<UploadImage onImageUpload={onImageUpload} onImageCropped={onImageCropped} />
 					</div>
-					<div className="duration_days">
-						<div className="duration_days_header">
-							Duration
-                        </div>
-						<input value={duration} onChange={e => setDuration(e.target.value)} type="text" placeholder="Days" />
-					</div>
+
 					{/* ======================= EVENT HOST AND SPEAKERS =============================================  */}
 					{/* ======================= EVENT HOST AND SPEAKERS =============================================  */}
 					<section id="host"></section>
@@ -254,6 +278,10 @@ const HostEvent = (props) => {
 									shouldHighlightWeekends
 								/>
 							</div>
+							<div className="curr_date">
+								{selectedDay ? getDate() : 'Select Date'}
+							</div>
+
 
 							{/* <div className="event_schedule_date_blanks">
                                 <div className="date_blanks">
@@ -281,15 +309,32 @@ const HostEvent = (props) => {
                             </div>
 							<div className="event_schedule_time_blanks">
 								<div>
-									<input value={TimeH1} maxLength="2" onChange={(e) => setTimeH1(e.target.value)} className="day" placeholder="H"></input>
-									<input value={TimeH2} maxLength="2" onChange={(e) => setTimeH2(e.target.value)} className="day" placeholder="H"></input>
+									<input type="text" value={TimeH1} maxLength="2" onChange={(e) => setTimeH1(e.target.value)} className="day" placeholder="H"></input>
+									<input type="text" value={TimeH2} maxLength="2" onChange={(e) => setTimeH2(e.target.value)} className="day" placeholder="H"></input>
 
-									<input value={TimeM1} maxLength="2" onChange={(e) => setTimeM1(e.target.value)} className="month" placeholder="M"></input>
-									<input value={TimeM2} maxLength="2" onChange={(e) => setTimeM2(e.target.value)} className="month" placeholder="M"></input>
+									<input type="text" value={TimeM1} maxLength="2" onChange={(e) => setTimeM1(e.target.value)} className="month" placeholder="M"></input>
+									<input type="text" value={TimeM2} maxLength="2" onChange={(e) => setTimeM2(e.target.value)} className="month" placeholder="M"></input>
 								</div>
 								{/* <div className="button">
                                     <Button1 />
                                 </div> */}
+							</div>
+						</div>
+
+						<div className="duration_days">
+							<div className="duration_days_header">
+								Duration
+                        	</div>
+							<input value={duration} onChange={e => setDuration(e.target.value)} type="text" placeholder="Days" />
+							<div className="event_schedule_time">
+								<div className="event_schedule_time_blanks">
+									<div>
+										<input type="text" value={DurationH1} maxLength="2" onChange={(e) => setDurationH1(e.target.value)} className="day" placeholder="H"></input>
+										<input type="text" value={DurationH2} maxLength="2" onChange={(e) => setDurationH2(e.target.value)} className="day" placeholder="H"></input>
+										<input type="text" value={DurationM1} maxLength="2" onChange={(e) => setDurationM1(e.target.value)} className="month" placeholder="M"></input>
+										<input type="text" value={DurationM2} maxLength="2" onChange={(e) => setDurationM2(e.target.value)} className="month" placeholder="M"></input>
+									</div>
+								</div>
 							</div>
 						</div>
 					</div>
@@ -377,14 +422,11 @@ const HostEvent = (props) => {
 						<section id="view"></section>
 						<button type="button" className="ViewEvent" onClick={viewTempEvent}>
 							Preview event
-                        {viewEvent ?
-								// <Link to="route" target="_blank" onClick={(event) => {event.preventDefault(); window.open(this.makeHref("route"));}} />
-
+                        {/* {viewEvent ?
 								<Redirect
-									// target="_blank"
-									// onClick={(event) => { event.preventDefault(); window.open(this.makeHref("/event-details")); }}
+									push
 									to={{
-										pathname: '/event-details',
+										pathname: '/event/0',
 										state: {
 											event: {
 												image: preview,
@@ -393,12 +435,17 @@ const HostEvent = (props) => {
 												scheduled_time: getTime(),
 												scheduled_date: getDate(),
 												tags: getTags(),
-												ticket_price: 0,
-											}
+												ticket_price: price,
+												duration: getDuration(),
+											},
+											preview: true,
 										}
-									}} /> : null}
+									}} /> : null} */}
 
 						</button>
+
+						<PreviewEvent show={viewEvent} setViewEvent={setViewEvent} event={tempEvent} />
+
 						<section id="post"></section>
 						<button type="button" className="PostEvent" onClick={postEvent}>
 							Post event
