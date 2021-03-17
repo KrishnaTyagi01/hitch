@@ -17,7 +17,6 @@ const Navbar = (props) => {
 
 	const toggleSidebar = () => {
 		sidebar?.current.classList.toggle('navbar__mobile__sidebar--open');
-		sidebar?.current.classList.toggle('navbar__mobile__sidebar--closed');
 		hamburger?.current.classList.toggle('open');
 	};
 

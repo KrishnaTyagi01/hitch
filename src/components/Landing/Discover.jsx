@@ -62,25 +62,7 @@ export default function Discover() {
 		getAllEvents();
 	}, []);
 
-	// const MyEvents = events.map((event) => {
-	// 	return (
-	// 		<Link
-	// 			to={{
-	// 				pathname: '/event-details',
-	// 				state: { event: event }
-	// 			}}
-	// 		>
-	// 			<MyEventCard
-	// 				title={event.title}
-	// 				desc={event.description}
-	// 				img={event.image}
-	// 				date={event.scheduled_date}
-	// 			/>
-	// 		</Link>
-	// 	);
-	// });
-
-	const AAA = events.map((event) => (
+	const DiscoverEvents = events.map((event) => (
 		<EventCard event={event} lazyLoadBI={true} key={event.id} />
 	));
 
@@ -91,17 +73,18 @@ export default function Discover() {
 	const onFilterChange = (events) => {
 		setEvents(refactorEvents(events));
 	};
+
 	useEffect(() => {
 		// getEvents();
-		setEvents(dummyEvents);
+		// setEvents(dummyEvents);
 	}, []);
 
-	// useEffect(() => {
-	// 	if (events) {
-	// 		const cards = cardContainer?.current.childNodes;
-	// 		cards?.forEach(lazyLoadBackgroundImage);
-	// 	}
-	// }, [events]);
+	useEffect(() => {
+		if (events) {
+			const cards = cardContainer?.current.childNodes;
+			cards?.forEach(lazyLoadBackgroundImage);
+		}
+	}, [events]);
 
 	return (
 		<div className='landing-discover'>
@@ -127,10 +110,17 @@ export default function Discover() {
 
 			<div className='body'>
 				<div className='filters'>
-					<Filter onFilterChange={onFilterChange} />
+					Filters
+					{/* <Filter onFilterChange={onFilterChange} /> */}
 				</div>
 				<section className='searchPage__content--events'>
-					<div className='eventsGrid'>{AAA}</div>
+					{!events ? (
+						<Loading />
+					) : (
+						<div className='eventsGrid' ref={cardContainer}>
+							{DiscoverEvents}
+						</div>
+					)}
 				</section>
 			</div>
 		</div>

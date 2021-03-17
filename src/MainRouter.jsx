@@ -62,8 +62,8 @@ const MainRouter = () => {
 						render={(props) => <UserProfile {...props} />}
 					/>
 					<Route exact path='/my-events' component={eventsPage} />
-					<Route exact path="/events" component={eventsPage}></Route>
-					<Route exact path="/search" render={(props) => <SearchPage {...props} />} />
+					<Route exact path='/events' component={eventsPage}></Route>
+					<Route exact path='/search' render={(props) => <SearchPage {...props} />} />
 
 					<PrivateRoute exact path='/profile' component={SelfProfile} />
 					<PrivateRoute exact path='/editprofile' component={EditProfile} />
