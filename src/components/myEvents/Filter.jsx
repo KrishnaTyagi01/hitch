@@ -251,42 +251,59 @@ const Filter = (props) => {
 			else if (category) {
 				return (
 					<div className="filter__checkbox">
-						<form className="filter__form" style={{ display: "flex", flexDirection: "column" }}>
-							<div className="_search">
-								<input type="text" value={filterState.categories.search} onChange={e => onChangeSearch(e, 'categories')}></input>
-							</div>
+						<div className="filter__form" style={{ display: "flex", flexDirection: "column" }}>
+							<form className="_search" onSubmit={(e) => {
+								e.preventDefault();
+								let newstate = { ...filterState };
+								newstate.categories.search = temp_category;
+								setFilterState(newstate);
+								e.stopPropagation();
+								// console.log('Hello');
+							}}>
+								<input type="text" value={temp_category} onChange={e => setTemp_Category(e.target.value)}></input>
+								<button type="submit">Search</button>
+							</form>
 							<label
 								className="filter__form--span">
 								<input className="filter__checkbox--input" checked={filterState.categories.design} type="checkbox" value="greenEggs" />
 								<span onClick={e => changeFilter(e, 'categories', 'design')} class="filter__checkbox--checkmark"></span>
-						Design
-						</label>
+								Design
+								</label>
 							<label className="filter__form--span">
 								<input className="filter__checkbox--input" checked={filterState.categories.soccer} type="checkbox" value="greenEggs" />
 								<span onClick={e => changeFilter(e, 'categories', 'soccer')} class="filter__checkbox--checkmark"></span>
-						Football
-						</label>
+								Football
+								</label>
 							<label className="filter__form--span">
 								<input className="filter__checkbox--input" checked={filterState.categories.music} type="checkbox" value="greenEggs" />
 								<span onClick={e => changeFilter(e, 'categories', 'music')} class="filter__checkbox--checkmark"></span>
-						Music
-						</label>
-						</form>
+								Music
+								</label>
+						</div>
 					</div>);
 			}
 			else if (location) {
-				return (<div className="filter__checkbox">
-					<form className="filter__form" style={{ display: "flex", flexDirection: "column" }}>
-						<div className="_search">
-							<input type="text" value={filterState.locations.search} onChange={e => onChangeSearch(e, 'locations')} ></input>
+				return (
+					<div className="filter__checkbox">
+						<div className="filter__form" style={{ display: "flex", flexDirection: "column" }}>
+							<form className="_search" onSubmit={(e) => {
+								e.preventDefault();
+								let newstate = { ...filterState };
+								newstate.locations.search = temp_location;
+								setFilterState(newstate);
+								e.stopPropagation();
+								// console.log('Hello');
+							}}>
+								<input type="text" value={temp_location} onChange={e => setTemp_Location(e.target.value)} ></input>
+								<button type="submit" >Search</button>
+							</form>
+							{cityFilters}
 						</div>
-						{cityFilters}
-					</form>
-				</div>);
+					</div>
+				);
 			}
 		}
 	}
-
 
 
 	return (
