@@ -5,6 +5,7 @@ import { logout } from '../../redux/actions/authActions';
 import { useEffect, useRef, useState } from 'react/cjs/react.development';
 import axios from 'axios';
 import search from '../../icons/search.svg';
+import { TagList } from '../../API/constants';
 
 
 const SearchBar = (props) => {
@@ -51,12 +52,35 @@ const SearchBar = (props) => {
             }
         }} />);
     }
+    // console.log(TagList);
+    const myTags = () => {
+        let ret = [];
+        for (let i = 0; i <= 2114; ++i) {
+            ret.push(<option value={TagList.Tags[i]} />);
+        }
+        return ret;
+    }
 
     return (
         <>
-            <div className='navbar__search-wrapper'>
-                <input placeholder='Search' ref={searchRef} style={{ backgroundImage: `url(${search})` }} />
-            </div>
+            <form className='navbar__search-wrapper' onSubmit={e => e.preventDefault()}>
+                {/* <label for="search" >S</label>
+                <input id="search" list="search" name="search" placeholder='Search' ref={searchRef} style={{ backgroundImage: `url(${search})` }} />
+                <datalist id="search">
+                    <option value="Edge" />
+                    <option value="Firefox" />
+                    <option value="Chrome" />
+                    <option value="Opera" />
+                    <option value="Safari" />
+                </datalist> */}
+                <label style={{ width: '100%' }}>
+                    <input list="search" placeholder='Search' ref={searchRef} name="myBrowser" style={{ backgroundImage: `url(${search})` }} />
+                </label>
+                <datalist id="search">
+                    {myTags()}
+
+                </datalist>
+            </form>
 
             {goToSearchPage ?
                 goToSearch()

@@ -66,6 +66,10 @@ const HostEvent = (props) => {
 
 	const [viewEvent, setViewEvent] = useState(false);
 	const [eventPosted, setEventPosted] = useState(false);
+	const [freeEvent, setFreeEvent] = useState(false);
+	const [onlineEvent, setOnlineEvent] = useState(false);
+
+
 
 	const handleEnter = (e) => {
 		if (e.keyCode === 13) {
@@ -137,15 +141,6 @@ const HostEvent = (props) => {
 		return ans;
 	}
 
-	// const onSelectFile = e => {
-	// 	if (!e.target.files || e.target.files.length === 0) {
-	// 		setSelectedFile(undefined);
-	// 		return;
-	// 	}
-	// 	setSelectedFile(e.target.files[0]);
-	// }
-
-
 	const postEvent = async (e) => {
 		e.preventDefault();
 
@@ -161,6 +156,8 @@ const HostEvent = (props) => {
 		form_data.append('ticket_price', price);
 		form_data.append('address', getAddress());
 		form_data.append('duration', getDuration());
+		form_data.append('is_online_event', onlineEvent);
+		form_data.append('is_free_event', freeEvent);
 
 		let url = 'http://167.71.237.202/events/';
 
@@ -207,6 +204,15 @@ const HostEvent = (props) => {
 		duration: getDuration(),
 	};
 
+	useEffect(() => {
+		if (freeEvent) {
+			setPrice('0');
+		}
+		else {
+			setPrice('');
+		}
+	}, [freeEvent])
+
 
 
 	return (
@@ -225,18 +231,16 @@ const HostEvent = (props) => {
 					<section id="basics"></section>
 					<div className="event_name">
 						<input value={Title} onChange={e => setTitle(e.target.value)} type="text" placeholder="Name of event" />
-						{/* <span><Button1 /></span> */}
 					</div>
 					<div className="event_tagline">
 						<textarea value={Tagline} onChange={e => setTagline(e.target.value)} placeholder="Tagline for the event" />
-						{/* <span><Button1 /></span> */}
+
 					</div>
 
 					{/* ======================= EVENT OVERVIEW =============================================  */}
 					{/* ======================= EVENT OVERVIEW =============================================  */}
 					<div className="event_overview">
 						<textarea value={Overview} onChange={e => setOverview(e.target.value)} placeholder="Overview of the event" />
-						{/* <span><Button1 /></span> */}
 					</div>
 
 					{/* ======================= EVENT PICTURES =============================================  */}
@@ -281,27 +285,6 @@ const HostEvent = (props) => {
 							<div className="curr_date">
 								{selectedDay ? getDate() : 'Select Date'}
 							</div>
-
-
-							{/* <div className="event_schedule_date_blanks">
-                                <div className="date_blanks">
-                                    <div style={{ display: 'inline-block' }}>
-                                        <input value={DateD1} maxLength="1" onChange={(e) => setDateD1(e.target.value)} className="day" placeholder="D"></input>
-                                        <input style={{ marginRight: '50px', }} value={DateD2} maxLength="1" onChange={(e) => setDateD2(e.target.value)} className="day" placeholder="D"></input>
-                                    </div>
-                                    <div style={{ display: 'inline-block' }}>
-                                        <input value={DateM1} maxLength="1" onChange={(e) => setDateM1(e.target.value)} className="month" placeholder="M"></input>
-                                        <input style={{ marginRight: '50px', }} value={DateM2} maxLength="1" onChange={(e) => setDateM2(e.target.value)} className="month" placeholder="M"></input>
-                                    </div>
-                                    <div style={{ display: 'inline-block' }}>
-                                        <input value={DateY1} maxLength="1" onChange={(e) => setDateY1(e.target.value)} className="year" placeholder="Y"></input>
-                                        <input value={DateY2} maxLength="1" onChange={(e) => setDateY2(e.target.value)} className="year" placeholder="Y"></input>
-                                        <input value={DateY3} maxLength="1" onChange={(e) => setDateY3(e.target.value)} className="year" placeholder="Y"></input>
-                                        <input value={DateY4} maxLength="1" onChange={(e) => setDateY4(e.target.value)} className="year" placeholder="Y"></input>
-                                    </div>
-                                </div>
-                                
-                            </div> */}
 						</div>
 						<div className="event_schedule_time">
 							<div className="event_schedule_time_header">
@@ -315,9 +298,6 @@ const HostEvent = (props) => {
 									<input type="text" value={TimeM1} maxLength="2" onChange={(e) => setTimeM1(e.target.value)} className="month" placeholder="M"></input>
 									<input type="text" value={TimeM2} maxLength="2" onChange={(e) => setTimeM2(e.target.value)} className="month" placeholder="M"></input>
 								</div>
-								{/* <div className="button">
-                                    <Button1 />
-                                </div> */}
 							</div>
 						</div>
 
@@ -361,13 +341,20 @@ const HostEvent = (props) => {
 							<form className="filter__form" style={{ display: "flex", flexDirection: "column" }}>
 								<label
 									className="filter__form--span">
-									<input className="filter__checkbox--input" type="checkbox" value="greenEggs" />
-									<span class="filter__checkbox--checkmark"></span>
-								Free Event ?
-					    </label>
+									Free Event ?
+									<input checked={freeEvent} className="filter__checkbox--input" type="checkbox" value="greenEggs" />
+									<span onClick={() => setFreeEvent(!freeEvent)} class="filter__checkbox--checkmark"></span>
+								</label>
 							</form>
 						</div>
-						<input value={price} onChange={e => setPrice(e.target.value)} type="text" placeholder="Price (Rupees)" />
+						<input value={price} onChange={e => {
+							if (freeEvent) {
+								setPrice('0');
+							}
+							else {
+								setPrice(e.target.value)
+							}
+						}} type="text" placeholder="Price (Rupees)" />
 					</div>
 
 					{/* ============================= EVENT TAGS =========================  */}
@@ -389,7 +376,6 @@ const HostEvent = (props) => {
 								placeholder="Type"
 							/>
 						</div>
-						{/* <span><Button1 /></span> */}
 					</div>
 
 					<section id="location"></section>
@@ -397,13 +383,30 @@ const HostEvent = (props) => {
 						<div className="address_header">
 							Address
                         </div>
-						<input value={address.lineOne} onChange={e => setAddress({ ...address, lineOne: e.target.value })} type="text" placeholder="Address Line 1" />
-						<input value={address.lineTwo} onChange={e => setAddress({ ...address, lineTwo: e.target.value })} type="text" placeholder="Address Line 2" />
-						<div>
-							<input value={address.city} onChange={e => setAddress({ ...address, city: e.target.value })} type="text" placeholder="City" />
-							<input value={address.state} onChange={e => setAddress({ ...address, state: e.target.value })} type="text" placeholder="State" />
+						<div className="filter__checkbox">
+							<form className="filter__form" style={{ display: "flex", flexDirection: "column" }}>
+								<label
+									className="filter__form--span">
+									Online Event ?
+									<input checked={onlineEvent} className="filter__checkbox--input" type="checkbox" value="greenEggs" />
+									<span onClick={() => setOnlineEvent(!onlineEvent)} class="filter__checkbox--checkmark"></span>
+								</label>
+							</form>
 						</div>
-						<input value={address.pin} onChange={e => setAddress({ ...address, pin: e.target.value })} type="text" placeholder="Pin" />
+
+						{!onlineEvent ? (
+							<>
+								<input value={address.lineOne} onChange={e => setAddress({ ...address, lineOne: e.target.value })} type="text" placeholder="Address Line 1" />
+								<input value={address.lineTwo} onChange={e => setAddress({ ...address, lineTwo: e.target.value })} type="text" placeholder="Address Line 2" />
+								<div>
+									<input value={address.city} onChange={e => setAddress({ ...address, city: e.target.value })} type="text" placeholder="City" />
+									<input value={address.state} onChange={e => setAddress({ ...address, state: e.target.value })} type="text" placeholder="State" />
+								</div>
+								<input value={address.pin} onChange={e => setAddress({ ...address, pin: e.target.value })} type="text" placeholder="Pin" />
+							</>
+						)
+							: null
+						}
 					</div>
 
 
@@ -422,26 +425,6 @@ const HostEvent = (props) => {
 						<section id="view"></section>
 						<button type="button" className="ViewEvent" onClick={viewTempEvent}>
 							Preview event
-                        {/* {viewEvent ?
-								<Redirect
-									push
-									to={{
-										pathname: '/event/0',
-										state: {
-											event: {
-												image: preview,
-												title: Title,
-												description: Tagline,
-												scheduled_time: getTime(),
-												scheduled_date: getDate(),
-												tags: getTags(),
-												ticket_price: price,
-												duration: getDuration(),
-											},
-											preview: true,
-										}
-									}} /> : null} */}
-
 						</button>
 
 						<PreviewEvent show={viewEvent} setViewEvent={setViewEvent} event={tempEvent} />

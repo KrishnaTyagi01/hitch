@@ -158,8 +158,11 @@
 		}
 		&--checkmark{
 			position: absolute;
-			top:2px;
-			left: -20px;
+			top:3px;
+
+			left: -18px;
+
+
 			height: 15px;
 			width: 15px;
 			border-radius: 16%;
@@ -190,8 +193,8 @@
 		
 		/* Style the checkmark/indicator */
 		.filter__form--span &--checkmark:after {
-			left: 3.5px;
-			top: -1.5px;
+			left: 3.9px;
+			top: -0.5px;
 			width: 6px;
 			height: 12px;
 			border: solid var(--color-primary-1);
@@ -199,6 +202,8 @@
 			-webkit-transform: rotate(45deg);
 			-ms-transform: rotate(45deg);
 			transform: rotate(45deg);
+
+			
 		}
 	}
 
