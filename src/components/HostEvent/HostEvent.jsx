@@ -219,124 +219,126 @@ const HostEvent = (props) => {
 
 
 	return (
-		<div className="hostEvent">
-			<div className="header">
-				<span>Host Your Event</span>
-			</div>
-			<div className="maincontainer">
-				<div className="sections">
-					<Sections />
+		<>
+			{viewEvent && <PreviewEvent show={viewEvent} setViewEvent={setViewEvent} event={tempEvent} />}
+			<div className="hostEvent">
+				<div className="header">
+					<span>Host Your Event</span>
 				</div>
-				<form className="sec_container">
-
-					{/* ======================= EVENT NAME =============================================  */}
-					{/* ======================= EVENT NAME =============================================  */}
-					<section id="basics"></section>
-					<div className="event_name">
-						<input value={Title} onChange={e => setTitle(e.target.value)} type="text" placeholder="Name of event" />
+				<div className="maincontainer">
+					<div className="sections">
+						<Sections />
 					</div>
-					<div className="event_tagline">
-						<textarea value={Tagline} onChange={e => setTagline(e.target.value)} placeholder="Tagline for the event" />
+					<form className="sec_container">
 
-					</div>
-
-					{/* ======================= EVENT OVERVIEW =============================================  */}
-					{/* ======================= EVENT OVERVIEW =============================================  */}
-					<div className="event_overview">
-						<textarea value={Overview} onChange={e => setOverview(e.target.value)} placeholder="Overview of the event" />
-					</div>
-
-					{/* ======================= EVENT PICTURES =============================================  */}
-					{/* ======================= EVENT PICTURES =============================================  */}
-					<section id="pictures"></section>
-					<div className="event_pictures">
-						<UploadImage onImageUpload={onImageUpload} onImageCropped={onImageCropped} />
-					</div>
-
-					{/* ======================= EVENT HOST AND SPEAKERS =============================================  */}
-					{/* ======================= EVENT HOST AND SPEAKERS =============================================  */}
-					<section id="host"></section>
-					<div className="event_hosts">
-						<div className="event_hosts_header">
-							Host and Speakers
-                        </div>
-						<div className="event_hosts_cards">
-							<div className="event_hosts_card"></div>
+						{/* ======================= EVENT NAME =============================================  */}
+						{/* ======================= EVENT NAME =============================================  */}
+						<section id="basics"></section>
+						<div className="event_name">
+							<input value={Title} onChange={e => setTitle(e.target.value)} type="text" placeholder="Name of event" />
 						</div>
-					</div>
-					{/* ======================= EVENT SCHEDULE  =============================================  */}
-					{/* ======================= EVENT SCHEDULE =============================================  */}
-					<section id="schedule"></section>
-					<div className="event_schedule">
-						<div className="event_schedule_header">
-							Schedule and Timeline
+						<div className="event_tagline">
+							<textarea value={Tagline} onChange={e => setTagline(e.target.value)} placeholder="Tagline for the event" />
+
+						</div>
+
+						{/* ======================= EVENT OVERVIEW =============================================  */}
+						{/* ======================= EVENT OVERVIEW =============================================  */}
+						<div className="event_overview">
+							<textarea value={Overview} onChange={e => setOverview(e.target.value)} placeholder="Overview of the event" />
+						</div>
+
+						{/* ======================= EVENT PICTURES =============================================  */}
+						{/* ======================= EVENT PICTURES =============================================  */}
+						<section id="pictures"></section>
+						<div className="event_pictures">
+							<UploadImage onImageUpload={onImageUpload} onImageCropped={onImageCropped} />
+						</div>
+
+						{/* ======================= EVENT HOST AND SPEAKERS =============================================  */}
+						{/* ======================= EVENT HOST AND SPEAKERS =============================================  */}
+						<section id="host"></section>
+						<div className="event_hosts">
+							<div className="event_hosts_header">
+								Host and Speakers
                         </div>
-						<div className="event_schedule_date">
-							<div className="event_schedule_date_header">
-								Date
-                            </div>
-							<div className="event_schedule_date_blanks" >
-								<Calendar
-									value={selectedDay}
-									onChange={setSelectedDay}
-									// colorPrimary="#9c88ff" // added this
-									calendarClassName="custom-calendar" // and this
-									calendarTodayClassName="custom-today-day" // also this
-									shouldHighlightWeekends
-								/>
-							</div>
-							<div className="curr_date">
-								{selectedDay ? getDate() : 'Select Date'}
+							<div className="event_hosts_cards">
+								<div className="event_hosts_card"></div>
 							</div>
 						</div>
-						<div className="event_schedule_time">
-							<div className="event_schedule_time_header">
-								Start Time
+						{/* ======================= EVENT SCHEDULE  =============================================  */}
+						{/* ======================= EVENT SCHEDULE =============================================  */}
+						<section id="schedule"></section>
+						<div className="event_schedule">
+							<div className="event_schedule_header">
+								Schedule and Timeline
+                        </div>
+							<div className="event_schedule_date">
+								<div className="event_schedule_date_header">
+									Date
                             </div>
-							<div className="event_schedule_time_blanks">
-								<div>
-									<input type="text" value={TimeH1} maxLength="2" onChange={(e) => setTimeH1(e.target.value)} className="day" placeholder="H"></input>
-									<input type="text" value={TimeH2} maxLength="2" onChange={(e) => setTimeH2(e.target.value)} className="day" placeholder="H"></input>
-
-									<input type="text" value={TimeM1} maxLength="2" onChange={(e) => setTimeM1(e.target.value)} className="month" placeholder="M"></input>
-									<input type="text" value={TimeM2} maxLength="2" onChange={(e) => setTimeM2(e.target.value)} className="month" placeholder="M"></input>
+								<div className="event_schedule_date_blanks" >
+									<Calendar
+										value={selectedDay}
+										onChange={setSelectedDay}
+										// colorPrimary="#9c88ff" // added this
+										calendarClassName="custom-calendar" // and this
+										calendarTodayClassName="custom-today-day" // also this
+										shouldHighlightWeekends
+									/>
+								</div>
+								<div className="curr_date">
+									{selectedDay ? getDate() : 'Select Date'}
 								</div>
 							</div>
-						</div>
-
-						<div className="duration_days">
-							<div className="duration_days_header">
-								Duration
-                        	</div>
-							<div className="filter__checkbox">
-								<form className="filter__form" style={{ display: "flex", flexDirection: "column" }}>
-									<label
-										className="filter__form--span">
-										Is it a single day event ?
-									<input checked={singleDay} className="filter__checkbox--input" type="checkbox" value="greenEggs" />
-										<span onClick={() => setSingleDay(!singleDay)} class="filter__checkbox--checkmark"></span>
-									</label>
-								</form>
-							</div>
-
-							{!singleDay && <input value={duration} onChange={e => setDuration(e.target.value)} type="text" placeholder="Days" />
-							}
-							{singleDay && <div className="event_schedule_time">
+							<div className="event_schedule_time">
+								<div className="event_schedule_time_header">
+									Start Time
+                            </div>
 								<div className="event_schedule_time_blanks">
 									<div>
-										<input type="text" value={DurationH1} maxLength="2" onChange={(e) => setDurationH1(e.target.value)} className="day" placeholder="H"></input>
-										<input type="text" value={DurationH2} maxLength="2" onChange={(e) => setDurationH2(e.target.value)} className="day" placeholder="H"></input>
-										<input type="text" value={DurationM1} maxLength="2" onChange={(e) => setDurationM1(e.target.value)} className="month" placeholder="M"></input>
-										<input type="text" value={DurationM2} maxLength="2" onChange={(e) => setDurationM2(e.target.value)} className="month" placeholder="M"></input>
+										<input type="text" value={TimeH1} maxLength="2" onChange={(e) => setTimeH1(e.target.value)} className="day" placeholder="H"></input>
+										<input type="text" value={TimeH2} maxLength="2" onChange={(e) => setTimeH2(e.target.value)} className="day" placeholder="H"></input>
+
+										<input type="text" value={TimeM1} maxLength="2" onChange={(e) => setTimeM1(e.target.value)} className="month" placeholder="M"></input>
+										<input type="text" value={TimeM2} maxLength="2" onChange={(e) => setTimeM2(e.target.value)} className="month" placeholder="M"></input>
 									</div>
 								</div>
-							</div>}
+							</div>
 
+							<div className="duration_days">
+								<div className="duration_days_header">
+									Duration
+                        	</div>
+								<div className="filter__checkbox">
+									<form className="filter__form" style={{ display: "flex", flexDirection: "column" }}>
+										<label
+											className="filter__form--span">
+											Is it a single day event ?
+									<input checked={singleDay} className="filter__checkbox--input" type="checkbox" value="greenEggs" />
+											<span onClick={() => setSingleDay(!singleDay)} class="filter__checkbox--checkmark"></span>
+										</label>
+									</form>
+								</div>
+
+								{!singleDay && <input value={duration} onChange={e => setDuration(e.target.value)} type="text" placeholder="Days" />
+								}
+								{singleDay && <div className="event_schedule_time">
+									<div className="event_schedule_time_blanks">
+										<div>
+											<input type="text" value={DurationH1} maxLength="2" onChange={(e) => setDurationH1(e.target.value)} className="day" placeholder="H"></input>
+											<input type="text" value={DurationH2} maxLength="2" onChange={(e) => setDurationH2(e.target.value)} className="day" placeholder="H"></input>
+											<input type="text" value={DurationM1} maxLength="2" onChange={(e) => setDurationM1(e.target.value)} className="month" placeholder="M"></input>
+											<input type="text" value={DurationM2} maxLength="2" onChange={(e) => setDurationM2(e.target.value)} className="month" placeholder="M"></input>
+										</div>
+									</div>
+								</div>}
+
+							</div>
 						</div>
-					</div>
-					{/* ======================= EVENT SCHEDULE  ============================================= 
+						{/* ======================= EVENT SCHEDULE  ============================================= 
                     {/* ======================= EVENT SCHEDULE =============================================  */}
-					{/* <div className="event_timeline">
+						{/* <div className="event_timeline">
                         <div className="event_timeline_header"></div>
                         <div className="event_timeline_table">
                         </div>
@@ -344,119 +346,118 @@ const HostEvent = (props) => {
                         </div>
                     </div>  */}
 
-					{/* ============================= EVENT PRICE PLAN =========================  */}
-					{/* ============================= EVENT PRICE PLAN =========================  */}
+						{/* ============================= EVENT PRICE PLAN =========================  */}
+						{/* ============================= EVENT PRICE PLAN =========================  */}
 
 
-					<section id="pricing"></section>
-					<div className="event_pricePlan">
-						<div className="event_pricePlan_header">
-							Price
+						<section id="pricing"></section>
+						<div className="event_pricePlan">
+							<div className="event_pricePlan_header">
+								Price
                         </div>
-						<div className="filter__checkbox">
-							<form className="filter__form" style={{ display: "flex", flexDirection: "column" }}>
-								<label
-									className="filter__form--span">
-									Free Event ?
+							<div className="filter__checkbox">
+								<form className="filter__form" style={{ display: "flex", flexDirection: "column" }}>
+									<label
+										className="filter__form--span">
+										Free Event ?
 									<input checked={freeEvent} className="filter__checkbox--input" type="checkbox" value="greenEggs" />
-									<span onClick={() => setFreeEvent(!freeEvent)} class="filter__checkbox--checkmark"></span>
-								</label>
-							</form>
+										<span onClick={() => setFreeEvent(!freeEvent)} class="filter__checkbox--checkmark"></span>
+									</label>
+								</form>
+							</div>
+
+							{!freeEvent && <input value={price} onChange={e => {
+								if (freeEvent) {
+									setPrice('0');
+								}
+								else {
+									setPrice(e.target.value)
+								}
+							}} type="text" placeholder="Price (Rupees)" />}
 						</div>
 
-						{!freeEvent && <input value={price} onChange={e => {
-							if (freeEvent) {
-								setPrice('0');
-							}
-							else {
-								setPrice(e.target.value)
-							}
-						}} type="text" placeholder="Price (Rupees)" />}
-					</div>
-
-					{/* ============================= EVENT TAGS =========================  */}
-					{/* ============================= EVENT TAGS =========================  */}
-					<section id="tags"></section>
-					<div className="event_tags">
-						<div className="event_tags_header">
-							Tags
+						{/* ============================= EVENT TAGS =========================  */}
+						{/* ============================= EVENT TAGS =========================  */}
+						<section id="tags"></section>
+						<div className="event_tags">
+							<div className="event_tags_header">
+								Tags
                         </div>
-						<div>
-							{allTags()}
-							<input
-								value={tagValue}
-								onChange={e => setTagValue(e.target.value)}
-								ref={addTagRef}
-								className="addTag"
-								type="text"
-								maxLength="8"
-								placeholder="Type"
-							/>
+							<div>
+								{allTags()}
+								<input
+									value={tagValue}
+									onChange={e => setTagValue(e.target.value)}
+									ref={addTagRef}
+									className="addTag"
+									type="text"
+									maxLength="8"
+									placeholder="Type"
+								/>
+							</div>
 						</div>
-					</div>
 
-					<section id="location"></section>
-					<div className="address">
-						<div className="address_header">
-							Address
+						<section id="location"></section>
+						<div className="address">
+							<div className="address_header">
+								Address
                         </div>
-						<div className="filter__checkbox">
-							<form className="filter__form" style={{ display: "flex", flexDirection: "column" }}>
-								<label
-									className="filter__form--span">
-									Online Event ?
+							<div className="filter__checkbox">
+								<form className="filter__form" style={{ display: "flex", flexDirection: "column" }}>
+									<label
+										className="filter__form--span">
+										Online Event ?
 									<input checked={onlineEvent} className="filter__checkbox--input" type="checkbox" value="greenEggs" />
-									<span onClick={() => setOnlineEvent(!onlineEvent)} class="filter__checkbox--checkmark"></span>
-								</label>
-							</form>
+										<span onClick={() => setOnlineEvent(!onlineEvent)} class="filter__checkbox--checkmark"></span>
+									</label>
+								</form>
+							</div>
+
+							{!onlineEvent ? (
+								<>
+									<input value={address.lineOne} onChange={e => setAddress({ ...address, lineOne: e.target.value })} type="text" placeholder="Address Line 1" />
+									<input value={address.lineTwo} onChange={e => setAddress({ ...address, lineTwo: e.target.value })} type="text" placeholder="Address Line 2" />
+									<div>
+										<input value={address.city} onChange={e => setAddress({ ...address, city: e.target.value })} type="text" placeholder="City" />
+										<input value={address.state} onChange={e => setAddress({ ...address, state: e.target.value })} type="text" placeholder="State" />
+									</div>
+									<input value={address.pin} onChange={e => setAddress({ ...address, pin: e.target.value })} type="text" placeholder="Pin" />
+								</>
+							)
+								: null
+							}
 						</div>
 
-						{!onlineEvent ? (
-							<>
-								<input value={address.lineOne} onChange={e => setAddress({ ...address, lineOne: e.target.value })} type="text" placeholder="Address Line 1" />
-								<input value={address.lineTwo} onChange={e => setAddress({ ...address, lineTwo: e.target.value })} type="text" placeholder="Address Line 2" />
-								<div>
-									<input value={address.city} onChange={e => setAddress({ ...address, city: e.target.value })} type="text" placeholder="City" />
-									<input value={address.state} onChange={e => setAddress({ ...address, state: e.target.value })} type="text" placeholder="State" />
-								</div>
-								<input value={address.pin} onChange={e => setAddress({ ...address, pin: e.target.value })} type="text" placeholder="Pin" />
-							</>
-						)
-							: null
-						}
-					</div>
+
+						{/* ============================= EVENT ADDITIONAL INFO =========================  */}
+						{/* ============================= EVENT ADDITIONAL INFO =========================  */}
+						<section id="additional"></section>
+						<div className="events_addInfo">
+							<textarea placeholder="Additional information" />
+							<span>Optional</span>
+						</div>
+						{/* ============================= EVENT LOCATION =========================  */}
+						{/* ============================= EVENT LOCATION =========================  */}
 
 
-					{/* ============================= EVENT ADDITIONAL INFO =========================  */}
-					{/* ============================= EVENT ADDITIONAL INFO =========================  */}
-					<section id="additional"></section>
-					<div className="events_addInfo">
-						<textarea placeholder="Additional information" />
-						<span>Optional</span>
-					</div>
-					{/* ============================= EVENT LOCATION =========================  */}
-					{/* ============================= EVENT LOCATION =========================  */}
-
-
-					<div className="eventButtons">
-						<section id="view"></section>
-						<button type="button" className="ViewEvent" onClick={viewTempEvent}>
-							Preview event
+						<div className="eventButtons">
+							<section id="view"></section>
+							<button type="button" className="ViewEvent" onClick={viewTempEvent}>
+								Preview event
 						</button>
 
-						<PreviewEvent show={viewEvent} setViewEvent={setViewEvent} event={tempEvent} />
-
-						<section id="post"></section>
-						<button type="button" className="PostEvent" onClick={postEvent}>
-							Post event
+							<section id="post"></section>
+							<button type="button" className="PostEvent" onClick={postEvent}>
+								Post event
                         </button>
-					</div>
+						</div>
 
 
-					{eventPosted ? <Redirect to="/events" /> : null}
-				</form>
+						{eventPosted ? <Redirect to="/events" /> : null}
+					</form>
+				</div>
 			</div>
-		</div>
+		</>
 	)
 }
 

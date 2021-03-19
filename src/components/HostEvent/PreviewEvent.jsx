@@ -15,6 +15,7 @@ import EventActions from '../EventPage/EventActions';
 import SmallEventActions from '../EventPage/SmallEventActions';
 import Loading from '../Common/Loading';
 import PreviewEventActions from './PreviewEventActions';
+import PreviewSmallEventActions from './PreviewSmallEventActions';
 // import Page404 from './Page404';
 
 // import errorHandler from '../API/errorHandler';
@@ -22,32 +23,6 @@ import PreviewEventActions from './PreviewEventActions';
 const PreviewEvent = (props) => {
     if (props.show === false)
         return null;
-
-    // const { eventID } = props.match.params;
-    // const [event, setEvent] = useState(null);
-    // const [httpStatusCode, setHttpStatusCode] = useState();
-
-    // const getEvent = async () => {
-    //     try {
-    //         const res = await axios.get(`/events/${eventID}/`);
-    //         setEvent(res.data);
-    //     } catch (error) {
-    //         setHttpStatusCode(error.response.status);
-    //         // errorHandler(error);
-    //     }
-    // };
-
-    // useEffect(() => {
-    //     if (props.location.state?.event) setEvent(props.location.state.event);
-    //     else getEvent();
-    // }, [eventID, props]);
-
-    // if (httpStatusCode === 404) {
-    //     return <Page404 />;
-    // }
-
-    // console.log('hello');
-
 
     return (
         <div className="previewModal">
@@ -60,7 +35,7 @@ const PreviewEvent = (props) => {
                     <main>
 
                         <BannerCarousel images={[props.event?.image]} />
-                        <SmallEventActions event={props.event} />
+                        <PreviewSmallEventActions event={props.event} />
                         <Tags tags={props.event?.tags} />
                         <Overview description={props.event?.description} />
                         {/* <HostDetails /> */}
