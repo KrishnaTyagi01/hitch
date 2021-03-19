@@ -5,6 +5,8 @@ import { useState } from 'react';
 import { useEffect } from 'react/cjs/react.development';
 import axios from 'axios';
 import { connect } from 'react-redux';
+import search from '../../icons/search.svg';
+
 
 const Filter = (props) => {
 	const [category, setCategory] = useState(false);
@@ -261,7 +263,11 @@ const Filter = (props) => {
 								// console.log('Hello');
 							}}>
 								<input type="text" value={temp_category} onChange={e => setTemp_Category(e.target.value)}></input>
-								<button type="submit">Search</button>
+								<button type="submit">
+									{
+										<div style={{ width: '18px', height: '20px', backgroundImage: `url(${search})` }} />
+									}
+								</button>
 							</form>
 							<label
 								className="filter__form--span">
@@ -295,7 +301,11 @@ const Filter = (props) => {
 								// console.log('Hello');
 							}}>
 								<input type="text" value={temp_location} onChange={e => setTemp_Location(e.target.value)} ></input>
-								<button type="submit" >Search</button>
+								<button type="submit">
+									{
+										<div style={{ width: '18px', height: '20px', backgroundImage: `url(${search})` }} />
+									}
+								</button>
 							</form>
 							{cityFilters}
 						</div>
@@ -341,7 +351,11 @@ const Filter = (props) => {
 									// console.log('Hello');
 								}}>
 									<input type="text" value={temp_category} onChange={e => setTemp_Category(e.target.value)}></input>
-									<button type="submit">Search</button>
+									<button type="submit">
+										{
+											<div style={{ width: '18px', height: '20px', backgroundImage: `url(${search})` }} />
+										}
+									</button>
 								</form>
 								<label
 									className="filter__form--span">
@@ -391,7 +405,11 @@ const Filter = (props) => {
 									// console.log('Hello');
 								}}>
 									<input type="text" value={temp_location} onChange={e => setTemp_Location(e.target.value)} ></input>
-									<button type="submit" >Search</button>
+									<button type="submit">
+										{
+											<div style={{ width: '18px', height: '20px', backgroundImage: `url(${search})` }} />
+										}
+									</button>
 								</form>
 								{cityFilters}
 							</div>

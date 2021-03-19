@@ -5,7 +5,7 @@
 	width: 315px;
 	padding: 15px;
 	position: sticky;
-	z-index: 1;
+	// z-index: 1;
 	top:20px;
 	height: Min(80vh , 800px);
 	overflow-y: auto;
@@ -48,6 +48,9 @@
 			font-size: 11px;
 			line-height: 16px;
 			color: #FFFFFF;
+			&:hover{
+				cursor: pointer;
+			}
 		}
 	}
 
@@ -109,8 +112,15 @@
 				width: 80%;
 				height: 100%;
 				cursor: unset;
+				// background-color:#877CC0 ;
+				// background: rgba(135, 124, 192, 0.3);
+				// border:3px solid #191725 !important;
+				padding-left: 6px;
+				// color: #877CC0;
+
 				&:focus{
-					border:none;
+					// border:5px solid #211e35 !important;
+				border:none;
 				}
 			}
 
@@ -161,8 +171,6 @@
 			top:3px;
 
 			left: -18px;
-
-
 			height: 15px;
 			width: 15px;
 			border-radius: 16%;
@@ -202,15 +210,12 @@
 			-webkit-transform: rotate(45deg);
 			-ms-transform: rotate(45deg);
 			transform: rotate(45deg);
-
-			
 		}
-	}
-
-   
+		.filter__form--span:hover{
+			cursor: pointer;
+		}
+	}  
 }
-
-
 
 .todayClass-calendar{
 	background-color: #39EAB4;

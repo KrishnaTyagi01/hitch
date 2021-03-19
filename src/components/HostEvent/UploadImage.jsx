@@ -112,7 +112,7 @@ class UploadImage extends PureComponent {
 					<span id="event_pictures_header_right">Minimum 1 Required</span>
 				</div>
 				{!src && (
-					<div className="squareInfo"> Ideally Square Image</div>
+					<div className="squareInfo"> Ideal aspect ratio - 1:1</div>
 				)}
 
 				{src && !cropDone && (

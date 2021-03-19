@@ -68,6 +68,7 @@ const HostEvent = (props) => {
 	const [eventPosted, setEventPosted] = useState(false);
 	const [freeEvent, setFreeEvent] = useState(false);
 	const [onlineEvent, setOnlineEvent] = useState(false);
+	const [singleDay, setSingleDay] = useState(false);
 
 
 
@@ -117,6 +118,7 @@ const HostEvent = (props) => {
 		return ans;
 	}
 	const getDuration = () => {
+		if (!singleDay) return null;
 		return DurationH1 + DurationH2 + ':' + DurationM1 + DurationM2;
 	}
 
@@ -137,6 +139,7 @@ const HostEvent = (props) => {
 	}
 
 	const getAddress = () => {
+		if (onlineEvent) return null;
 		let ans = address.lineOne + ',' + address.lineTwo + ',' + address.city + ',' + address.state + ',' + address.pin;
 		return ans;
 	}
@@ -148,12 +151,12 @@ const HostEvent = (props) => {
 		form_data.append('image', Image);
 		// console.log(Image)
 		form_data.append('title', Title);
-		form_data.append('duration_days', duration);
+		form_data.append('duration_days', singleDay ? null : duration);
 		form_data.append('description', Tagline);
 		form_data.append('scheduled_time', getTime());
 		form_data.append('scheduled_date', getDate());
 		form_data.append('tags', getTags());
-		form_data.append('ticket_price', price);
+		form_data.append('ticket_price', freeEvent ? '0' : price);
 		form_data.append('address', getAddress());
 		form_data.append('duration', getDuration());
 		form_data.append('is_online_event', onlineEvent);
@@ -305,8 +308,20 @@ const HostEvent = (props) => {
 							<div className="duration_days_header">
 								Duration
                         	</div>
-							<input value={duration} onChange={e => setDuration(e.target.value)} type="text" placeholder="Days" />
-							<div className="event_schedule_time">
+							<div className="filter__checkbox">
+								<form className="filter__form" style={{ display: "flex", flexDirection: "column" }}>
+									<label
+										className="filter__form--span">
+										Is it a single day event ?
+									<input checked={singleDay} className="filter__checkbox--input" type="checkbox" value="greenEggs" />
+										<span onClick={() => setSingleDay(!singleDay)} class="filter__checkbox--checkmark"></span>
+									</label>
+								</form>
+							</div>
+
+							{!singleDay && <input value={duration} onChange={e => setDuration(e.target.value)} type="text" placeholder="Days" />
+							}
+							{singleDay && <div className="event_schedule_time">
 								<div className="event_schedule_time_blanks">
 									<div>
 										<input type="text" value={DurationH1} maxLength="2" onChange={(e) => setDurationH1(e.target.value)} className="day" placeholder="H"></input>
@@ -315,7 +330,8 @@ const HostEvent = (props) => {
 										<input type="text" value={DurationM2} maxLength="2" onChange={(e) => setDurationM2(e.target.value)} className="month" placeholder="M"></input>
 									</div>
 								</div>
-							</div>
+							</div>}
+
 						</div>
 					</div>
 					{/* ======================= EVENT SCHEDULE  ============================================= 
@@ -347,14 +363,15 @@ const HostEvent = (props) => {
 								</label>
 							</form>
 						</div>
-						<input value={price} onChange={e => {
+
+						{!freeEvent && <input value={price} onChange={e => {
 							if (freeEvent) {
 								setPrice('0');
 							}
 							else {
 								setPrice(e.target.value)
 							}
-						}} type="text" placeholder="Price (Rupees)" />
+						}} type="text" placeholder="Price (Rupees)" />}
 					</div>
 
 					{/* ============================= EVENT TAGS =========================  */}

@@ -8,6 +8,7 @@ import EventCard from '../Common/EventCard';
 import Loading from '../Common/Loading';
 import filters from './filters.json';
 import { dummyEvents } from '../../temp/events';
+import RecommendedEvents from './RecommendedEvents';
 
 export default function Discover() {
 	const [events, setEvents] = useState([]);
@@ -110,7 +111,6 @@ export default function Discover() {
 
 			<div className='body'>
 				<div className='filters'>
-					Filters
 					<Filter onFilterChange={onFilterChange} />
 				</div>
 				<section className='searchPage__content--events'>
@@ -123,6 +123,7 @@ export default function Discover() {
 					)}
 				</section>
 			</div>
+			{/* <RecommendedEvents /> */}
 		</div>
 	);
 }
