@@ -14,25 +14,35 @@ const Profile = (props) => {
 	const { profileID } = props.match.params;
 
 	const [userProfile, setUserProfile] = useState(null);
-	const [hostedEvents, setHostedEvents] = useState([]);
+	const [hostedEvents, setHostedEvents] = useState(null);
 
-	const setUserData = async (profileID) => {
+	const getUserProfile = async (profileID) => {
 		try {
-			const profileResponse = await axios.get(`/profiles/${profileID}/`);
-			setUserProfile(profileResponse.data);
-			console.log(profileResponse.data);
-			const eventResponse = await axios.all(
-				profileResponse.data.hosted_events.map((id) => axios.get(`/events/${id}`))
-			);
-			console.log(eventResponse);
+			const res = await axios.get(`/profiles/${profileID}/`);
+			setUserProfile(res.data);
 		} catch (error) {
 			errorHandler(error);
 		}
 	};
 
+	const getHostedEvents = () => {
+		console.log(userProfile.hosted_events);
+		// const eventResponse = await axios.all(
+		// 	userProfile.hosted_events.map((id) => axios.get(`/events/${id}`))
+		// );
+	};
+
 	useEffect(() => {
-		// setUserData(profileID);
-	}, [profileID]);
+		if (props.location.state?.userProfile)
+			setUserProfile(props.location.state.userProfile);
+		else getUserProfile();
+	}, [profileID, props]);
+
+	useEffect(() => {
+		if (userProfile) {
+			getHostedEvents();
+		}
+	}, [userProfile]);
 
 	return (
 		<section className='profilepage'>

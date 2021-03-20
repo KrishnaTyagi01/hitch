@@ -1,7 +1,6 @@
-
 import axios from 'axios';
 
-import { errorHandler } from './errorHandler';
+import reduxErrorHandler from './reduxErrorHandler';
 import { tokenConfig } from './authActions';
 import {
 	GET_SELF_PROFILE,
@@ -12,9 +11,9 @@ import {
 	GET_WISHLIST,
 	ADD_TO_WISHLIST,
 	REMOVE_FROM_WISHLIST,
-	DELETE_WISHLIST,
-	ADD_TO_CALENDER,
-	REMOVE_FROM_CALENDER
+	DELETE_WISHLIST
+	// ADD_TO_CALENDER,
+	// REMOVE_FROM_CALENDER
 } from '../types';
 
 export const editProfileConfig = (getState) => {
@@ -35,7 +34,7 @@ export const getSelfProfile = () => async (dispatch, getState) => {
 			payload: response.data
 		});
 	} catch (error) {
-		errorHandler(error, dispatch);
+		reduxErrorHandler(error, dispatch);
 	}
 };
 
@@ -52,7 +51,7 @@ export const editProfile = (id, data, next) => async (dispatch, getState) => {
 		});
 		next();
 	} catch (error) {
-		errorHandler(error, dispatch);
+		reduxErrorHandler(error, dispatch);
 	}
 };
 
@@ -64,7 +63,7 @@ export const getHostedEvents = () => async (dispatch, getState) => {
 			payload: response.data
 		});
 	} catch (error) {
-		errorHandler(error, dispatch);
+		reduxErrorHandler(error, dispatch);
 	}
 };
 
@@ -76,7 +75,7 @@ export const getAttendedEvents = () => async (dispatch, getState) => {
 			payload: response.data
 		});
 	} catch (error) {
-		errorHandler(error, dispatch);
+		reduxErrorHandler(error, dispatch);
 	}
 };
 
@@ -88,7 +87,7 @@ export const getUpcomingEvents = () => async (dispatch, getState) => {
 			payload: response.data
 		});
 	} catch (error) {
-		errorHandler(error, dispatch);
+		reduxErrorHandler(error, dispatch);
 	}
 };
 
@@ -100,7 +99,7 @@ export const getWishlist = () => async (dispatch, getState) => {
 			payload: response.data
 		});
 	} catch (error) {
-		errorHandler(error, dispatch);
+		reduxErrorHandler(error, dispatch);
 	}
 };
 
@@ -116,7 +115,7 @@ export const addToWishlist = (eventID) => async (dispatch, getState) => {
 			payload: response.data
 		});
 	} catch (error) {
-		errorHandler(error, dispatch);
+		reduxErrorHandler(error, dispatch);
 	}
 };
 
@@ -132,7 +131,7 @@ export const removeFromWishlist = (eventID) => async (dispatch, getState) => {
 			payload: response.data
 		});
 	} catch (error) {
-		errorHandler(error, dispatch);
+		reduxErrorHandler(error, dispatch);
 	}
 };
 
@@ -144,45 +143,45 @@ export const deleteWishlist = () => async (dispatch, getState) => {
 			payload: response.data
 		});
 	} catch (error) {
-		errorHandler(error, dispatch);
+		reduxErrorHandler(error, dispatch);
 	}
 };
 
-export const addToCalender = (eventID, next) => async (dispatch, getState) => {
-	try {
-		console.log('add to calender');
-		// const response = await axios.post(
-		// 	'/profiles/calender/',
-		// 	{ add: eventID },
-		// 	tokenConfig(getState)
-		// );
-		// dispatch({
-		// 	type: ADD_TO_CALENDER,
-		// 	payload: response.data
-		// });
-		next();
-	} catch (error) {
-		errorHandler(error, dispatch);
-	}
-};
+// export const addToCalender = (eventID, next) => async (dispatch, getState) => {
+// 	try {
+// 		console.log('add to calender');
+// 		const response = await axios.post(
+// 			'/profiles/calender/',
+// 			{ add: eventID },
+// 			tokenConfig(getState)
+// 		);
+// 		dispatch({
+// 			type: ADD_TO_CALENDER,
+// 			payload: response.data
+// 		});
+// 		next();
+// 	} catch (error) {
+// 		reduxErrorHandler(error, dispatch);
+// 	}
+// };
 
-export const removeFromCalender = (eventID, next) => async (dispatch, getState) => {
-	try {
-		console.log('remove from calender');
-		// const response = await axios.post(
-		// 	'/profiles/calender/',
-		// 	{ add: eventID },
-		// 	tokenConfig(getState)
-		// );
-		// dispatch({
-		// 	type: ADD_TO_CALENDER,
-		// 	payload: response.data
-		// });
-		next();
-	} catch (error) {
-		errorHandler(error, dispatch);
-	}
-};
+// export const removeFromCalender = (eventID, next) => async (dispatch, getState) => {
+// 	try {
+// 		console.log('remove from calender');
+// 		const response = await axios.post(
+// 			'/profiles/calender/',
+// 			{ add: eventID },
+// 			tokenConfig(getState)
+// 		);
+// 		dispatch({
+// 			type: ADD_TO_CALENDER,
+// 			payload: response.data
+// 		});
+// 		next();
+// 	} catch (error) {
+// 		reduxErrorHandler(error, dispatch);
+// 	}
+// };
 
 // ===================================================================================================
 
@@ -196,6 +195,6 @@ export const removeFromCalender = (eventID, next) => async (dispatch, getState) 
 // 			payload: response.data
 // 		});
 // 	} catch (error) {
-// 		errorHandler(error, dispatch);
+// 		reduxErrorHandler(error, dispatch);
 // 	}
 // };

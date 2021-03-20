@@ -1,7 +1,6 @@
-
 import axios from 'axios';
 
-import { errorHandler } from './errorHandler';
+import reduxErrorHandler from './reduxErrorHandler';
 import { GET_EVENTS, GET_EVENT, GET_PROFILE, INC_COUNT, CLEAR_STATE } from '../types';
 
 export const getEvents = () => async (dispatch) => {
@@ -12,7 +11,7 @@ export const getEvents = () => async (dispatch) => {
 			payload: response.data
 		});
 	} catch (error) {
-		errorHandler(error);
+		reduxErrorHandler(error);
 	}
 };
 
@@ -24,7 +23,7 @@ export const getEvent = (eventID) => async (dispatch) => {
 			payload: response.data
 		});
 	} catch (error) {
-		errorHandler(error);
+		reduxErrorHandler(error);
 	}
 };
 
@@ -36,7 +35,7 @@ export const getProfile = (profileID) => async (dispatch) => {
 			payload: response.data
 		});
 	} catch (error) {
-		errorHandler(error);
+		reduxErrorHandler(error);
 	}
 };
 
@@ -47,7 +46,7 @@ export const clearState = () => async (dispatch) => {
 			payload: 'cleared redux state'
 		});
 	} catch (error) {
-		errorHandler(error);
+		reduxErrorHandler(error);
 	}
 };
 
@@ -58,7 +57,7 @@ export const incCount = () => async (dispatch) => {
 			payload: 1
 		});
 	} catch (error) {
-		errorHandler(error);
+		reduxErrorHandler(error);
 	}
 	return 'done';
 };

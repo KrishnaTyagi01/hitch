@@ -1,6 +1,5 @@
-
 import axios from 'axios';
-import { errorHandler } from './errorHandler';
+import reduxErrorHandler from './reduxErrorHandler';
 import { saveUser, removeUser } from '../../localStorage';
 import {
 	REGISTER,
@@ -9,7 +8,6 @@ import {
 	LOGIN_SUCCESS,
 	LOGOUT,
 	LOGOUT_SUCCESS,
-	AUTH_ERROR,
 	CLEAR_STATE
 } from '../types';
 
@@ -38,7 +36,7 @@ export const register = (userdetails, next) => async (dispatch) => {
 			payload: { status }
 		});
 	} catch (error) {
-		errorHandler(error, dispatch);
+		reduxErrorHandler(error, dispatch);
 	}
 };
 
@@ -57,7 +55,7 @@ export const login = (user, next) => async (dispatch) => {
 		});
 		next();
 	} catch (error) {
-		errorHandler(error, dispatch);
+		reduxErrorHandler(error, dispatch);
 	}
 };
 
@@ -78,6 +76,6 @@ export const logout = () => async (dispatch, getState) => {
 			payload: null
 		});
 	} catch (error) {
-		errorHandler(error, dispatch);
+		reduxErrorHandler(error, dispatch);
 	}
 };

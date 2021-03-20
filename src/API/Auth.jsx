@@ -1,7 +1,6 @@
-
 import axios from 'axios';
 
-const API = process.env.REACT_APP_BACKENDAPI;
+// const API = process.env.REACT_APP_BACKENDAPI;
 
 export const CheckUserExist = async (username) => {
 	// return fetch(`http://167.71.237.202/api/check-user-existence/`, {
@@ -24,37 +23,35 @@ export const CheckUserExist = async (username) => {
 		method: 'POST',
 		headers: {},
 		data: {
-			username: username,
+			username: username
 		}
-	})
+	});
 
 	return res;
-
-}
+};
 
 export const loginUser = (user) => {
 	return fetch(`http://167.71.237.202/api/login/`, {
-		method: "POST",
+		method: 'POST',
 		headers: {
-			"Content-Type": "application/json",
-			"Accept": 'application/json'
+			'Content-Type': 'application/json',
+			Accept: 'application/json'
 		},
 		body: JSON.stringify(user)
 	})
-		.then(res => {
+		.then((res) => {
 			console.log(res);
-			return res.json()
+			return res.json();
 		})
-		.catch(err => console.log(err))
-
-}
+		.catch((err) => console.log(err));
+};
 
 export const authenticate = (data, next) => {
-	if (typeof window !== "undefined") {
-		localStorage.setItem("userdata", JSON.stringify(data));
+	if (typeof window !== 'undefined') {
+		localStorage.setItem('userdata', JSON.stringify(data));
 		next();
 	}
-}
+};
 
 export const validateOtp = async (username, otp) => {
 	// return fetch(`http://167.71.237.202/api/validate-otp/`, {
@@ -76,13 +73,13 @@ export const validateOtp = async (username, otp) => {
 		url: `http://167.71.237.202/api/validate-otp/`,
 		data: {
 			username: username,
-			otp: otp,
+			otp: otp
 		}
 	});
 	console.log(res);
 
 	return res;
-}
+};
 
 export const registerUser = async (userdetails) => {
 	// return fetch(`http://167.71.237.202/api/register/`, {
@@ -104,11 +101,11 @@ export const registerUser = async (userdetails) => {
 		data: {
 			email: userdetails.email,
 			name: userdetails.name,
-			password: userdetails.password,
+			password: userdetails.password
 		}
-	})
+	});
 	return res;
-}
+};
 
 export const isAuthenticated = () => {
 	if (typeof window == 'undefined') {
@@ -116,8 +113,7 @@ export const isAuthenticated = () => {
 	}
 	if (localStorage.getItem('userdata')) {
 		return JSON.parse(localStorage.getItem('userdata'));
-	}
-	else {
+	} else {
 		return false;
 	}
-}
+};

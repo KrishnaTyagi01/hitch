@@ -1,0 +1,37 @@
+a {
+	text-decoration: none;
+	color: inherit;
+	outline: none;
+}
+
+fieldset {
+	border: none;
+}
+
+input,
+select,
+textarea {
+	border: none;
+	outline: none;
+	font-family: inherit;
+	transition: all 0.1s;
+
+	&:focus {
+		box-shadow: 0 0 0 2px var(--color-secondary-1);
+	}
+}
+
+textarea {
+	resize: none;
+}
+
+button {
+	cursor: pointer;
+	border: none;
+	outline: none;
+	font-family: inherit;
+}
+
+ul {
+	list-style: none;
+}

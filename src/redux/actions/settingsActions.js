@@ -1,8 +1,8 @@
 import axios from 'axios';
 
 import { tokenConfig } from './authActions';
-import { errorHandler } from './errorHandler';
-import { CHANGE_PASSWORD, DELETE_PROFILE, USER_LOADED, USER_LOADING } from '../types';
+import reduxErrorHandler from './reduxErrorHandler';
+import { CHANGE_PASSWORD, DELETE_PROFILE } from '../types';
 
 export const changePassword = (details) => async (dispatch, getState) => {
 	try {
@@ -16,7 +16,7 @@ export const changePassword = (details) => async (dispatch, getState) => {
 			payload: response.data
 		});
 	} catch (error) {
-		errorHandler(error);
+		reduxErrorHandler(error);
 	}
 };
 
@@ -28,6 +28,6 @@ export const deleteProfile = (id) => async (dispatch, getState) => {
 			payload: response.data
 		});
 	} catch (error) {
-		errorHandler(error);
+		reduxErrorHandler(error);
 	}
 };

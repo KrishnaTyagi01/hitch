@@ -98,6 +98,11 @@
 			font-size: 14px;
 			font-weight: 600;
 			margin-bottom: 6px;
+
+			white-space: nowrap;
+			width: 100%;
+			overflow: hidden;
+			text-overflow: ellipsis;
 		}
 
 		.description {

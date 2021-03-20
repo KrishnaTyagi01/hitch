@@ -16,8 +16,11 @@ const EventDetails = (props) => {
 				</div>
 
 				<div className='eventdetails__duration'>
-					<span className='eventdetails__duration--text'>DURATION DAYS</span>
-					<p className='eventdetails__duration--length'>{props.event?.duration_days}</p>
+					<span className='eventdetails__duration--text'>DURATION</span>
+					<p className='eventdetails__duration--length'>
+						{(props.event?.duration_days && `${props.event?.duration_days} days`) ||
+							(props.event?.duration && `${props.event?.duration} hours`)}
+					</p>
 				</div>
 			</div>
 
@@ -37,7 +40,7 @@ const EventDetails = (props) => {
 				<h3 className='eventdetails__visit--head'>VISIT ORGANISERS</h3>
 
 				<a href='#' target='_blank' className='eventdetails__visit--link'>
-					{window.location.href}
+					{props.organizersWebsite ? props.organizersWebsite : 'No website provided'}
 				</a>
 
 				<div className='eventdetails__visit--buttons'>

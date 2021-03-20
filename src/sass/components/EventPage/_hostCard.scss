@@ -1,4 +1,4 @@
-.hostcard{
+.hostcard {
 	width: 300px;
 	height: 400px;
 	margin-bottom: 50.5px;
@@ -8,8 +8,7 @@
 	display: flex;
 	justify-content: center;
 
-
-	&__wrapper{
+	&__wrapper {
 		width: 196.46px;
 		height: 100%;
 		display: flex;
@@ -17,55 +16,55 @@
 		justify-content: space-around;
 		align-items: center;
 	}
-	&__pic{
+
+	&__pic {
 		width: 90px;
 		height: 90px;
 	}
 
-	&__role{
+	&__role {
+		text-align: center;
 		width: 83.41px;
 		height: 26.75px;
-		
-		background: #39EAB4;
+		background: #39eab4;
 		border-radius: 5px;
 	}
 
-	&__name{
+	&__name {
 		font-family: 'Kumbh Sans', sans-serif;
 		font-style: normal;
 		font-weight: bold;
 		font-size: 16px;
 		line-height: 16px;
 		text-transform: uppercase;
-		color: #FFFFFF;
-		
+		color: #ffffff;
 	}
 
-	&__host{
+	&__host {
 		display: flex;
 		flex-direction: column;
 		align-items: center;
 	}
 
-	&__category{
+	&__category {
 		font-family: 'Kumbh Sans', sans-serif;
 		font-style: normal;
 		font-weight: normal;
 		font-size: 12px;
 		line-height: 12px;
 		margin: 0 auto;
-		color: #FFFFFF;
+		color: #ffffff;
 		text-transform: capitalize;
 	}
 
-	&__text{
+	&__text {
 		font-family: 'Poppins', sans-serif;
 		font-style: normal;
 		font-weight: normal;
 		font-size: 14px;
-		line-height: 168.8%;        
+		line-height: 168.8%;
 		text-align: justify;
-		
-		color: #E6E4F2;
+
+		color: #e6e4f2;
 	}
 }

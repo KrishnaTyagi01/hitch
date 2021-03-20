@@ -1,8 +1,7 @@
-
 import axios from 'axios';
 
 import { tokenConfig } from './authActions';
-import { errorHandler } from './errorHandler';
+import reduxErrorHandler from './reduxErrorHandler';
 import {
 	CHECK_USER_EXISTENCE,
 	VALIDATE_OTP,
@@ -20,7 +19,7 @@ export const checkUserExistence = (username) => async (dispatch) => {
 			payload: response.data
 		});
 	} catch (error) {
-		errorHandler(error);
+		reduxErrorHandler(error);
 	}
 };
 
@@ -32,7 +31,7 @@ export const validateOTP = (otp) => async (dispatch) => {
 			payload: response.data
 		});
 	} catch (error) {
-		errorHandler(error);
+		reduxErrorHandler(error);
 	}
 };
 
@@ -44,7 +43,7 @@ export const resetPassword = (username) => async (dispatch, getState) => {
 			payload: response.data
 		});
 	} catch (error) {
-		errorHandler(error);
+		reduxErrorHandler(error);
 	}
 };
 
@@ -60,7 +59,7 @@ export const resetPasswordConfirm = (details) => async (dispatch, getState) => {
 			payload: response.data
 		});
 	} catch (error) {
-		errorHandler(error);
+		reduxErrorHandler(error);
 	}
 };
 
@@ -71,7 +70,7 @@ export const activateLoginPrompt = () => async (dispatch) => {
 			payload: true
 		});
 	} catch (error) {
-		errorHandler(error);
+		reduxErrorHandler(error);
 	}
 };
 
@@ -82,6 +81,6 @@ export const deactivateLoginPrompt = () => async (dispatch) => {
 			payload: false
 		});
 	} catch (error) {
-		errorHandler(error);
+		reduxErrorHandler(error);
 	}
 };
