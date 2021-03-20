@@ -148,7 +148,7 @@ var indexOfMatch = function indexOfMatch(currentInput, item) {
  * @param {*} item
  * @param {*} items
  */
-
+// console.log(items);
 
 var indexOfItem = function indexOfItem(item, items) {
   return items.indexOf(items.find(function (i) {
@@ -197,9 +197,12 @@ var DataListInput = function DataListInput(_ref) {
 
   var _useState3 = React.useState([]);
   var _useState4 = _slicedToArray(_useState3, 2);
-
   var matchingItems = _useState4[0];
   var setMatchingItems = _useState4[1];
+  // console.log(matchingItems);
+  if (matchingItems[0] && matchingItems[0].label !== items[0].label)
+    matchingItems.splice(0, 0, { key: -1, label: items[0].label });
+  console.log(matchingItems);
   /* visibility property of the drop down menu */
 
 
@@ -520,7 +523,8 @@ DataListInput.propTypes = {
   debounceTime: PropTypes.number,
   debounceLoader: PropTypes.node,
   onInput: PropTypes.func,
-  onClick: PropTypes.func
+  onClick: PropTypes.func,
+  searchRef: PropTypes.ref,
 };
 DataListInput.defaultProps = {
   placeholder: '',

@@ -45,18 +45,23 @@ const RecommendedEvents = (props) => {
     }, []);
 
     return (
-        <section className='similarEvents'>
-            <h2 className='header'>Recommended Events</h2>
-            <Carousel pagination={false} breakPoints={breakpoints}>
-                {recommendedEvents?.map((event, index) => <EventCard key={index} event={event} />) ??
-                    []}
-            </Carousel>
-        </section>
+        <>
+            { props.isAuthenticated &&
+                <section className='similarEvents'>
+                    <h2 className='header'>Recommended Events</h2>
+                    <Carousel pagination={false} breakPoints={breakpoints}>
+                        {recommendedEvents?.map((event, index) => <EventCard key={index} event={event} />) ??
+                            []}
+                    </Carousel>
+                </section>
+            }
+        </>
     );
 };
 
 const mapStateToProps = state => {
     return {
+        isAuthenticated: state.authState.isAuthenticated,
         token: state.authState.token,
     }
 }

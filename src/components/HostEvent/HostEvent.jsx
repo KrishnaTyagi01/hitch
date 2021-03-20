@@ -187,12 +187,10 @@ const HostEvent = (props) => {
 	}
 
 	const onImageUpload = (img) => {
-		console.log(img);
 		setImage(img);
 	}
 
 	const onImageCropped = (preview) => {
-		console.log(preview);
 		setPreview(preview);
 	}
 
@@ -257,7 +255,7 @@ const HostEvent = (props) => {
 
 						{/* ======================= EVENT HOST AND SPEAKERS =============================================  */}
 						{/* ======================= EVENT HOST AND SPEAKERS =============================================  */}
-						<section id="host"></section>
+						{/* <section id="host"></section>
 						<div className="event_hosts">
 							<div className="event_hosts_header">
 								Host and Speakers
@@ -265,7 +263,7 @@ const HostEvent = (props) => {
 							<div className="event_hosts_cards">
 								<div className="event_hosts_card"></div>
 							</div>
-						</div>
+						</div> */}
 						{/* ======================= EVENT SCHEDULE  =============================================  */}
 						{/* ======================= EVENT SCHEDULE =============================================  */}
 						<section id="schedule"></section>

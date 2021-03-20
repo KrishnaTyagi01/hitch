@@ -51,7 +51,7 @@ const Navbar = (props) => {
                 exact={true}
                 activeClassName='active-link'
                 className='nav-link'
-                to='/host-event'
+                to='/hostintro'
                 onClick={toggleSidebar}
             >
                 Host

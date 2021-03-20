@@ -16,6 +16,7 @@ const SearchBar = (props) => {
     const [goToSearchPage, setGoToSearchPage] = useState(false);
     const searchRef = useRef(null);
     const location = useLocation();
+    // const [previousSearch, setPreviousSearch] = useState([]);
 
 
     const getTopics = (search) => {
@@ -24,11 +25,9 @@ const SearchBar = (props) => {
             return ans;
         }
     }
-
     useEffect(() => {
         const handleEnter = async (e) => {
             if (e.keyCode === 13) {
-                console.log(searchKeyCopy);
                 setSearchKeyword(e.target.value);
                 setGoToSearchPage(true);
             }
@@ -68,7 +67,7 @@ const SearchBar = (props) => {
         let ret = [];
         ret.push({
             key: 0,
-            label: searchKeyCopy + 'bb'
+            label: searchKeyCopy,
         });
         for (let i = 0; i <= 2114; ++i) {
             ret.push({
@@ -81,7 +80,7 @@ const SearchBar = (props) => {
 
 
     const onSelect = ((selectedItem) => {
-        // setSearchKeyCopy(selectedItem.label);
+        setSearchKeyCopy(selectedItem.label);
     });
 
     return (
@@ -135,7 +134,6 @@ const SearchBar = (props) => {
             {/* </form> */}
             <form className='navbar__search-wrapper' id="catch" onSubmit={e => {
                 e.preventDefault();
-                // console.log(searchKeyCopy);
             }}>
                 <DataListInput
                     placeholder="Search"

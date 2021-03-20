@@ -4,16 +4,19 @@ import 'react-image-crop/dist/ReactCrop.css';
 
 class UploadImage extends PureComponent {
 	state = {
-
 		src: null,
 		cropDone: false,
 		name: null,
+		images: [],
 		crop: {
 			unit: '%',
 			width: 30,
 			aspect: 1 / 1,
 		},
 	};
+
+	// console.log(state.images);
+
 
 	onSelectFile = e => {
 		if (e.target.files && e.target.files.length > 0) {
@@ -24,7 +27,7 @@ class UploadImage extends PureComponent {
 			);
 			reader.readAsDataURL(e.target.files[0]);
 			// this.props.onImageUpload(e.target.files[0]);
-			console.log(e.target.files[0]);
+			// console.log(e.target.files[0]);
 			this.setState({ name: e.target.files[0].name });
 		}
 
@@ -84,8 +87,10 @@ class UploadImage extends PureComponent {
 					return;
 				}
 				var file = new File([blob], this.state.name, { type: "image/jpeg" });
-				// console.log(file);
+
+				//HERE IS THE FILE CREATED
 				this.props.onImageUpload(file);
+				console.log(file);
 
 				blob.name = fileName;
 				window.URL.revokeObjectURL(this.fileUrl);
@@ -95,11 +100,30 @@ class UploadImage extends PureComponent {
 		});
 	}
 
+
 	onConfirmCrop = e => {
 		e.preventDefault();
 		this.setState(prevState => {
 			return { ...prevState, cropDone: true };
+		});
+		this.setState(prevState => {
+			let arr = (this.state.images);
+			arr.push(this.state.croppedImageUrl);
+			return { ...prevState, images: arr }
 		})
+		// console.log(this.state.images);
+	}
+
+	imgList = () => {
+		let arr = this.state.images.map(img => {
+			// console.log(img);
+			return (
+				<div className="picturebox_container_picture_box">
+					<img alt="Crop" className="picture" src={img} />
+				</div>
+			)
+		});
+		return arr;
 	}
 
 	render() {
@@ -129,9 +153,7 @@ class UploadImage extends PureComponent {
 				)}
 				{cropDone && croppedImageUrl && (
 					<div className="picturebox_container">
-						<div className="picturebox_container_picture_box">
-							<img alt="Crop" className="picture" src={croppedImageUrl} />
-						</div>
+						{this.imgList()}
 					</div>
 				)}
 

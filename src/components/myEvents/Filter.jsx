@@ -17,6 +17,21 @@ const Filter = (props) => {
 	const [temp_category, setTemp_Category] = useState('');
 	const [temp_location, setTemp_Location] = useState('');
 
+	useEffect(() => {
+		if (window.width <= 1050) {
+			setCategory(false);
+			setDate(false);
+			setLocation(false);
+		}
+	}, []);
+
+	var today = new Date();
+	var dd = String(today.getDate()).padStart(2, '0');
+	var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
+	var yyyy = today.getFullYear();
+
+	today = mm + '' + dd + '/' + yyyy;
+
 	const defaultFrom = {
 		year: 2000,
 		month: 1,
@@ -123,8 +138,6 @@ const Filter = (props) => {
 			</label>
 		)
 	})
-
-
 
 
 	const getFilterData = (type) => {

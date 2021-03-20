@@ -100,7 +100,7 @@
 
         .event_overview{
             margin:10px 0px;
-            height: 229px;
+            height: 129px;
             width: 100%;
             position: relative;
             background: #2B244D;
@@ -784,12 +784,12 @@
         .filter__form{
             display: inline-flex !important;
             &--span{
-                background-color: lightsalmon;
+                // background-color: lightsalmon;
                 display: inline;
                 border-radius: 12px;
                 padding:1.5px 4px;
                 color: rgba(230, 228, 242, 0.5);
-                background: rgba(230, 228, 242, 0.2);
+                // background: rgba(230, 228, 242, 0.2);
                 font-size: 18px;
                 font-weight: 100;
             }

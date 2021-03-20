@@ -48,29 +48,54 @@
 		}
 
 		&--input{
-			width: Min(90%,458px);
-			height: 46px;
-			background: rgba(230, 228, 242, 0.2);
-			border: 1px solid #E6E4F2;
-			box-sizing: border-box;
-			border-radius: 10px;
-			color:  #E6E4F2;
-			margin-top: 16px;
-			padding-left: 15px;
-			&:focus{
-				outline: none;
-			}
-			&::placeholder{
-				// font-family: 'League Script', cursive;
-				// padding-left: 15px;
-				font-style: normal;
-				font-weight: normal;
-				font-size: 12px;
-				line-height: 13px;
-				margin-bottom: 17px;
-				color: rgba(230, 228, 242, 0.5);
-				
-			}
+			// width: Min(90%,458px);
+			// height: 46px;
+			// background: rgba(230, 228, 242, 0.2);
+			// border: 1px solid #E6E4F2;
+			// box-sizing: border-box;
+			// border-radius: 10px;
+			// color:  #E6E4F2;
+			// margin-top: 16px;
+			// padding-left: 15px;
+			// &:focus{
+			// 	outline: none;
+			// }
+			// &::placeholder{
+			// 	// font-family: 'League Script', cursive;
+			// 	// padding-left: 15px;
+			// 	font-style: normal;
+			// 	font-weight: normal;
+			// 	font-size: 12px;
+			// 	line-height: 13px;
+			// 	margin-bottom: 17px;
+			// 	color: rgba(230, 228, 242, 0.5);
+			// }
+
+
+			
+			
+			color: var(--color-text-2);
+				// background: rgba(230, 228, 242, 0.2);
+				background-color: var(--color-primary-1);
+				font-size: 14px;
+				border-radius: 10px;
+				width: 100%;
+				margin-top: 16px;
+				padding: 15px;
+				transition: box-shadow 0.1s;
+
+				&:focus {
+					box-shadow: 0 0 0 2px var(--color-secondary-3);
+				}
+
+				&::placeholder {
+					font-style: normal;
+					font-weight: normal;
+					// line-height: 13px;
+					// margin-bottom: 17px;
+					// color: rgba(230, 228, 242, 0.5);
+					color: var(--color-text-2);
+				}
 		}
 	}
 
