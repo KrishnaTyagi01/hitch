@@ -1,11 +1,10 @@
-
 import {
 	REGISTER,
 	LOGIN,
 	LOGIN_FAIL,
 	LOGOUT,
-	CHANGE_PASSWORD,
-	RESET_PASSWORD,
+	// CHANGE_PASSWORD,
+	// RESET_PASSWORD,
 	AUTH_ERROR
 } from '../types';
 
@@ -52,7 +51,7 @@ export default function authReducer(state = initialState, action) {
 		case AUTH_ERROR:
 			return {
 				...initialState,
-				authMessage: 'Authorization failed'
+				authMessage: 'Authorization Error'
 			};
 		default:
 			return state;

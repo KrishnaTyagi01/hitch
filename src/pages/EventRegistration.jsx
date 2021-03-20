@@ -1,11 +1,10 @@
 import { useEffect, useState } from 'react';
 import { connect } from 'react-redux';
-import { Redirect } from 'react-router-dom';
 import { nanoid } from 'nanoid';
 import axios from 'axios';
 
 import { registerForFreeEvent } from '../redux/actions/eventActions';
-import ConfirmationPrompt from '../components/Common/ConfirmationPrompt';
+// import ConfirmationPrompt from '../components/Common/ConfirmationPrompt';
 import Loading from '../components/Common/Loading';
 import Page404 from './Page404';
 import downArrow from '../icons/downArrow.svg';
@@ -41,9 +40,9 @@ const EventRegistration = (props) => {
 
 	const [event, setEvent] = useState(null);
 	const [entries, setEntries] = useState(initialEntry);
-	const [confirmationPromptActive, setConfirmationPromptActive] = useState(false);
 	const [httpStatusCode, setHttpStatusCode] = useState(null);
-	const [paymentSuccess, setPaymentSuccess] = useState(false);
+	// const [confirmationPromptActive, setConfirmationPromptActive] = useState(false);
+	// const [paymentSuccess, setPaymentSuccess] = useState(false);
 
 	const addEntry = () => {
 		setEntries((currentEntries) => [
@@ -111,7 +110,6 @@ const EventRegistration = (props) => {
 		formData.append('num_of_participants', entries.length);
 
 		const data = await registerForEvent(formData);
-		console.log(data);
 		props.history.push(`/event/${eventID}/ticket`, { ticket: data.ticket });
 
 		// props.registerForFreeEvent(eventID, formData, () => {
@@ -191,11 +189,6 @@ const EventRegistration = (props) => {
 					alert('payment failed');
 					props.history.push(`/event/${eventID}/`);
 				}
-
-				// setPaymentSuccess()
-				// if (paymentSuccess) {
-				// 	props.history.push(`/event/${eventID}/ticket`);
-				// }
 			},
 			prefill: {
 				name: props.profile.name,

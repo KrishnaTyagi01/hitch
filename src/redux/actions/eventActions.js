@@ -1,14 +1,13 @@
-
 import axios from 'axios';
 
-import { errorHandler } from './errorHandler';
+import reduxErrorHandler from './reduxErrorHandler';
 import { tokenConfig } from './authActions';
 import {
 	CREATE_EVENT,
 	EDIT_EVENT,
 	REGISTER_FOR_EVENT,
-	PAYMENT_SUCCESS,
-	PAYMENT_FAILURE
+	PAYMENT_SUCCESS
+	// PAYMENT_FAILURE
 } from '../types';
 
 export const createEvent = (event) => async (dispatch, getState) => {
@@ -19,7 +18,7 @@ export const createEvent = (event) => async (dispatch, getState) => {
 			payload: response.data
 		});
 	} catch (error) {
-		errorHandler(error);
+		reduxErrorHandler(error);
 	}
 };
 
@@ -31,7 +30,7 @@ export const editEvent = (eventID) => async (dispatch, getState) => {
 			payload: response.data
 		});
 	} catch (error) {
-		errorHandler(error);
+		reduxErrorHandler(error);
 	}
 };
 
@@ -51,7 +50,7 @@ export const registerForFreeEvent = (eventID, data, next) => async (
 		});
 		next();
 	} catch (error) {
-		errorHandler(error);
+		reduxErrorHandler(error);
 	}
 };
 
@@ -71,7 +70,7 @@ export const registerForPaidEvent = (eventID, data, next) => async (
 		});
 		next();
 	} catch (error) {
-		errorHandler(error);
+		reduxErrorHandler(error);
 	}
 };
 
@@ -87,7 +86,7 @@ export const verifyPayment = (eventID, details) => async (dispatch, getState) =>
 			payload: response.data
 		});
 	} catch (error) {
-		errorHandler(error);
+		reduxErrorHandler(error);
 		// dispatch({
 		// 	type: PAYMENT_FAILURE,
 		// 	payload: response.data

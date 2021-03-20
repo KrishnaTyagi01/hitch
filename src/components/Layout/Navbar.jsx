@@ -120,13 +120,13 @@ const Navbar = (props) => {
 						<Link to='/profile'>View Profile</Link>
 					</li>
 					<li>
-						<Link to='/editprofile'>Edit Profile</Link>
+						<Link to='/settings/edit-profile'>Edit Profile</Link>
 					</li>
 					<li>
 						<Link to='/dashboard'>Dashboard</Link>
 					</li>
 					<li>
-						<Link to='/events'>My Events</Link>
+						<Link to='/my-events'>My Events</Link>
 					</li>
 					<li>
 						<Link to='/settings'>Settings</Link>
@@ -140,7 +140,6 @@ const Navbar = (props) => {
 			</div>
 		</div>
 	);
-
 
 	if (pathname.startsWith('/search')) {
 		return null;

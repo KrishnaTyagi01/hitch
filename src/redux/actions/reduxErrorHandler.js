@@ -1,7 +1,6 @@
-
 import { AUTH_ERROR, LOGIN_FAIL, SERVER_ERROR } from '../types';
 
-export const errorHandler = (error, dispatch) => {
+const reduxErrorHandler = (error, dispatch) => {
 	console.error(error);
 
 	if (error.response) {
@@ -44,3 +43,5 @@ export const errorHandler = (error, dispatch) => {
 		console.log('Error', error.message);
 	}
 };
+
+export default reduxErrorHandler;

@@ -1,11 +1,10 @@
-// import SimilarEventCard from '../event_components/SimilarEventCard';
 import EventCard from '../Common/EventCard';
 
 const Wishlist = (props) => {
 	return (
 		<div className='wishlistEvents'>
 			<div className='wishlistEvents__upper'>
-				<span className='wishlistEvents__upper--heading'>Hosted Events</span>
+				<span className='wishlistEvents__upper--heading'>Wishlist</span>
 				<button className='wishlistEvents__upper--btn'>Know More</button>
 			</div>
 			{props.event_wishlist ? (

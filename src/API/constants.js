@@ -16,3 +16,12 @@ export const eventLocations = [
 	'Surat',
 	'Kolkata'
 ];
+
+export const topEventLocations = [
+	'Mumbai',
+	'Delhi NCR',
+	'Chennai',
+	'Kolkata',
+	'Bangalore',
+	'Pune'
+];

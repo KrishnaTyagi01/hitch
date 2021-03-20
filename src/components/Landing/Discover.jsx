@@ -1,8 +1,6 @@
 import { useState, useEffect, useRef } from 'react';
 import axios from 'axios';
-import { Link } from 'react-router-dom';
 
-import MyEventCard from '../myEvents/MyEventCard';
 import Filter from '../myEvents/Filter';
 import EventCard from '../Common/EventCard';
 import Loading from '../Common/Loading';
@@ -58,10 +56,6 @@ export default function Discover() {
 		setEvents(refactorEvents(res));
 	};
 
-	useEffect(() => {
-		getAllEvents();
-	}, []);
-
 	const DiscoverEvents = events.map((event) => (
 		<EventCard event={event} lazyLoadBI={true} key={event.id} />
 	));
@@ -76,7 +70,8 @@ export default function Discover() {
 
 	useEffect(() => {
 		// getEvents();
-		// setEvents(dummyEvents);
+		getAllEvents();
+		setEvents(dummyEvents);
 	}, []);
 
 	useEffect(() => {
@@ -90,11 +85,11 @@ export default function Discover() {
 		<div className='landing-discover'>
 			<div className='header'>
 				<h2>Discover</h2>
-				{/* <div className="event-filters">
+				<div className='event-filters'>
 					{filters.map((filter) => (
-						<div key={filter.name} className="event-filter">
+						<div key={filter.name} className='event-filter'>
 							<select name={filter.name} onChange={updateFilter}>
-								<option value="" defaultValue hidden>
+								<option value='' defaultValue hidden>
 									{filter.label}
 								</option>
 								{filter.options.map((option) => (
@@ -105,13 +100,12 @@ export default function Discover() {
 							</select>
 						</div>
 					))}
-				</div> */}
+				</div>
 			</div>
 
 			<div className='body'>
 				<div className='filters'>
-					Filters
-					{/* <Filter onFilterChange={onFilterChange} /> */}
+					<Filter onFilterChange={onFilterChange} />
 				</div>
 				<section className='searchPage__content--events'>
 					{!events ? (
