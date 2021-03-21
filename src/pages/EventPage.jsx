@@ -46,7 +46,7 @@ const EventPage = (props) => {
 	const loadProfile = async () => {
 		if (event?.author) {
 			const y = await getProfile(event.author);
-			console.log(y);
+			// console.log(y);
 			// const { data, error } = await getProfile(event.author);
 			// if (data) setProfile(data);
 			// else setProfileError(error);
@@ -102,5 +102,6 @@ const EventPage = (props) => {
 const mapStateToProps = (state) => ({
 	token: state.authState.token
 });
+
 
 export default connect(mapStateToProps)(EventPage);

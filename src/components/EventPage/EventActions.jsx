@@ -8,6 +8,7 @@ import {
 	removeFromWishlist
 } from '../../redux/actions/profileActions';
 import { activateLoginPrompt } from '../../redux/actions/userActions';
+import AddToCalendar from './AddToCalendar/AddToCalendar';
 
 const currency_symbols = {
 	USD: '$', // US Dollar
@@ -99,7 +100,8 @@ const EventActions = (props) => {
 				</>
 			) : (
 				<>
-					<button className='action-button'>
+					{/* HERE MAKE AN OPTION FOR REMOVE FROM CALENDAR */}
+					<button className='action-button' onClick={AddToCalendar}>
 						<i className='far fa-calendar-alt action-button__icon'></i>
 						Add to Calender
 					</button>
@@ -135,6 +137,7 @@ const mapStateToProps = (state) => ({
 	isAuthenticated: state.authState.isAuthenticated,
 	wishlist: state.profileState.wishlist
 });
+
 
 export default connect(mapStateToProps, {
 	getSelfProfile,
