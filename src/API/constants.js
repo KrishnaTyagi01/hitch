@@ -2136,3 +2136,11 @@ export const TagList = {
 		"2114": "Writing Workshops"
 	}
 };
+export const topEventLocations = [
+	'Mumbai',
+	'Delhi NCR',
+	'Chennai',
+	'Kolkata',
+	'Bangalore',
+	'Pune'
+];

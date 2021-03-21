@@ -25,7 +25,7 @@ const EventCard = (props) => {
 			<div className='top-details'>
 				<div className='ticket-price'>
 					{ticket_price ? (
-						<span style={{ color: 'var(--color-semantic-2)' }}>${ticket_price}</span>
+						<span style={{ color: 'var(--color-semantic-2)' }}>₹{ticket_price}</span>
 					) : (
 						<span style={{ color: 'var(--color-secondary-2)' }}>FREE</span>
 					)}

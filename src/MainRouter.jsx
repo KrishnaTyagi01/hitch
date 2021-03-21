@@ -11,7 +11,7 @@ import EventPage from './pages/EventPage';
 import UserProfile from './pages/UserProfile';
 
 import SelfProfile from './pages/SelfProfile';
-import EditProfile from './pages/EditProfile';
+import Settings from './pages/Settings';
 import EventRegistration from './pages/EventRegistration';
 import EventTicketPage from './pages/EventTicketPage';
 
@@ -47,11 +47,23 @@ const MainRouter = () => {
 
 				<Switch>
 					<Route exact path='/' component={Home} />
-					<Route exact path='/login' component={Login} />
-					<Route exact path='/register' component={Register} />
+					<Route path='/login' component={Login} />
+					<Route path='/register' component={Register} />
+					<Route path='/about' component={AboutUs} />
+					<Route path='/hostintro' component={HostIntro} />
 
-					<Route exact path='/about' component={AboutUs} />
-					<Route exact path='/hostintro' component={HostIntro} />
+					<PrivateRoute exact path='/profile' component={SelfProfile} />
+					<PrivateRoute path='/settings' component={Settings} />
+					<PrivateRoute path='/dashboard' component={Temp} />
+					<PrivateRoute path='/host-event' component={HostEvent} />
+					<PrivateRoute path='/my-events' component={eventsPage} />
+					<PrivateRoute
+						exact
+						path='/event/:eventID/register'
+						component={EventRegistration}
+					/>
+					<PrivateRoute exact path='/event/:eventID/ticket' component={EventTicketPage} />
+
 					<Route
 						exact
 						path='/event/:eventID'
@@ -62,20 +74,8 @@ const MainRouter = () => {
 						path='/profile/:profileID'
 						render={(props) => <UserProfile {...props} />}
 					/>
-					<Route exact path='/my-events' component={eventsPage} />
-					<Route exact path='/events' component={eventsPage}></Route>
 					<Route exact path='/search' render={(props) => <SearchPage {...props} />} />
 
-					<PrivateRoute exact path='/profile' component={SelfProfile} />
-					<PrivateRoute exact path='/editprofile' component={EditProfile} />
-					<PrivateRoute exact path='/dashboard' component={Temp} />
-					<PrivateRoute exact path='/host-event' component={HostEvent} />
-					<PrivateRoute
-						exact
-						path='/event/:eventID/register'
-						component={EventRegistration}
-					/>
-					<PrivateRoute exact path='/event/:eventID/ticket' component={EventTicketPage} />
 					<Route component={Page404} />
 				</Switch>
 

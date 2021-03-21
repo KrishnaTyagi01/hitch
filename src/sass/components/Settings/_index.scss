@@ -1,0 +1,40 @@
+@import 'editProfile';
+@import 'eventHistory';
+@import 'settingsSidebar';
+
+.settings {
+	color: var(--color-text-2);
+	background-color: var(--color-primary-1);
+
+	&__top {
+		height: 200px;
+		width: 100%;
+		background-image: linear-gradient(var(--color-primary-2), #3b3267);
+	}
+
+	&__bottom {
+		display: flex;
+		gap: 2rem;
+		margin: 30px 4vw;
+	}
+
+	&__left {
+		width: 25%;
+		max-width: 320px;
+		min-width: 250px;
+	}
+
+	&__right {
+		flex-grow: 1;
+	}
+}
+
+@media screen and (max-width: 1024px) {
+	.settings {
+		&__bottom {
+			flex-direction: column;
+			justify-content: center;
+			// align-items: center;
+		}
+	}
+}
