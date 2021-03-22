@@ -1,8 +1,11 @@
+// import { activateLoginPrompt } from '../../../redux/actions/userActions';
+// import {connect} from 'react-redux';
 
-const AddToCalendar = () => {
+
+const AddToCalendar = (myEvent, setAlreadyInCalendar) => {
     var gapi = window.gapi;
-    const CLIENT_ID = '1001904143961-uteplscmk6ukmb3n213qisrj0nbc1dsa.apps.googleusercontent.com';
-    const API_KEY = 'AIzaSyCUffIjbMqecp2j_udWoLEIwihq1GsAeAI';
+    const CLIENT_ID = '1001904143961-1irvhehco0vna3ft694nfu0hrmmn9iks.apps.googleusercontent.com';
+    const API_KEY = 'AIzaSyD0JPXFGJPzh9OMDH2dTYW1caEyxnU4DsQ';
     var DISCOVERY_DOCS = ["https://www.googleapis.com/discovery/v1/apis/calendar/v3/rest"];
     var SCOPES = "https://www.googleapis.com/auth/calendar.events";
 
@@ -20,30 +23,32 @@ const AddToCalendar = () => {
 
         gapi.client.load('calendar', 'v3', () => console.log('bam!'));
 
-        // console.log(gapi.auth2.getAuthInstance().isSignedIn.get());
+        let start = (myEvent.scheduled_date + 'T' + myEvent.scheduled_time);
+
 
         gapi.auth2.getAuthInstance().signIn()
             .then(() => {
-                console.log('hello');
+
                 var event = {
-                    'summary': 'Awesome Event!',
-                    'location': '800 Howard St., San Francisco, CA 94103',
-                    'description': 'Really great refreshments',
+                    'id': "hitch" + myEvent.id + "hitch",
+                    'summary': myEvent.title,
+                    'location': myEvent.address,
+                    'description': myEvent.description,
                     'start': {
-                        'dateTime': '2021-06-28T09:00:00-07:00',
-                        'timeZone': 'America/Los_Angeles'
+                        'dateTime': start,
+                        'timeZone': "Asia/Kolkata"
                     },
                     'end': {
-                        'dateTime': '2021-06-28T17:00:00-07:00',
-                        'timeZone': 'America/Los_Angeles'
+                        'dateTime': start,
+                        'timeZone': "Asia/Kolkata"
                     },
                     'recurrence': [
                         'RRULE:FREQ=DAILY;COUNT=2'
                     ],
-                    'attendees': [
-                        { 'email': 'lpage@example.com' },
-                        { 'email': 'sbrin@example.com' }
-                    ],
+                    // 'attendees': [
+                    //     { 'email': 'lpage@example.com' },
+                    //     { 'email': 'sbrin@example.com' }
+                    // ],
                     'reminders': {
                         'useDefault': false,
                         'overrides': [
@@ -60,10 +65,12 @@ const AddToCalendar = () => {
 
                 request.execute(event => {
                     console.log(event);
-                    window.open(event.htmlLink);
+                    if (event.code === 409) {
+                        setAlreadyInCalendar(true);
+                    }
+                    else
+                        window.open(event.htmlLink);
                 });
-                // gapi.auth2.getAuthInstance().disconnect();
-                console.log(gapi.auth2.getAuthInstance().isSignedIn.get());
 
                 gapi.auth2.getAuthInstance().signOut()
                     .then(() => console.log('signed out'));

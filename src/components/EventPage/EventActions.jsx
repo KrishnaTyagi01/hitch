@@ -9,6 +9,10 @@ import {
 } from '../../redux/actions/profileActions';
 import { activateLoginPrompt } from '../../redux/actions/userActions';
 import AddToCalendar from './AddToCalendar/AddToCalendar';
+import { useRef, useState } from 'react/cjs/react.development';
+
+// import Popup from 'reactjs-popup';
+// import 'reactjs-popup/dist/index.css';
 
 const currency_symbols = {
 	USD: '$', // US Dollar
@@ -28,6 +32,8 @@ const currency_symbols = {
 };
 
 const EventActions = (props) => {
+	const [alreadyInCalendar, setAlreadyInCalendar] = useState(false);
+
 	return (
 		<div className='event-actions'>
 			<div className='ticket-card'>
@@ -64,10 +70,10 @@ const EventActions = (props) => {
 									: `${currency_symbols['INR']} ${props.event?.ticket_price}`}
 							</span>
 						</div>
-						<div className='starts-in'>
+						{/* <div className='starts-in'>
 							<span className='text'>EVENT STARTS IN</span>
 							<span className='timer'>01D: 08H: 30M: 25S</span>
-						</div>
+						</div> */}
 					</div>
 
 					{!props.isAuthenticated ? (
@@ -101,10 +107,17 @@ const EventActions = (props) => {
 			) : (
 				<>
 					{/* HERE MAKE AN OPTION FOR REMOVE FROM CALENDAR */}
-					<button className='action-button' onClick={AddToCalendar}>
+					<button className='action-button' onClick={() => AddToCalendar(props.event, setAlreadyInCalendar)}>
 						<i className='far fa-calendar-alt action-button__icon'></i>
 						Add to Calender
 					</button>
+					{
+						alreadyInCalendar &&
+						<div className="alreadyInCalendar">
+							Already in Calendar
+						</div>
+					}
+
 
 					{!props.wishlist?.includes(props.event?.id) ? (
 						<button
