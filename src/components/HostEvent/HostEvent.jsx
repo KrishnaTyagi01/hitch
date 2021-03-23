@@ -16,23 +16,13 @@ import PreviewEvent from './PreviewEvent';
 
 
 const HostEvent = (props) => {
-	const [selectedFile, setSelectedFile] = useState();
-	const [preview, setPreview] = useState();
+	// const [selectedFile, setSelectedFile] = useState();
 	const imgRef = useRef(null);
 	const addTagRef = useRef(null);
 
 	const [Title, setTitle] = useState('');
 	const [Tagline, setTagline] = useState('');
 	const [Overview, setOverview] = useState('');
-
-	// const [DateD1, setDateD1] = useState('');
-	// const [DateD2, setDateD2] = useState('');
-	// const [DateM1, setDateM1] = useState('');
-	// const [DateM2, setDateM2] = useState('');
-	// const [DateY1, setDateY1] = useState('');
-	// const [DateY2, setDateY2] = useState('');
-	// const [DateY3, setDateY3] = useState('');
-	// const [DateY4, setDateY4] = useState('');
 
 	const [TimeH1, setTimeH1] = useState('');
 	const [TimeH2, setTimeH2] = useState('');
@@ -44,7 +34,19 @@ const HostEvent = (props) => {
 	const [DurationM1, setDurationM1] = useState('');
 	const [DurationM2, setDurationM2] = useState('');
 
-	const [Image, setImage] = useState(null);
+	const [Image, setImage] = useState({
+		img0: null,
+		img1: null,
+		img2: null,
+		imgSelected: 0,
+	})
+	const [preview, setPreview] = useState({
+		preview0: null,
+		preview1: null,
+		preview2: null,
+	});
+
+
 	const [Tags, setTags] = useState([]);
 	const [tagValue, setTagValue] = useState('');
 	const [duration, setDuration] = useState('');
@@ -89,22 +91,23 @@ const HostEvent = (props) => {
 		})
 	}, [])
 
-	useEffect(() => {
-		if (!selectedFile) {
-			setPreview(undefined);
-			return;
-		}
-		const objectUrl = URL.createObjectURL(selectedFile);
-		setPreview(objectUrl);
+	// useEffect(() => {
+	// 	if (!selectedFile) {
+	// 		setPreview(undefined);
+	// 		return;
+	// 	}
+	// 	const objectUrl = URL.createObjectURL(selectedFile);
+	// 	setPreview(objectUrl);
 
-		return (() => {
-			URL.revokeObjectURL(objectUrl);
-		});
-	}, [selectedFile]);
+	// 	return (() => {
+	// 		URL.revokeObjectURL(objectUrl);
+	// 	});
+	// }, [selectedFile]);
 
 	// const getDate = () => {
 	// 	return DateY1 + DateY2 + DateY3 + DateY4 + '-' + DateM1 + DateM2 + '-' + DateD1 + DateD2;
 	// }
+
 	const getDate = () => {
 		if (selectedDay === null)
 			return null;
@@ -118,7 +121,6 @@ const HostEvent = (props) => {
 		return ans;
 	}
 	const getDuration = () => {
-		if (!singleDay) return null;
 		return DurationH1 + DurationH2 + ':' + DurationM1 + DurationM2;
 	}
 
@@ -148,8 +150,10 @@ const HostEvent = (props) => {
 		e.preventDefault();
 
 		let form_data = new FormData();
-		form_data.append('image', Image);
-		// console.log(Image)
+		if (Image.img0) form_data.append('image', Image.img0);
+		if (Image.img1) form_data.append('image2', Image.img1);
+		if (Image.img2) form_data.append('image3', Image.img2);
+
 		form_data.append('title', Title);
 		form_data.append('duration_days', singleDay ? null : duration);
 		form_data.append('description', Tagline);
@@ -157,18 +161,23 @@ const HostEvent = (props) => {
 		form_data.append('scheduled_date', getDate());
 		form_data.append('tags', getTags());
 		form_data.append('ticket_price', freeEvent ? '0' : price);
-		form_data.append('address', getAddress());
-		form_data.append('duration', getDuration());
+		if (!onlineEvent) form_data.append('address', getAddress());
+		if (singleDay) form_data.append('duration', getDuration());
 		form_data.append('is_online_event', onlineEvent);
 		form_data.append('is_free_event', freeEvent);
 
 		let url = 'http://167.71.237.202/events/';
 
-		const res = await axios.post(url, form_data, {
-			headers: {
-				Authorization: `Token ${props.token}`,
-			}
-		})
+		try {
+			await axios.post(url, form_data, {
+				headers: {
+					Authorization: `Token ${props.token}`,
+				}
+			})
+		}
+		catch (e) {
+			console.log(e);
+		}
 
 		setEventPosted(true);
 	}
@@ -186,16 +195,24 @@ const HostEvent = (props) => {
 		)
 	}
 
-	const onImageUpload = (img) => {
-		setImage(img);
+	const onImageUpload = (img, id) => {
+		var curr_img = { ...Image };
+		curr_img[`img${id}`] = img;
+		setImage(curr_img);
+		return true;
 	}
 
-	const onImageCropped = (preview) => {
-		setPreview(preview);
+	const onImageCropped = (img, id) => {
+		var curr_preview = { ...preview };
+		curr_preview[`preview${id}`] = img;
+		setPreview(curr_preview);
+		return true;
 	}
 
 	const tempEvent = {
-		image: preview,
+		image: preview.preview0,
+		image2: preview.preview1,
+		image3: preview.preview2,
 		title: Title,
 		description: Tagline,
 		scheduled_time: getTime(),
@@ -213,7 +230,6 @@ const HostEvent = (props) => {
 			setPrice('');
 		}
 	}, [freeEvent])
-
 
 
 	return (
@@ -249,8 +265,32 @@ const HostEvent = (props) => {
 						{/* ======================= EVENT PICTURES =============================================  */}
 						{/* ======================= EVENT PICTURES =============================================  */}
 						<section id="pictures"></section>
+
 						<div className="event_pictures">
-							<UploadImage onImageUpload={onImageUpload} onImageCropped={onImageCropped} />
+							{Image.imgSelected === 0 && <UploadImage id={0} onImageUpload={onImageUpload} onImageCropped={onImageCropped} preview={preview.preview0} />}
+							{Image.imgSelected === 1 && <UploadImage id={1} onImageUpload={onImageUpload} onImageCropped={onImageCropped} preview={preview.preview1} />}
+							{Image.imgSelected === 2 && <UploadImage id={2} onImageUpload={onImageUpload} onImageCropped={onImageCropped} preview={preview.preview2} />}
+						</div>
+						<div className="imgButtons">
+							<div className="addImage" style={{
+								backgroundSize: 'contain',
+								backgroundImage: (preview.preview0) ? `url(${preview.preview0})` : '',
+							}}
+								onClick={(e) => { setImage({ ...Image, imgSelected: 0 }); }}>
+								<div className="primary">Primary</div>
+							</div>
+							<div className="addImage" style={{
+								backgroundImage: (preview.preview1) ? `url(${preview.preview1})` : '',
+								backgroundSize: 'contain',
+							}}
+								onClick={(e) => { setImage({ ...Image, imgSelected: 1 }); }}>
+							</div>
+							<div className="addImage" style={{
+								backgroundImage: (preview.preview2) ? `url(${preview.preview2})` : '',
+								backgroundSize: 'contain',
+							}}
+								onClick={(e) => { setImage({ ...Image, imgSelected: 2 }); }}>
+							</div>
 						</div>
 
 						{/* ======================= EVENT HOST AND SPEAKERS =============================================  */}
@@ -442,16 +482,14 @@ const HostEvent = (props) => {
 							<section id="view"></section>
 							<button type="button" className="ViewEvent" onClick={viewTempEvent}>
 								Preview event
-						</button>
+							</button>
 
 							<section id="post"></section>
 							<button type="button" className="PostEvent" onClick={postEvent}>
 								Post event
                         </button>
 						</div>
-
-
-						{eventPosted ? <Redirect to="/events" /> : null}
+						{eventPosted ? <Redirect push to="/events" /> : null}
 					</form>
 				</div>
 			</div>

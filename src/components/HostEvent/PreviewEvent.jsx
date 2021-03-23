@@ -16,6 +16,7 @@ import SmallEventActions from '../EventPage/SmallEventActions';
 import Loading from '../Common/Loading';
 import PreviewEventActions from './PreviewEventActions';
 import PreviewSmallEventActions from './PreviewSmallEventActions';
+import { Carousel } from 'react-responsive-carousel';
 // import Page404 from './Page404';
 
 // import errorHandler from '../API/errorHandler';
@@ -23,6 +24,14 @@ import PreviewSmallEventActions from './PreviewSmallEventActions';
 const PreviewEvent = (props) => {
     if (props.show === false)
         return null;
+
+    const images = () => {
+        var arr = [];
+        if (props.event && props.event.image) arr.push(props.event.image);
+        if (props.event && props.event.image1) arr.push(props.event.image1);
+        if (props.event && props.event.image2) arr.push(props.event.image2);
+        return arr;
+    }
 
     return (
         <div className="previewModal">
@@ -33,8 +42,7 @@ const PreviewEvent = (props) => {
                 </button>
                 <article>
                     <main>
-
-                        <BannerCarousel images={[props.event?.image]} />
+                        <BannerCarousel images={images()} />
                         <PreviewSmallEventActions event={props.event} />
                         <Tags tags={props.event?.tags} />
                         <Overview description={props.event?.description} />
