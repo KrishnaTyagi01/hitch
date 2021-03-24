@@ -8,6 +8,9 @@ import {
 	removeFromWishlist
 } from '../../redux/actions/profileActions';
 import { activateLoginPrompt } from '../../redux/actions/userActions';
+import AddToCalendar from './AddToCalendar/AddToCalendar';
+import { useState } from 'react';
+
 
 const currency_symbols = {
 	USD: '$', // US Dollar
@@ -27,6 +30,8 @@ const currency_symbols = {
 };
 
 const SmallEventActions = (props) => {
+	const [alreadyInCalendar, setAlreadyInCalendar] = useState(false);
+
 	return (
 		<div className='small-event-actions'>
 			<div className='ticket-card'>
@@ -99,10 +104,16 @@ const SmallEventActions = (props) => {
 				</>
 			) : (
 				<>
-					<button className='action-button'>
+					<button className='action-button' onClick={() => AddToCalendar(props.event, setAlreadyInCalendar)}>
 						<i className='far fa-calendar-alt action-button__icon'></i>
 						Add to Calender
 					</button>
+					{
+						alreadyInCalendar &&
+						<div className="alreadyInCalendar">
+							Already in Calendar
+						</div>
+					}
 
 					{!props.wishlist?.includes(props.event?.id) ? (
 						<button

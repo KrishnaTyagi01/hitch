@@ -32,6 +32,13 @@ const Profile = (props) => {
 		}
 	}, [profileID, props]);
 
+	const getHostedEvents = () => {
+		console.log(userProfile.hosted_events);
+		// const eventResponse = await axios.all(
+		// 	userProfile.hosted_events.map((id) => axios.get(`/events/${id}`))
+		// );
+	};
+
 	useEffect(() => {
 		if (userProfile) {
 			const eventsArray = JSON.parse(userProfile.hosted_events);

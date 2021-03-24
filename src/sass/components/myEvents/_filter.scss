@@ -5,7 +5,7 @@
 	width: 315px;
 	padding: 15px;
 	position: sticky;
-	z-index: 1;
+	// z-index: 1;
 	top:20px;
 	height: Min(80vh , 800px);
 	overflow-y: auto;
@@ -48,6 +48,9 @@
 			font-size: 11px;
 			line-height: 16px;
 			color: #FFFFFF;
+			&:hover{
+				cursor: pointer;
+			}
 		}
 	}
 
@@ -89,12 +92,16 @@
 			color: #FFFFFF;
 			}
 		}
+		.responsive-calendar{
+			font-size:8.4px !important;
+			background-color:  #171429;
+		}
 	}
 
 	&__form{
 		._search{
-			// background-color: red;
-			// width: 100px;
+			display: flex;
+			
 			height: 25px;
 			margin-bottom: 20px;
 			input{
@@ -105,9 +112,30 @@
 				width: 80%;
 				height: 100%;
 				cursor: unset;
+				// background-color:#877CC0 ;
+				// background: rgba(135, 124, 192, 0.3);
+				// border:3px solid #191725 !important;
+				padding-left: 6px;
+				// color: #877CC0;
+
 				&:focus{
-					border:none;
+					// border:5px solid #211e35 !important;
+				border:none;
 				}
+			}
+
+			button{
+				font-family: 'Montserrat';
+			font-style: normal;
+			font-weight: normal;
+			font-size: 14px;
+			line-height: 20px;
+			color: rgba(230, 228, 242, 0.5);
+				// background-color: ;
+				background: rgba(230, 228, 242, 0.2);
+				border-radius: 10px;
+				padding:3px 4px;
+			
 			}
 		}
 
@@ -140,8 +168,9 @@
 		}
 		&--checkmark{
 			position: absolute;
-			top:2px;
-			left: -20px;
+			top:3px;
+
+			left: -18px;
 			height: 15px;
 			width: 15px;
 			border-radius: 16%;
@@ -172,8 +201,8 @@
 		
 		/* Style the checkmark/indicator */
 		.filter__form--span &--checkmark:after {
-			left: 3.5px;
-			top: -1.5px;
+			left: 3.9px;
+			top: -0.5px;
 			width: 6px;
 			height: 12px;
 			border: solid var(--color-primary-1);
@@ -182,14 +211,10 @@
 			-ms-transform: rotate(45deg);
 			transform: rotate(45deg);
 		}
-	}
-
-   
-}
-
-.responsive-calendar{
-	font-size:8.4px !important;
-	background-color:  #171429 !important;
+		.filter__form--span:hover{
+			cursor: pointer;
+		}
+	}  
 }
 
 .todayClass-calendar{
@@ -208,11 +233,3 @@
 .selectedClass-calendar::after{
 	visibility: hidden;
 }
-
-// @media(max-width:870px){
-// 	.filter{
-// 		display: flex;
-// 		width: 100%;
-// 		height: 50px;
-// 	}
-// }

@@ -7,31 +7,36 @@ class UploadImage extends PureComponent {
 		src: null,
 		cropDone: false,
 		name: null,
+		file: null,
 		crop: {
 			unit: '%',
 			width: 30,
-			aspect: 1 / 1
-		}
+			aspect: 1 / 1,
+		},
 	};
 
-	onSelectFile = (e) => {
+	// console.log(state.images);
+
+	onSelectFile = e => {
 		if (e.target.files && e.target.files.length > 0) {
 			const reader = new FileReader();
 			reader.addEventListener('load', () => {
 				this.setState({ src: reader.result, cropDone: false });
-			});
+			}
+			);
 			reader.readAsDataURL(e.target.files[0]);
 			// this.props.onImageUpload(e.target.files[0]);
-			console.log(e.target.files[0]);
+			// console.log(e.target.files[0]);
 			this.setState({ name: e.target.files[0].name });
 		}
+
 	};
 
-	onImageLoaded = (image) => {
+	onImageLoaded = image => {
 		this.imageRef = image;
 	};
 
-	onCropComplete = (crop) => {
+	onCropComplete = crop => {
 		this.makeClientCrop(crop);
 	};
 
@@ -47,10 +52,7 @@ class UploadImage extends PureComponent {
 				this.state.name
 			);
 			this.setState({ croppedImageUrl });
-			this.props.onImageCropped(croppedImageUrl);
-			// console.log(croppedImageUrl);
-			// const objectUrl = URL.createObjectURL(file);
-			// console.log(objectUrl);
+			// console.log(croppedImageUrl + '  ' + this.props.id);
 		}
 	}
 
@@ -75,14 +77,20 @@ class UploadImage extends PureComponent {
 		);
 
 		return new Promise((resolve, reject) => {
-			canvas.toBlob((blob) => {
+			canvas.toBlob(blob => {
 				if (!blob) {
 					console.error('Canvas is empty');
 					return;
 				}
-				var file = new File([blob], this.state.name, { type: 'image/jpeg' });
+				var myFile = new File([blob], this.state.name, { type: "image/jpeg" });
+
+				//HERE IS THE FILE CREATED
 				// console.log(file);
-				this.props.onImageUpload(file);
+				this.setState((prevState) => {
+					var newState = { ...prevState };
+					newState.file = myFile;
+					return newState;
+				})
 
 				blob.name = fileName;
 				window.URL.revokeObjectURL(this.fileUrl);
@@ -92,25 +100,51 @@ class UploadImage extends PureComponent {
 		});
 	}
 
-	onConfirmCrop = (e) => {
+
+	onConfirmCrop = e => {
 		e.preventDefault();
-		this.setState((prevState) => {
+		this.setState(prevState => {
 			return { ...prevState, cropDone: true };
 		});
-	};
+	}
+
+
 
 	render() {
-		const { crop, croppedImageUrl, src, cropDone } = this.state;
+		const { crop, croppedImageUrl, src, cropDone, file } = this.state;
+
+		// console.log(this.state);
+
+
+		if (this.props.preview) {
+			return (
+				<div className="imageUpload">
+					<div className="event_pictures_header">
+						<span>Pictures</span>
+						<span id="event_pictures_header_right">Minimum 1 Required</span>
+					</div>
+					<div className="picturebox_container">
+						<div className="picturebox_container_picture_box">
+							<img alt="Crop" className="picture" src={this.props.preview} />
+						</div>
+					</div>
+				</div>
+			);
+		}
 
 		return (
 			<div className={`imageUpload ${src && !cropDone ? 'doCrop' : ''}`}>
-				<div className='event_pictures_header'>
+				<div className="event_pictures_header">
 					<span>Pictures</span>
-					<span id='event_pictures_header_right'>Minimum 1 Required</span>
+					<span id="event_pictures_header_right">Minimum 1 Required</span>
 				</div>
 
+				{!src && (
+					<div className="squareInfo"> Ideal aspect ratio - 1:1</div>
+				)}
+
 				{src && !cropDone && (
-					<div className='doCropArea'>
+					<div className="doCropArea">
 						<ReactCrop
 							src={src}
 							crop={crop}
@@ -121,34 +155,26 @@ class UploadImage extends PureComponent {
 						/>
 					</div>
 				)}
-				{cropDone && croppedImageUrl && (
-					<div className='picturebox_container'>
-						<div className='picturebox_container_picture_box'>
-							<img alt='Crop' className='picture' src={croppedImageUrl} />
-						</div>
-					</div>
-				)}
-				{src && !cropDone && (
-					<button type='button' onClick={this.onConfirmCrop}>
-						Confirm
-					</button>
-				)}
+				{cropDone && croppedImageUrl &&
+					this.props.onImageCropped(croppedImageUrl, this.props.id) &&
+					this.props.onImageUpload(file, this.props.id)
+				}
 
-				<div style={{ marginTop: '20px' }}>
-					<label for='image' className='image'>
-						Choose File
-					</label>
-					<input
-						type='file'
-						id='image'
-						accept='image/*'
+				<div style={{ marginTop: '20px', display: 'flex', justifyContent: 'center' }}>
+
+					{src && !cropDone &&
+						< button type="button" onClick={this.onConfirmCrop}>Confirm</button>
+					}
+
+					<label for={`image${this.props.id}`} className="image">Choose File</label>
+					<input type="file" id={`image${this.props.id}`} accept="image/*"
 						onChange={this.onSelectFile}
 						onClick={(event) => {
-							event.target.value = null;
+							event.target.value = null
 						}}
 					/>
 				</div>
-			</div>
+			</div >
 		);
 	}
 }

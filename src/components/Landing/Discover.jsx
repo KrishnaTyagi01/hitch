@@ -6,6 +6,7 @@ import EventCard from '../Common/EventCard';
 import Loading from '../Common/Loading';
 import filters from './filters.json';
 import { dummyEvents } from '../../temp/events';
+import RecommendedEvents from './RecommendedEvents';
 
 export default function Discover() {
 	const [events, setEvents] = useState([]);
@@ -101,6 +102,7 @@ export default function Discover() {
 					)}
 				</section>
 			</div>
+			<RecommendedEvents />
 		</section>
 	);
 }

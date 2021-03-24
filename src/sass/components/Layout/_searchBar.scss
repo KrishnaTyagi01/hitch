@@ -1,0 +1,26 @@
+.dropDownSearch{
+    background-color: red;
+    background-color: #40395d;
+    border-radius: 10px;
+    position: sticky;
+    z-index: 100;
+    padding: 5px 4px;
+}
+
+.activeItem{
+    background-color: transparent;
+    background: rgba(230, 228, 242, 0.2);
+
+}
+
+.itemClass{
+    font-family: "Montserrat";
+    font-style: normal;
+    font-weight: normal;
+    font-size: 18px;
+    line-height: 16px;
+    color: #FFFFFF;
+    padding:12px 4px;
+    position: relative;
+    z-index: 10;
+}

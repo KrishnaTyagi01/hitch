@@ -63,7 +63,11 @@ const Upper = (props) => {
 				}
 			});
 			res = res.data;
-			setEvents(res);
+			let arr = [];
+			for (let i = 0; i < res.length; ++i) {
+				arr.push(res[i].event);
+			}
+			setEvents(arr);
 		}
 		getAllEvents();
 	}

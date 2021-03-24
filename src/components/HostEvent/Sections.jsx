@@ -16,13 +16,13 @@ const Sections = () => {
     const makeActive = (currRef) => {
         ref1.current.className = "";
         ref2.current.className = "";
-        ref3.current.className = "";
+        // ref3.current.className = "";
         ref4.current.className = "";
         ref5.current.className = "";
         ref6.current.className = "";
         ref7.current.className = "";
         ref8.current.className = "";
-        ref9.current.className = "";
+        // ref9.current.className = "";
         ref10.current.className = "";
         currRef.current.className = "active";
     }
@@ -39,9 +39,9 @@ const Sections = () => {
                     <li ref={ref2} onClick={() => makeActive(ref2)} className="">Pictures</li>
                 </a>
 
-                <a href="#host">
+                {/* <a href="#host">
                     <li ref={ref3} onClick={() => makeActive(ref3)} className="">Host and Speakers</li>
-                </a>
+                </a> */}
 
                 <a href="#schedule">
                     <li ref={ref4} onClick={() => makeActive(ref4)} className="">Schedule and Timeline</li>
@@ -55,16 +55,17 @@ const Sections = () => {
                     <li ref={ref6} onClick={() => makeActive(ref6)} className="">Tags</li>
                 </a>
 
-                <a href="#additional">
-                    <li ref={ref7} onClick={() => makeActive(ref7)} className="">Additional Info</li>
-                </a>
 
                 <a href="#location">
                     <li ref={ref8} onClick={() => makeActive(ref8)} className="">Location</li>
                 </a>
 
-                <a href="#overview">
+                {/* <a href="#overview">
                     <li ref={ref9} onClick={() => makeActive(ref9)} className="">Overview</li>
+                </a> */}
+
+                <a href="#additional">
+                    <li ref={ref7} onClick={() => makeActive(ref7)} className="">Additional Info</li>
                 </a>
 
                 <a href="#post">

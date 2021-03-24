@@ -9,25 +9,31 @@ const AboutUs = () => {
 	return (
 		<div className='AboutUs'>
 			<div className='AboutUs__welcome'>
+
 				<div className='AboutUs__welcome--heading'>Welcome to H!TCH</div>
 				<div className='AboutUs__welcome--body'>
 					Lorem ipsum dolor sit amet consectetur adipisicing elit. Atque deleniti a, velit
 					qui consequatur itaque. Necessitatibus sint totam culpa laboriosam, voluptates
 					temporibus ab dolore? Nostrum voluptatum corporis obcaecati fugit alias!
-				</div>
+					</div>
+
+
 				<div className='AboutUs__welcome--person1'>
 					<img src={person1} />
 				</div>
 				<div className='AboutUs__welcome--person2'>
 					<img src={person2} />
 				</div>
+
 			</div>
 			<div className='AboutUs__whatWeDo'>
 				<div className='AboutUs__whatWeDo--heading'>What Do We Do?</div>
-				<div className='AboutUs__whatWeDo--cards'>
-					<Card1 card='1' />
-					<Card1 card='2' />
-					<Card1 card='3' />
+				<div className="cardsContainer">
+					<div className='AboutUs__whatWeDo--cards'>
+						<Card1 card='1' />
+						<Card1 card='2' />
+						<Card1 card='3' />
+					</div>
 				</div>
 			</div>
 			<div className='AboutUs__whyChoose'>

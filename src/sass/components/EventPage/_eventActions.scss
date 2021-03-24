@@ -6,6 +6,24 @@
 	@import 'actionButtons';
 }
 
+.alreadyInCalendar{
+	background-color: var(--color-secondary-3);
+	text-align: center;
+	margin-top: 10px;
+	margin-bottom: 10px;
+	border-radius: 20px;
+	height: 30px;
+	vertical-align: center;
+	padding-top: 5.5px;
+	max-width: 400px;
+}
+
+.small-event-actions{
+	.alreadyInCalendar{
+		margin:13.72px auto 0 auto;
+	}
+}
+
 @media screen and (max-width: 1024px) {
 	.event-actions {
 		display: none;

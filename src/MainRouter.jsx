@@ -27,6 +27,7 @@ import PrivateRoute from './components/Common/PrivateRoute';
 import LoginPrompt from './components/Common/LoginPrompt';
 
 import SearchPage from './components/SearchPage/SearchPage';
+import SurveyPage from './pages/SurveyPage';
 
 const ScrollToTop = () => {
 	const { pathname } = useLocation();
@@ -56,6 +57,7 @@ const MainRouter = () => {
 					<PrivateRoute path='/dashboard' component={Temp} />
 					<PrivateRoute path='/host-event' component={HostEvent} />
 					<PrivateRoute path='/my-events' component={eventsPage} />
+					<Route path='/survey-page' component={SurveyPage} />
 					<PrivateRoute
 						exact
 						path='/event/:eventID/register'

@@ -33,20 +33,26 @@ const SearchPage = (props) => {
 
     useEffect(() => {
         const getAllEvents = async () => {
-            let form_data = new FormData();
-            form_data.append('topics', topics);
+            try {
+                let form_data = new FormData();
+                form_data.append('topics', topics);
+                // console.log(topics);
 
-            let url = 'http://167.71.237.202/events/search/';
+                let url = 'http://167.71.237.202/events/search/';
 
-            const res = await axios({
-                method: 'POST',
-                url: url,
-                headers: {
-                    Authorization: `Token ${props.token}`,
-                },
-                data: form_data,
-            })
-            setEvents(refactorEvents(res.data));
+                const res = await axios({
+                    method: 'POST',
+                    url: url,
+                    headers: {
+                        Authorization: `Token ${props.token}`,
+                    },
+                    data: form_data,
+                })
+                setEvents(refactorEvents(res.data));
+            }
+            catch (error) {
+                console.error();
+            }
         }
         getAllEvents();
     }, [topics]);

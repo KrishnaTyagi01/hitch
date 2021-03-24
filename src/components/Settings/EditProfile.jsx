@@ -57,7 +57,6 @@ const EditProfile = (props) => {
 	useEffect(() => {
 		const { about, email, location, professional_interests, personal_interests } =
 			props.profile ?? {};
-
 		setFields({
 			about,
 			email,

@@ -13,12 +13,21 @@
 			position: absolute;
 			top:70px;
 			left:60px;
-			font-family: Montserrat;
+			// font-family: Montserrat;
+			// font-style: normal;
+			// font-weight: 500;
+			// font-size: 32px;
+			// line-height: 39px;
+			// color: #FFFFFF;
+
+			font-family: "Kumbh Sans", sans-serif;
 			font-style: normal;
-			font-weight: 500;
-			font-size: 32px;
-			line-height: 39px;
+			font-weight: bold;
+			font-size: 44px;
+			line-height: 153.3%;
 			color: #FFFFFF;
+			// margin-bottom: 200px;
+
 		}
 		&--body{
 			overflow: hidden;
@@ -35,6 +44,7 @@
 			line-height: 27px;
 			text-align: justify;
 			color: #FFFFFF;
+			margin-top:10px;
 		}
 		&--person1{
 			position: absolute;
@@ -55,37 +65,30 @@
 
 
 	&__whatWeDo{
-		width: 100%;
-		display: grid;
-		position: relative;
-		grid-template-rows: 60px 1fr;
-		padding-top: 100px;
-		padding-bottom: 100px;
+		width: 100%;	
+		padding-top:30px;
+		height: 730px;
 
 		&--heading{
-			justify-self: center;
-			width: 284px;
-			height: 32px;
-			padding-top:30px;
+			text-align: center;
 
-			font-family: Montserrat;
+			font-family: "Kumbh Sans", sans-serif;
 			font-style: normal;
-			font-weight: 500;
-			font-size: 32px;
-			line-height: 39px;
-
+			font-weight: bold;
+			font-size: 34px;
+			line-height: 153.3%;
 			color: #FFFFFF;
 		}
 
 		&--cards{
-			margin-top: 80px;
-			margin-bottom: 80px;
-			width: 100%;
+			margin-top: 40px;
+			// margin-bottom: 80px;
+			width: Min(90%,1250px);
 			display: grid;
 			grid-template-columns:400px 400px 400px;
 			grid-gap: 20px;
-			// justify-content: space-evenly;
 			overflow-x: auto;
+			margin-right: 20px;
 			&::-webkit-scrollbar {
 				width: 0px;
 				height: 5px;
@@ -100,6 +103,12 @@
 				background: rgb(82, 70, 144) ; 
 			}
 
+		}
+
+		.cardsContainer{
+			display: flex;
+			justify-content: center;
+			width: 100%;
 		}
 		
 	}
@@ -123,12 +132,19 @@
 		}
 
 		&__header{
-			font-family: Montserrat;
+			// font-family: Montserrat;
 			padding-bottom: 30px;
+			// font-style: normal;
+			// font-weight: 500;
+			// font-size: 32px;
+			// line-height: 39px;
+			// color: #FFFFFF;
+
+			font-family: "Kumbh Sans", sans-serif;
 			font-style: normal;
-			font-weight: 500;
-			font-size: 32px;
-			line-height: 39px;
+			font-weight: bold;
+			font-size: 34px;
+			line-height: 153.3%;
 			color: #FFFFFF;
 		}
 
@@ -154,12 +170,18 @@
 		&__heading{
 			width: 100%;
 			text-align: center;
-			font-family: Montserrat;
-			font-style: normal;
-			font-weight: 500;
-			font-size: 32px;
-			line-height: 39px;
+			// font-family: Montserrat;
+			// font-style: normal;
+			// font-weight: 500;
+			// font-size: 32px;
+			// line-height: 39px;
 
+			// color: #FFFFFF;
+			font-family: "Kumbh Sans", sans-serif;
+			font-style: normal;
+			font-weight: bold;
+			font-size: 34px;
+			line-height: 153.3%;
 			color: #FFFFFF;
 		}
 
@@ -278,6 +300,7 @@
 		}
 	}
 }
+
 
 
 @media(max-width:975px){
