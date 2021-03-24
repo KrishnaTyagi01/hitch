@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { connect } from 'react-redux';
+import axios from 'axios';
 
 import BannerCarousel from '../components/EventPage/BannerCarousel';
 import Tags from '../components/EventPage/Tags';
@@ -13,7 +13,9 @@ import SimilarEvents from '../components/EventPage/SimilarEvents';
 // import MapSection from '../components/EventPage/Maps';
 import EventActions from '../components/EventPage/EventActions';
 import SmallEventActions from '../components/EventPage/SmallEventActions';
+
 import Loading from '../components/Common/Loading';
+import Page404 from './Page404';
 
 const EventPage = (props) => {
 	const { eventID } = props.match.params;

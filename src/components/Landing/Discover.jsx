@@ -102,7 +102,6 @@ export default function Discover() {
 					)}
 				</section>
 			</div>
-			<RecommendedEvents />
 		</section>
 	);
 }
