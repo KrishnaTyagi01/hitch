@@ -1,5 +1,5 @@
 .ticket-card {
-	color: white;
+	color: var(--color-text-2);
 	background-color: var(--color-primary-2);
 	box-shadow: 0px 0px 14px rgba(0, 0, 0, 0.5);
 	border-radius: 10px;
@@ -16,19 +16,15 @@
 		height: 100%;
 
 		.category {
-			font-style: normal;
 			font-weight: bold;
 			font-size: 13px;
 			line-height: 13px;
-			color: #e6e4f2;
 			// padding-bottom: 21px !important;
 		}
 
 		.eventname {
 			display: flex;
 			flex-direction: column;
-			color: #ffffff;
-			font-style: normal;
 			font-weight: bold;
 			font-size: 24px;
 			line-height: 135.9%;
@@ -44,15 +40,12 @@
 			margin-bottom: 1rem;
 
 			.text {
-				font-style: normal;
 				font-weight: 300;
 				font-size: 10px;
 				line-height: 10px;
-				color: #e6e4f2;
 			}
 
 			.eventdate {
-				font-style: normal;
 				font-weight: bold;
 				font-size: 16px;
 				line-height: 16px;
@@ -63,15 +56,12 @@
 
 		.start-time {
 			.text {
-				font-style: normal;
 				font-weight: 300;
 				font-size: 10px;
 				line-height: 10px;
-				color: #e6e4f2;
 			}
 
 			.time {
-				font-style: normal;
 				font-weight: bold;
 				font-size: 16px;
 				line-height: 16px;
@@ -95,16 +85,12 @@
 				flex-direction: column;
 
 				.text {
-					font-style: normal;
 					font-weight: 300;
 					font-size: 10px;
 					line-height: 10px;
-
-					color: #e6e4f2;
 				}
 
 				.fee {
-					font-style: normal;
 					font-weight: bold;
 					font-size: 16px;
 					line-height: 16px;
@@ -118,20 +104,16 @@
 				flex-direction: column;
 
 				.text {
-					font-style: normal;
 					font-weight: 300;
 					font-size: 10px;
 					line-height: 10px;
-
-					color: #e6e4f2;
 				}
 
 				.timer {
-					font-style: normal;
 					font-weight: bold;
 					font-size: 16px;
 					line-height: 16px;
-					color: #eb9947;
+					color: var(--color-semantic-3);
 					margin-top: 9px;
 				}
 			}
@@ -141,7 +123,6 @@
 			text-align: center;
 			color: var(--color-primary-2);
 			background: var(--color-secondary-3);
-			font-style: normal;
 			font-weight: bold;
 			font-size: 16px;
 			line-height: 16px;

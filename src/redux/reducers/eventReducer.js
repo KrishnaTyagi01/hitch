@@ -9,7 +9,7 @@ import {
 } from '../types';
 
 const initialState = {
-	events: [],
+	events: null,
 	registrationStatus: null,
 	paymentStatus: null,
 	count: 0

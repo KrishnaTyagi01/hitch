@@ -11,43 +11,46 @@ import {
 	DEACTIVATE_LOGIN_PROMPT
 } from '../types';
 
-export const checkUserExistence = (username) => async (dispatch) => {
+export const checkUserExistence = (username, next) => async (dispatch) => {
 	try {
 		const response = await axios.post('/api/check-user-existence/', username);
 		dispatch({
 			type: CHECK_USER_EXISTENCE,
 			payload: response.data
 		});
+		if (next && typeof next === 'function') next();
 	} catch (error) {
 		reduxErrorHandler(error);
 	}
 };
 
-export const validateOTP = (otp) => async (dispatch) => {
+export const validateOTP = (otp, next) => async (dispatch) => {
 	try {
 		const response = await axios.post('/api/validate-otp/', otp);
 		dispatch({
 			type: VALIDATE_OTP,
 			payload: response.data
 		});
+		if (next && typeof next === 'function') next();
 	} catch (error) {
 		reduxErrorHandler(error);
 	}
 };
 
-export const resetPassword = (username) => async (dispatch, getState) => {
+export const resetPassword = (username, next) => async (dispatch, getState) => {
 	try {
 		const response = await axios.post('/api/change-password/', username);
 		dispatch({
 			type: RESET_PASSWORD,
 			payload: response.data
 		});
+		if (next && typeof next === 'function') next();
 	} catch (error) {
 		reduxErrorHandler(error);
 	}
 };
 
-export const resetPasswordConfirm = (details) => async (dispatch, getState) => {
+export const resetPasswordConfirm = (details, next) => async (dispatch, getState) => {
 	try {
 		const response = await axios.post(
 			'/api/change-password/confirm/',
@@ -58,28 +61,31 @@ export const resetPasswordConfirm = (details) => async (dispatch, getState) => {
 			type: RESET_PASSWORD_CONFIRM,
 			payload: response.data
 		});
+		if (next && typeof next === 'function') next();
 	} catch (error) {
 		reduxErrorHandler(error);
 	}
 };
 
-export const activateLoginPrompt = () => async (dispatch) => {
+export const activateLoginPrompt = (next) => async (dispatch) => {
 	try {
 		dispatch({
 			type: ACTIVATE_LOGIN_PROMPT,
 			payload: true
 		});
+		if (next && typeof next === 'function') next();
 	} catch (error) {
 		reduxErrorHandler(error);
 	}
 };
 
-export const deactivateLoginPrompt = () => async (dispatch) => {
+export const deactivateLoginPrompt = (next) => async (dispatch) => {
 	try {
 		dispatch({
 			type: DEACTIVATE_LOGIN_PROMPT,
 			payload: false
 		});
+		if (next && typeof next === 'function') next();
 	} catch (error) {
 		reduxErrorHandler(error);
 	}

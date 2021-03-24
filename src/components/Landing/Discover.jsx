@@ -71,7 +71,7 @@ export default function Discover() {
 	useEffect(() => {
 		// getEvents();
 		getAllEvents();
-		setEvents(dummyEvents);
+		// setEvents(dummyEvents);
 	}, []);
 
 	useEffect(() => {
@@ -82,25 +82,9 @@ export default function Discover() {
 	}, [events]);
 
 	return (
-		<div className='landing-discover'>
+		<section className='landing-discover'>
 			<div className='header'>
 				<h2>Discover</h2>
-				<div className='event-filters'>
-					{filters.map((filter) => (
-						<div key={filter.name} className='event-filter'>
-							<select name={filter.name} onChange={updateFilter}>
-								<option value='' defaultValue hidden>
-									{filter.label}
-								</option>
-								{filter.options.map((option) => (
-									<option key={option} value={option}>
-										{option}
-									</option>
-								))}
-							</select>
-						</div>
-					))}
-				</div>
 			</div>
 
 			<div className='body'>
@@ -117,6 +101,6 @@ export default function Discover() {
 					)}
 				</section>
 			</div>
-		</div>
+		</section>
 	);
 }

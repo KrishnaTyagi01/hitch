@@ -13,3 +13,22 @@ const fixedImageURL = image.startsWith('http')
 	: `http://${process.env.REACT_APP_BACKENDAPI}/${image}`;
 
 // ===============================================================================
+
+<div className='event-filters'>
+	{filters.map((filter) => (
+		<div key={filter.name} className='event-filter'>
+			<select name={filter.name} onChange={updateFilter}>
+				<option value='' defaultValue hidden>
+					{filter.label}
+				</option>
+				{filter.options.map((option) => (
+					<option key={option} value={option}>
+						{option}
+					</option>
+				))}
+			</select>
+		</div>
+	))}
+</div>;
+
+// ===============================================================================

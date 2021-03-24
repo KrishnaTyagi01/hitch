@@ -1,14 +1,14 @@
 import { useEffect, useState } from 'react';
 import { connect } from 'react-redux';
 
-import { editProfile } from '../../redux/actions/profileActions';
 import ConfirmationPrompt from '../Common/ConfirmationPrompt';
 import Loading from '../Common/Loading';
+import { editProfile } from '../../redux/actions/profileActions';
 
 const EditProfile = (props) => {
 	const [confirmationPromptActive, setConfirmationPromptActive] = useState(false);
-	const [profileData, setProfileData] = useState(null);
-	const [data, setData] = useState(null);
+	// const [profileData, setProfileData] = useState(null);
+	// const [data, setData] = useState(null);
 	const [fields, setFields] = useState(null);
 
 	const handleInputChange = (e) => {
@@ -34,11 +34,8 @@ const EditProfile = (props) => {
 
 	const handleSubmit = (e) => {
 		e.preventDefault();
+
 		let formData = new FormData();
-		// for (let entry in fields) {
-		// 	formData.append(entry, fields[entry] ?? '');
-		// 	console.log(formData.get(entry));
-		// }
 		formData.append('about', fields['about']);
 		formData.append('email', fields['email']);
 		formData.append('location', fields['location']);
@@ -47,8 +44,9 @@ const EditProfile = (props) => {
 			JSON.stringify(fields['professional_interests'])
 		);
 		formData.append('personal_interests', JSON.stringify(fields['personal_interests']));
+
 		props.editProfile(props.profile.id, formData, () => {
-			props.history.push('/profile');
+			props.history.push('/profile', { message: 'Profile updated' });
 		});
 
 		// setData(formData);
@@ -59,6 +57,7 @@ const EditProfile = (props) => {
 	useEffect(() => {
 		const { about, email, location, professional_interests, personal_interests } =
 			props.profile ?? {};
+
 		setFields({
 			about,
 			email,
@@ -85,9 +84,9 @@ const EditProfile = (props) => {
 								<div className='editProfile__form__entries__entry'>
 									<label>About</label>
 									<textarea
-										required
 										name='about'
 										value={fields.about || ''}
+										rows='4'
 										onChange={handleInputChange}
 										placeholder='Enter a short description of yourself'
 									/>
@@ -108,7 +107,6 @@ const EditProfile = (props) => {
 								<div className='editProfile__form__entries__entry'>
 									<label>Location</label>
 									<input
-										required
 										name='location'
 										value={fields.location || ''}
 										onChange={handleInputChange}
@@ -122,28 +120,30 @@ const EditProfile = (props) => {
 								<legend>Preferences</legend>
 
 								<h6>Professional Interests</h6>
-								{fields.professional_interests?.map((item, i) => (
-									<div key={`prof${i}`} className='editProfile__form__entries__entry'>
-										<input
-											required
-											name='professional_interests'
-											value={fields.professional_interests[i] || ''}
-											onChange={(e) => {
-												handleInputArrayChange(e, i);
-											}}
-											placeholder='Enter your interest'
-											type='text'
-										/>
-										<button
-											className='small-button'
-											onClick={() => {
-												removeInputArrayItem('professional_interests', i);
-											}}
-										>
-											Remove
-										</button>
-									</div>
-								))}
+								<div className='editProfile__form__entries__entry'>
+									{fields.professional_interests?.map((item, i) => (
+										<div key={`prof${i}`}>
+											<input
+												required
+												name='professional_interests'
+												value={fields.professional_interests[i] || ''}
+												onChange={(e) => {
+													handleInputArrayChange(e, i);
+												}}
+												placeholder='Enter your interest'
+												type='text'
+											/>
+											<button
+												className='small-button'
+												onClick={() => {
+													removeInputArrayItem('professional_interests', i);
+												}}
+											>
+												Remove
+											</button>
+										</div>
+									))}
+								</div>
 								<button
 									className='small-button block-button'
 									onClick={() => {
@@ -154,28 +154,30 @@ const EditProfile = (props) => {
 								</button>
 
 								<h6>Personal Interests</h6>
-								{fields.personal_interests?.map((item, i) => (
-									<div key={`pers${i}`} className='editProfile__form__entries__entry'>
-										<input
-											required
-											name='personal_interests'
-											value={fields.personal_interests[i] || ''}
-											onChange={(e) => {
-												handleInputArrayChange(e, i);
-											}}
-											placeholder='Enter your interest'
-											type='text'
-										/>
-										<button
-											className='small-button'
-											onClick={() => {
-												removeInputArrayItem('personal_interests', i);
-											}}
-										>
-											Remove
-										</button>
-									</div>
-								))}
+								<div className='editProfile__form__entries__entry'>
+									{fields.personal_interests?.map((item, i) => (
+										<div key={`pers${i}`}>
+											<input
+												required
+												name='personal_interests'
+												value={fields.personal_interests[i] || ''}
+												onChange={(e) => {
+													handleInputArrayChange(e, i);
+												}}
+												placeholder='Enter your interest'
+												type='text'
+											/>
+											<button
+												className='small-button'
+												onClick={() => {
+													removeInputArrayItem('personal_interests', i);
+												}}
+											>
+												Remove
+											</button>
+										</div>
+									))}
+								</div>
 								<button
 									className='small-button block-button'
 									onClick={() => {
@@ -194,7 +196,9 @@ const EditProfile = (props) => {
 							<button
 								type='button'
 								className='custom-button cancel'
-								onClick={props.history.goBack}
+								onClick={() => {
+									props.history.push('/profile');
+								}}
 							>
 								Cancel
 							</button>

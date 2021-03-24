@@ -1,6 +1,6 @@
 .navbar {
 	position: relative;
-	z-index: 1;
+	z-index: 2;
 	// display: grid;
 	// grid-template-areas: 'left location search middle right';
 	color: #ffffff;
@@ -53,25 +53,18 @@
 			display: block;
 			color: white;
 			background-color: transparent;
-			background-position: 100px center;
+			background-position: calc(100% - 10px);
 			background-size: 16px;
 			background-repeat: no-repeat;
 			padding: 8px 16px;
 			border: 1.5px solid #ffffff;
 			border-radius: 5px;
 			width: 100%;
-			outline: none;
-			appearance: none;
-			-webkit-appearance: none;
-			-ms-appearance: none;
-			-moz-appearance: none;
-			transition: 0.1s;
 			// pointer-events: none
 
 			&:focus,
 			&:active {
-				box-shadow: 0 0 8px var(--color-grey-3);
-				// outline: 4px solid white;
+				box-shadow: none;
 			}
 
 			option {
@@ -105,8 +98,7 @@
 
 			&:focus,
 			&:active {
-				box-shadow: 0 0 8px var(--color-grey-3);
-				// outline: 4px solid white;
+				box-shadow: none;
 			}
 
 			&::placeholder {

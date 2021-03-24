@@ -1,12 +1,12 @@
-
 import {
 	GET_SELF_PROFILE,
 	EDIT_PROFILE,
 	DELETE_PROFILE,
+	GET_SELF_EVENTS,
 	GET_HOSTED_EVENTS,
 	GET_ATTENDED_EVENTS,
 	GET_UPCOMING_EVENTS,
-	GET_WISHLIST,
+	GET_WISHLIST_EVENTS,
 	ADD_TO_WISHLIST,
 	REMOVE_FROM_WISHLIST,
 	DELETE_WISHLIST,
@@ -15,11 +15,12 @@ import {
 
 const initialState = {
 	profile: null,
-	hostedEvents: [],
-	attendedEvents: [],
-	upcomingEvents: [],
-	wishlist: [],
-	event_wishlist: [],
+	hostedEvents: null,
+	attendedEvents: null,
+	upcomingEvents: null,
+	wishlistEvents: null,
+	wishlist: null,
+	upcoming: null,
 	detail: null,
 	actionSuccess: null
 };
@@ -30,7 +31,7 @@ export default function profileReducer(state = initialState, action) {
 			return {
 				...state,
 				profile: action.payload,
-				wishlist: action.payload.event_wishlist
+				wishlist: JSON.parse(action.payload.event_wishlist)
 			};
 		case EDIT_PROFILE:
 			return {
@@ -40,6 +41,15 @@ export default function profileReducer(state = initialState, action) {
 		case DELETE_PROFILE:
 			return {
 				...state
+			};
+		case GET_SELF_EVENTS:
+			return {
+				...state,
+				hostedEvents: action.payload.hosted_events,
+				attendedEvents: action.payload.attended_events,
+				upcomingEvents: action.payload.upcoming_events,
+				wishlistEvents: action.payload.wishlist_events,
+				upcoming: action.payload.upcoming_events.map((item) => item.event.id)
 			};
 		case GET_HOSTED_EVENTS:
 			return {
@@ -56,29 +66,28 @@ export default function profileReducer(state = initialState, action) {
 				...state,
 				upcomingEvents: action.payload
 			};
-		case GET_WISHLIST:
+		case GET_WISHLIST_EVENTS:
 			return {
 				...state,
-				event_wishlist: action.payload
+				wishlistEvents: action.payload
 			};
 		case ADD_TO_WISHLIST:
 			return {
 				...state,
 				actionSuccess: action.payload.success,
-				wishlist: action.payload.wishlist
+				wishlist: JSON.parse(action.payload.wishlist)
 			};
 		case REMOVE_FROM_WISHLIST:
 			return {
 				...state,
 				actionSuccess: action.payload.success,
-				wishlist: action.payload.wishlist
+				wishlist: JSON.parse(action.payload.wishlist)
 			};
 		case DELETE_WISHLIST:
 			return {
 				...state,
 				actionSuccess: action.payload.success,
-				wishlist: action.payload.wishlist,
-				event_wishlist: []
+				wishlist: JSON.parse(action.payload.wishlist)
 			};
 		case CLEAR_STATE:
 			return {

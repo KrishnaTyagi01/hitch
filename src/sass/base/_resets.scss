@@ -25,13 +25,39 @@ textarea {
 	resize: none;
 }
 
+select {
+	appearance: none;
+	-webkit-appearance: none;
+	-ms-appearance: none;
+	-moz-appearance: none;
+	outline: none;
+}
+
+option {
+	font-family: inherit;
+}
+
 button {
 	cursor: pointer;
 	border: none;
 	outline: none;
 	font-family: inherit;
+	color: inherit;
 }
 
 ul {
 	list-style: none;
+}
+
+// img {
+// 	width: 100%;
+// 	height: auto;
+// 	object-fit: scale-down;
+// }
+
+@media (prefers-reduced-motion: reduce) {
+	* {
+		animation: none !important;
+		transition: none !important;
+	}
 }

@@ -26,7 +26,6 @@ export const register = (userdetails, next) => async (dispatch) => {
 		console.log(response);
 		const { name, username, token, status } = response;
 		saveUser({ name, username, token });
-		next();
 		dispatch({
 			type: REGISTER,
 			payload: { name, username, token, status }
@@ -35,6 +34,7 @@ export const register = (userdetails, next) => async (dispatch) => {
 			type: REGISTER_SUCCESS,
 			payload: { status }
 		});
+		if (next && typeof next === 'function') next();
 	} catch (error) {
 		reduxErrorHandler(error, dispatch);
 	}
@@ -53,13 +53,13 @@ export const login = (user, next) => async (dispatch) => {
 			type: LOGIN_SUCCESS,
 			payload: { success }
 		});
-		next();
+		if (next && typeof next === 'function') next();
 	} catch (error) {
 		reduxErrorHandler(error, dispatch);
 	}
 };
 
-export const logout = () => async (dispatch, getState) => {
+export const logout = (next) => async (dispatch, getState) => {
 	try {
 		const response = await axios.post('/api/logout/', null, tokenConfig(getState));
 		removeUser();
@@ -75,6 +75,7 @@ export const logout = () => async (dispatch, getState) => {
 			type: CLEAR_STATE,
 			payload: null
 		});
+		if (next && typeof next === 'function') next();
 	} catch (error) {
 		reduxErrorHandler(error, dispatch);
 	}

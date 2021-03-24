@@ -239,55 +239,56 @@ const EventRegistration = (props) => {
 						<div className='eventRegistration__form__entries'>
 							{entries.map((entry, index) => (
 								<div key={index} className='entry'>
-									<div className='entry-number'>{index + 1}.</div>
-									<input
-										required
-										type='text'
-										name='name'
-										value={entry.name}
-										placeholder='Name'
-										onChange={(e) => {
-											handleChange(e, entry.id);
-										}}
-									/>
-									<input
-										required
-										type='email'
-										name='email'
-										value={entry.email}
-										placeholder='Email'
-										onChange={(e) => {
-											handleChange(e, entry.id);
-										}}
-									/>
-									<input
-										required
-										title='+Country code and mobile'
-										type='tel'
-										pattern='[+]{1}[0-9]{10,20}'
-										name='phone'
-										value={entry.phone}
-										placeholder='Mobile'
-										onChange={(e) => {
-											handleChange(e, entry.id);
-										}}
-									/>
-									<select
-										required
-										name='gender'
-										value={entry.gender}
-										onChange={(e) => {
-											handleChange(e, entry.id);
-										}}
-										className='gender-dropdown'
-										style={{ backgroundImage: `url(${downArrow})` }}
-									>
-										<option value='' disabled>
-											Gender
-										</option>
-										<option value='M'>M</option>
-										<option value='F'>F</option>
-									</select>
+									<div className='entry-fields'>
+										<input
+											required
+											type='text'
+											name='name'
+											value={entry.name}
+											placeholder='Name'
+											onChange={(e) => {
+												handleChange(e, entry.id);
+											}}
+										/>
+										<input
+											required
+											type='email'
+											name='email'
+											value={entry.email}
+											placeholder='Email'
+											onChange={(e) => {
+												handleChange(e, entry.id);
+											}}
+										/>
+										<input
+											required
+											title='+Country code and mobile'
+											type='tel'
+											pattern='[+]{1}[0-9]{10,20}'
+											name='phone'
+											value={entry.phone}
+											placeholder='Mobile'
+											onChange={(e) => {
+												handleChange(e, entry.id);
+											}}
+										/>
+										<select
+											required
+											name='gender'
+											value={entry.gender}
+											onChange={(e) => {
+												handleChange(e, entry.id);
+											}}
+											className='gender-dropdown'
+											style={{ backgroundImage: `url(${downArrow})` }}
+										>
+											<option value='' disabled>
+												Gender
+											</option>
+											<option value='M'>M</option>
+											<option value='F'>F</option>
+										</select>
+									</div>
 									<button
 										type='button'
 										className='custom-button cancel'

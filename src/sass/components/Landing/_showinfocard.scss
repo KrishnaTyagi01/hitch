@@ -1,18 +1,15 @@
 .showInfoCard {
 	position: absolute;
-	// z-index: 2;
+	z-index: 1;
 	left: 0;
 	bottom: -25px;
 	width: Min(645px, 100vw);
-	// height: 220px;
-	color: #ffffff;
+	color: var(--color-text-2);
 	background-color: #2b244d;
 	// mix-blend-mode: normal;
 	box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.5);
 	border-radius: 10px;
 	font-family: 'Montserrat';
-
-	// overflow-x: auto;
 
 	&__upper {
 		display: flex;
@@ -24,14 +21,11 @@
 			padding-right: 49px;
 
 			.head {
-				font-style: normal;
 				font-weight: 500;
 				font-size: 24px;
 			}
 
 			.subhead {
-				font-style: normal;
-				font-weight: normal;
 				font-size: 16px;
 			}
 		}
@@ -62,8 +56,6 @@
 		}
 
 		.know {
-			color: white;
-			font-style: normal;
 			font-weight: 500;
 			font-size: 16px;
 		}

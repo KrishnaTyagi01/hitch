@@ -2,11 +2,10 @@
 	background-color: var(--color-primary-1);
 	width: 100%;
 	margin-top: 162.3px;
+	font-family: 'Kumbh Sans', sans-serif;
 
 	&__header {
-		font-family: 'Kumbh Sans', sans-serif;
-		font-style: normal;
-		font-weight: bold;
+		font-weight: 500;
 		font-size: 24px;
 		line-height: 24px;
 		margin-bottom: 58.71px;
@@ -19,9 +18,6 @@
 		// align-items: center;
 		color: var(--color-text-2);
 		background: var(--color-primary-2);
-		font-family: 'Kumbh Sans', sans-serif;
-		font-style: normal;
-		font-weight: normal;
 		font-size: 16px;
 		line-height: 142.25%;
 		text-align: justify;

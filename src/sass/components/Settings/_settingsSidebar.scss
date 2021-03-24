@@ -19,12 +19,23 @@
 	}
 
 	ul.edit-profile-links {
-		list-style: circle;
-		margin-left: 2rem;
+		list-style: disc;
+		position: relative;
+		left: 20px;
+		font-size: 14px;
 
 		li {
 			margin: 10px auto;
 		}
+		// li::before {
+		// 	content: '';
+		// 	border-width: 0.4rem;
+		// 	border-style: solid;
+		// 	border-color: transparent #fff transparent transparent;
+		// 	// position: absolute;
+		// 	// top: 1.3rem;
+		// 	// right: 1rem;
+		// }
 	}
 
 	.nav-link {

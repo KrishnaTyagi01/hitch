@@ -1,20 +1,14 @@
 .eventRegistration {
 	background: linear-gradient(to bottom, #524690 -64.51%, #171429 100%);
-	padding: 80px 0;
+	padding: 80px 4vw;
 	// transform: rotate(-180deg);
 	min-height: calc(100vh - 54px);
 	font-family: Montserrat;
 
-	button {
-		font-family: inherit;
-		border: none;
-		cursor: pointer;
-	}
-
 	&__header {
 		text-align: center;
 		color: var(--color-text-2);
-		margin: 40px auto;
+		margin-bottom: 40px;
 
 		h2 {
 			margin: 10px 0;
@@ -42,16 +36,15 @@
 			flex-direction: column;
 			justify-content: center;
 			align-items: center;
+			width: 100%;
+			counter-reset: entry-number;
 
 			.entry {
-				// display: grid;
-				// grid-template-columns: 0.2fr 1fr 1fr 1fr 0.1fr 1fr;
-				// grid-template-rows: 1fr;
 				display: flex;
 				flex-wrap: wrap;
-				justify-content: space-between;
-				font-style: normal;
-				font-weight: normal;
+				justify-content: center;
+				align-items: center;
+				gap: 2rem;
 				font-size: 16px;
 				line-height: 20px;
 				color: var(--color-text-2);
@@ -59,6 +52,7 @@
 				padding: 10px;
 				border: 2px solid var(--color-secondary-1);
 				border-radius: 10px;
+				width: 100%;
 				margin-bottom: 20px;
 				transition: 0.2s;
 
@@ -66,58 +60,59 @@
 					border: 2px solid var(--color-secondary-3);
 				}
 
+				&::before {
+					counter-increment: entry-number;
+					content: counter(entry-number) '.';
+					font-weight: 500;
+					color: var(--color-secondary-3);
+					margin: auto 0;
+				}
+
 				.entry-number {
 					font-weight: 600;
 					padding: 10px;
 				}
 
+				.entry-fields {
+					display: flex;
+					flex-wrap: wrap;
+					gap: 1rem;
+				}
+
 				input {
-					background-color: transparent;
-					font-style: normal;
-					font-weight: normal;
+					color: var(--color-text-2);
+					background-color: var(--color-primary-1);
 					font-size: 16px;
 					line-height: 20px;
 					margin-right: 5px;
-					color: var(--color-text-2);
 					padding: 10px;
-					border: none;
 					border-radius: 6px;
 					transition: all 0.2s;
-					outline: none;
+					width: 100%;
+					max-width: 240px;
 
-					&:focus {
-						background-color: var(--color-primary-1);
-						// border: 1px solid var(--color-secondary-3);
-					}
+					// &:focus {
+					// }
 				}
 
 				select.gender-dropdown {
-					display: inline;
 					color: var(--color-text-2);
+					background-color: var(--color-primary-1);
+					display: inline-block;
 					font-family: Montserrat;
-					background-color: transparent;
-					background-position: 64px center;
+					background-position: 75px center;
 					background-size: 16px;
 					background-repeat: no-repeat;
 					padding: 10px;
-					border: none;
 					border-radius: 6px;
-					width: 90px;
-					margin-right: 20px;
-					outline: none;
-					appearance: none;
-					-webkit-appearance: none;
-					-ms-appearance: none;
-					-moz-appearance: none;
-					transition: 0.2s;
+					width: 100px;
 					// pointer-events: none
 
-					&:focus,
-					&:active {
-						background-color: var(--color-primary-1);
-						// box-shadow: 0 0 8px var(--color-grey-3);
-						// outline: 4px solid white;
-					}
+					// &:focus,
+					// &:active {
+					// 	box-shadow: 0 0 8px var(--color-grey-3);
+					// 	outline: 4px solid white;
+					// }
 
 					option {
 						color: var(--color-text-2);

@@ -4,9 +4,21 @@
 	align-items: center;
 	gap: 1rem;
 	background-color: var(--color-primary-1);
+	padding: 60px 4vw;
 	min-height: calc(100vh - 54px);
 
 	.ticket-id {
 		color: var(--color-text-2);
 	}
+}
+
+.not-registered {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	gap: 1rem;
+	color: var(--color-text-2);
+	background-color: var(--color-primary-1);
+	min-height: calc(100vh - 54px);
 }

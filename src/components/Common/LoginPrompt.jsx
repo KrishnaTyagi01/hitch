@@ -37,7 +37,7 @@ const LoginPrompt = (props) => {
 			ref={loginPrompt}
 		>
 			<div className='login-prompt__content' ref={loginPromptContent}>
-				<h3 className='prompt-header'>You must be loggedin to proceed</h3>
+				<h4 className='prompt-header'>You must be loggedin to proceed</h4>
 				<button className='prompt-close' onClick={props.deactivateLoginPrompt}>
 					<i className='fas fa-times-circle fa-2x'></i>
 				</button>

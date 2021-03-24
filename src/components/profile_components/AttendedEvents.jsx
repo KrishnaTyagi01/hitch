@@ -4,7 +4,7 @@ const EventsAttended = (props) => {
 	return (
 		<div className='attendedEvents'>
 			<div className='attendedEvents__upper'>
-				<span className='attendedEvents__upper--heading'>Events Attended</span>
+				<span className='attendedEvents__upper--heading'>Attended Events</span>
 				<button className='attendedEvents__upper--btn'>Know More</button>
 			</div>
 			<div className='attendedEvents__cards'>

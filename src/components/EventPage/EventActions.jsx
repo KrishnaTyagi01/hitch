@@ -9,23 +9,6 @@ import {
 } from '../../redux/actions/profileActions';
 import { activateLoginPrompt } from '../../redux/actions/userActions';
 
-const currency_symbols = {
-	USD: '$', // US Dollar
-	EUR: '€', // Euro
-	GBP: '£', // British Pound Sterling
-	ILS: '₪', // Israeli New Sheqel
-	INR: '₹', // Indian Rupee
-	JPY: '¥', // Japanese Yen
-	KRW: '₩', // South Korean Won
-	NGN: '₦', // Nigerian Naira
-	PHP: '₱', // Philippine Peso
-	PLN: 'zł', // Polish Zloty
-	PYG: '₲', // Paraguayan Guarani
-	THB: '฿', // Thai Baht
-	UAH: '₴', // Ukrainian Hryvnia
-	VND: '₫' // Vietnamese Dong
-};
-
 const EventActions = (props) => {
 	return (
 		<div className='event-actions'>
@@ -34,9 +17,9 @@ const EventActions = (props) => {
 					<h5 className='category'>Featured in Concerts</h5>
 
 					<div className='eventname'>
-						<span className='hostname'>{props.event?.title} </span>
-						<span className='tourname'>Viva La Viva Tour</span>
-						<span className='tourdate'> Mumbai-2021</span>
+						<h3 className='hostname'>{props.event?.title}</h3>
+						<span className='tourname'></span>
+						<span className='tourdate'></span>
 					</div>
 					<div className='datewrapper'>
 						<span className='text'>DATE</span>
@@ -60,7 +43,7 @@ const EventActions = (props) => {
 							<span className='fee'>
 								{props.event?.ticket_price === 0
 									? 'FREE'
-									: `${currency_symbols['INR']} ${props.event?.ticket_price}`}
+									: `₹ ${props.event?.ticket_price}`}
 							</span>
 						</div>
 						<div className='starts-in'>
@@ -74,14 +57,29 @@ const EventActions = (props) => {
 							Register for this event
 						</button>
 					) : (
-						<Link
-							to={{
-								pathname: `/event/${props.event?.id}/register`,
-								event: props.event
-							}}
-						>
-							<button className='register-button'>Register for this event</button>
-						</Link>
+						<>
+							{props.upcoming ? (
+								<>
+									{!props.upcoming.includes(props.event.id) ? (
+										<Link
+											to={{
+												pathname: `/event/${props.event?.id}/register`,
+												event: props.event
+											}}
+										>
+											<button className='register-button'>Register for this event</button>
+										</Link>
+									) : (
+										<>
+											<p style={{ margin: '10px auto auto' }}>Already registered</p>
+											<Link to={{ pathname: `/event/${props.event?.id}/ticket` }}>
+												<button className='register-button'>View Ticket</button>
+											</Link>
+										</>
+									)}
+								</>
+							) : null}
+						</>
 					)}
 				</div>
 			</div>
@@ -133,7 +131,8 @@ const EventActions = (props) => {
 
 const mapStateToProps = (state) => ({
 	isAuthenticated: state.authState.isAuthenticated,
-	wishlist: state.profileState.wishlist
+	wishlist: state.profileState.wishlist,
+	upcoming: state.profileState.upcoming
 });
 
 export default connect(mapStateToProps, {

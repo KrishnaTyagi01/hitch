@@ -1,0 +1,30 @@
+// ProfileCard
+
+&--yellowdoticon {
+	margin-left: 5.04px;
+}
+// &--right{
+
+// }
+
+&__upper {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	width: 100%;
+	margin: 20px auto;
+
+	&--leftarrowicon {
+		margin-right: 12.88px;
+		margin-top: -2px;
+	}
+	&--left {
+		background-color: transparent;
+		padding: 8px 16px;
+		border-radius: 6px;
+
+		&:hover {
+			background-color: var(--color-primary-2);
+		}
+	}
+}

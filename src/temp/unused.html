@@ -1,0 +1,28 @@
+// ProfileCard import yellowDotIcon from '../../icons/profile/yellowDotIcon.svg'; import
+followersIcon from '../../icons/profile/followersIcon.svg'; import profilePicIcon from
+'../../icons/profile/profilePicIcon.svg'; import leftArrowIcon from
+'../../icons/profile/leftArrowIcon.svg';
+
+<span className="profilecard__upper--right">
+	<img src="{yellowDotIcon}" alt="icon" className="profilecard__upper--yellowdoticon" />
+	<img src="{yellowDotIcon}" alt="icon" className="profilecard__upper--yellowdoticon" />
+	<img src="{yellowDotIcon}" alt="icon" className="profilecard__upper--yellowdoticon" />
+</span>
+;
+
+<div className="profilecard__lower--item">
+	<img src="{profilePicIcon}" alt="icon" className="profilecard__lower--icon" />
+	<span className="profilecard__lower--text">25 Mutual Connections</span>
+</div>
+<div className="profilecard__lower--item">
+	<img src="{followersIcon}" alt="icon" className="profilecard__lower--icon" />
+	<span className="profilecard__lower--text">137 followers</span>
+</div>
+
+<div className="profilecard__upper">
+	<button className="back-button" onClick="{props.history.goBack}">
+		<i class="fas fa-chevron-left"></i>
+		Back
+	</button>
+</div>
+//

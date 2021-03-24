@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { connect } from 'react-redux';
+import axios from 'axios';
 
 import BannerCarousel from '../components/EventPage/BannerCarousel';
 import Tags from '../components/EventPage/Tags';
@@ -14,9 +14,7 @@ import SimilarEvents from '../components/EventPage/SimilarEvents';
 import EventActions from '../components/EventPage/EventActions';
 import SmallEventActions from '../components/EventPage/SmallEventActions';
 import Loading from '../components/Common/Loading';
-
 import Page404 from './Page404';
-import { getEvent, getProfile } from '../API/commonRequests';
 
 const EventPage = (props) => {
 	const { eventID } = props.match.params;
@@ -25,40 +23,37 @@ const EventPage = (props) => {
 	const [profile, setProfile] = useState(null);
 	const [profileError, setProfileError] = useState(null);
 
-	const loadEvent = async () => {
+	useEffect(() => {
 		if (props.location.state?.event) {
 			setEvent(props.location.state.event);
 		} else {
-			const res = await getEvent(eventID);
-			if (res.status === 200) {
-				setEvent(res.data);
-			} else if (res.status === 404) {
-				setEventError(404);
-			} else {
-				console.log(res);
-			}
-			// const { data, error } = await getEvent(eventID);
-			// if (data) setEvent(data);
-			// else setEventError(error);
-		}
-	};
+			const getEvent = async () => {
+				try {
+					const res = await axios.get(`/events/${eventID}/`);
+					setEvent(res.data);
+				} catch (error) {
+					// errorHandler(error);
+					setEventError(404);
+				}
+			};
 
-	const loadProfile = async () => {
-		if (event?.author) {
-			const y = await getProfile(event.author);
-			console.log(y);
-			// const { data, error } = await getProfile(event.author);
-			// if (data) setProfile(data);
-			// else setProfileError(error);
+			getEvent();
 		}
-	};
+	}, [eventID, props.location]);
 
 	useEffect(() => {
-		loadEvent();
-	}, [eventID, props]);
-
-	useEffect(() => {
-		loadProfile();
+		if (event) {
+			const getProfile = async (profileID) => {
+				try {
+					const res = await axios.get(`/profiles/${profileID}/`);
+					setProfile(res.data);
+				} catch (error) {
+					// errorHandler(error);
+					setProfileError(true);
+				}
+			};
+			getProfile(event.author);
+		}
 	}, [event]);
 
 	if (eventError === 404) {
@@ -98,8 +93,4 @@ const EventPage = (props) => {
 	);
 };
 
-const mapStateToProps = (state) => ({
-	token: state.authState.token
-});
-
-export default connect(mapStateToProps)(EventPage);
+export default EventPage;

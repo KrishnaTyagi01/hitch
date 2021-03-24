@@ -1,7 +1,6 @@
 @use 'bannerCarousel';
 @use 'carousel';
 @use 'eventDetails';
-@use 'hero';
 @use 'hostCard';
 @use 'messageBoard';
 @use 'organizersMessage';
@@ -12,6 +11,7 @@
 @use 'smallEventActions';
 @use 'eventActions';
 @use 'similarEvents';
+@use 'eventTicket';
 
 .eventPage {
 	background-color: var(--color-primary-1);

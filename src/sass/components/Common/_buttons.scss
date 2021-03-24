@@ -4,10 +4,13 @@
 	padding: 12px 24px;
 	border-radius: 10px;
 	margin: 0 10px;
-	transition: all 0.2s;
+	transition: all 0.1s;
 
-	&:hover,
-	&:focus {
+	&:hover {
+		filter: brightness(120%);
+	}
+	&:focus:not(:active) {
+		filter: brightness(120%);
 		box-shadow: 0 0 0 2px var(--color-primary-5);
 	}
 }
@@ -52,10 +55,13 @@
 	padding: 8px 16px;
 	border-radius: 10px;
 	margin: 0 10px;
-	transition: all 0.2s;
+	transition: all 0.1s;
 
-	&:hover,
-	&:focus {
+	&:hover {
+		filter: brightness(120%);
+	}
+	&:focus:not(:active) {
+		filter: brightness(120%);
 		box-shadow: 0 0 0 2px var(--color-primary-5);
 	}
 }

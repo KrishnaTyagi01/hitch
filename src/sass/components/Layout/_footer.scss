@@ -2,42 +2,29 @@
 	display: flex;
 	flex-direction: column;
 	align-items: center;
+	font-size: 16px;
+	color: var(--color-text-2);
+	font-family: 'Kumbh Sans', sans-serif;
 	width: 100%;
 
 	&__upper {
-		width: 100%;
-		background-color: var(--color-primary-2);
 		display: flex;
-		justify-content: space-between;
+		justify-content: space-around;
 		align-items: center;
-		height: 90px;
+		gap: 1rem;
+		background-color: var(--color-primary-2);
+		padding: 1.5rem;
+		width: 100%;
 
 		&--text {
-			margin-left: 4.8rem;
-			font-family: 'Kumbh Sans', sans-serif;
-			font-style: normal;
-			font-weight: normal;
+			text-align: center;
 			font-size: 20px;
 			line-height: 20px;
-
-			color: #ffffff;
 		}
 
-		&--buttons {
-			margin-right: 4.8rem;
-
-			&:hover {
-				cursor: pointer;
-			}
-		}
-		&--googlebtn {
-			margin: 0 1rem;
-
-			&:hover {
-				cursor: pointer;
-			}
-		}
-		&--applebtn {
+		&--applink {
+			display: inline-block;
+			// width: 120px;
 			margin: 0 1rem;
 		}
 	}
@@ -45,85 +32,67 @@
 	&__mid {
 		width: 100%;
 		display: flex;
-		justify-content: space-around;
-		padding-top: 1rem;
+		flex-wrap: wrap;
+		gap: 2rem 1rem;
+		padding: 2rem 4vw;
 		background-color: var(--color-primary-1);
 
 		&--list {
-			list-style: none;
+			flex: 1 1 auto;
 		}
 
 		&--listitem {
-			margin-bottom: 0.5rem;
+			margin-bottom: 1rem;
 		}
 		&--listhead {
-			margin-bottom: 1rem;
-
-			font-family: 'Kumbh Sans', sans-serif;
-			font-style: normal;
+			margin-bottom: 2.5rem;
 			font-weight: bold;
 			font-size: 14px;
 			line-height: 14px;
 			/* identical to box height */
-
-			color: #ffffff;
 		}
 		&--listlink {
-			font-family: 'Kumbh Sans', sans-serif;
-
-			font-style: normal;
-			font-weight: normal;
 			font-size: 14px;
 			line-height: 14px;
 			/* identical to box height */
-
-			color: #ffffff;
 		}
 	}
 
 	&__lower {
-		width: 100%;
 		display: flex;
-		justify-content: space-between;
-		height: 70px;
+		justify-content: space-around;
 		align-items: center;
+		gap: 1rem;
 		background-color: var(--color-primary-2);
+		padding: 1.5rem;
+		width: 100%;
 
 		&--contact {
-			margin-right: 0.5rem;
-			margin-left: 4.8rem;
-			font-family: 'Kumbh Sans', sans-serif;
-			font-style: normal;
-			font-weight: normal;
 			font-size: 16px;
-			line-height: 16px;
-
-			color: #ffffff;
+			line-height: 20px;
 		}
+
 		&--iconlink {
 			margin-right: 1rem;
 			color: var(--color-primary-5);
-
-			&:hover {
-				cursor: pointer;
-			}
 		}
-		// &--icon{
-		//     font-size: 1.3rem;
-		// }
+		&--icon {
+			width: 24px;
+		}
 
-		&--text {
-			margin-right: 4.8rem;
-			font-family: 'Kumbh Sans', sans-serif;
-			font-style: normal;
-			font-weight: normal;
-			font-size: 16px;
-			line-height: 16px;
-			/* identical to box height */
-
+		&--terms {
 			text-decoration-line: underline;
+		}
+	}
+}
 
-			color: #ffffff;
+@media screen and (max-width: 1024px) {
+	.footer {
+		&__upper {
+			flex-direction: column;
+		}
+		&__lower {
+			flex-direction: column;
 		}
 	}
 }

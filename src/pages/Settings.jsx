@@ -1,4 +1,4 @@
-import { Switch, Route, NavLink, Link } from 'react-router-dom';
+import { Switch, Route, NavLink } from 'react-router-dom';
 import { HashLink } from 'react-router-hash-link';
 
 import EditProfile from '../components/Settings/EditProfile';

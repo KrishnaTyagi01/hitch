@@ -1,68 +1,43 @@
-import { useEffect } from 'react';
 import { connect } from 'react-redux';
 
-import About from '../components/profile_components/About';
-import AttendedEvents from '../components/profile_components/AttendedEvents';
-import HeaderSection from '../components/profile_components/HeaderSection';
 import Hero from '../components/profile_components/Hero';
-import HostedEvents from '../components/profile_components/HostedEvents';
-import Wishlist from '../components/profile_components/Wishlist';
-
+import About from '../components/profile_components/About';
+import HeaderSection from '../components/profile_components/HeaderSection';
 import ProfileCard from '../components/profile_components/ProfileCard';
-// import { ConnectionButton, FollowButton } from '../components/profile_components/Buttons';
+import AttendedEvents from '../components/profile_components/AttendedEvents';
+import HostedEvents from '../components/profile_components/HostedEvents';
+import UpcomingEvents from '../components/profile_components/UpcomingEvents';
+import WishlistEvents from '../components/profile_components/WishlistEvents';
 
-import {
-	getHostedEvents,
-	getAttendedEvents,
-	getUpcomingEvents,
-	getWishlist
-} from '../redux/actions/profileActions';
-import { clearState } from '../redux/actions/commonActions';
-
-const Profile = (props) => {
-	useEffect(() => {
-		props.getHostedEvents();
-		props.getAttendedEvents();
-		props.getUpcomingEvents();
-		props.getWishlist();
-	}, [props.isAuthenticated]);
-
+const SelfProfile = (props) => {
 	return (
-		<section className='profilepage'>
-			<div className='profile_top'>
+		<main className='profilePage'>
+			<div className='profilePage__top'>
 				<Hero />
 				<HeaderSection />
 			</div>
-			<div className='profile'>
-				<div className='profile__left'>
-					<div className='profile__left--profilecard'>
-						<ProfileCard profile={props.profile} />
-					</div>
+			<div className='profilePage__bottom'>
+				<div className='profilePage__bottom__left'>
+					<ProfileCard profile={props.profile} />
 				</div>
-
-				<div className='profile__right'>
+				<div className='profilePage__bottom__right'>
 					<About name={props.profile?.name} about={props.profile?.about} />
 					<HostedEvents hostedEvents={props.hostedEvents} />
 					<AttendedEvents attendedEvents={props.attendedEvents} />
-					<Wishlist event_wishlist={props.event_wishlist} />
+					<UpcomingEvents upcomingEvents={props.upcomingEvents} />
+					<WishlistEvents wishlistEvents={props.wishlistEvents} />
 				</div>
 			</div>
-		</section>
+		</main>
 	);
 };
 
 const mapStateToProps = (state) => ({
-	isAuthenticated: state.authState.isAuthenticated,
 	profile: state.profileState.profile,
 	hostedEvents: state.profileState.hostedEvents,
 	attendedEvents: state.profileState.attendedEvents,
-	event_wishlist: state.profileState.event_wishlist
+	upcomingEvents: state.profileState.upcomingEvents,
+	wishlistEvents: state.profileState.wishlistEvents
 });
 
-export default connect(mapStateToProps, {
-	getHostedEvents,
-	getAttendedEvents,
-	getUpcomingEvents,
-	getWishlist,
-	clearState
-})(Profile);
+export default connect(mapStateToProps, {})(SelfProfile);

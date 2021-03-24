@@ -16,31 +16,44 @@ const Profile = (props) => {
 	const [userProfile, setUserProfile] = useState(null);
 	const [hostedEvents, setHostedEvents] = useState(null);
 
-	const getUserProfile = async (profileID) => {
-		try {
-			const res = await axios.get(`/profiles/${profileID}/`);
-			setUserProfile(res.data);
-		} catch (error) {
-			errorHandler(error);
-		}
-	};
-
-	const getHostedEvents = () => {
-		console.log(userProfile.hosted_events);
-		// const eventResponse = await axios.all(
-		// 	userProfile.hosted_events.map((id) => axios.get(`/events/${id}`))
-		// );
-	};
-
 	useEffect(() => {
-		if (props.location.state?.userProfile)
+		if (props.location.state?.userProfile) {
 			setUserProfile(props.location.state.userProfile);
-		else getUserProfile();
+		} else {
+			const getUserProfile = async () => {
+				try {
+					const res = await axios.get(`/profiles/${profileID}/`);
+					setUserProfile(res.data);
+				} catch (error) {
+					errorHandler(error);
+				}
+			};
+			getUserProfile();
+		}
 	}, [profileID, props]);
 
 	useEffect(() => {
 		if (userProfile) {
-			getHostedEvents();
+			const eventsArray = JSON.parse(userProfile.hosted_events);
+			if (eventsArray.length === 0) {
+				setHostedEvents([]);
+			} else {
+				const getHostedEvent = async (eventID) => {
+					try {
+						const res = await axios.get(`/events/${eventID}/`);
+						return Promise.resolve(res.data);
+					} catch (error) {
+						return Promise.reject(error);
+					}
+				};
+				const requests = eventsArray.map((id) => getHostedEvent(id));
+				const getHostedEvents = async () => {
+					const response = await Promise.allSettled(requests);
+					const results = response.map((item) => item.value);
+					setHostedEvents(results);
+				};
+				getHostedEvents();
+			}
 		}
 	}, [userProfile]);
 

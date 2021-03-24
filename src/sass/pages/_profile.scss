@@ -1,36 +1,30 @@
-.profilepage {
+.profilePage {
 	background-color: var(--color-primary-1);
-}
+	padding-bottom: 60px;
 
-.profile {
-	background-color: var(--color-primary-1);
-	display: flex;
-	justify-content: space-between;
-	// width: 100vw;
+	&__bottom {
+		display: flex;
+		justify-content: space-between;
+		gap: 2.5rem;
+		background-color: var(--color-primary-1);
+		padding: 0 4vw;
 
-	// &__top{
-	//     overflow-x: hidden;
-	// }
-	&__left {
-		width: 25%;
-		margin-left: 37px;
-
-		&--profilecard {
+		&__left {
 			margin-top: -271px;
 			margin-bottom: 19px;
 		}
-
-		&--connectionbtn {
-			margin-bottom: 24px;
+		&__right {
+			width: 100%;
 		}
-
-		// &--followbtn{
-
-		// }
 	}
+}
 
-	&__right {
-		margin-right: 45px;
-		width: 65%;
+@media screen and (max-width: 1024px) {
+	.profilePage__bottom {
+		flex-direction: column;
+
+		&__left {
+			margin-top: 20px;
+		}
 	}
 }
