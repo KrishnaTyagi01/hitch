@@ -7,6 +7,13 @@ import { validateOtp } from '../API/Auth';
 import { login } from '../redux/actions/authActions';
 import { deactivateLoginPrompt } from '../redux/actions/userActions';
 
+import FacebookLoginBtn from 'react-facebook-login';
+import SignInWithGoogle from '../components/signin/SignInWithGoogle';
+
+var gapi = window.gapi;
+const CLIENT_ID = '1001904143961-1irvhehco0vna3ft694nfu0hrmmn9iks.apps.googleusercontent.com';
+const API_KEY = 'AIzaSyD0JPXFGJPzh9OMDH2dTYW1caEyxnU4DsQ';
+
 const Register = (props) => {
 	const [values, setValues] = useState({
 		name: '',
@@ -60,57 +67,98 @@ const Register = (props) => {
 		return <Redirect to='/profile' />;
 	}
 
-	return (
-		<div className='registerContainer'>
-			<div className='signin'>
-				<h2 className='signin__heading'>Register User</h2>
-				<div className='signin__mid'>
-					<span className='signin__mid--before'>Name</span>
-					<input
-						onChange={handleChange('name')}
-						type='text'
-						className='signin__mid--input'
-						placeholder='Enter Your Name Here'
-					/>
-					<span className='signin__mid--before'>Email or Phone Number</span>
-					<input
-						onChange={handleChange('email')}
-						type='text'
-						className='signin__mid--input'
-						placeholder='Enter Your Email or Phone Number Here'
-					/>
-					<span className='signin__mid--before'>Password</span>
-					<input
-						onChange={handleChange('password')}
-						type='password'
-						className='signin__mid--input'
-						placeholder='Enter Your Password'
-					/>
-				</div>
+	// const componentClicked = () => {
+	// 	console.log('Btn Clicked');
+	// }
 
-				<button onClick={handleClick} className='signin__btn'>
-					Enter
+	// const responseFacebook = (res) => {
+	// 	console.log(res);
+	// }
+
+	const logInFB = () => {
+		window.FB.login(function (response) {
+			console.log(response);
+		}, { scope: 'public_profile,email' });
+	}
+
+	const logOutFB = () => {
+		window.FB.logout(function (response) {
+			console.log(response);
+		});
+	}
+
+
+
+	return (
+		<>
+			<div className='registerContainer'>
+				<div className='signin'>
+					<h2 className='signin__heading'>Register User</h2>
+					<div className='signin__mid'>
+						<span className='signin__mid--before'>Name</span>
+						<input
+							onChange={handleChange('name')}
+							type='text'
+							className='signin__mid--input'
+							placeholder='Enter Your Name Here'
+						/>
+						<span className='signin__mid--before'>Email or Phone Number</span>
+						<input
+							onChange={handleChange('email')}
+							type='text'
+							className='signin__mid--input'
+							placeholder='Enter Your Email or Phone Number Here'
+						/>
+						<span className='signin__mid--before'>Password</span>
+						<input
+							onChange={handleChange('password')}
+							type='password'
+							className='signin__mid--input'
+							placeholder='Enter Your Password'
+						/>
+					</div>
+
+					<button onClick={handleClick} className='signin__btn'>
+						Enter
 				</button>
 
-				{otpSent ? (
-					<>
-						<div className='otp_sent'>{`OTP Sent to ${email}`}</div>
-						<div className='signin__mid'>
-							<span className='signin__mid--before'>OTP</span>
-							<input
-								onChange={handleChange('otp')}
-								type='otp'
-								className='signin__mid--input'
-								placeholder='Enter Your OTP'
-							/>
-						</div>
-						<button onClick={validate} className='signin__btn'>
-							Validate
+					{otpSent ? (
+						<>
+							<div className='otp_sent'>{`OTP Sent to ${email}`}</div>
+							<div className='signin__mid'>
+								<span className='signin__mid--before'>OTP</span>
+								<input
+									onChange={handleChange('otp')}
+									type='otp'
+									className='signin__mid--input'
+									placeholder='Enter Your OTP'
+								/>
+							</div>
+							<button onClick={validate} className='signin__btn'>
+								Validate
 						</button>
-					</>
-				) : null}
+						</>
+					) : null}
+				</div>
 			</div>
-		</div>
+			{/* <FacebookLoginBtn
+				appId="311871003618208"
+				autoLoad={false}
+				fields="name,email,picture"
+				onClick={componentClicked}
+				callback={responseFacebook}
+			/> */}
+
+			<button className="log_in" onClick={logInFB}>
+				Login with Facebook
+			</button>
+			<button className="log_out" onClick={logOutFB}>
+				LogOut of Facebook
+			</button>
+
+			<SignInWithGoogle />
+		</>
+
 	);
 };
 

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useRef } from 'react';
 import Upper from './Upper';
 import axios from 'axios';
 import { connect } from 'react-redux';
@@ -6,6 +6,9 @@ import EventCard from '../Common/EventCard';
 
 const MainComponent = (props) => {
 	const [events, setEvents] = useState([]);
+
+	const io = useRef(null);
+	const cardContainer = useRef(null);
 
 	const refactorEvents = (currEvents) => {
 		let tempEvents = [...currEvents];
@@ -17,6 +20,21 @@ const MainComponent = (props) => {
 		}
 		return tempEvents;
 	}
+
+	const lazyLoadBackgroundImage = (target) => {
+		if (cardContainer.current) {
+			io.current = new IntersectionObserver((entries, observer) => {
+				entries.forEach((entry) => {
+					if (entry.isIntersecting) {
+						entry.target.classList.add('background-loaded');
+						console.log('background loaded with IntersectionObserver');
+						observer.disconnect();
+					}
+				});
+			});
+			io.current.observe(target);
+		}
+	};
 
 	useEffect(() => {
 		const getAllEvents = async () => {
@@ -31,6 +49,13 @@ const MainComponent = (props) => {
 		getAllEvents();
 
 	}, []);
+
+	useEffect(() => {
+		if (events) {
+			const cards = cardContainer?.current.childNodes;
+			cards?.forEach(lazyLoadBackgroundImage);
+		}
+	}, [events]);
 
 	const AAA = events.map((event) => (
 		<EventCard event={event} lazyLoadBI={true} key={event.id} />
@@ -50,7 +75,7 @@ const MainComponent = (props) => {
                     <Filter onFilterChange={onFilterChange} />
                 </div> */}
 				<section className="eventsPage__content--events">
-					<div className="eventsGrid">
+					<div className="eventsGrid" ref={cardContainer}>
 						{AAA}
 					</div>
 				</section>

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useRef } from 'react';
 import Upper from '../myEvents/Upper';
 import Filter from '../myEvents/Filter';
 import Footer from '../Layout/Footer';
@@ -26,6 +26,31 @@ const SearchPage = (props) => {
         }
         return tempEvents;
     }
+
+    const io = useRef(null);
+    const cardContainer = useRef(null);
+
+    const lazyLoadBackgroundImage = (target) => {
+        if (cardContainer.current) {
+            io.current = new IntersectionObserver((entries, observer) => {
+                entries.forEach((entry) => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('background-loaded');
+                        console.log('background loaded with IntersectionObserver');
+                        observer.disconnect();
+                    }
+                });
+            });
+            io.current.observe(target);
+        }
+    };
+
+    useEffect(() => {
+        if (events) {
+            const cards = cardContainer?.current.childNodes;
+            cards?.forEach(lazyLoadBackgroundImage);
+        }
+    }, [events]);
 
     useEffect(() => {
         setTopics(props.location.state.topics);
@@ -56,18 +81,6 @@ const SearchPage = (props) => {
         }
         getAllEvents();
     }, [topics]);
-
-    // const MyEvents = events.map(event => {
-    //     return (
-    //         <Link to={{
-    //             pathname: "/event-details",
-    //             state: { event: event }
-    //         }}
-    //         >
-    //             <MyEventCard title={event.title} desc={event.description} img={event.image} date={event.scheduled_date} />
-    //         </Link>
-    //     )
-    // })
 
     const AAA = events.map((event) => (
         <EventCard event={event} lazyLoadBI={true} key={event.id} />
@@ -104,7 +117,7 @@ const SearchPage = (props) => {
                     <Filter onFilterChange={onFilterChange} topics={props.location.state.topics} />
                 </div>
                 <section className="searchPage__content--events">
-                    <div className="eventsGrid">
+                    <div className="eventsGrid" ref={cardContainer}>
                         {AAA}
                     </div>
                 </section>

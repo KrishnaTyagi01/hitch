@@ -40,16 +40,14 @@ export default function Discover() {
 		return tempEvents;
 	};
 
-	const getEvents = async () => {
-		try {
-			const res = await axios.get('/events/');
-			setEvents(res.data);
-		} catch (error) {
-			console.error(error);
-			// setHttpStatusCode(error.response.status);
-			// errorHandler(error);
-		}
-	};
+	// const getEvents = async () => {
+	// 	try {
+	// 		const res = await axios.get('/events/');
+	// 		setEvents(res.data);
+	// 	} catch (error) {
+	// 		console.error(error);
+	// 	}
+	// };
 
 	const getAllEvents = async () => {
 		let res = await axios.get(`http://167.71.237.202/events/`);
@@ -61,18 +59,13 @@ export default function Discover() {
 		<EventCard event={event} lazyLoadBI={true} key={event.id} />
 	));
 
-	const updateFilter = (e) => {
-		console.log(e.target.name, e.target.value);
-	};
 
 	const onFilterChange = (events) => {
 		setEvents(refactorEvents(events));
 	};
 
 	useEffect(() => {
-		// getEvents();
 		getAllEvents();
-		// setEvents(dummyEvents);
 	}, []);
 
 	useEffect(() => {

@@ -12,12 +12,11 @@ import UploadImage from './UploadImage';
 import DatePicker from 'react-modern-calendar-datepicker';
 import { Calendar } from "react-modern-calendar-datepicker";
 import PreviewEvent from './PreviewEvent';
+import { Validate } from './validate';
 
 
 
 const HostEvent = (props) => {
-	// const [selectedFile, setSelectedFile] = useState();
-	const imgRef = useRef(null);
 	const addTagRef = useRef(null);
 
 	const [Title, setTitle] = useState('');
@@ -49,8 +48,14 @@ const HostEvent = (props) => {
 
 	const [Tags, setTags] = useState([]);
 	const [tagValue, setTagValue] = useState('');
+
 	const [duration, setDuration] = useState('');
+	const [singleDay, setSingleDay] = useState(false);
+
 	const [price, setPrice] = useState('');
+	const [freeEvent, setFreeEvent] = useState(false);
+
+	const [onlineEvent, setOnlineEvent] = useState(false);
 	const [address, setAddress] = useState({
 		lineOne: '',
 		lineTwo: '',
@@ -59,19 +64,10 @@ const HostEvent = (props) => {
 		pin: '',
 	});
 
-	const defaultValue = {
-		year: 2021,
-		month: 3,
-		day: 13,
-	};
 	const [selectedDay, setSelectedDay] = useState(null);
 
 	const [viewEvent, setViewEvent] = useState(false);
 	const [eventPosted, setEventPosted] = useState(false);
-	const [freeEvent, setFreeEvent] = useState(false);
-	const [onlineEvent, setOnlineEvent] = useState(false);
-	const [singleDay, setSingleDay] = useState(false);
-
 
 
 	const handleEnter = (e) => {
@@ -90,23 +86,6 @@ const HostEvent = (props) => {
 			if (addTagRef && addTagRef.current) addTagRef.current.removeEventListener('keyup', handleEnter);
 		})
 	}, [])
-
-	// useEffect(() => {
-	// 	if (!selectedFile) {
-	// 		setPreview(undefined);
-	// 		return;
-	// 	}
-	// 	const objectUrl = URL.createObjectURL(selectedFile);
-	// 	setPreview(objectUrl);
-
-	// 	return (() => {
-	// 		URL.revokeObjectURL(objectUrl);
-	// 	});
-	// }, [selectedFile]);
-
-	// const getDate = () => {
-	// 	return DateY1 + DateY2 + DateY3 + DateY4 + '-' + DateM1 + DateM2 + '-' + DateD1 + DateD2;
-	// }
 
 	const getDate = () => {
 		if (selectedDay === null)
@@ -149,37 +128,64 @@ const HostEvent = (props) => {
 	const postEvent = async (e) => {
 		e.preventDefault();
 
-		let form_data = new FormData();
-		if (Image.img0) form_data.append('image', Image.img0);
-		if (Image.img1) form_data.append('image2', Image.img1);
-		if (Image.img2) form_data.append('image3', Image.img2);
+		const ret = Validate({
+			Title,
+			Tagline,
+			Overview,
+			TimeH1,
+			TimeH2,
+			TimeM1,
+			TimeM2,
+			DurationH1,
+			DurationH2,
+			DurationM1,
+			DurationM2,
+			Image,
+			preview,
+			Tags,
+			duration,
+			singleDay,
+			price,
+			freeEvent,
+			onlineEvent,
+			address,
+			selectedDay,
+		});
 
-		form_data.append('title', Title);
-		form_data.append('duration_days', singleDay ? null : duration);
-		form_data.append('description', Tagline);
-		form_data.append('scheduled_time', getTime());
-		form_data.append('scheduled_date', getDate());
-		form_data.append('tags', getTags());
-		form_data.append('ticket_price', freeEvent ? '0' : price);
-		if (!onlineEvent) form_data.append('address', getAddress());
-		if (singleDay) form_data.append('duration', getDuration());
-		form_data.append('is_online_event', onlineEvent);
-		form_data.append('is_free_event', freeEvent);
+		if (ret) {
+			let form_data = new FormData();
+			if (Image.img0) form_data.append('image', Image.img0);
+			if (Image.img1) form_data.append('image2', Image.img1);
+			if (Image.img2) form_data.append('image3', Image.img2);
 
-		let url = 'http://167.71.237.202/events/';
+			form_data.append('title', Title);
+			form_data.append('duration_days', singleDay ? null : duration);
+			form_data.append('description', Tagline);
+			form_data.append('scheduled_time', getTime());
+			form_data.append('scheduled_date', getDate());
+			form_data.append('tags', getTags());
+			form_data.append('ticket_price', freeEvent ? '0' : price);
+			if (!onlineEvent) form_data.append('address', getAddress());
+			if (singleDay) form_data.append('duration', getDuration());
+			form_data.append('is_online_event', onlineEvent);
+			form_data.append('is_free_event', freeEvent);
 
-		try {
-			await axios.post(url, form_data, {
-				headers: {
-					Authorization: `Token ${props.token}`,
-				}
-			})
+			let url = 'http://167.71.237.202/events/';
+
+			try {
+				await axios.post(url, form_data, {
+					headers: {
+						Authorization: `Token ${props.token}`,
+					}
+				})
+			}
+			catch (e) {
+				console.log(e);
+			}
+
+			setEventPosted(true);
 		}
-		catch (e) {
-			console.log(e);
-		}
 
-		setEventPosted(true);
 	}
 
 	const viewTempEvent = (e) => {
@@ -231,6 +237,16 @@ const HostEvent = (props) => {
 		}
 	}, [freeEvent])
 
+	useEffect(() => {
+		document.querySelectorAll('.sec_container .addImage')[0].classList.remove('focusDiv');
+		document.querySelectorAll('.sec_container .addImage')[1].classList.remove('focusDiv');
+		document.querySelectorAll('.sec_container .addImage')[2].classList.remove('focusDiv');
+
+		if (Image.imgSelected === 0) document.querySelectorAll('.sec_container .addImage')[0].classList.add('focusDiv');
+		if (Image.imgSelected === 1) document.querySelectorAll('.sec_container .addImage')[1].classList.add('focusDiv');
+		if (Image.imgSelected === 2) document.querySelectorAll('.sec_container .addImage')[2].classList.add('focusDiv');
+	}, [Image.imgSelected])
+
 
 	return (
 		<>
@@ -244,7 +260,6 @@ const HostEvent = (props) => {
 						<Sections />
 					</div>
 					<form className="sec_container">
-
 						{/* ======================= EVENT NAME =============================================  */}
 						{/* ======================= EVENT NAME =============================================  */}
 						<section id="basics"></section>
@@ -253,15 +268,12 @@ const HostEvent = (props) => {
 						</div>
 						<div className="event_tagline">
 							<textarea value={Tagline} onChange={e => setTagline(e.target.value)} placeholder="Tagline for the event" />
-
 						</div>
-
 						{/* ======================= EVENT OVERVIEW =============================================  */}
 						{/* ======================= EVENT OVERVIEW =============================================  */}
 						<div className="event_overview">
 							<textarea value={Overview} onChange={e => setOverview(e.target.value)} placeholder="Overview of the event" />
 						</div>
-
 						{/* ======================= EVENT PICTURES =============================================  */}
 						{/* ======================= EVENT PICTURES =============================================  */}
 						<section id="pictures"></section>
@@ -293,33 +305,21 @@ const HostEvent = (props) => {
 							</div>
 						</div>
 
-						{/* ======================= EVENT HOST AND SPEAKERS =============================================  */}
-						{/* ======================= EVENT HOST AND SPEAKERS =============================================  */}
-						{/* <section id="host"></section>
-						<div className="event_hosts">
-							<div className="event_hosts_header">
-								Host and Speakers
-                        </div>
-							<div className="event_hosts_cards">
-								<div className="event_hosts_card"></div>
-							</div>
-						</div> */}
 						{/* ======================= EVENT SCHEDULE  =============================================  */}
 						{/* ======================= EVENT SCHEDULE =============================================  */}
 						<section id="schedule"></section>
 						<div className="event_schedule">
 							<div className="event_schedule_header">
 								Schedule and Timeline
-                        </div>
+                        	</div>
 							<div className="event_schedule_date">
 								<div className="event_schedule_date_header">
 									Date
-                            </div>
+                            	</div>
 								<div className="event_schedule_date_blanks" >
 									<Calendar
 										value={selectedDay}
 										onChange={setSelectedDay}
-										// colorPrimary="#9c88ff" // added this
 										calendarClassName="custom-calendar" // and this
 										calendarTodayClassName="custom-today-day" // also this
 										shouldHighlightWeekends
@@ -332,14 +332,13 @@ const HostEvent = (props) => {
 							<div className="event_schedule_time">
 								<div className="event_schedule_time_header">
 									Start Time
-                            </div>
+                            	</div>
 								<div className="event_schedule_time_blanks">
 									<div>
-										<input type="text" value={TimeH1} maxLength="2" onChange={(e) => setTimeH1(e.target.value)} className="day" placeholder="H"></input>
-										<input type="text" value={TimeH2} maxLength="2" onChange={(e) => setTimeH2(e.target.value)} className="day" placeholder="H"></input>
-
-										<input type="text" value={TimeM1} maxLength="2" onChange={(e) => setTimeM1(e.target.value)} className="month" placeholder="M"></input>
-										<input type="text" value={TimeM2} maxLength="2" onChange={(e) => setTimeM2(e.target.value)} className="month" placeholder="M"></input>
+										<input maxLength="1" type="text" value={TimeH1} onChange={(e) => setTimeH1(e.target.value)} className="day" placeholder="H"></input>
+										<input maxLength="1" type="text" value={TimeH2} onChange={(e) => setTimeH2(e.target.value)} className="day" placeholder="H"></input>
+										<input maxLength="1" type="text" value={TimeM1} onChange={(e) => setTimeM1(e.target.value)} className="month" placeholder="M"></input>
+										<input maxLength="1" type="text" value={TimeM2} onChange={(e) => setTimeM2(e.target.value)} className="month" placeholder="M"></input>
 									</div>
 								</div>
 							</div>
@@ -347,13 +346,13 @@ const HostEvent = (props) => {
 							<div className="duration_days">
 								<div className="duration_days_header">
 									Duration
-                        	</div>
+                        		</div>
 								<div className="filter__checkbox">
 									<form className="filter__form" style={{ display: "flex", flexDirection: "column" }}>
 										<label
 											className="filter__form--span">
 											Is it a single day event ?
-									<input checked={singleDay} className="filter__checkbox--input" type="checkbox" value="greenEggs" />
+										<input checked={singleDay} className="filter__checkbox--input" type="checkbox" value="greenEggs" />
 											<span onClick={() => setSingleDay(!singleDay)} class="filter__checkbox--checkmark"></span>
 										</label>
 									</form>
@@ -361,28 +360,29 @@ const HostEvent = (props) => {
 
 								{!singleDay && <input value={duration} onChange={e => setDuration(e.target.value)} type="text" placeholder="Days" />
 								}
-								{singleDay && <div className="event_schedule_time">
-									<div className="event_schedule_time_blanks">
-										<div>
-											<input type="text" value={DurationH1} maxLength="2" onChange={(e) => setDurationH1(e.target.value)} className="day" placeholder="H"></input>
-											<input type="text" value={DurationH2} maxLength="2" onChange={(e) => setDurationH2(e.target.value)} className="day" placeholder="H"></input>
-											<input type="text" value={DurationM1} maxLength="2" onChange={(e) => setDurationM1(e.target.value)} className="month" placeholder="M"></input>
-											<input type="text" value={DurationM2} maxLength="2" onChange={(e) => setDurationM2(e.target.value)} className="month" placeholder="M"></input>
+								{singleDay &&
+									<div className="event_schedule_time">
+										<div className="event_schedule_time_blanks">
+											<div>
+												<input type="text" maxLength="1" value={DurationH1} onChange={(e) => setDurationH1(e.target.value)} className="day" placeholder="H"></input>
+												<input type="text" maxLength="1" value={DurationH2} onChange={(e) => setDurationH2(e.target.value)} className="day" placeholder="H"></input>
+												<input type="text" maxLength="1" value={DurationM1} onChange={(e) => setDurationM1(e.target.value)} className="month" placeholder="M"></input>
+												<input type="text" maxLength="1" value={DurationM2} onChange={(e) => setDurationM2(e.target.value)} className="month" placeholder="M"></input>
+											</div>
 										</div>
-									</div>
-								</div>}
+									</div>}
 
 							</div>
 						</div>
 						{/* ======================= EVENT SCHEDULE  ============================================= 
-                    {/* ======================= EVENT SCHEDULE =============================================  */}
+						{/* ======================= EVENT SCHEDULE =============================================  */}
 						{/* <div className="event_timeline">
-                        <div className="event_timeline_header"></div>
-                        <div className="event_timeline_table">
-                        </div>
-                        <div className="event_timeline_buttons">
-                        </div>
-                    </div>  */}
+							<div className="event_timeline_header"></div>
+							<div className="event_timeline_table">
+							</div>
+							<div className="event_timeline_buttons">
+							</div>
+						</div>  */}
 
 						{/* ============================= EVENT PRICE PLAN =========================  */}
 						{/* ============================= EVENT PRICE PLAN =========================  */}
@@ -392,7 +392,7 @@ const HostEvent = (props) => {
 						<div className="event_pricePlan">
 							<div className="event_pricePlan_header">
 								Price
-                        </div>
+                        	</div>
 							<div className="filter__checkbox">
 								<form className="filter__form" style={{ display: "flex", flexDirection: "column" }}>
 									<label
@@ -404,14 +404,15 @@ const HostEvent = (props) => {
 								</form>
 							</div>
 
-							{!freeEvent && <input value={price} onChange={e => {
-								if (freeEvent) {
-									setPrice('0');
-								}
-								else {
-									setPrice(e.target.value)
-								}
-							}} type="text" placeholder="Price (Rupees)" />}
+							{!freeEvent &&
+								<input value={price} onChange={e => {
+									if (freeEvent) {
+										setPrice('0');
+									}
+									else {
+										setPrice(e.target.value)
+									}
+								}} type="text" placeholder="Price (Rupees)" />}
 						</div>
 
 						{/* ============================= EVENT TAGS =========================  */}
@@ -439,7 +440,7 @@ const HostEvent = (props) => {
 						<div className="address">
 							<div className="address_header">
 								Address
-                        </div>
+                        	</div>
 							<div className="filter__checkbox">
 								<form className="filter__form" style={{ display: "flex", flexDirection: "column" }}>
 									<label
@@ -489,7 +490,7 @@ const HostEvent = (props) => {
 								Post event
                         </button>
 						</div>
-						{eventPosted ? <Redirect push to="/events" /> : null}
+						{eventPosted ? <Redirect push to="/my-events" /> : null}
 					</form>
 				</div>
 			</div>
