@@ -239,13 +239,15 @@ const HostEvent = (props) => {
 
 	useEffect(() => {
 		document.querySelectorAll('.sec_container .addImage')[0].classList.remove('focusDiv');
-		document.querySelectorAll('.sec_container .addImage')[1].classList.remove('focusDiv');
-		document.querySelectorAll('.sec_container .addImage')[2].classList.remove('focusDiv');
+		if (Image.img0)
+			document.querySelectorAll('.sec_container .addImage')[1].classList.remove('focusDiv');
+		if (Image.img1)
+			document.querySelectorAll('.sec_container .addImage')[2].classList.remove('focusDiv');
 
 		if (Image.imgSelected === 0) document.querySelectorAll('.sec_container .addImage')[0].classList.add('focusDiv');
-		if (Image.imgSelected === 1) document.querySelectorAll('.sec_container .addImage')[1].classList.add('focusDiv');
-		if (Image.imgSelected === 2) document.querySelectorAll('.sec_container .addImage')[2].classList.add('focusDiv');
-	}, [Image.imgSelected])
+		if (Image.imgSelected === 1 && Image.img0) document.querySelectorAll('.sec_container .addImage')[1].classList.add('focusDiv');
+		if (Image.imgSelected === 2 && Image.img1) document.querySelectorAll('.sec_container .addImage')[2].classList.add('focusDiv');
+	}, [Image.imgSelected]);
 
 
 	return (
@@ -291,18 +293,26 @@ const HostEvent = (props) => {
 								onClick={(e) => { setImage({ ...Image, imgSelected: 0 }); }}>
 								<div className="primary">Primary</div>
 							</div>
-							<div className="addImage" style={{
-								backgroundImage: (preview.preview1) ? `url(${preview.preview1})` : '',
-								backgroundSize: 'contain',
-							}}
-								onClick={(e) => { setImage({ ...Image, imgSelected: 1 }); }}>
-							</div>
-							<div className="addImage" style={{
-								backgroundImage: (preview.preview2) ? `url(${preview.preview2})` : '',
-								backgroundSize: 'contain',
-							}}
-								onClick={(e) => { setImage({ ...Image, imgSelected: 2 }); }}>
-							</div>
+							{
+								Image.img0 &&
+								<div className="addImage" style={{
+									backgroundImage: (preview.preview1) ? `url(${preview.preview1})` : '',
+									backgroundSize: 'contain',
+								}}
+									onClick={(e) => { setImage({ ...Image, imgSelected: 1 }); }}>
+								</div>
+
+
+							}
+							{
+								Image.img0 && Image.img1 &&
+								<div className="addImage" style={{
+									backgroundImage: (preview.preview2) ? `url(${preview.preview2})` : '',
+									backgroundSize: 'contain',
+								}}
+									onClick={(e) => { setImage({ ...Image, imgSelected: 2 }); }}>
+								</div>
+							}
 						</div>
 
 						{/* ======================= EVENT SCHEDULE  =============================================  */}

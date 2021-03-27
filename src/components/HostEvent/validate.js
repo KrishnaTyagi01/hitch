@@ -27,6 +27,7 @@ export const Validate = ({
     address,
     selectedDay,
 
+
 }) => {
     const checkDuration = () => {
         for (let i = 0; i < duration.length; ++i) {

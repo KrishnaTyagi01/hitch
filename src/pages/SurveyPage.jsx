@@ -8,6 +8,7 @@ import person4 from '../icons/hostIntro/image3.svg'
 import hand from '../icons/about Hitch/matchmaking.png';
 import yes from '../icons/about Hitch/yes.png';
 
+
 const SurveyPage = () => {
     return (
         <div className="surveyPage">
@@ -48,10 +49,10 @@ const SurveyPage = () => {
                         What kind of interesting person do you most like to meet?
                     </div>
                     <div className="content">
-                        <Button1 text="Someone I can learn from" width="330px" height="55px" />
-                        <Button1 text="If they have experiences to share" width="330px" height="55px" />
-                        <Button1 text="Anyone is good!" width="330px" height="55px" />
-                        <Button1 text="A person I can team up with" width="330px" height="55px" />
+                        <Button1 text="Someone I can learn from" width="270px" height="55px" />
+                        <Button1 text="If they have experiences to share" width="270px" height="55px" />
+                        <Button1 text="Anyone is good!" width="270px" height="55px" />
+                        <Button1 text="A person I can team up with" width="270px" height="55px" />
                     </div>
                 </div>
                 <div className="image2">
@@ -111,12 +112,17 @@ const SurveyPage = () => {
                 <div className="text">
                     <div className="header">
                         About Mezami.
-                </div>
+                    </div>
                     <div className="content">
-                        We want to create a space to encourage dialogue, for ideas to grow together.
-                        We’re starting with the way people meet.
-                        With Mezami, we’re cutting through the clutter - networking that’s more people-centric. We’re here to preserve time.
+                        <div>We want to create a space to encourage dialogue, for ideas to grow together.</div>
+                        <div>We’re starting with the way people meet.</div>
+                        <div>With Mezami, we’re cutting through the clutter - networking that’s more people-centric. We’re here to preserve time.</div>
+                    </div>
                 </div>
+                <div className="img">
+                    <span>
+                        <img src={mezami} />
+                    </span>
                 </div>
             </section>
         </div>
