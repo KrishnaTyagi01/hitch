@@ -1,13 +1,13 @@
 import { connect } from 'react-redux';
 
-import Hero from '../components/profile_components/Hero';
-import About from '../components/profile_components/About';
-import HeaderSection from '../components/profile_components/HeaderSection';
-import ProfileCard from '../components/profile_components/ProfileCard';
-import AttendedEvents from '../components/profile_components/AttendedEvents';
-import HostedEvents from '../components/profile_components/HostedEvents';
-import UpcomingEvents from '../components/profile_components/UpcomingEvents';
-import WishlistEvents from '../components/profile_components/WishlistEvents';
+import Hero from '../components/Profile/Hero';
+import About from '../components/Profile/About';
+import HeaderSection from '../components/Profile/HeaderSection';
+import ProfileCard from '../components/Profile/ProfileCard';
+import AttendedEvents from '../components/Profile/AttendedEvents';
+import HostedEvents from '../components/Profile/HostedEvents';
+import UpcomingEvents from '../components/Profile/UpcomingEvents';
+import WishlistEvents from '../components/Profile/WishlistEvents';
 
 const SelfProfile = (props) => {
 	return (

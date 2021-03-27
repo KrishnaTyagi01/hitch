@@ -1,27 +1,23 @@
-import EventCard from '../Common/EventCard';
+import EventCardsContainer from '../Common/EventCardsContainer';
 
 const EventsAttended = (props) => {
+	const events = props.attendedEvents?.map((item) => item.event);
+
 	return (
 		<div className='attendedEvents'>
 			<div className='attendedEvents__upper'>
 				<span className='attendedEvents__upper--heading'>Attended Events</span>
 				<button className='attendedEvents__upper--btn'>Know More</button>
 			</div>
-			<div className='attendedEvents__cards'>
-				{props.attendedEvents ? (
-					props.attendedEvents.length === 0 ? (
-						<div className='page-text'>You haven't attended any events yet</div>
-					) : (
-						<>
-							{props.attendedEvents.map((event) => (
-								<EventCard event={event} />
-							))}
-						</>
-					)
-				) : (
+			{events ? (
+				events.length === 0 ? (
 					<div className='page-text'>You haven't attended any events yet</div>
-				)}
-			</div>
+				) : (
+					<EventCardsContainer events={events} />
+				)
+			) : (
+				<div className='page-text'>You haven't attended any events yet</div>
+			)}
 		</div>
 	);
 };

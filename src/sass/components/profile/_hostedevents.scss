@@ -1,4 +1,4 @@
-.hostedevents {
+.hostedEvents {
 	// width: 822px;
 	width: 100%;
 	background-color: var(--color-primary-1);
@@ -37,14 +37,5 @@
 				outline: none;
 			}
 		}
-	}
-
-	&__cards {
-		display: flex;
-		justify-content: flex-start;
-		flex-wrap: wrap;
-		// &--card{
-
-		// }
 	}
 }

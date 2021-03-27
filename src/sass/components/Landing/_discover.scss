@@ -1,121 +1,25 @@
-.landing-discover {
+.discover {
 	color: var(--color-text-2);
 	background-color: var(--color-primary-1);
-	padding: 60px 30px;
+	padding: 60px 4vw;
 	font-family: Montserrat;
 
-	.header {
-		display: flex;
-		justify-content: space-between;
-
-		h2 {
-			letter-spacing: 0.02em;
-			text-transform: capitalize;
-			padding-left: 18px;
-		}
-	}
-
-	.body {
-		display: grid;
+	&__content {
+		// display: grid;
 		// grid-template-areas: 'left right';
-		grid-template-columns: 400px 1fr;
+		// grid-template-columns: 400px 1fr;
+		display: flex;
+		gap: 3rem;
 		margin-top: 20px;
+
+		aside {
+			width: 315px;
+		}
 	}
 }
 
-@media (max-width: 760px) {
-	.landing-discover {
-		.body {
-			display: flex;
-			flex-direction: column;
-			justify-content: center;
-			align-items: center;
-			.filters {
-				margin-top: 20px;
-				width: 100%;
-				display: flex;
-				margin-left: 0;
-				flex-direction: column;
-				align-items: center;
-				justify-content: center;
-				.filter {
-					width: Min(87vw, 450px);
-					overflow-x: auto;
-
-					&::-webkit-scrollbar {
-						width: 0px;
-						height: 1px;
-					}
-					&::-webkit-scrollbar-track {
-						background: var(--color-primary-1);
-					}
-
-					&::-webkit-scrollbar-thumb {
-						background: rgb(82, 70, 144);
-					}
-
-					display: grid;
-					grid-template-columns: 0.4fr 1fr 1fr 0.8fr;
-					height: 44px;
-					padding: 10px 8px;
-					padding-top: 6px;
-					position: unset;
-
-					&__head {
-						// display: none;
-						border: none;
-						margin-right: 16px;
-						&--main {
-							display: none;
-						}
-						&--sub {
-							position: relative;
-							top: 9px;
-							font-size: 13px;
-						}
-					}
-
-					&__calender {
-						.datesToFrom {
-							display: none;
-						}
-					}
-					&__type {
-						// margin-right: 30px;
-						margin-right: 16px;
-
-						border: none;
-					}
-
-					&__subtype {
-						margin-top: 10px;
-						margin-bottom: 10px;
-					}
-
-					&__calender {
-						margin-right: 16px;
-					}
-
-					&__checkbox {
-						width: Min(100vw, 400px);
-						margin-top: 20px;
-						background-color: #2b244d;
-						box-shadow: 0px 4px 14px rgba(0, 0, 0, 0.35);
-						padding: 15px 10px;
-						border-radius: 10px;
-					}
-				}
-			}
-		}
-
-		.header {
-			display: flex;
-			flex-direction: column;
-			justify-content: center;
-			align-items: center;
-			h2 {
-				margin-bottom: 20px;
-			}
-		}
+@media (max-width: 1024px) {
+	.discover__content {
+		flex-direction: column;
 	}
 }

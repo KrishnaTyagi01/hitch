@@ -41,6 +41,7 @@ export const ADD_TO_WISHLIST = 'ADD_TO_WISHLIST';
 export const REMOVE_FROM_WISHLIST = 'REMOVE_FROM_WISHLIST';
 export const DELETE_WISHLIST = 'DELETE_WISHLIST';
 export const ADD_TO_CALENDER = 'ADD_TO_CALENDER';
+export const SEARCH_EVENTS = 'SEARCH_EVENTS';
 
 // Event actions
 export const CREATE_EVENT = 'CREATE_EVENT';

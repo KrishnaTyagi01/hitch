@@ -1,11 +1,11 @@
 import { useEffect, useState } from 'react';
 import axios from 'axios';
 
-import About from '../components/profile_components/About';
-import HeaderSection from '../components/profile_components/HeaderSection';
-import Hero from '../components/profile_components/Hero';
-import ProfileCard from '../components/profile_components/ProfileCard';
-import HostedEvents from '../components/profile_components/HostedEvents';
+import About from '../components/Profile/About';
+import HeaderSection from '../components/Profile/HeaderSection';
+import Hero from '../components/Profile/Hero';
+import ProfileCard from '../components/Profile/ProfileCard';
+import HostedEvents from '../components/Profile/HostedEvents';
 // import { ConnectionButton, FollowButton } from '../components/profile_components/Buttons';
 
 import errorHandler from '../API/errorHandler';

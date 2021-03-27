@@ -1,17 +1,10 @@
-
-import {
-	GET_EVENTS,
-	GET_EVENT,
-	GET_PROFILE,
-	INC_COUNT,
-	CLEAR_STATE,
-	SERVER_ERROR
-} from '../types';
+import { GET_EVENTS, GET_EVENT, GET_PROFILE, SEARCH_EVENTS, CLEAR_STATE } from '../types';
 
 const initialState = {
 	events: null,
 	event: null,
 	profile: null,
+	searchResults: null,
 	count: 0,
 	message: ''
 };
@@ -33,15 +26,10 @@ export default function eventReducer(state = initialState, action) {
 				...state,
 				profile: action.payload
 			};
-		case INC_COUNT:
+		case SEARCH_EVENTS:
 			return {
 				...state,
-				count: state.count + action.payload
-			};
-		case SERVER_ERROR:
-			return {
-				...initialState,
-				message: 'Server error. Please try again'
+				searchResults: action.payload
 			};
 		case CLEAR_STATE:
 			return {
