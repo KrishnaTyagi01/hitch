@@ -1,10 +1,11 @@
 import registrationStamp from '../../icons/Events/registrationStamp.png';
+
 const EventTicket = (props) => {
 	const {
 		num_of_participants,
 		event: { title, scheduled_time, scheduled_date, ticket_price }
-	} = props.ticket;
-	const { name, email, phone } = props.profile;
+	} = props.ticket ?? {};
+	const { name, email, phone } = props.profile ?? {};
 
 	return (
 		<div className='eventTicket'>

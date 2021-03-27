@@ -1,9 +1,10 @@
 import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { PDFDownloadLink } from '@react-pdf/renderer';
+// import { PDFDownloadLink } from '@react-pdf/renderer';
 
 import EventTicket from '../components/EventPage/EventTicket';
+// import EventTicketPDF from '../components/EventPage/EventTicket';
 import Loading from '../components/Common/Loading';
 
 import { getUpcomingEvents } from '../redux/actions/profileActions';
@@ -23,6 +24,11 @@ const EventTicketPage = (props) => {
 	const [ticket, setTicket] = useState(null);
 	const [notRegistered, setNotRegistered] = useState(null);
 	const [show, setShow] = useState(false);
+
+	const {
+		num_of_participants,
+		event: { title, scheduled_time, scheduled_date, ticket_price } = {}
+	} = ticket ?? {};
 
 	useEffect(() => {
 		if (props.location.state?.ticket) {
@@ -54,6 +60,31 @@ const EventTicketPage = (props) => {
 			) : (
 				<>
 					<EventTicket ticket={ticket} profile={props.profile} />
+					{/* <PDFDownloadLink
+						document={
+							<EventTicketPDF
+								// ticket={ticket}
+								ticket={{
+									num_of_participants,
+									event: { title, scheduled_time, scheduled_date, ticket_price }
+								}}
+								// profile={props.profile}
+								profile={{ name, email, phone }}
+							/>
+						}
+						fileName='event-ticket.pdf'
+						style={{
+							textDecoration: 'none',
+							padding: '10px',
+							color: '#4a4a4a',
+							backgroundColor: '#f2f2f2',
+							border: '1px solid #4a4a4a'
+						}}
+					>
+						{({ blob, url, loading, error }) =>
+							loading ? 'Loading document...' : 'Download as PDF'
+						}
+					</PDFDownloadLink> */}
 				</>
 			)}
 		</div>

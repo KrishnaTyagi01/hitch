@@ -1,7 +1,14 @@
 import axios from 'axios';
 
 import reduxErrorHandler from './reduxErrorHandler';
-import { GET_EVENTS, GET_EVENT, GET_PROFILE, INC_COUNT, CLEAR_STATE } from '../types';
+import {
+	GET_EVENTS,
+	GET_EVENT,
+	GET_PROFILE,
+	SEARCH_EVENTS,
+	INC_COUNT,
+	CLEAR_STATE
+} from '../types';
 
 export const getEvents = (next) => async (dispatch) => {
 	try {
@@ -42,7 +49,19 @@ export const getProfile = (profileID, next) => async (dispatch) => {
 	}
 };
 
-export const clearState = (next) => async (dispatch) => {
+export const searchEvents = (formData) => async (dispatch, getState) => {
+	try {
+		const response = await axios.post('/events/search/', formData, tokenConfig(getState));
+		dispatch({
+			type: SEARCH_EVENTS,
+			payload: response.data
+		});
+	} catch (error) {
+		errorHandler(error, dispatch);
+	}
+};
+
+export const clearState = () => async (dispatch) => {
 	try {
 		dispatch({
 			type: CLEAR_STATE,

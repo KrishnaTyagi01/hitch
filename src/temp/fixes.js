@@ -12,6 +12,18 @@ const fixedImageURL = image.startsWith('http')
 	? image
 	: `http://${process.env.REACT_APP_BACKENDAPI}/${image}`;
 
+// Piyush's fix in search results page
+const refactorEvents = (currEvents) => {
+	let tempEvents = [...currEvents];
+	if (tempEvents.length > 0 && tempEvents[0].image[0] === '/') {
+		for (let i = 0; i < tempEvents.length; ++i) {
+			tempEvents[i].image = 'http://167.71.237.202' + tempEvents[i].image;
+			tempEvents[i].url = 'http://167.71.237.202' + tempEvents[i].url;
+		}
+	}
+	return tempEvents;
+};
+
 // ===============================================================================
 
 <div className='event-filters'>

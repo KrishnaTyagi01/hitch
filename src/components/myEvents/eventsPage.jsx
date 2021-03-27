@@ -1,69 +1,80 @@
-import React, { useEffect, useState } from 'react';
-import Upper from './Upper';
-import axios from 'axios';
+import React, { useEffect, useState, useRef } from 'react';
 import { connect } from 'react-redux';
-import EventCard from '../Common/EventCard';
+
+import EventCardsContainer from '../Common/EventCardsContainer';
 
 const MainComponent = (props) => {
 	const [events, setEvents] = useState([]);
+	const ref1 = useRef(null);
+	const ref2 = useRef(null);
+	const ref3 = useRef(null);
+	const ref4 = useRef(null);
 
-	const refactorEvents = (currEvents) => {
-		let tempEvents = [...currEvents];
-		if (tempEvents.length > 0 && tempEvents[0].image[0] === '/') {
-			for (let i = 0; i < tempEvents.length; ++i) {
-				tempEvents[i].image = "http://167.71.237.202" + tempEvents[i].image;
-				tempEvents[i].url = "http://167.71.237.202" + tempEvents[i].url;
-			}
-		}
-		return tempEvents;
-	}
+	const makeActive = (currRef) => {
+		ref1.current.className = 'upper__container--btn';
+		ref2.current.className = 'upper__container--btn';
+		ref3.current.className = 'upper__container--btn';
+		ref4.current.className = 'upper__container--btn';
+		currRef.current.className = 'upper__container--btnactive';
+	};
+
+	const Bookmark = () => {
+		makeActive(ref1);
+		setEvents(props.wishlistEvents);
+	};
+	const Hosted = () => {
+		makeActive(ref2);
+		setEvents(props.hostedEvents);
+	};
+	const Upcoming = () => {
+		makeActive(ref3);
+		setEvents(props.upcomingEvents.map((item) => item.event));
+	};
+	const Attended = () => {
+		makeActive(ref4);
+		setEvents(props.attendedEvents.map((item) => item.event));
+	};
 
 	useEffect(() => {
-		const getAllEvents = async () => {
-			let res = await axios.get(`http://167.71.237.202/profiles/wishlist/`, {
-				headers: {
-					Authorization: `Token ${props.token}`,
-				}
-			});
-			res = res.data;
-			setEvents(refactorEvents(res));
-		}
-		getAllEvents();
-
-	}, []);
-
-	const AAA = events.map((event) => (
-		<EventCard event={event} lazyLoadBI={true} key={event.id} />
-	));
-
-	const onButtonClick = (events) => {
-		setEvents(refactorEvents(events));
-		// refactorEvents();
-	}
+		setEvents(props.wishlistEvents);
+	}, [props.wishlistEvents]);
 
 	return (
-		<div className="eventsPage">
-			{/* <Navbar /> */}
-			<Upper onButtonClick={onButtonClick} />
-			<div className="eventsPage__content">
-				{/* <div className="eventsPage__content--filter">
-                    <Filter onFilterChange={onFilterChange} />
-                </div> */}
-				<section className="eventsPage__content--events">
-					<div className="eventsGrid">
-						{AAA}
+		<div className='eventsPage'>
+			<section className='upper'>
+				<div className='upper__container'>
+					<h3 className='upper__container--head'>My Events</h3>
+					<div className='upper__container--category'>
+						<button ref={ref1} onClick={Bookmark} className='upper__container--btnactive'>
+							Bookmarks
+						</button>
+						<button ref={ref2} onClick={Hosted} className='upper__container--btn'>
+							Your Hosted Events
+						</button>
+						<button ref={ref3} onClick={Upcoming} className='upper__container--btn'>
+							Upcoming Events
+						</button>
+						<button ref={ref4} onClick={Attended} className='upper__container--btn'>
+							Events Attended
+						</button>
 					</div>
-				</section>
-			</div>
+				</div>
+			</section>
+			<section className='eventsPage__content'>
+				{/* <div className="eventsPage__content--filter">
+					<Filter onFilterChange={onFilterChange} />
+				</div> */}
+				<EventCardsContainer events={events} />
+			</section>
 		</div>
 	);
-}
+};
 
-const mapStateToProps = state => {
-	return {
-		token: state.authState.token,
-	}
-}
-
+const mapStateToProps = (state) => ({
+	hostedEvents: state.profileState.hostedEvents,
+	attendedEvents: state.profileState.attendedEvents,
+	upcomingEvents: state.profileState.upcomingEvents,
+	wishlistEvents: state.profileState.wishlistEvents
+});
 
 export default connect(mapStateToProps)(MainComponent);

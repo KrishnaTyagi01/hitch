@@ -1,4 +1,4 @@
-import EventCard from '../Common/EventCard';
+import EventCardsContainer from '../Common/EventCardsContainer';
 
 const WishlistEvents = (props) => {
 	return (
@@ -9,16 +9,12 @@ const WishlistEvents = (props) => {
 			</div>
 			{props.wishlistEvents ? (
 				props.wishlistEvents.length === 0 ? (
-					<div className='page-text'>You have not added anything to wishlist</div>
+					<div className='page-text'>You haven't added anything to wishlist so far</div>
 				) : (
-					<div className='wishlistEvents__cards'>
-						{props.wishlistEvents.map((event, i) => (
-							<EventCard event={event} key={i} />
-						))}
-					</div>
+					<EventCardsContainer events={props.wishlistEvents} />
 				)
 			) : (
-				<div className='page-text'>You have not added anything to wishlist</div>
+				<div className='page-text'>You haven't added anything to wishlist so far</div>
 			)}
 		</div>
 	);
