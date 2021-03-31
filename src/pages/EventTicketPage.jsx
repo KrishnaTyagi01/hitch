@@ -36,9 +36,9 @@ const EventTicketPage = (props) => {
 			setShow(true);
 		} else {
 			if (props.upcomingEvents) {
-				const foundTicket = props.upcomingEvents.find(
-					(item) => item.event.id === JSON.parse(eventID)
-				);
+				const foundTicket =
+					props.upcomingEvents.find((item) => item.event.id === JSON.parse(eventID)) ||
+					props.attendedEvents.find((item) => item.event.id === JSON.parse(eventID));
 				if (foundTicket) {
 					setTicket(foundTicket);
 					setShow(true);
@@ -94,7 +94,7 @@ const EventTicketPage = (props) => {
 const mapStateToProps = (state) => ({
 	profile: state.profileState.profile,
 	upcomingEvents: state.profileState.upcomingEvents,
-	upcoming: state.profileState.upcoming
+	attendedEvents: state.profileState.attendedEvents
 });
 
 export default connect(mapStateToProps, { getUpcomingEvents })(EventTicketPage);

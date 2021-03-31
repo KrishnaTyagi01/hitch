@@ -22,7 +22,7 @@ const Navbar = (props) => {
 
 	const NavbarLogo = () => (
 		<Link to='/' className='navbar__logo'>
-			H!tch
+			Mezami
 		</Link>
 	);
 
@@ -44,7 +44,7 @@ const Navbar = (props) => {
 				to='/about'
 				onClick={toggleSidebar}
 			>
-				About Hitch
+				About Mezami
 			</NavLink>
 			<NavLink
 				exact={true}
@@ -155,6 +155,7 @@ const Navbar = (props) => {
 						<>
 							<LocationSelector />
 							<SearchBar changeSearchTerm={props.changeSearchTerm} />
+							{/* <SearchBar /> */}
 							<NavbarLinks />
 						</>
 					) : (

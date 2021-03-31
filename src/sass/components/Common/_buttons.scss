@@ -15,18 +15,6 @@
 	}
 }
 
-.submit {
-	background-color: var(--color-secondary-1);
-}
-
-.cancel {
-	background-color: var(--color-semantic-1);
-}
-
-.confirm {
-	background-color: var(--color-primary-3);
-}
-
 .back-button {
 	color: white;
 	background-color: transparent;
@@ -50,7 +38,6 @@
 .small-button {
 	display: inline-block;
 	color: var(--color-text-2);
-	background-color: var(--color-semantic-1);
 	font-size: 16px;
 	padding: 8px 16px;
 	border-radius: 10px;
@@ -70,4 +57,16 @@
 	display: block;
 	background-color: var(--color-secondary-1);
 	margin: 10px auto;
+}
+
+.submit {
+	background-color: var(--color-secondary-1);
+}
+
+.cancel {
+	background-color: var(--color-semantic-1);
+}
+
+.confirm {
+	background-color: var(--color-primary-3);
 }

@@ -1,6 +1,7 @@
 import axios from 'axios';
 
 // const API = process.env.REACT_APP_BACKENDAPI;
+// const API = '167.71.237.202';
 
 export const CheckUserExist = async (username) => {
 	// return fetch(`http://167.71.237.202/api/check-user-existence/`, {

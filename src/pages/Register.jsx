@@ -2,8 +2,7 @@ import { useState, useEffect } from 'react';
 import { Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
 
-import { registerUser, CheckUserExist } from '../API/Auth';
-import { validateOtp } from '../API/Auth';
+import { registerUser, CheckUserExist, validateOtp } from '../API/commonRequests';
 import { login } from '../redux/actions/authActions';
 import { deactivateLoginPrompt } from '../redux/actions/userActions';
 
