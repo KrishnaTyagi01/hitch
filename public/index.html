@@ -5,48 +5,47 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
 		<meta name="description" content="Web site created using create-react-app" />
 
-		<title>hitch</title>
+		<title>Mezami</title>
 		<style>
-				body {
-					padding: 0;
-					margin: 0;
-					box-sizing: border-box;
+			body {
+				padding: 0;
+				margin: 0;
+				box-sizing: border-box;
+			}
+
+			.preloader {
+				display: flex;
+				justify-content: center;
+				align-items: center;
+				background-color: #171429;
+				height: 100vh;
+			}
+
+			#loader-calender {
+				color: white;
+				width: 10vw;
+				min-width: 60px;
+				animation: floating 1s ease infinite;
+			}
+
+			@keyframes floating {
+				0% {
+					transform: translateY(0);
 				}
 
-				.preloader {
-					display: flex;
-					justify-content: center;
-					align-items: center;
-					background-color: #171429;
-					height: 100vh;
+				50% {
+					transform: translateY(20px);
 				}
 
-				#loader-calender {
-					color: white;
-					width: 10vw;
-					min-width: 60px;
-					animation: floating 1s ease infinite;
+				100% {
+					transform: translateY(0px);
 				}
+			}
 
-				@keyframes floating {
-					0% {
-						transform: translateY(0);
-					}
-
-					50% {
-						transform: translateY(20px);
-					}
-
-					100% {
-						transform: translateY(0px);
-					}
-				}
-
-				@media (prefers-reduced-motion: reduce) {
-					* {
-						animation: none !important;
-						transition: none !important;
-					}
+			@media (prefers-reduced-motion: reduce) {
+				* {
+					animation: none !important;
+					transition: none !important;
 				}
 			}
 		</style>

@@ -65,9 +65,12 @@ const EventActions = (props) => {
 						</button>
 					) : (
 						<>
-							{props.upcoming ? (
+							{props.upcoming || props.attended ? (
 								<>
-									{!props.upcoming.includes(props.event.id) ? (
+									{!(
+										props.upcoming.includes(props.event.id) ||
+										props.attended.includes(props.event.id)
+									) ? (
 										<Link
 											to={{
 												pathname: `/event/${props.event?.id}/register`,
@@ -105,17 +108,16 @@ const EventActions = (props) => {
 			) : (
 				<>
 					{/* HERE MAKE AN OPTION FOR REMOVE FROM CALENDAR */}
-					<button className='action-button' onClick={() => AddToCalendar(props.event, setAlreadyInCalendar)}>
+					<button
+						className='action-button'
+						onClick={() => AddToCalendar(props.event, setAlreadyInCalendar)}
+					>
 						<i className='far fa-calendar-alt action-button__icon'></i>
 						Add to Calender
 					</button>
-					{
-						alreadyInCalendar &&
-						<div className="alreadyInCalendar">
-							Already in Calendar
-						</div>
-					}
-
+					{alreadyInCalendar && (
+						<div className='alreadyInCalendar'>Already in Calendar</div>
+					)}
 
 					{!props.wishlist?.includes(props.event?.id) ? (
 						<button
@@ -147,9 +149,9 @@ const EventActions = (props) => {
 const mapStateToProps = (state) => ({
 	isAuthenticated: state.authState.isAuthenticated,
 	wishlist: state.profileState.wishlist,
-	upcoming: state.profileState.upcoming
+	upcoming: state.profileState.upcoming,
+	attended: state.profileState.attended
 });
-
 
 export default connect(mapStateToProps, {
 	getSelfProfile,

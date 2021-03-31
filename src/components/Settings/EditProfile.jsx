@@ -133,7 +133,7 @@ const EditProfile = (props) => {
 												type='text'
 											/>
 											<button
-												className='small-button'
+												className='small-button cancel'
 												onClick={() => {
 													removeInputArrayItem('professional_interests', i);
 												}}
@@ -144,7 +144,7 @@ const EditProfile = (props) => {
 									))}
 								</div>
 								<button
-									className='small-button block-button'
+									className='small-button submit block-button'
 									onClick={() => {
 										addInputArrayItem('professional_interests');
 									}}
@@ -167,7 +167,7 @@ const EditProfile = (props) => {
 												type='text'
 											/>
 											<button
-												className='small-button'
+												className='small-button cancel'
 												onClick={() => {
 													removeInputArrayItem('personal_interests', i);
 												}}
@@ -178,7 +178,7 @@ const EditProfile = (props) => {
 									))}
 								</div>
 								<button
-									className='small-button block-button'
+									className='small-button submit block-button'
 									onClick={() => {
 										addInputArrayItem('personal_interests');
 									}}

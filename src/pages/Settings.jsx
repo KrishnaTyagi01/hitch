@@ -56,8 +56,8 @@ export const SettingsSidebar = () => {
 const Settings = () => {
 	return (
 		<main className='settings'>
-			<section className='settings__top'></section>
-			<section className='settings__bottom'>
+			<div className='settings__top'></div>
+			<div className='settings__bottom'>
 				<div className='settings__left'>
 					<SettingsSidebar />
 				</div>
@@ -70,7 +70,7 @@ const Settings = () => {
 						<Route path='/settings/event-history' component={EventHistory} />
 					</Switch>
 				</div>
-			</section>
+			</div>
 		</main>
 	);
 };

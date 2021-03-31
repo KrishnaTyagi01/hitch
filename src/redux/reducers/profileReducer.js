@@ -21,6 +21,7 @@ const initialState = {
 	wishlistEvents: null,
 	wishlist: null,
 	upcoming: null,
+	attended: null,
 	detail: null,
 	actionSuccess: null
 };
@@ -49,7 +50,8 @@ export default function profileReducer(state = initialState, action) {
 				attendedEvents: action.payload.attended_events,
 				upcomingEvents: action.payload.upcoming_events,
 				wishlistEvents: action.payload.wishlist_events,
-				upcoming: action.payload.upcoming_events.map((item) => item.event.id)
+				upcoming: action.payload.upcoming_events.map((item) => item.event.id),
+				attended: action.payload.attended_events.map((item) => item.event.id)
 			};
 		case GET_HOSTED_EVENTS:
 			return {
