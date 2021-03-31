@@ -349,14 +349,14 @@ const HostEvent = (props) => {
 									Duration
                         	</div>
 								<div className="filter__checkbox">
-									<form className="filter__form" style={{ display: "flex", flexDirection: "column" }}>
+									<div className="filter__form" style={{ display: "flex", flexDirection: "column" }}>
 										<label
 											className="filter__form--span">
 											Is it a single day event ?
-									<input checked={singleDay} className="filter__checkbox--input" type="checkbox" value="greenEggs" />
-											<span onClick={() => setSingleDay(!singleDay)} class="filter__checkbox--checkmark"></span>
+										<input checked={singleDay} readOnly className="filter__checkbox--input" type="checkbox" value="greenEggs" />
+											<span onClick={() => setSingleDay(!singleDay)} className="filter__checkbox--checkmark"></span>
 										</label>
-									</form>
+									</div>
 								</div>
 
 								{!singleDay && <input value={duration} onChange={e => setDuration(e.target.value)} type="text" placeholder="Days" />
@@ -394,14 +394,14 @@ const HostEvent = (props) => {
 								Price
                         </div>
 							<div className="filter__checkbox">
-								<form className="filter__form" style={{ display: "flex", flexDirection: "column" }}>
+								<div className="filter__form" style={{ display: "flex", flexDirection: "column" }}>
 									<label
 										className="filter__form--span">
 										Free Event ?
-									<input checked={freeEvent} className="filter__checkbox--input" type="checkbox" value="greenEggs" />
-										<span onClick={() => setFreeEvent(!freeEvent)} class="filter__checkbox--checkmark"></span>
+									<input readOnly checked={freeEvent} className="filter__checkbox--input" type="checkbox" value="greenEggs" />
+										<span onClick={() => setFreeEvent(!freeEvent)} className="filter__checkbox--checkmark"></span>
 									</label>
-								</form>
+								</div>
 							</div>
 
 							{!freeEvent && <input value={price} onChange={e => {
@@ -441,14 +441,14 @@ const HostEvent = (props) => {
 								Address
                         </div>
 							<div className="filter__checkbox">
-								<form className="filter__form" style={{ display: "flex", flexDirection: "column" }}>
+								<div className="filter__form" style={{ display: "flex", flexDirection: "column" }}>
 									<label
 										className="filter__form--span">
 										Online Event ?
-									<input checked={onlineEvent} className="filter__checkbox--input" type="checkbox" value="greenEggs" />
-										<span onClick={() => setOnlineEvent(!onlineEvent)} class="filter__checkbox--checkmark"></span>
+									<input readOnly checked={onlineEvent} className="filter__checkbox--input" type="checkbox" value="greenEggs" />
+										<span onClick={() => setOnlineEvent(!onlineEvent)} className="filter__checkbox--checkmark"></span>
 									</label>
-								</form>
+								</div>
 							</div>
 
 							{!onlineEvent ? (

@@ -125,14 +125,14 @@ const Filter = (props) => {
 		'Kolkata'
 	];
 
-	const cityFilters = cities.map((city) => {
+	const cityFilters = cities.map((city, idx) => {
 		return (
-			<label className='filter__form--span'>
+			<label className='filter__form--span' key={idx}>
 				<input
 					className='filter__checkbox--input'
 					checked={filterState.locations[city]}
 					type='checkbox'
-					value='greenEggs'
+					readOnly
 				/>
 				<span
 					onClick={(e) => changeFilter(e, 'locations', city)}
@@ -213,7 +213,7 @@ const Filter = (props) => {
 				form_data.append('end_date', getDate('end'));
 			}
 
-			let url = 'http://167.71.237.202/events/search/';
+			let url = 'https://mezami.xyz/events/search/';
 			const res = await axios({
 				url: url,
 				method: 'POST',
@@ -264,6 +264,7 @@ const Filter = (props) => {
 									type='text'
 									value={filterState.categories.search}
 									onChange={(e) => onChangeSearch(e, 'categories')}
+									readOnly
 								></input>
 							</div>
 							<label className='filter__form--span'>
@@ -271,7 +272,7 @@ const Filter = (props) => {
 									className='filter__checkbox--input'
 									checked={filterState.categories.design}
 									type='checkbox'
-									value='greenEggs'
+									readOnly
 								/>
 								<span
 									onClick={(e) => changeFilter(e, 'categories', 'design')}
@@ -284,7 +285,7 @@ const Filter = (props) => {
 									className='filter__checkbox--input'
 									checked={filterState.categories.soccer}
 									type='checkbox'
-									value='greenEggs'
+									readOnly
 								/>
 								<span
 									onClick={(e) => changeFilter(e, 'categories', 'soccer')}
@@ -297,7 +298,7 @@ const Filter = (props) => {
 									className='filter__checkbox--input'
 									checked={filterState.categories.music}
 									type='checkbox'
-									value='greenEggs'
+									readOnly
 								/>
 								<span
 									onClick={(e) => changeFilter(e, 'categories', 'music')}
@@ -320,6 +321,7 @@ const Filter = (props) => {
 									type='text'
 									value={filterState.locations.search}
 									onChange={(e) => onChangeSearch(e, 'locations')}
+									readOnly
 								></input>
 							</div>
 							{cityFilters}
@@ -378,6 +380,7 @@ const Filter = (props) => {
 										type='text'
 										value={temp_category}
 										onChange={(e) => setTemp_Category(e.target.value)}
+										readOnly
 									></input>
 									<button type='submit'>
 										{
@@ -396,7 +399,7 @@ const Filter = (props) => {
 										className='filter__checkbox--input'
 										checked={filterState.categories.design}
 										type='checkbox'
-										value='greenEggs'
+										readOnly
 									/>
 									<span
 										onClick={(e) => changeFilter(e, 'categories', 'design')}
@@ -409,7 +412,7 @@ const Filter = (props) => {
 										className='filter__checkbox--input'
 										checked={filterState.categories.soccer}
 										type='checkbox'
-										value='greenEggs'
+										readOnly
 									/>
 									<span
 										onClick={(e) => changeFilter(e, 'categories', 'soccer')}
@@ -422,7 +425,7 @@ const Filter = (props) => {
 										className='filter__checkbox--input'
 										checked={filterState.categories.music}
 										type='checkbox'
-										value='greenEggs'
+										readOnly
 									/>
 									<span
 										onClick={(e) => changeFilter(e, 'categories', 'music')}
@@ -473,6 +476,7 @@ const Filter = (props) => {
 										type='text'
 										value={temp_location}
 										onChange={(e) => setTemp_Location(e.target.value)}
+										readOnly
 									></input>
 									<button type='submit'>
 										{
@@ -571,16 +575,14 @@ const Filter = (props) => {
 						{/* <i onClick={() => setDate(!date)} style={{ fontSize: "7.5px", color: "#ffffff" }} className="fas fa-chevron-down " /> */}
 					</div>
 					<div className='datesToFrom'>
-						<div>{`From: ${
-							getDate('start') === null || getDate('start').substr(0, 4) === '2000'
-								? '-'
-								: getDate('start')
-						}`}</div>
-						<div>{`To: ${
-							getDate('end') === null || getDate('start').substr(0, 4) === '2000'
-								? '-'
-								: getDate('end')
-						}`}</div>
+						<div>{`From: ${getDate('start') === null || getDate('start').substr(0, 4) === '2000'
+							? '-'
+							: getDate('start')
+							}`}</div>
+						<div>{`To: ${getDate('end') === null || getDate('start').substr(0, 4) === '2000'
+							? '-'
+							: getDate('end')
+							}`}</div>
 					</div>
 
 					{date && window.innerWidth > 1050 ? (

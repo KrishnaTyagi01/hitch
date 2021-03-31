@@ -61,9 +61,6 @@ const MainComponent = (props) => {
 				</div>
 			</section>
 			<section className='eventsPage__content'>
-				{/* <div className="eventsPage__content--filter">
-					<Filter onFilterChange={onFilterChange} />
-				</div> */}
 				<EventCardsContainer events={events} />
 			</section>
 		</div>

@@ -26,7 +26,7 @@ const RecommendedEvents = (props) => {
 
 					// const res = await axios.get(`/events/recommended-events/`);
 
-					let url = 'http://167.71.237.202/events/recommended-events/';
+					let url = 'https://mezami.xyz/events/recommended-events/';
 					const res = await axios({
 						url: url,
 						method: 'GET',
