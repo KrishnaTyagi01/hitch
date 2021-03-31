@@ -100,7 +100,9 @@ const HostEvent = (props) => {
 		return ans;
 	}
 	const getDuration = () => {
-		return DurationH1 + DurationH2 + ':' + DurationM1 + DurationM2;
+		const ret = DurationH1 + DurationH2 + ':' + DurationM1 + DurationM2;
+		// console.log(ret);
+		return ret;
 	}
 
 	const getTime = () => {
@@ -159,7 +161,7 @@ const HostEvent = (props) => {
 			if (Image.img2) form_data.append('image3', Image.img2);
 
 			form_data.append('title', Title);
-			form_data.append('duration_days', singleDay ? null : duration);
+			if (!singleDay) form_data.append('duration_days', duration);
 			form_data.append('description', Tagline);
 			form_data.append('scheduled_time', getTime());
 			form_data.append('scheduled_date', getDate());
@@ -167,10 +169,11 @@ const HostEvent = (props) => {
 			form_data.append('ticket_price', freeEvent ? '0' : price);
 			if (!onlineEvent) form_data.append('address', getAddress());
 			if (singleDay) form_data.append('duration', getDuration());
+
 			form_data.append('is_online_event', onlineEvent);
 			form_data.append('is_free_event', freeEvent);
 
-			let url = 'https://mexami.xyz/events/';
+			let url = 'https://mezami.xyz/events/';
 
 			try {
 				await axios.post(url, form_data, {
@@ -178,12 +181,12 @@ const HostEvent = (props) => {
 						Authorization: `Token ${props.token}`,
 					}
 				})
+				setEventPosted(true);
 			}
 			catch (e) {
 				console.log(e);
 			}
 
-			setEventPosted(true);
 		}
 
 	}
@@ -362,7 +365,7 @@ const HostEvent = (props) => {
 										<label
 											className="filter__form--span">
 											Is it a single day event ?
-										<input readOnly checked={singleDay} className="filter__checkbox--input" type="checkbox" value="greenEggs" />
+										<input checked={singleDay} readOnly className="filter__checkbox--input" type="checkbox" />
 											<span onClick={() => setSingleDay(!singleDay)} className="filter__checkbox--checkmark"></span>
 										</label>
 									</div>
