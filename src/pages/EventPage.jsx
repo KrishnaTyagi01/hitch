@@ -61,6 +61,14 @@ const EventPage = (props) => {
 		return <Page404 />;
 	}
 
+	const images = () => {
+		var arr = [];
+		if (event && event.image) arr.push(event.image);
+		if (event && event.image1) arr.push(event.image1);
+		if (event && event.image2) arr.push(event.image2);
+		return arr;
+	}
+
 	return (
 		<div className='eventPage'>
 			{!event ? (
@@ -73,7 +81,7 @@ const EventPage = (props) => {
 					</button>
 					<article>
 						<main>
-							<BannerCarousel images={[event?.image]} />
+							<BannerCarousel images={images()} />
 							<SmallEventActions event={event} />
 							<Tags tags={event?.tags} />
 							<Overview description={event?.description} />

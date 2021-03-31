@@ -30,7 +30,6 @@ export default function Discover() {
 
 	useEffect(() => {
 		getEvents();
-		// setEvents(dummyEvents);
 	}, []);
 
 	return (

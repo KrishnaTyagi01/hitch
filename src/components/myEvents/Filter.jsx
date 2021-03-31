@@ -264,7 +264,7 @@ const Filter = (props) => {
 									type='text'
 									value={filterState.categories.search}
 									onChange={(e) => onChangeSearch(e, 'categories')}
-									readOnly
+
 								></input>
 							</div>
 							<label className='filter__form--span'>
@@ -321,7 +321,7 @@ const Filter = (props) => {
 									type='text'
 									value={filterState.locations.search}
 									onChange={(e) => onChangeSearch(e, 'locations')}
-									readOnly
+
 								></input>
 							</div>
 							{cityFilters}
@@ -343,16 +343,18 @@ const Filter = (props) => {
 				</div>
 				{/* // =============================================== // */}
 				<div className='filter__type'>
-					<div className='filter__subtype'>
+					<div className={`filter__subtype ${!category ? 'makeHover' : ''}`}
+						onClick={() => {
+							setCategory(!category);
+							if (window.innerWidth <= 870) {
+								setLocation(false);
+								setDate(false);
+							}
+						}}
+
+					>
 						<div className='filter__subtype--name'>Category</div>
 						<i
-							onClick={() => {
-								setCategory(!category);
-								if (window.innerWidth <= 870) {
-									setLocation(false);
-									setDate(false);
-								}
-							}}
 							style={{ fontSize: '7.5px', color: '#ffffff' }}
 							className='fas fa-chevron-down '
 						/>
@@ -380,7 +382,6 @@ const Filter = (props) => {
 										type='text'
 										value={temp_category}
 										onChange={(e) => setTemp_Category(e.target.value)}
-										readOnly
 									></input>
 									<button type='submit'>
 										{
@@ -440,16 +441,17 @@ const Filter = (props) => {
 
 				{/* ==============================LOCATIONS=========================== */}
 				<div className='filter__type'>
-					<div className='filter__subtype'>
+					<div className='filter__subtype'
+						onClick={() => {
+							setLocation(!location);
+							if (window.innerWidth <= 1050) {
+								setCategory(false);
+								setDate(false);
+							}
+						}}>
 						<div className='filter__subtype--name'>Location</div>
 						<i
-							onClick={() => {
-								setLocation(!location);
-								if (window.innerWidth <= 1050) {
-									setCategory(false);
-									setDate(false);
-								}
-							}}
+
 							style={{ fontSize: '7.5px', color: '#ffffff' }}
 							class='fas fa-chevron-down '
 						/>
@@ -476,7 +478,6 @@ const Filter = (props) => {
 										type='text'
 										value={temp_location}
 										onChange={(e) => setTemp_Location(e.target.value)}
-										readOnly
 									></input>
 									<button type='submit'>
 										{
@@ -496,79 +497,22 @@ const Filter = (props) => {
 					) : null}
 				</div>
 
-				{/* // =============================================== // */}
-				{/* <div className="filter__type">
-				<div className="filter__subtype">
-					<div className="filter__subtype--name">Event Time</div>
-					<i onClick={() => setTime(!time)} style={{ fontSize: "7.5px", color: "#ffffff" }} className="fas fa-chevron-down " />
-				</div>
-				{time ? (<div className="filter__checkbox">
-					<form className="filter__form" style={{ display: "flex", flexDirection: "column" }}>
-						<label className="filter__form--span">
-							<input className="filter__checkbox--input" type="checkbox" value="greenEggs" />
-							<span className="filter__checkbox--checkmark"></span>
-						Morning
-					</label>
-						<label className="filter__form--span">
-							<input className="filter__checkbox--input" type="checkbox" value="greenEggs" />
-							<span className="filter__checkbox--checkmark"></span>
-						Afternoon
-					</label>
-						<label className="filter__form--span">
-							<input className="filter__checkbox--input" type="checkbox" value="greenEggs" />
-							<span className="filter__checkbox--checkmark"></span>
-						Evening
-					</label>
-						<label className="filter__form--span">
-							<input className="filter__checkbox--input" type="checkbox" value="greenEggs" />
-							<span className="filter__checkbox--checkmark"></span>
-						Weekend
-					</label>
-					</form>
-				</div>) : null}
-			</div> */}
-				{/* // =============================================== // */}
-				{/* // =============================================== // */}
-				{/* <div className="filter__type">
-				<div className="filter__subtype">
-					<div className="filter__subtype--name">Languages offered</div>
-					<i onClick={() => setLanguage(!language)} style={{ fontSize: "7.5px", color: "#ffffff" }} className="fas fa-chevron-down " />
-				</div>
-				{language ? (<div className="filter__checkbox">
-					<form className="filter__form" style={{ display: "flex", flexDirection: "column" }}>
-						<label className="filter__form--span">
-							<input className="filter__checkbox--input" type="checkbox" value="greenEggs" />
-							<span className="filter__checkbox--checkmark"></span>
-						Hindi
-					</label>
-						<label className="filter__form--span">
-							<input className="filter__checkbox--input" type="checkbox" value="greenEggs" />
-							<span className="filter__checkbox--checkmark"></span>
-						English
-					</label>
-						<label className="filter__form--span">
-							<input className="filter__checkbox--input" type="checkbox" value="greenEggs" />
-							<span className="filter__checkbox--checkmark"></span>
-						Punjabi
-					</label>
-					</form>
-				</div>) : null}
-			</div> */}
 
 				{/* // =============================================== // */}
 
 				<div className='filter__calender'>
 					{/* <Calendar style={{ color: "#171429" }} /> */}
-					<div className='filter__subtype'>
+					<div className='filter__subtype'
+						onClick={() => {
+							setDate(!date);
+							if (window.innerWidth <= 1050) {
+								setCategory(false);
+								setLocation(false);
+							}
+						}}
+					>
 						<div className='filter__subtype--name'>Date</div>
 						<i
-							onClick={() => {
-								setDate(!date);
-								if (window.innerWidth <= 1050) {
-									setCategory(false);
-									setLocation(false);
-								}
-							}}
 							style={{ fontSize: '7.5px', color: '#ffffff' }}
 							className='fas fa-chevron-down '
 						/>
