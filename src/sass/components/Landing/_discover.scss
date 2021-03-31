@@ -3,17 +3,12 @@
 	background-color: var(--color-primary-1);
 	padding: 60px 30px;
 	font-family: Montserrat;
-
-	.header {
-		display: flex;
-		justify-content: space-between;
-
 		h2 {
 			letter-spacing: 0.02em;
 			text-transform: capitalize;
 			padding-left: 18px;
 		}
-	}
+	
 
 	.body {
 		display: grid;
@@ -21,6 +16,12 @@
 		grid-template-columns: 400px 1fr;
 		margin-top: 20px;
 	}
+
+	.filters{
+		margin-bottom: 20px;
+	}
+
+
 	.filter{
 		.Calendar{
 			button{
@@ -70,7 +71,7 @@
 
 @media (max-width: 1051px) {
 	.landing-discover {
-		.body {
+		.body{
 			display: flex;
 			flex-direction: column;
 			justify-content: center;

@@ -1,8 +1,6 @@
 .eventCardsContainer {
-	display: flex;
-	justify-content: flex-start;
-	align-items: flex-start;
-	flex-wrap: wrap;
-	gap: 36px;
-	width: 100%;
+	display: grid;
+	width: 90%;
+	justify-items: center;
+	grid-template-columns: repeat(auto-fill, minmax(258px, 1fr));
 }

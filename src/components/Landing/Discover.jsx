@@ -33,11 +33,11 @@ export default function Discover() {
 	}, []);
 
 	return (
-		<section className='discover'>
+		<section className='landing-discover'>
 			<h2>Discover</h2>
 
-			<div className='discover__content'>
-				<aside>
+			<div className='body'>
+				<aside className="filters">
 					<Filter onFilterChange={onFilterChange} />
 				</aside>
 				<EventCardsContainer events={events} />
