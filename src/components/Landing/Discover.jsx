@@ -30,14 +30,15 @@ export default function Discover() {
 
 	useEffect(() => {
 		getEvents();
+		// setEvents(dummyEvents);
 	}, []);
 
 	return (
-		<section className='landing-discover'>
+		<section className='discover'>
 			<h2>Discover</h2>
 
-			<div className='body'>
-				<aside className="filters">
+			<div className='discover__content'>
+				<aside>
 					<Filter onFilterChange={onFilterChange} />
 				</aside>
 				<EventCardsContainer events={events} />
