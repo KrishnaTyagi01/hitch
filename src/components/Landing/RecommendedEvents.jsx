@@ -1,9 +1,10 @@
 import { useState, useEffect } from 'react';
+import { connect } from 'react-redux';
 import Carousel from 'react-elastic-carousel';
 import axios from 'axios';
 
 import EventCard from '../Common/EventCard';
-import { connect } from 'react-redux';
+import Loading from '../Common/Loading';
 
 const breakpoints = [
 	{ width: 1, itemsToShow: 1 },
@@ -13,49 +14,38 @@ const breakpoints = [
 ];
 
 const RecommendedEvents = (props) => {
-	const { eventID } = props;
-	const [recommendedEvents, setRecommendedEvents] = useState([]);
+	const [recommendedEvents, setRecommendedEvents] = useState(null);
 
 	useEffect(() => {
-		if (props.isAuthenticated) {
-			const getRecommendedEvents = async (eventID) => {
-				try {
-					let form_data = new FormData();
-					form_data.append('topics', ''); //ADD TOPICS USER LIKES HEREEEEEEEEEEEEEEEEEEEEEEEEEEE
-					form_data.append('categories', ''); //ADD CATEGORIES USER LIKES HERRRRRRRRRRRRRRRRRRRRREEEEE
-
-					// const res = await axios.get(`/events/recommended-events/`);
-
-					let url = 'http://167.71.237.202/events/recommended-events/';
-					const res = await axios({
-						url: url,
-						method: 'GET',
-						headers: {
-							Authorization: `Token ${props.token}`,
-							'Content-Type': 'multipart/form-data'
-						},
-						data: form_data
-					});
-
-					setRecommendedEvents(res.data);
-				} catch (error) {
-					console.error();
-				}
-			};
-			getRecommendedEvents(eventID);
-		}
-	}, []);
+		const getRecommendedEvents = async () => {
+			try {
+				const res = await axios.get('/events/recommended-events/', {
+					headers: {
+						Authorization: `Token ${props.token}`
+					}
+				});
+				setRecommendedEvents(res.data);
+			} catch (error) {
+				console.error();
+			}
+		};
+		if (props.isAuthenticated) getRecommendedEvents();
+	}, [props.isAuthenticated]);
 
 	if (!props.isAuthenticated) return null;
 
 	return (
 		<section className='similarEvents'>
 			<h2 className='header'>Recommended Events</h2>
-			<Carousel pagination={false} breakPoints={breakpoints}>
-				{recommendedEvents?.map((event, index) => (
-					<EventCard key={index} event={event} />
-				)) ?? []}
-			</Carousel>
+			{!recommendedEvents ? (
+				<Loading />
+			) : (
+				<Carousel pagination={false} breakPoints={breakpoints}>
+					{recommendedEvents?.map((event, index) => (
+						<EventCard key={index} event={event} />
+					)) ?? []}
+				</Carousel>
+			)}
 		</section>
 	);
 };

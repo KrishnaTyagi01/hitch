@@ -16,7 +16,6 @@ const SearchBar = (props) => {
     const [goToSearchPage, setGoToSearchPage] = useState(false);
     const searchRef = useRef(null);
     const location = useLocation();
-    // const [previousSearch, setPreviousSearch] = useState([]);
 
 
     const getTopics = (search) => {
@@ -54,14 +53,6 @@ const SearchBar = (props) => {
             }
         }} />);
     }
-    // console.log(TagList);
-    // const myTags = () => {
-    //     let ret = [];
-    //     for (let i = 0; i <= 2114; ++i) {
-    //         ret.push(<option value={TagList.Tags[i]} key={i} />);
-    //     }
-    //     return ret;
-    // }
 
     const items = () => {
         let ret = [];
@@ -85,53 +76,6 @@ const SearchBar = (props) => {
 
     return (
         <>
-            {/* <form className='navbar__search-wrapper' onSubmit={e => e.preventDefault()}> */}
-            {/* <label style={{ width: '100%' }}>
-                    <input list="search"
-                        value={searchKeyCopy}
-                        onChange={e => setSearchKeyCopy(e.target.value)}
-                        placeholder='Search' ref={searchRef} name="myBrowser" style={{ backgroundImage: `url(${search})` }} />
-                </label>
-                <datalist id="search">
-                    {myTags()}
-                </datalist> */}
-            {/* <template id="resultstemplate">
-                    <option>Ray0</option>
-                    <option>Ray1</option>
-                    <option>Ray2</option>
-                    <option>Ray3</option>
-                    <option>Ray01</option>
-                    <option>Ray11</option>
-                    <option>Ray21</option>
-                    <option>Ray31</option>
-                    <option>Ray02</option>
-                    <option>Ray12</option>
-                    <option>Ray22</option>
-                    <option>Ray32</option>
-                    <option>Ray012</option>
-                    <option>Ray112</option>
-                    <option>Ray212</option>
-                    <option>Ray312</option>
-                    <option>Ray03</option>
-                    <option>Ray13</option>
-                    <option>Ray23</option>
-                    <option>Ray33</option>
-                    <option>Ray013</option>
-                    <option>Ray113</option>
-                    <option>Ray213</option>
-                    <option>Ray313</option>
-                    <option>Ray023</option>
-                    <option>Ray123</option>
-                    <option>Ray223</option>
-                    <option>Ray323</option>
-                    <option>Ray0123</option>
-                    <option>Ray1123</option>
-                    <option>Ray2123</option>
-                    <option>Ray3123</option>
-                </template>
-                <input type="text" name="search" id="search" placeholder="type 'r'" list="searchresults" autocomplete="off" />
-                <datalist id="searchresults"></datalist> */}
-            {/* </form> */}
             <form className='navbar__search-wrapper' id="catch" onSubmit={e => {
                 e.preventDefault();
             }}>

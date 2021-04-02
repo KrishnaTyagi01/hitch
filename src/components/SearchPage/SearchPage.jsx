@@ -21,7 +21,7 @@ const SearchPage = (props) => {
 				form_data.append('topics', topics);
 				// console.log(topics);
 
-				let url = 'http://167.71.237.202/events/search/';
+				let url = 'https://mezami.xyz/events/search/';
 
 				const res = await axios({
 					method: 'POST',

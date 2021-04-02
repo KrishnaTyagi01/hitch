@@ -202,7 +202,7 @@ var DataListInput = function DataListInput(_ref) {
   // console.log(matchingItems);
   if (matchingItems[0] && matchingItems[0].label !== items[0].label)
     matchingItems.splice(0, 0, { key: -1, label: items[0].label });
-  console.log(matchingItems);
+  // console.log(matchingItems);
   /* visibility property of the drop down menu */
 
 
@@ -524,7 +524,6 @@ DataListInput.propTypes = {
   debounceLoader: PropTypes.node,
   onInput: PropTypes.func,
   onClick: PropTypes.func,
-  searchRef: PropTypes.ref,
 };
 DataListInput.defaultProps = {
   placeholder: '',

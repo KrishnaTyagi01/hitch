@@ -16,19 +16,19 @@
 			width: 315px;
 		}
 	}
-}
 
-.discover {
 	.filter {
 		.Calendar {
+			background-color: var(--color-primary-1);
+			margin-top: 20px;
+
 			button {
 				&:hover {
 					background-color: var(--color-secondary-1);
 					color: var(--color-primary-1);
 				}
 			}
-			background-color: var(--color-primary-1);
-			margin-top: 20px;
+
 			.Calendar__day,
 			.Calendar__monthYear {
 				color: white;
@@ -70,13 +70,10 @@
 }
 
 @media (max-width: 1024px) {
-	.discover__content {
-		flex-direction: column;
-	}
-}
-
-@media (max-width: 1024px) {
 	.discover {
+		&__content {
+			flex-direction: column;
+		}
 		.filter {
 			width: Min(87vw, 450px);
 			overflow-x: auto;
@@ -142,52 +139,6 @@
 				box-shadow: 0px 4px 14px rgba(0, 0, 0, 0.35);
 				padding: 15px 10px;
 				border-radius: 10px;
-			}
-		}
-		.Calendar {
-			button {
-				&:hover {
-					background-color: var(--color-secondary-1);
-					color: var(--color-primary-1);
-				}
-			}
-			background-color: var(--color-primary-2);
-			margin-top: 20px;
-			.Calendar__day,
-			.Calendar__monthYear {
-				color: white;
-			}
-			.Calendar__monthSelectorAnimationWrapper.-open,
-			.Calendar__monthSelector,
-			.Calendar__yearSelectorAnimationWrapper.-open,
-			.Calendar__yearSelector {
-				background-color: var(--color-primary-1);
-			}
-			.Calendar__yearSelectorWrapper {
-				&::before {
-					background: transparent;
-				}
-				&::after {
-					background: transparent;
-				}
-			}
-			.Calendar__monthSelectorItem.-active .Calendar__monthSelectorItemText {
-				background-color: var(--color-secondary-1);
-				color: var(--color-primary-1);
-			}
-			.Calendar__yearSelectorItem.-active .Calendar__yearSelectorText {
-				background-color: var(--color-secondary-1);
-				color: var(--color-primary-1);
-			}
-
-			.Calendar__weekRow {
-				div:hover {
-					background-color: var(--color-secondary-3) !important;
-					color: var(--color-primary-1) !important;
-				}
-			}
-			.Calendar__monthArrowWrapper {
-				display: none;
 			}
 		}
 	}

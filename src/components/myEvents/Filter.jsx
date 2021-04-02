@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef, useLayoutEffect } from 'react';
 import { connect } from 'react-redux';
 import axios from 'axios';
 import { Calendar } from 'react-modern-calendar-datepicker';
@@ -9,12 +9,11 @@ import search from '../../icons/search.svg';
 
 const Filter = (props) => {
 	const [category, setCategory] = useState(false);
-	// const [time, setTime] = useState(false);
-	// const [language, setLanguage] = useState(false);
 	const [location, setLocation] = useState(false);
 	const [date, setDate] = useState(false);
 	const [temp_category, setTemp_Category] = useState('');
 	const [temp_location, setTemp_Location] = useState('');
+	const [initialRender, setInitialRender] = useState(0);
 
 	useEffect(() => {
 		if (window.width <= 1050) {
@@ -125,14 +124,14 @@ const Filter = (props) => {
 		'Kolkata'
 	];
 
-	const cityFilters = cities.map((city) => {
+	const cityFilters = cities.map((city, idx) => {
 		return (
-			<label className='filter__form--span'>
+			<label className='filter__form--span' key={idx}>
 				<input
 					className='filter__checkbox--input'
 					checked={filterState.locations[city]}
 					type='checkbox'
-					value='greenEggs'
+					readOnly
 				/>
 				<span
 					onClick={(e) => changeFilter(e, 'locations', city)}
@@ -197,8 +196,14 @@ const Filter = (props) => {
 		}
 	};
 
-	useEffect(() => {
+	useLayoutEffect(() => {
 		const getEvents = async () => {
+			if (initialRender === 0) {
+				console.log('hello');
+				setInitialRender(1);
+				return null;
+			}
+
 			let form_data = new FormData();
 			form_data.append('categories', getFilterData('categories'));
 			form_data.append('locations', getFilterData('locations'));
@@ -213,7 +218,7 @@ const Filter = (props) => {
 				form_data.append('end_date', getDate('end'));
 			}
 
-			let url = 'http://167.71.237.202/events/search/';
+			let url = 'https://mezami.xyz/events/search/';
 			const res = await axios({
 				url: url,
 				method: 'POST',
@@ -255,23 +260,44 @@ const Filter = (props) => {
 			} else if (category) {
 				return (
 					<div className='filter__checkbox'>
-						<form
+						<div
 							className='filter__form'
 							style={{ display: 'flex', flexDirection: 'column' }}
 						>
-							<div className='_search'>
+							<form
+								className='_search'
+								onSubmit={(e) => {
+									e.preventDefault();
+									let newstate = { ...filterState };
+									newstate.categories.search = temp_category;
+									setFilterState(newstate);
+									e.stopPropagation();
+									// console.log('Hello');
+								}}
+							>
 								<input
 									type='text'
-									value={filterState.categories.search}
-									onChange={(e) => onChangeSearch(e, 'categories')}
+									value={temp_category}
+									onChange={(e) => setTemp_Category(e.target.value)}
 								></input>
-							</div>
+								<button type='submit'>
+									{
+										<div
+											style={{
+												width: '18px',
+												height: '20px',
+												backgroundImage: `url(${search})`
+											}}
+										/>
+									}
+								</button>
+							</form>
 							<label className='filter__form--span'>
 								<input
 									className='filter__checkbox--input'
 									checked={filterState.categories.design}
 									type='checkbox'
-									value='greenEggs'
+									readOnly
 								/>
 								<span
 									onClick={(e) => changeFilter(e, 'categories', 'design')}
@@ -284,7 +310,7 @@ const Filter = (props) => {
 									className='filter__checkbox--input'
 									checked={filterState.categories.soccer}
 									type='checkbox'
-									value='greenEggs'
+									readOnly
 								/>
 								<span
 									onClick={(e) => changeFilter(e, 'categories', 'soccer')}
@@ -297,7 +323,7 @@ const Filter = (props) => {
 									className='filter__checkbox--input'
 									checked={filterState.categories.music}
 									type='checkbox'
-									value='greenEggs'
+									readOnly
 								/>
 								<span
 									onClick={(e) => changeFilter(e, 'categories', 'music')}
@@ -305,25 +331,46 @@ const Filter = (props) => {
 								></span>
 								Music
 							</label>
-						</form>
+						</div>
 					</div>
 				);
 			} else if (location) {
 				return (
 					<div className='filter__checkbox'>
-						<form
+						<div
 							className='filter__form'
 							style={{ display: 'flex', flexDirection: 'column' }}
 						>
-							<div className='_search'>
+							<form
+								className='_search'
+								onSubmit={(e) => {
+									e.preventDefault();
+									let newstate = { ...filterState };
+									newstate.locations.search = temp_location;
+									setFilterState(newstate);
+									e.stopPropagation();
+									// console.log('Hello');
+								}}
+							>
 								<input
 									type='text'
-									value={filterState.locations.search}
-									onChange={(e) => onChangeSearch(e, 'locations')}
+									value={temp_location}
+									onChange={(e) => setTemp_Location(e.target.value)}
 								></input>
-							</div>
+								<button type='submit'>
+									{
+										<div
+											style={{
+												width: '18px',
+												height: '20px',
+												backgroundImage: `url(${search})`
+											}}
+										/>
+									}
+								</button>
+							</form>
 							{cityFilters}
-						</form>
+						</div>
 					</div>
 				);
 			}
@@ -341,16 +388,18 @@ const Filter = (props) => {
 				</div>
 				{/* // =============================================== // */}
 				<div className='filter__type'>
-					<div className='filter__subtype'>
+					<div className={`filter__subtype ${!category ? 'makeHover' : ''}`}
+						onClick={() => {
+							setCategory(!category);
+							if (window.innerWidth <= 870) {
+								setLocation(false);
+								setDate(false);
+							}
+						}}
+
+					>
 						<div className='filter__subtype--name'>Category</div>
 						<i
-							onClick={() => {
-								setCategory(!category);
-								if (window.innerWidth <= 870) {
-									setLocation(false);
-									setDate(false);
-								}
-							}}
 							style={{ fontSize: '7.5px', color: '#ffffff' }}
 							className='fas fa-chevron-down '
 						/>
@@ -396,7 +445,7 @@ const Filter = (props) => {
 										className='filter__checkbox--input'
 										checked={filterState.categories.design}
 										type='checkbox'
-										value='greenEggs'
+										readOnly
 									/>
 									<span
 										onClick={(e) => changeFilter(e, 'categories', 'design')}
@@ -409,7 +458,7 @@ const Filter = (props) => {
 										className='filter__checkbox--input'
 										checked={filterState.categories.soccer}
 										type='checkbox'
-										value='greenEggs'
+										readOnly
 									/>
 									<span
 										onClick={(e) => changeFilter(e, 'categories', 'soccer')}
@@ -422,7 +471,7 @@ const Filter = (props) => {
 										className='filter__checkbox--input'
 										checked={filterState.categories.music}
 										type='checkbox'
-										value='greenEggs'
+										readOnly
 									/>
 									<span
 										onClick={(e) => changeFilter(e, 'categories', 'music')}
@@ -437,16 +486,17 @@ const Filter = (props) => {
 
 				{/* ==============================LOCATIONS=========================== */}
 				<div className='filter__type'>
-					<div className='filter__subtype'>
+					<div className='filter__subtype'
+						onClick={() => {
+							setLocation(!location);
+							if (window.innerWidth <= 1050) {
+								setCategory(false);
+								setDate(false);
+							}
+						}}>
 						<div className='filter__subtype--name'>Location</div>
 						<i
-							onClick={() => {
-								setLocation(!location);
-								if (window.innerWidth <= 1050) {
-									setCategory(false);
-									setDate(false);
-								}
-							}}
+
 							style={{ fontSize: '7.5px', color: '#ffffff' }}
 							class='fas fa-chevron-down '
 						/>
@@ -492,95 +542,36 @@ const Filter = (props) => {
 					) : null}
 				</div>
 
-				{/* // =============================================== // */}
-				{/* <div className="filter__type">
-				<div className="filter__subtype">
-					<div className="filter__subtype--name">Event Time</div>
-					<i onClick={() => setTime(!time)} style={{ fontSize: "7.5px", color: "#ffffff" }} className="fas fa-chevron-down " />
-				</div>
-				{time ? (<div className="filter__checkbox">
-					<form className="filter__form" style={{ display: "flex", flexDirection: "column" }}>
-						<label className="filter__form--span">
-							<input className="filter__checkbox--input" type="checkbox" value="greenEggs" />
-							<span className="filter__checkbox--checkmark"></span>
-						Morning
-					</label>
-						<label className="filter__form--span">
-							<input className="filter__checkbox--input" type="checkbox" value="greenEggs" />
-							<span className="filter__checkbox--checkmark"></span>
-						Afternoon
-					</label>
-						<label className="filter__form--span">
-							<input className="filter__checkbox--input" type="checkbox" value="greenEggs" />
-							<span className="filter__checkbox--checkmark"></span>
-						Evening
-					</label>
-						<label className="filter__form--span">
-							<input className="filter__checkbox--input" type="checkbox" value="greenEggs" />
-							<span className="filter__checkbox--checkmark"></span>
-						Weekend
-					</label>
-					</form>
-				</div>) : null}
-			</div> */}
-				{/* // =============================================== // */}
-				{/* // =============================================== // */}
-				{/* <div className="filter__type">
-				<div className="filter__subtype">
-					<div className="filter__subtype--name">Languages offered</div>
-					<i onClick={() => setLanguage(!language)} style={{ fontSize: "7.5px", color: "#ffffff" }} className="fas fa-chevron-down " />
-				</div>
-				{language ? (<div className="filter__checkbox">
-					<form className="filter__form" style={{ display: "flex", flexDirection: "column" }}>
-						<label className="filter__form--span">
-							<input className="filter__checkbox--input" type="checkbox" value="greenEggs" />
-							<span className="filter__checkbox--checkmark"></span>
-						Hindi
-					</label>
-						<label className="filter__form--span">
-							<input className="filter__checkbox--input" type="checkbox" value="greenEggs" />
-							<span className="filter__checkbox--checkmark"></span>
-						English
-					</label>
-						<label className="filter__form--span">
-							<input className="filter__checkbox--input" type="checkbox" value="greenEggs" />
-							<span className="filter__checkbox--checkmark"></span>
-						Punjabi
-					</label>
-					</form>
-				</div>) : null}
-			</div> */}
 
 				{/* // =============================================== // */}
 
 				<div className='filter__calender'>
 					{/* <Calendar style={{ color: "#171429" }} /> */}
-					<div className='filter__subtype'>
+					<div className='filter__subtype'
+						onClick={() => {
+							setDate(!date);
+							if (window.innerWidth <= 1050) {
+								setCategory(false);
+								setLocation(false);
+							}
+						}}
+					>
 						<div className='filter__subtype--name'>Date</div>
 						<i
-							onClick={() => {
-								setDate(!date);
-								if (window.innerWidth <= 1050) {
-									setCategory(false);
-									setLocation(false);
-								}
-							}}
 							style={{ fontSize: '7.5px', color: '#ffffff' }}
 							className='fas fa-chevron-down '
 						/>
 						{/* <i onClick={() => setDate(!date)} style={{ fontSize: "7.5px", color: "#ffffff" }} className="fas fa-chevron-down " /> */}
 					</div>
 					<div className='datesToFrom'>
-						<div>{`From: ${
-							getDate('start') === null || getDate('start').substr(0, 4) === '2000'
-								? '-'
-								: getDate('start')
-						}`}</div>
-						<div>{`To: ${
-							getDate('end') === null || getDate('start').substr(0, 4) === '2000'
-								? '-'
-								: getDate('end')
-						}`}</div>
+						<div>{`From: ${getDate('start') === null || getDate('start').substr(0, 4) === '2000'
+							? '-'
+							: getDate('start')
+							}`}</div>
+						<div>{`To: ${getDate('end') === null || getDate('start').substr(0, 4) === '2000'
+							? '-'
+							: getDate('end')
+							}`}</div>
 					</div>
 
 					{date && window.innerWidth > 1050 ? (
