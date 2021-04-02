@@ -1,4 +1,4 @@
-.navbar {
+.mainHeader {
 	position: relative;
 	z-index: 2;
 	// display: grid;
@@ -334,7 +334,7 @@
 }
 
 @media screen and (max-width: 1024px) {
-	.navbar {
+	.mainHeader {
 		&__desktop {
 			display: none;
 		}

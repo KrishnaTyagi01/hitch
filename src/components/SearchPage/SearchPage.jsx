@@ -1,6 +1,7 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { connect } from 'react-redux';
 import axios from 'axios';
+
 import Filter from '../myEvents/Filter';
 
 import SearchPageNavbar from './SearchPageNavbar';
@@ -19,18 +20,8 @@ const SearchPage = (props) => {
 			try {
 				let form_data = new FormData();
 				form_data.append('topics', topics);
-				// console.log(topics);
 
-				let url = 'https://mezami.xyz/events/search/';
-
-				const res = await axios({
-					method: 'POST',
-					url: url,
-					headers: {
-						Authorization: `Token ${props.token}`
-					},
-					data: form_data
-				});
+				const res = await axios.post('https://mezami.xyz/events/search/', form_data);
 				setEvents(res.data);
 			} catch (error) {
 				console.error();

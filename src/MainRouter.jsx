@@ -21,8 +21,8 @@ import HostEvent from './components/HostEvent/HostEvent';
 import Temp from './components/Dashboard/Temp';
 import Page404 from './pages/Page404';
 
-import Navbar from './components/Layout/Navbar';
-import Footer from './components/Layout/Footer';
+import MainHeader from './components/Layout/MainHeader';
+import MainFooter from './components/Layout/MainFooter';
 import PrivateRoute from './components/Common/PrivateRoute';
 import LoginPrompt from './components/Common/LoginPrompt';
 
@@ -43,7 +43,7 @@ const MainRouter = () => {
 			<div>
 				<ScrollToTop />
 				<LoginPrompt />
-				<Navbar />
+				<MainHeader />
 
 				<Switch>
 					<Route exact path='/' component={Home} />
@@ -80,7 +80,7 @@ const MainRouter = () => {
 					<Route component={Page404} />
 				</Switch>
 
-				<Footer />
+				<MainFooter />
 			</div>
 		</BrowserRouter>
 	);
