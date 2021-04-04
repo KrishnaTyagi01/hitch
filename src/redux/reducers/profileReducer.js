@@ -7,6 +7,7 @@ import {
 	GET_ATTENDED_EVENTS,
 	GET_UPCOMING_EVENTS,
 	GET_WISHLIST_EVENTS,
+	GET_RECOMMENDED_EVENTS,
 	ADD_TO_WISHLIST,
 	REMOVE_FROM_WISHLIST,
 	DELETE_WISHLIST,
@@ -20,6 +21,7 @@ const initialState = {
 	upcomingEvents: null,
 	wishlistEvents: null,
 	wishlist: null,
+	recommendedEvents: null,
 	upcoming: null,
 	attended: null,
 	detail: null,
@@ -72,6 +74,11 @@ export default function profileReducer(state = initialState, action) {
 			return {
 				...state,
 				wishlistEvents: action.payload
+			};
+		case GET_RECOMMENDED_EVENTS:
+			return {
+				...state,
+				recommendedEvents: action.payload
 			};
 		case ADD_TO_WISHLIST:
 			return {

@@ -41,12 +41,7 @@
 				padding: 8px;
 				border-radius: 50%;
 				margin-left: 8px;
-				transition: 0.2s;
-
-				img {
-					width: 10px;
-					height: 10px;
-				}
+				transition: box-shadow 0.2s;
 
 				&:hover {
 					box-shadow: 0 0 4px white;
@@ -74,7 +69,7 @@
 		border-radius: 0px 0px 10px 10px;
 		width: 100%;
 
-		.date {
+		.event-card__date {
 			text-align: center;
 
 			.month {
@@ -87,19 +82,24 @@
 			}
 		}
 
-		.title {
-			font-size: 14px;
-			font-weight: 500;
-			margin-bottom: 6px;
-
-			white-space: nowrap;
+		.event-card__text {
 			width: 100%;
-			overflow: hidden;
-			text-overflow: ellipsis;
-		}
 
-		.description {
-			font-size: 10px;
+			.title {
+				font-size: 14px;
+				font-weight: 500;
+				margin-bottom: 6px;
+
+				white-space: nowrap;
+				width: 100%;
+				overflow: hidden;
+				text-overflow: ellipsis;
+			}
+
+			.description {
+				font-size: 10px;
+				overflow: hidden;
+			}
 		}
 	}
 }

@@ -1,0 +1,90 @@
+.highlightCard {
+	position: absolute;
+	z-index: 1;
+	left: 0;
+	bottom: -25px;
+	color: var(--color-text-2);
+	background-color: var(--color-primary-2);
+	font-family: 'Montserrat', sans-serif;
+	padding: 30px 24px;
+	border-radius: 10px;
+	width: Min(645px, 100vw);
+	box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.5);
+	// mix-blend-mode: normal;
+
+	&__upper {
+		display: flex;
+		justify-content: space-around;
+
+		.vertical-line {
+			border-right: 1px solid rgba(255, 255, 255, 0.3);
+		}
+	}
+
+	&__detail {
+		padding: 1.5rem 0 2rem;
+		// &:not(:last-of-type) {
+		// }
+
+		&--title {
+			font-weight: 500;
+			font-size: 1.5rem;
+			margin-bottom: 1rem;
+		}
+
+		// &--text {
+		// 	font-size: 16px;
+		// }
+	}
+
+	&__lower {
+		display: flex;
+		justify-content: space-between;
+		margin-top: 1rem;
+
+		.line {
+			border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+			margin: auto 1rem;
+			flex: 1 1 auto;
+			// width: 100%;
+			// color: var(--color-grey-3);
+		}
+
+		&--icon {
+			&:not(:last-of-type) {
+				margin-right: 20px;
+			}
+			&:hover {
+				cursor: pointer;
+			}
+		}
+
+		&--button {
+			background-color: transparent;
+			margin-left: 20px;
+
+			i {
+				font-size: 20px;
+			}
+
+			.heart-icon {
+				color: var(--color-semantic-1);
+			}
+		}
+
+		.know {
+			font-weight: 500;
+			font-size: 16px;
+		}
+	}
+}
+
+@media screen and (max-width: 600px) {
+	.highlightCard {
+		padding: 20px 16px;
+
+		&__detail {
+			padding: 0.6rem 0 0.8rem;
+		}
+	}
+}

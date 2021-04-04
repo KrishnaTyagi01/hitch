@@ -3,7 +3,6 @@
 	background-color: var(--color-primary-2);
 	box-shadow: 0px 0px 14px rgba(0, 0, 0, 0.5);
 	border-radius: 10px;
-	font-family: 'Kumbh Sans', sans-serif;
 	width: 100%;
 	box-shadow: 0px 0px 14px rgba(0, 0, 0, 0.5);
 	// height: 429.25px;
@@ -16,7 +15,7 @@
 		height: 100%;
 
 		.category {
-			font-weight: bold;
+			font-weight: 500;
 			font-size: 13px;
 			line-height: 13px;
 			// padding-bottom: 21px !important;
@@ -25,13 +24,13 @@
 		.eventname {
 			display: flex;
 			flex-direction: column;
-			font-weight: bold;
+			font-weight: 500;
 			font-size: 24px;
 			line-height: 135.9%;
 			margin: 20px 0;
 			width: 242px;
 
-			.hostname {
+			.title {
 				text-transform: uppercase;
 			}
 		}
@@ -46,11 +45,11 @@
 			}
 
 			.eventdate {
-				font-weight: bold;
+				color: var(--color-secondary-3);
+				font-weight: 500;
 				font-size: 16px;
 				line-height: 16px;
 				margin-top: 11px;
-				color: var(--color-secondary-3);
 			}
 		}
 
@@ -62,11 +61,11 @@
 			}
 
 			.time {
-				font-weight: bold;
+				color: var(--color-semantic-2);
+				font-weight: 500;
 				font-size: 16px;
 				line-height: 16px;
 				margin-top: 11px;
-				color: var(--color-semantic-2);
 			}
 		}
 
@@ -91,7 +90,7 @@
 				}
 
 				.fee {
-					font-weight: bold;
+					font-weight: 500;
 					font-size: 16px;
 					line-height: 16px;
 					color: var(--color-secondary-3);
@@ -110,7 +109,7 @@
 				}
 
 				.timer {
-					font-weight: bold;
+					font-weight: 500;
 					font-size: 16px;
 					line-height: 16px;
 					color: var(--color-semantic-3);
@@ -120,15 +119,12 @@
 		}
 
 		.register-button {
-			text-align: center;
 			color: var(--color-primary-2);
 			background: var(--color-secondary-3);
-			font-weight: bold;
+			font-weight: 500;
 			font-size: 16px;
 			line-height: 16px;
-			cursor: pointer;
 			padding: 10px;
-			border: none;
 			border-radius: 10px;
 			width: 100%;
 			margin-top: 1rem;

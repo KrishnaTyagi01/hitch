@@ -1,10 +1,10 @@
 import { useState, useEffect } from 'react';
 import { connect } from 'react-redux';
 import Carousel from 'react-elastic-carousel';
-import axios from 'axios';
 
 import EventCard from '../Common/EventCard';
 import Loading from '../Common/Loading';
+import { getRecommendedEvents } from '../../redux/actions/profileActions';
 
 const breakpoints = [
 	{ width: 1, itemsToShow: 1 },
@@ -14,22 +14,10 @@ const breakpoints = [
 ];
 
 const RecommendedEvents = (props) => {
-	const [recommendedEvents, setRecommendedEvents] = useState(null);
+	// const [recommendedEvents, setRecommendedEvents] = useState(null);
 
 	useEffect(() => {
-		const getRecommendedEvents = async () => {
-			try {
-				const res = await axios.get('/events/recommended-events/', {
-					headers: {
-						Authorization: `Token ${props.token}`
-					}
-				});
-				setRecommendedEvents(res.data);
-			} catch (error) {
-				console.error();
-			}
-		};
-		if (props.isAuthenticated) getRecommendedEvents();
+		if (props.isAuthenticated && !props.recommendedEvents) props.getRecommendedEvents();
 	}, [props.isAuthenticated]);
 
 	if (!props.isAuthenticated) return null;
@@ -37,11 +25,11 @@ const RecommendedEvents = (props) => {
 	return (
 		<section className='similarEvents'>
 			<h2 className='header'>Recommended Events</h2>
-			{!recommendedEvents ? (
+			{!props.recommendedEvents ? (
 				<Loading />
 			) : (
 				<Carousel pagination={false} breakPoints={breakpoints}>
-					{recommendedEvents?.map((event, index) => (
+					{props.recommendedEvents?.map((event, index) => (
 						<EventCard key={index} event={event} />
 					)) ?? []}
 				</Carousel>
@@ -52,7 +40,7 @@ const RecommendedEvents = (props) => {
 
 const mapStateToProps = (state) => ({
 	isAuthenticated: state.authState.isAuthenticated,
-	token: state.authState.token
+	recommendedEvents: state.profileState.recommendedEvents
 });
 
-export default connect(mapStateToProps)(RecommendedEvents);
+export default connect(mapStateToProps, { getRecommendedEvents })(RecommendedEvents);

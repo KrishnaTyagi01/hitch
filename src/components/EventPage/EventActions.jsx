@@ -2,14 +2,10 @@ import { connect } from 'react-redux';
 import Moment from 'moment';
 import { Link } from 'react-router-dom';
 
-import {
-	getSelfProfile,
-	addToWishlist,
-	removeFromWishlist
-} from '../../redux/actions/profileActions';
+import { addToWishlist, removeFromWishlist } from '../../redux/actions/profileActions';
 import { activateLoginPrompt } from '../../redux/actions/userActions';
 import AddToCalendar from './AddToCalendar/AddToCalendar';
-import { useRef, useState } from 'react/cjs/react.development';
+import { useRef, useState } from 'react';
 
 // import Popup from 'reactjs-popup';
 // import 'reactjs-popup/dist/index.css';
@@ -24,7 +20,7 @@ const EventActions = (props) => {
 					<h5 className='category'>Featured in Concerts</h5>
 
 					<div className='eventname'>
-						<h3 className='hostname'>{props.event?.title}</h3>
+						<h3 className='title'>{props.event?.title}</h3>
 						<span className='tourname'></span>
 						<span className='tourdate'></span>
 					</div>
@@ -154,7 +150,6 @@ const mapStateToProps = (state) => ({
 });
 
 export default connect(mapStateToProps, {
-	getSelfProfile,
 	addToWishlist,
 	removeFromWishlist,
 	activateLoginPrompt
