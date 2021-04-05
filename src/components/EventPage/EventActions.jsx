@@ -1,11 +1,11 @@
+import { useState } from 'react';
 import { connect } from 'react-redux';
-import Moment from 'moment';
 import { Link } from 'react-router-dom';
+import Moment from 'moment';
 
+import AddToCalendar from './AddToCalendar/AddToCalendar';
 import { addToWishlist, removeFromWishlist } from '../../redux/actions/profileActions';
 import { activateLoginPrompt } from '../../redux/actions/userActions';
-import AddToCalendar from './AddToCalendar/AddToCalendar';
-import { useRef, useState } from 'react';
 
 // import Popup from 'reactjs-popup';
 // import 'reactjs-popup/dist/index.css';

@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 
 import { logout } from '../../redux/actions/authActions';
 
-import search from '../../icons/search.svg';
+// import search from '../../icons/search.svg';
 import downArrow from '../../icons/downArrow.svg';
 import { eventLocations } from '../../API/constants';
 import SearchBar from '../Layout/SearchBar';
@@ -112,7 +112,7 @@ const SearchPageNavbar = (props) => {
 			</span>
 			<div className='profile-options'>
 				<div className='profile-details'>
-					<img src={props.profile?.image} alt='profile picture' />
+					<img src={props.profile?.image} alt='profile' />
 					<h3>{props.profile?.name}</h3>
 				</div>
 				<hr />

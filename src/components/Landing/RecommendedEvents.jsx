@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useEffect } from 'react';
 import { connect } from 'react-redux';
 import Carousel from 'react-elastic-carousel';
 
@@ -14,22 +14,22 @@ const breakpoints = [
 ];
 
 const RecommendedEvents = (props) => {
-	// const [recommendedEvents, setRecommendedEvents] = useState(null);
+	const { isAuthenticated, recommendedEvents, getRecommendedEvents } = props;
 
 	useEffect(() => {
-		if (props.isAuthenticated && !props.recommendedEvents) props.getRecommendedEvents();
-	}, [props.isAuthenticated]);
+		if (isAuthenticated && !recommendedEvents) getRecommendedEvents();
+	}, [isAuthenticated, recommendedEvents]);
 
-	if (!props.isAuthenticated) return null;
+	if (!isAuthenticated) return null;
 
 	return (
-		<section className='similarEvents'>
+		<section className='recommendedEvents'>
 			<h2 className='header'>Recommended Events</h2>
-			{!props.recommendedEvents ? (
+			{!recommendedEvents ? (
 				<Loading />
 			) : (
 				<Carousel pagination={false} breakPoints={breakpoints}>
-					{props.recommendedEvents?.map((event, index) => (
+					{recommendedEvents?.map((event, index) => (
 						<EventCard key={index} event={event} />
 					)) ?? []}
 				</Carousel>

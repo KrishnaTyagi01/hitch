@@ -32,12 +32,12 @@ const Profile = (props) => {
 		}
 	}, [profileID, props]);
 
-	const getHostedEvents = () => {
-		console.log(userProfile.hosted_events);
-		// const eventResponse = await axios.all(
-		// 	userProfile.hosted_events.map((id) => axios.get(`/events/${id}`))
-		// );
-	};
+	// const getHostedEvents = () => {
+	// 	console.log(userProfile.hosted_events);
+	// 	// const eventResponse = await axios.all(
+	// 	// 	userProfile.hosted_events.map((id) => axios.get(`/events/${id}`))
+	// 	// );
+	// };
 
 	useEffect(() => {
 		if (userProfile) {
@@ -65,16 +65,14 @@ const Profile = (props) => {
 	}, [userProfile]);
 
 	return (
-		<section className='profilepage'>
-			<div className='profile_top'>
+		<section className='profilePage'>
+			<div className='profilePage__top'>
 				<Hero />
 				<HeaderSection />
 			</div>
-			<div className='profile'>
-				<div className='profile__left'>
-					<div className='profile__left--profilecard'>
-						<ProfileCard profile={userProfile} />
-					</div>
+			<div className='profilePage__bottom'>
+				<div className='profilePage__bottom__left'>
+					<ProfileCard profile={userProfile} />
 					{/* <div className='profile__left--connectionbtn'>
 						<ConnectionButton />
 					</div>
@@ -83,13 +81,9 @@ const Profile = (props) => {
 					</div> */}
 				</div>
 
-				<div className='profile__right'>
-					<div className='profile__right--about'>
-						<About name={userProfile?.name} about={userProfile?.about} />
-					</div>
-					<div className='profile__right--hostedevents'>
-						<HostedEvents hostedEvents={hostedEvents} />
-					</div>
+				<div className='profilePage__bottom__right'>
+					<About name={userProfile?.name} about={userProfile?.about} />
+					<HostedEvents hostedEvents={hostedEvents} />
 				</div>
 			</div>
 		</section>

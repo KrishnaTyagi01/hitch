@@ -1,8 +1,8 @@
-import { useState, useEffect, useRef, useLayoutEffect } from 'react';
+import { useState, useEffect, useLayoutEffect } from 'react';
 import { connect } from 'react-redux';
 import axios from 'axios';
 import { Calendar } from 'react-modern-calendar-datepicker';
-import DatePicker from 'react-modern-calendar-datepicker';
+// import DatePicker from 'react-modern-calendar-datepicker';
 
 import 'react-modern-calendar-datepicker/lib/DatePicker.css';
 import search from '../../icons/search.svg';
@@ -236,11 +236,11 @@ const Filter = (props) => {
 		e.stopPropagation();
 	};
 
-	const onChangeSearch = (e, type) => {
-		let newstate = { ...filterState };
-		filterState[type].search = e.target.value;
-		setFilterState(newstate);
-	};
+	// const onChangeSearch = (e, type) => {
+	// 	let newstate = { ...filterState };
+	// 	filterState[type].search = e.target.value;
+	// 	setFilterState(newstate);
+	// };
 
 	const responsiveFilter = () => {
 		if (window.innerWidth <= 1050) {
@@ -388,7 +388,8 @@ const Filter = (props) => {
 				</div>
 				{/* // =============================================== // */}
 				<div className='filter__type'>
-					<div className={`filter__subtype ${!category ? 'makeHover' : ''}`}
+					<div
+						className={`filter__subtype ${!category ? 'makeHover' : ''}`}
 						onClick={() => {
 							setCategory(!category);
 							if (window.innerWidth <= 870) {
@@ -396,7 +397,6 @@ const Filter = (props) => {
 								setDate(false);
 							}
 						}}
-
 					>
 						<div className='filter__subtype--name'>Category</div>
 						<i
@@ -486,17 +486,18 @@ const Filter = (props) => {
 
 				{/* ==============================LOCATIONS=========================== */}
 				<div className='filter__type'>
-					<div className='filter__subtype'
+					<div
+						className='filter__subtype'
 						onClick={() => {
 							setLocation(!location);
 							if (window.innerWidth <= 1050) {
 								setCategory(false);
 								setDate(false);
 							}
-						}}>
+						}}
+					>
 						<div className='filter__subtype--name'>Location</div>
 						<i
-
 							style={{ fontSize: '7.5px', color: '#ffffff' }}
 							class='fas fa-chevron-down '
 						/>
@@ -542,12 +543,12 @@ const Filter = (props) => {
 					) : null}
 				</div>
 
-
 				{/* // =============================================== // */}
 
 				<div className='filter__calender'>
 					{/* <Calendar style={{ color: "#171429" }} /> */}
-					<div className='filter__subtype'
+					<div
+						className='filter__subtype'
 						onClick={() => {
 							setDate(!date);
 							if (window.innerWidth <= 1050) {
@@ -564,14 +565,16 @@ const Filter = (props) => {
 						{/* <i onClick={() => setDate(!date)} style={{ fontSize: "7.5px", color: "#ffffff" }} className="fas fa-chevron-down " /> */}
 					</div>
 					<div className='datesToFrom'>
-						<div>{`From: ${getDate('start') === null || getDate('start').substr(0, 4) === '2000'
-							? '-'
-							: getDate('start')
-							}`}</div>
-						<div>{`To: ${getDate('end') === null || getDate('start').substr(0, 4) === '2000'
-							? '-'
-							: getDate('end')
-							}`}</div>
+						<div>{`From: ${
+							getDate('start') === null || getDate('start').substr(0, 4) === '2000'
+								? '-'
+								: getDate('start')
+						}`}</div>
+						<div>{`To: ${
+							getDate('end') === null || getDate('start').substr(0, 4) === '2000'
+								? '-'
+								: getDate('end')
+						}`}</div>
 					</div>
 
 					{date && window.innerWidth > 1050 ? (

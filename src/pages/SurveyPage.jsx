@@ -12,7 +12,7 @@ const SurveyPage = () => {
 		<div className='surveyPage'>
 			<section className='signup'>
 				<span>
-					<img src={mezami} />
+					<img src={mezami} alt='mezami logo' />
 				</span>
 				<span>Help us to change how people meet.</span>
 				<span>
@@ -23,7 +23,7 @@ const SurveyPage = () => {
 			</section>
 			<section className='survey1'>
 				<div className='image1'>
-					<img src={person3} />
+					<img src={person3} alt='person' />
 				</div>
 				<div className='question'>
 					<div className='heading'>Do you like meeting new people?</div>
@@ -52,7 +52,7 @@ const SurveyPage = () => {
 					</div>
 				</div>
 				<div className='image2'>
-					<img src={person4} />
+					<img src={person4} alt='person' />
 				</div>
 			</section>
 			<section className='survey3'>
@@ -73,8 +73,8 @@ const SurveyPage = () => {
 					</form>
 				</div>
 				<div className='image3'>
-					<img src={person1} />
-					<img src={person2} />
+					<img src={person1} alt='person' />
+					<img src={person2} alt='person' />
 				</div>
 			</section>
 			<section className='fitIn'>
@@ -92,8 +92,8 @@ const SurveyPage = () => {
 					</div>
 				</div>
 				<div className='rightPics'>
-					<img src={yes}></img>
-					<img src={hand}></img>
+					<img src={yes} alt='yes' />
+					<img src={hand} alt='handshake' />
 				</div>
 			</section>
 			<section className='surveyPage_about'>

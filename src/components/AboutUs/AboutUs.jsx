@@ -9,26 +9,23 @@ const AboutUs = () => {
 	return (
 		<div className='AboutUs'>
 			<div className='AboutUs__welcome'>
-
 				<div className='AboutUs__welcome--heading'>Welcome to H!TCH</div>
 				<div className='AboutUs__welcome--body'>
 					Lorem ipsum dolor sit amet consectetur adipisicing elit. Atque deleniti a, velit
 					qui consequatur itaque. Necessitatibus sint totam culpa laboriosam, voluptates
 					temporibus ab dolore? Nostrum voluptatum corporis obcaecati fugit alias!
-					</div>
-
+				</div>
 
 				<div className='AboutUs__welcome--person1'>
-					<img src={person1} />
+					<img src={person1} alt='person' />
 				</div>
 				<div className='AboutUs__welcome--person2'>
-					<img src={person2} />
+					<img src={person2} alt='person' />
 				</div>
-
 			</div>
 			<div className='AboutUs__whatWeDo'>
 				<div className='AboutUs__whatWeDo--heading'>What Do We Do?</div>
-				<div className="cardsContainer">
+				<div className='cardsContainer'>
 					<div className='AboutUs__whatWeDo--cards'>
 						<Card1 card='1' />
 						<Card1 card='2' />
@@ -47,7 +44,7 @@ const AboutUs = () => {
 					</div>
 				</div>
 				<div className='AboutUs__whyChoose__image'>
-					<img src={person3} />
+					<img src={person3} alt='person' />
 				</div>
 			</div>
 			<div className='AboutUs__Team'>
@@ -68,4 +65,3 @@ const AboutUs = () => {
 };
 
 export default AboutUs;
-

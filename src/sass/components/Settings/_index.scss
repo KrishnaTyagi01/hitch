@@ -1,6 +1,6 @@
-@import 'editProfile';
-@import 'eventHistory';
-@import 'settingsSidebar';
+@use 'editProfile';
+@use 'eventHistory';
+@use 'settingsSidebar';
 
 .settings {
 	color: var(--color-text-2);
