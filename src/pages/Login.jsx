@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { connect } from 'react-redux';
 import { Redirect } from 'react-router-dom';
+import { Helmet } from 'react-helmet';
 
 import { login } from '../redux/actions/authActions';
 import { deactivateLoginPrompt } from '../redux/actions/userActions';
@@ -33,6 +34,9 @@ const Login = (props) => {
 
 	return (
 		<div className='login'>
+			<Helmet>
+				<title>Login | Mezami</title>
+			</Helmet>
 			{props.location.state?.message ? (
 				<div className='login-message'>
 					<h4>{props.location.state.message}</h4>

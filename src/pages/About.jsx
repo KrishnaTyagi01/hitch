@@ -1,13 +1,17 @@
-import React from 'react';
-import person1 from '../../icons/about Hitch/person1.png';
-import person2 from '../../icons/about Hitch/person2.png';
-import Card1 from './AboutUsCard1';
-import person3 from '../../icons/hostIntro/image2.svg';
-import TeamCard from './TeamCard';
+import { Helmet } from 'react-helmet';
+
+import person1 from '../icons/about Hitch/person1.png';
+import person2 from '../icons/about Hitch/person2.png';
+import Card1 from '../components/AboutUs/AboutUsCard1';
+import person3 from '../icons/hostIntro/image2.svg';
+import TeamCard from '../components/AboutUs/TeamCard';
 
 const AboutUs = () => {
 	return (
 		<div className='AboutUs'>
+			<Helmet>
+				<title>About Us | Mezami</title>
+			</Helmet>
 			<div className='AboutUs__welcome'>
 				<div className='AboutUs__welcome--heading'>Welcome to H!TCH</div>
 				<div className='AboutUs__welcome--body'>

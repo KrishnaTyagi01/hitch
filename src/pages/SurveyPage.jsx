@@ -1,3 +1,5 @@
+import { Helmet } from 'react-helmet';
+
 import Button1 from '../components/HostEvent/Button1';
 import mezami from '../icons/mezami.png';
 import person1 from '../icons/about Hitch/person1_small.png';
@@ -10,6 +12,9 @@ import yes from '../icons/about Hitch/yes.png';
 const SurveyPage = () => {
 	return (
 		<div className='surveyPage'>
+			<Helmet>
+				<title>Survey Page | Mezami</title>
+			</Helmet>
 			<section className='signup'>
 				<span>
 					<img src={mezami} alt='mezami logo' />

@@ -2,7 +2,7 @@
 	display: flex;
 	justify-content: space-between;
 	flex-wrap: wrap;
-	gap: 1rem;
+	gap: 2rem;
 	color: #ffffff;
 	background-color: var(--color-primary-1);
 	font-family: 'Source Sans Pro', sans-serif;
@@ -92,6 +92,10 @@
 
 		&--buttons {
 			margin-top: 26px;
+
+			button i {
+				margin-left: 0.5rem;
+			}
 		}
 
 		&--sharebtn {
@@ -151,4 +155,12 @@
 			margin-left: 12.3px;
 		}
 	}
+}
+
+.shareButtons {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 0.5rem;
+	max-width: 236px;
+	margin-top: 1rem;
 }

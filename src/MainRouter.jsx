@@ -5,7 +5,7 @@ import Home from './pages/Home';
 import Login from './pages/Login';
 import Register from './pages/Register';
 import HostIntro from './pages/HostIntro';
-import AboutUs from './components/AboutUs/AboutUs';
+import AboutUs from './pages/About';
 
 import EventPage from './pages/EventPage';
 import UserProfile from './pages/UserProfile';

@@ -1,5 +1,6 @@
 import { Switch, Route, NavLink } from 'react-router-dom';
 import { NavHashLink } from 'react-router-hash-link';
+import { Helmet } from 'react-helmet';
 
 import EditProfile from '../components/Settings/EditProfile';
 import EventHistory from '../components/Settings/EventHistory';
@@ -56,6 +57,9 @@ const SettingsSidebar = () => {
 const Settings = () => {
 	return (
 		<main className='settings'>
+			<Helmet>
+				<title>Settings | Mezami</title>
+			</Helmet>
 			<div className='settings__top'></div>
 			<div className='settings__bottom'>
 				<div className='settings__left'>

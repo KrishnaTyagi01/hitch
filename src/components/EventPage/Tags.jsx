@@ -4,8 +4,8 @@ const Tags = (props) => {
 	const tags =
 		props.tags &&
 		JSON.parse(props.tags).map((tag, index) => (
-			<Link to={`/tag/${tag}`} key={index}>
-				<span className='tag'>#{tag}</span>
+			<Link to={`/tag/${tag}`} key={index} className='tag'>
+				#{tag}
 			</Link>
 		));
 

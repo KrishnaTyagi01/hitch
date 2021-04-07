@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import { connect } from 'react-redux';
 import { nanoid } from 'nanoid';
 import axios from 'axios';
+import { Helmet } from 'react-helmet';
 
 import { registerForFreeEvent } from '../redux/actions/eventActions';
 // import ConfirmationPrompt from '../components/Common/ConfirmationPrompt';
@@ -225,6 +226,9 @@ const EventRegistration = (props) => {
 				<Loading />
 			) : (
 				<section>
+					<Helmet>
+						<title>Event Registration | Mezami</title>
+					</Helmet>
 					<div className='eventRegistration__header'>
 						<h3>Registering for</h3>
 						<h2>{event.title}</h2>

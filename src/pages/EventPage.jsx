@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import axios from 'axios';
+import { Helmet } from 'react-helmet';
 
 import BannerCarousel from '../components/EventPage/BannerCarousel';
 import Tags from '../components/EventPage/Tags';
@@ -67,7 +68,7 @@ const EventPage = (props) => {
 		if (event && event.image1) arr.push(event.image1);
 		if (event && event.image2) arr.push(event.image2);
 		return arr;
-	}
+	};
 
 	return (
 		<div className='eventPage'>
@@ -75,6 +76,9 @@ const EventPage = (props) => {
 				<Loading />
 			) : (
 				<>
+					<Helmet>
+						<title>{event.title} | Mezami</title>
+					</Helmet>
 					<button className='back-button' onClick={props.history.goBack}>
 						<i className='fa fa-chevron-left'></i>
 						Back

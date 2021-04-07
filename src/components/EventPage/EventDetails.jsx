@@ -1,8 +1,11 @@
+import { useState } from 'react';
 import Moment from 'moment';
-import copyIcon from '../../icons/copyIcon.svg';
-import shareIcon from '../../icons/shareIcon.svg';
+
+import ShareButtons from './ShareButtons';
 
 const EventDetails = (props) => {
+	const [showShareButtons, setShowShareButtons] = useState(false);
+
 	return (
 		<section className='eventdetails'>
 			<div className='eventdetails__schedule'>
@@ -47,23 +50,21 @@ const EventDetails = (props) => {
 				)}
 
 				<div className='eventdetails__visit--buttons'>
-					<button className='eventdetails__visit--sharebtn'>
+					<button
+						className='eventdetails__visit--sharebtn'
+						onClick={() => {
+							setShowShareButtons((prevState) => !prevState);
+						}}
+					>
 						Share
-						<img
-							className='eventdetails__visit--shareicon'
-							src={shareIcon}
-							alt='share icon'
-						/>
+						<i className='fas fa-share-alt'></i>
 					</button>
 					<button className='eventdetails__visit--copybtn'>
 						Copy
-						<img
-							className='eventdetails__visit--copybtn--copyicon'
-							src={copyIcon}
-							alt='copy icon'
-						/>
+						<i className='far fa-copy'></i>
 						<p className='eventdetails__visit--copybtn--tooltip'>Copy to clipboard</p>
 					</button>
+					{showShareButtons ? <ShareButtons event={props.event} /> : null}
 				</div>
 			</div>
 		</section>

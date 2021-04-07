@@ -1,34 +1,33 @@
-.AboutUs{
+.AboutUs {
 	// background-color: #E5E5E5;
 	background: #171429;
 	// height: 100%;
 	// width: 100%;
-	&__welcome{
+	&__welcome {
 		width: 100%;
 		position: relative;
 		height: 390px;
 		// background:linear-gradient(to left, #2B244D, var(--color-primary-1));
 		background: linear-gradient(to left, #524690 -64.51%, #171429 100%);
-		&--heading{
+		&--heading {
 			position: absolute;
-			top:70px;
-			left:60px;
+			top: 70px;
+			left: 60px;
 
-			font-family: "Kumbh Sans", sans-serif;
+			font-family: 'Kumbh Sans', sans-serif;
 			font-style: normal;
 			font-weight: bold;
 			font-size: 44px;
 			line-height: 153.3%;
-			color: #FFFFFF;
+			color: #ffffff;
 			// margin-bottom: 200px;
-
 		}
-		&--body{
+		&--body {
 			overflow: hidden;
 			position: absolute;
-			top:130px;
-			left:60px;
-			width: Min(590px,80%);
+			top: 130px;
+			left: 60px;
+			width: Min(590px, 80%);
 			margin-right: 20px;
 			height: auto;
 			font-family: Montserrat;
@@ -37,86 +36,80 @@
 			font-size: 22px;
 			line-height: 27px;
 			text-align: justify;
-			color: #FFFFFF;
-			margin-top:10px;
+			color: #ffffff;
+			margin-top: 10px;
 		}
-		&--person1{
+		&--person1 {
 			position: absolute;
 			left: 64.37%;
 			right: 3.29%;
 			top: 4.29%;
 			bottom: 87.21%;
 		}
-		&--person2{
+		&--person2 {
 			position: absolute;
 			left: 74.56%;
 			right: -8.62%;
 			top: 4.21%;
 			bottom: 87.19%;
-
 		}
 	}
 
-
-	&__whatWeDo{
-		width: 100%;	
-		padding-top:30px;
+	&__whatWeDo {
+		width: 100%;
+		padding-top: 30px;
 		height: 730px;
 
-		&--heading{
+		&--heading {
 			text-align: center;
 
-			font-family: "Kumbh Sans", sans-serif;
+			font-family: 'Kumbh Sans', sans-serif;
 			font-style: normal;
 			font-weight: bold;
 			font-size: 34px;
 			line-height: 153.3%;
-			color: #FFFFFF;
+			color: #ffffff;
 		}
 
-		&--cards{
+		&--cards {
 			margin-top: 40px;
 			// margin-bottom: 80px;
-			width: Min(90%,1250px);
+			width: Min(90%, 1250px);
 			display: grid;
-			grid-template-columns:400px 400px 400px;
+			grid-template-columns: 400px 400px 400px;
 			grid-gap: 20px;
 			overflow-x: auto;
 			margin-right: 20px;
 			&::-webkit-scrollbar {
 				width: 0px;
 				height: 5px;
-				margin-top:4px;
-		
+				margin-top: 4px;
 			}
 			&::-webkit-scrollbar-track {
-				background:  var(--color-primary-1); 
-			}
-			
-			&::-webkit-scrollbar-thumb {
-				background: rgb(82, 70, 144) ; 
+				background: var(--color-primary-1);
 			}
 
+			&::-webkit-scrollbar-thumb {
+				background: rgb(82, 70, 144);
+			}
 		}
 
-		.cardsContainer{
+		.cardsContainer {
 			display: flex;
 			justify-content: center;
 			width: 100%;
 		}
-		
 	}
 
-
-	&__whyChoose{
+	&__whyChoose {
 		background: linear-gradient(to right, #524690 -64.51%, #171429 100%);
 		height: 390px;
 		position: relative;
 
-		&__content{
+		&__content {
 			position: absolute;
-			top:50px;
-			left:50%;
+			top: 50px;
+			left: 50%;
 			height: 280px;
 			justify-content: center;
 			display: flex;
@@ -125,7 +118,7 @@
 			align-items: center;
 		}
 
-		&__header{
+		&__header {
 			// font-family: Montserrat;
 			padding-bottom: 30px;
 			// font-style: normal;
@@ -134,46 +127,46 @@
 			// line-height: 39px;
 			// color: #FFFFFF;
 
-			font-family: "Kumbh Sans", sans-serif;
+			font-family: 'Kumbh Sans', sans-serif;
 			font-style: normal;
 			font-weight: bold;
 			font-size: 34px;
 			line-height: 153.3%;
-			color: #FFFFFF;
+			color: #ffffff;
 		}
 
-		&__text{
+		&__text {
 			font-family: Montserrat;
 			font-style: normal;
 			font-weight: normal;
 			font-size: 22px;
 			line-height: 27px;
 			text-align: justify;
-			color: #FFFFFF;
+			color: #ffffff;
 		}
 
-		&__image{
+		&__image {
 			position: absolute;
-			top:53px;
+			top: 53px;
 		}
 	}
 
-	&__Team{
+	&__Team {
 		padding: 0px 20px;
-		padding-top:200px;
+		padding-top: 200px;
 		width: 100%;
-		&__heading{
+		&__heading {
 			width: 100%;
 			text-align: center;
-			font-family: "Kumbh Sans", sans-serif;
+			font-family: 'Kumbh Sans', sans-serif;
 			font-style: normal;
 			font-weight: bold;
 			font-size: 34px;
 			line-height: 153.3%;
-			color: #FFFFFF;
+			color: #ffffff;
 		}
 
-		&__grid{
+		&__grid {
 			width: 100%;
 			padding-top: 60px;
 			padding-bottom: 160px;
@@ -184,33 +177,37 @@
 			grid-gap: 50px;
 		}
 	}
-
-	
 }
 
-.AboutUsCard{
+.teamMember {
+	width: 362.6px;
+	height: 400px;
+	background: #2b244d;
+	box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.55);
+	border-radius: 10px;
+}
+
+.AboutUsCard {
 	display: flex;
 	flex-direction: column;
 	align-items: center;
 	justify-content: space-evenly;
-	background-color: #2B244D;
-	width:400px;
+	background-color: #2b244d;
+	width: 400px;
 	height: 540px;
 	border-radius: 5%;
 	margin-right: 20px;
-	&--heading{
+	&--heading {
 		font-family: Montserrat;
 		font-style: normal;
 		font-weight: normal;
 		font-size: 28px;
 		line-height: 34px;
-		color: #39EAB4;
+		color: #39eab4;
 	}
 
-	
-
-	&--image{
-		img{
+	&--image {
+		img {
 			min-width: 0;
 			min-height: 0;
 			width: auto;
@@ -218,8 +215,8 @@
 		}
 	}
 
-	&--text{
-		width:300px;
+	&--text {
+		width: 300px;
 		height: auto;
 		font-family: Montserrat;
 		font-style: normal;
@@ -228,22 +225,22 @@
 		line-height: 22px;
 		text-align: justify;
 
-		color: #39EAB4;
+		color: #39eab4;
 	}
 
-	&__lastRow--card1{
+	&__lastRow--card1 {
 		width: 100%;
 		display: flex;
 		justify-content: space-evenly;
 	}
 
-	&__lastRow--card2{
+	&__lastRow--card2 {
 		display: flex;
 		align-items: center;
 		justify-content: center;
-		background: #39EAB4;    
+		background: #39eab4;
 		border-radius: 5px;
-		width:200px;
+		width: 200px;
 		height: 40px;
 		font-family: Montserrat;
 		font-style: normal;
@@ -252,24 +249,23 @@
 		line-height: 22px;
 		color: #171429;
 
-		&:hover{
+		&:hover {
 			cursor: pointer;
 			text-decoration: none;
 		}
 
-		a{
+		a {
 			text-decoration: none;
 		}
-
 	}
 
-	&__lastRow--card3{
+	&__lastRow--card3 {
 		display: flex;
 		align-items: center;
 		justify-content: center;
-		background: #39EAB4;    
+		background: #39eab4;
 		border-radius: 5px;
-		width:180px;
+		width: 180px;
 		height: 40px;
 		font-family: Montserrat;
 		font-style: normal;
@@ -278,29 +274,27 @@
 		line-height: 22px;
 		color: #171429;
 
-		&:hover{
+		&:hover {
 			cursor: pointer;
 			text-decoration: none;
 		}
 
-		a{
+		a {
 			text-decoration: none;
 		}
 	}
 }
 
-
-
-@media(max-width:975px){
-	.AboutUs{
+@media (max-width: 975px) {
+	.AboutUs {
 		// background-color: red;
-		&__welcome{
-			&--person1{
+		&__welcome {
+			&--person1 {
 				// position: absolute;
 				display: none;
 				// background-color: red;
 			}
-			&--person2{
+			&--person2 {
 				// position: absolute;
 				display: none;
 			}
@@ -309,14 +303,14 @@
 	}
 }
 
-@media(max-width:845px){
-	.AboutUs{
-		&__whyChoose{
-			&__image{
+@media (max-width: 845px) {
+	.AboutUs {
+		&__whyChoose {
+			&__image {
 				display: none;
 			}
 
-			&__content{
+			&__content {
 				// width: 90%;
 				// height: 100%;
 				padding-top: 60px;
@@ -324,6 +318,5 @@
 				margin-left: 30px;
 			}
 		}
-
 	}
 }

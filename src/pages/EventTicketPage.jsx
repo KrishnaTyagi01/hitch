@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 // import { PDFDownloadLink } from '@react-pdf/renderer';
+import { Helmet } from 'react-helmet';
 
 import EventTicket from '../components/EventPage/EventTicket';
 // import EventTicketPDF from '../components/EventPage/EventTicketPDF';
@@ -59,6 +60,9 @@ const EventTicketPage = (props) => {
 				<Loading />
 			) : (
 				<div className-ticket-container>
+					<Helmet>
+						<title>Event Ticket | Mezami</title>
+					</Helmet>
 					<EventTicket ticket={ticket} profile={props.profile} />
 					{/* <PDFDownloadLink
 						document={

@@ -6,7 +6,7 @@
 	@import 'actionButtons';
 }
 
-.alreadyInCalendar{
+.alreadyInCalendar {
 	background-color: var(--color-secondary-3);
 	text-align: center;
 	margin-top: 10px;
@@ -18,9 +18,9 @@
 	max-width: 400px;
 }
 
-.small-event-actions{
-	.alreadyInCalendar{
-		margin:13.72px auto 0 auto;
+.small-event-actions {
+	.alreadyInCalendar {
+		margin: 13.72px auto 0 auto;
 	}
 }
 
