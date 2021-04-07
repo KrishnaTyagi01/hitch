@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
+import { Helmet } from 'react-helmet';
 
 import { registerUser, CheckUserExist, validateOtp } from '../API/commonRequests';
 import { login } from '../redux/actions/authActions';
@@ -61,6 +62,9 @@ const Register = (props) => {
 
 	return (
 		<div className='registerContainer'>
+			<Helmet>
+				<title>Register | Mezami</title>
+			</Helmet>
 			<div className='signin'>
 				<h2 className='signin__heading'>Register User</h2>
 				<div className='signin__mid'>

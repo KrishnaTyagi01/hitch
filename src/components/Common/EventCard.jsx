@@ -92,11 +92,11 @@ const EventCard = (props) => {
 				}}
 			>
 				<div className='bottom-details'>
-					<div className='date'>
+					<div className='event-card__date'>
 						<p className='month'>{Moment(scheduled_date).format('MMM')}</p>
 						<p className='day'>{Moment(scheduled_date).format('D')}</p>
 					</div>
-					<div>
+					<div className='event-card__text'>
 						<p className='title'>{title?.substring(0, 40)}</p>
 						<p className='description'>{description?.substring(0, 100)}</p>
 					</div>

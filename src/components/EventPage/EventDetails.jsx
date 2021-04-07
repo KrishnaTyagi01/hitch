@@ -1,22 +1,25 @@
+import { useState } from 'react';
 import Moment from 'moment';
-import copyIcon from '../../icons/copyIcon.svg';
-import shareIcon from '../../icons/shareIcon.svg';
+
+import ShareButtons from './ShareButtons';
 
 const EventDetails = (props) => {
+	const [showShareButtons, setShowShareButtons] = useState(false);
+
 	return (
 		<section className='eventdetails'>
 			<div className='eventdetails__schedule'>
 				<h3 className='eventdetails__schedule--head'>SCHEDULE</h3>
 
 				<div className='eventdetails__timing'>
-					<span className='eventdetails__timing--text'>START TIME</span>
+					<p className='eventdetails__timing--text'>START TIME</p>
 					<p className='eventdetails__timing--time'>
 						{Moment(props.event?.scheduled_time, ['hh:mm:ss']).format('hh:mm A')}
 					</p>
 				</div>
 
 				<div className='eventdetails__duration'>
-					<span className='eventdetails__duration--text'>DURATION</span>
+					<p className='eventdetails__duration--text'>DURATION</p>
 					<p className='eventdetails__duration--length'>
 						{(props.event?.duration_days && `${props.event?.duration_days} days`) ||
 							(props.event?.duration && `${props.event?.duration} hours`)}
@@ -28,7 +31,7 @@ const EventDetails = (props) => {
 				<h3 className='eventdetails__price--head'>PRICE</h3>
 				{props.event?.ticket_price === 0 ? (
 					<>
-						<span className='eventdetails__price--body'>THIS EVENT IS</span>
+						<p className='eventdetails__price--body'>THIS EVENT IS</p>
 						<p className='eventdetails__price--cost'>FREE</p>
 					</>
 				) : (
@@ -38,31 +41,30 @@ const EventDetails = (props) => {
 
 			<div className='eventdetails__visit'>
 				<h3 className='eventdetails__visit--head'>VISIT ORGANISERS</h3>
-
-				<a href='#' target='_blank' className='eventdetails__visit--link'>
-					{props.organizersWebsite ? props.organizersWebsite : 'No website provided'}
-				</a>
+				{props.organizersWebsite ? (
+					<a href='#' target='_blank' className='eventdetails__visit--link'>
+						{props.organizersWebsite}
+					</a>
+				) : (
+					<p>No website provided</p>
+				)}
 
 				<div className='eventdetails__visit--buttons'>
-					<button className='eventdetails__visit--sharebtn'>
+					<button
+						className='eventdetails__visit--sharebtn'
+						onClick={() => {
+							setShowShareButtons((prevState) => !prevState);
+						}}
+					>
 						Share
-						<img
-							className='eventdetails__visit--shareicon'
-							src={shareIcon}
-							alt='share icon'
-						/>
+						<i className='fas fa-share-alt'></i>
 					</button>
 					<button className='eventdetails__visit--copybtn'>
 						Copy
-						<img
-							className='eventdetails__visit--copybtn--copyicon'
-							src={copyIcon}
-							alt='copy icon'
-						/>
-						<span className='eventdetails__visit--copybtn--tooltip'>
-							Copy to clipboard
-						</span>
+						<i className='far fa-copy'></i>
+						<p className='eventdetails__visit--copybtn--tooltip'>Copy to clipboard</p>
 					</button>
+					{showShareButtons ? <ShareButtons event={props.event} /> : null}
 				</div>
 			</div>
 		</section>

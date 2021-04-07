@@ -1,4 +1,5 @@
 import { connect } from 'react-redux';
+import { Helmet } from 'react-helmet';
 
 import Hero from '../components/Profile/Hero';
 import About from '../components/Profile/About';
@@ -12,6 +13,9 @@ import WishlistEvents from '../components/Profile/WishlistEvents';
 const SelfProfile = (props) => {
 	return (
 		<main className='profilePage'>
+			<Helmet>
+				<title>Your Profile | Mezami</title>
+			</Helmet>
 			<div className='profilePage__top'>
 				<Hero />
 				<HeaderSection />

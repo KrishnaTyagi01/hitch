@@ -2,9 +2,10 @@ import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 // import { PDFDownloadLink } from '@react-pdf/renderer';
+import { Helmet } from 'react-helmet';
 
 import EventTicket from '../components/EventPage/EventTicket';
-// import EventTicketPDF from '../components/EventPage/EventTicket';
+// import EventTicketPDF from '../components/EventPage/EventTicketPDF';
 import Loading from '../components/Common/Loading';
 
 import { getUpcomingEvents } from '../redux/actions/profileActions';
@@ -58,17 +59,21 @@ const EventTicketPage = (props) => {
 			{!ticket ? (
 				<Loading />
 			) : (
-				<>
+				<div className-ticket-container>
+					<Helmet>
+						<title>Event Ticket | Mezami</title>
+					</Helmet>
 					<EventTicket ticket={ticket} profile={props.profile} />
 					{/* <PDFDownloadLink
 						document={
 							<EventTicketPDF
-								// ticket={ticket}
 								ticket={{
 									num_of_participants,
-									event: { title, scheduled_time, scheduled_date, ticket_price }
+									title,
+									scheduled_time,
+									scheduled_date,
+									ticket_price
 								}}
-								// profile={props.profile}
 								profile={{ name, email, phone }}
 							/>
 						}
@@ -85,7 +90,7 @@ const EventTicketPage = (props) => {
 							loading ? 'Loading document...' : 'Download as PDF'
 						}
 					</PDFDownloadLink> */}
-				</>
+				</div>
 			)}
 		</div>
 	);

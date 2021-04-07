@@ -1,10 +1,9 @@
-import { useState, useEffect, useRef } from 'react';
+import { useState, useEffect } from 'react';
 import axios from 'axios';
 
 import Filter from '../myEvents/Filter';
 import EventCardsContainer from '../Common/EventCardsContainer';
-import filters from './filters.json';
-import { dummyEvents } from '../../temp/events';
+// import { dummyEvents } from '../../temp/events';
 
 export default function Discover() {
 	const [events, setEvents] = useState([]);
@@ -18,10 +17,6 @@ export default function Discover() {
 			// setHttpStatusCode(error.response.status);
 			// errorHandler(error);
 		}
-	};
-
-	const updateFilter = (e) => {
-		console.log(e.target.name, e.target.value);
 	};
 
 	const onFilterChange = (events) => {

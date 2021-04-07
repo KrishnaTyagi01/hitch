@@ -19,7 +19,7 @@ const Nav = (props) => {
 					</span>
 					<div className='profileOptions'>
 						<div className='profileDetails'>
-							<img src='/static/avatar.jpg' alt='profile picture' />
+							<img src='/static/avatar.jpg' alt='profile' />
 							<h3>John Doe</h3>
 						</div>
 						<hr />

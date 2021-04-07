@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import axios from 'axios';
+import { Helmet } from 'react-helmet';
 
 import About from '../components/Profile/About';
 import HeaderSection from '../components/Profile/HeaderSection';
@@ -7,6 +8,8 @@ import Hero from '../components/Profile/Hero';
 import ProfileCard from '../components/Profile/ProfileCard';
 import HostedEvents from '../components/Profile/HostedEvents';
 // import { ConnectionButton, FollowButton } from '../components/profile_components/Buttons';
+import Loading from '../components/Common/Loading';
+import Page404 from './Page404';
 
 import errorHandler from '../API/errorHandler';
 
@@ -15,10 +18,11 @@ const Profile = (props) => {
 
 	const [userProfile, setUserProfile] = useState(null);
 	const [hostedEvents, setHostedEvents] = useState(null);
+	const [profileError, setProfileError] = useState(null);
 
 	useEffect(() => {
-		if (props.location.state?.userProfile) {
-			setUserProfile(props.location.state.userProfile);
+		if (props.location.state?.profile) {
+			setUserProfile(props.location.state.profile);
 		} else {
 			const getUserProfile = async () => {
 				try {
@@ -26,18 +30,19 @@ const Profile = (props) => {
 					setUserProfile(res.data);
 				} catch (error) {
 					errorHandler(error);
+					setProfileError(404);
 				}
 			};
 			getUserProfile();
 		}
 	}, [profileID, props]);
 
-	const getHostedEvents = () => {
-		console.log(userProfile.hosted_events);
-		// const eventResponse = await axios.all(
-		// 	userProfile.hosted_events.map((id) => axios.get(`/events/${id}`))
-		// );
-	};
+	// const getHostedEvents = () => {
+	// 	console.log(userProfile.hosted_events);
+	// 	// const eventResponse = await axios.all(
+	// 	// 	userProfile.hosted_events.map((id) => axios.get(`/events/${id}`))
+	// 	// );
+	// };
 
 	useEffect(() => {
 		if (userProfile) {
@@ -64,34 +69,41 @@ const Profile = (props) => {
 		}
 	}, [userProfile]);
 
-	return (
-		<section className='profilepage'>
-			<div className='profile_top'>
-				<Hero />
-				<HeaderSection />
-			</div>
-			<div className='profile'>
-				<div className='profile__left'>
-					<div className='profile__left--profilecard'>
-						<ProfileCard profile={userProfile} />
-					</div>
-					{/* <div className='profile__left--connectionbtn'>
-						<ConnectionButton />
-					</div>
-					<div className='profile__left--followbtn'>
-						<FollowButton />
-					</div> */}
-				</div>
+	if (profileError === 404) {
+		return <Page404 />;
+	}
 
-				<div className='profile__right'>
-					<div className='profile__right--about'>
-						<About name={userProfile?.name} about={userProfile?.about} />
+	return (
+		<section className='profilePage'>
+			{!userProfile ? (
+				<Loading />
+			) : (
+				<>
+					<Helmet>
+						<title>{`${userProfile.name}'s Profile`} | Mezami</title>
+					</Helmet>
+					<div className='profilePage__top'>
+						<Hero />
+						<HeaderSection />
 					</div>
-					<div className='profile__right--hostedevents'>
-						<HostedEvents hostedEvents={hostedEvents} />
+					<div className='profilePage__bottom'>
+						<div className='profilePage__bottom__left'>
+							<ProfileCard profile={userProfile} />
+							{/* <div className='profile__left--connectionbtn'>
+							<ConnectionButton />
+						</div>
+						<div className='profile__left--followbtn'>
+							<FollowButton />
+						</div> */}
+						</div>
+
+						<div className='profilePage__bottom__right'>
+							<About name={userProfile?.name} about={userProfile?.about} />
+							<HostedEvents hostedEvents={hostedEvents} />
+						</div>
 					</div>
-				</div>
-			</div>
+				</>
+			)}
 		</section>
 	);
 };

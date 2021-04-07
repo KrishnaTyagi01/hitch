@@ -1,11 +1,9 @@
-@import 'login';
-@import 'register';
-@import 'profile';
-@import 'hostintropage';
-@import 'eventRegistration';
-@import 'eventTicketPage';
-@import 'page404';
-
-@import 'aboutUs/aboutUs';
-@import 'aboutUs/teamCard';
-@import 'surveyPage';
+@use 'login';
+@use 'register';
+@use 'profile';
+@use 'hostintropage';
+@use 'eventRegistration';
+@use 'eventTicketPage';
+@use 'page404';
+@use 'aboutUs';
+@use 'surveyPage';

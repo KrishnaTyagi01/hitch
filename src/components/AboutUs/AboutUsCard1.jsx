@@ -1,4 +1,3 @@
-import React from 'react';
 import { Link } from 'react-router-dom';
 
 import image1 from '../../icons/about Hitch/matchmaking.png';
@@ -12,8 +11,8 @@ const AboutUsCard = (props) => {
 		if (props.card === '1') {
 			return (
 				<div className='AboutUsCard__lastRow--card1'>
-					<img src={googleplay} />
-					<img src={appstore} />
+					<img src={googleplay} alt='google playstore' />
+					<img src={appstore} alt='apple appstore' />
 				</div>
 			);
 		} else if (props.card === '2') {
@@ -36,11 +35,13 @@ const AboutUsCard = (props) => {
 	function image_item() {
 		switch (props.card) {
 			case '1':
-				return <img src={image1} />;
+				return <img src={image1} alt='handshake' />;
 			case '2':
-				return <img src={image2} />;
+				return <img src={image2} alt='search' />;
 			case '3':
-				return <img src={image3} />;
+				return <img src={image3} alt='announcement' />;
+			default:
+				return null;
 		}
 	}
 

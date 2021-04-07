@@ -1,9 +1,9 @@
 import { useState, useEffect } from 'react';
 import { connect } from 'react-redux';
 import { Redirect } from 'react-router-dom';
+import { Helmet } from 'react-helmet';
 
 import { login } from '../redux/actions/authActions';
-import { getSelfProfile } from '../redux/actions/profileActions';
 import { deactivateLoginPrompt } from '../redux/actions/userActions';
 
 const Login = (props) => {
@@ -20,7 +20,6 @@ const Login = (props) => {
 	const handleSubmit = (e) => {
 		e.preventDefault();
 		props.login({ username: state.email, password: state.password }, () => {
-			props.getSelfProfile();
 			props.history.push(props.location.state?.referrer ?? '/');
 		});
 	};
@@ -30,12 +29,14 @@ const Login = (props) => {
 	}, [props]);
 
 	if (props.isAuthenticated) {
-		console.log('already logged in');
-		return <Redirect to='/profile' />;
+		return <Redirect to='/' />;
 	}
 
 	return (
 		<div className='login'>
+			<Helmet>
+				<title>Login | Mezami</title>
+			</Helmet>
 			{props.location.state?.message ? (
 				<div className='login-message'>
 					<h4>{props.location.state.message}</h4>
@@ -86,6 +87,4 @@ const mapStateToProps = (state) => ({
 	isAuthenticated: state.authState.isAuthenticated
 });
 
-export default connect(mapStateToProps, { login, getSelfProfile, deactivateLoginPrompt })(
-	Login
-);
+export default connect(mapStateToProps, { login, deactivateLoginPrompt })(Login);

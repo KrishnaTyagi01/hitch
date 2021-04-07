@@ -1,4 +1,4 @@
-.navbar {
+.mainHeader {
 	position: relative;
 	z-index: 2;
 	// display: grid;
@@ -113,19 +113,6 @@
 		display: flex;
 		justify-content: space-between;
 		align-items: center;
-
-		.nav-link {
-			padding: 8px 16px;
-			border: none;
-			border-radius: 20px;
-			margin-left: 1rem;
-			transition: 0.1s;
-		}
-
-		.active-link {
-			color: var(--color-primary-1);
-			background: var(--color-secondary-3);
-		}
 	}
 
 	&__profile-dropdown {
@@ -334,7 +321,7 @@
 }
 
 @media screen and (max-width: 1024px) {
-	.navbar {
+	.mainHeader {
 		&__desktop {
 			display: none;
 		}

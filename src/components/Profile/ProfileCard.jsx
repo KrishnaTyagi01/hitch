@@ -18,7 +18,7 @@ const ProfileCard = (props) => {
 			<div className='profilecard__lower'>
 				<div className='profilecard__lower--item'>
 					<img src={jobIcon} alt='icon' className='profilecard__lower--icon' />
-					<span className='profilecard__lower--text'>{props.profile?.job}</span>
+					<span className='profilecard__lower--text'>{props.profile?.role}</span>
 				</div>
 				<div className='profilecard__lower--item'>
 					<img src={buildingIcon} alt='icon' className='profilecard__lower--icon' />

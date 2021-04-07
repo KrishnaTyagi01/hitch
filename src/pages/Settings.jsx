@@ -1,10 +1,11 @@
 import { Switch, Route, NavLink } from 'react-router-dom';
-import { HashLink } from 'react-router-hash-link';
+import { NavHashLink } from 'react-router-hash-link';
+import { Helmet } from 'react-helmet';
 
 import EditProfile from '../components/Settings/EditProfile';
 import EventHistory from '../components/Settings/EventHistory';
 
-export const SettingsSidebar = () => {
+const SettingsSidebar = () => {
 	return (
 		<aside className='settingsSidebar'>
 			<nav>
@@ -20,20 +21,20 @@ export const SettingsSidebar = () => {
 						</NavLink>
 						<ul className='edit-profile-links'>
 							<li>
-								<HashLink
+								<NavHashLink
 									to='/settings/edit-profile#personal-details'
-									className='settings-section-link'
+									activeStyle={{ color: 'var(--color-secondary-3)' }}
 								>
 									Personal Details
-								</HashLink>
+								</NavHashLink>
 							</li>
 							<li>
-								<HashLink
+								<NavHashLink
 									to='/settings/edit-profile#preferences'
-									className='settings-section-link'
+									activeStyle={{ color: 'var(--color-secondary-3)' }}
 								>
 									Preferences
-								</HashLink>
+								</NavHashLink>
 							</li>
 						</ul>
 					</li>
@@ -56,6 +57,9 @@ export const SettingsSidebar = () => {
 const Settings = () => {
 	return (
 		<main className='settings'>
+			<Helmet>
+				<title>Settings | Mezami</title>
+			</Helmet>
 			<div className='settings__top'></div>
 			<div className='settings__bottom'>
 				<div className='settings__left'>

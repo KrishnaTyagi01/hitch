@@ -1,4 +1,4 @@
-import { useEffect, useState, useRef } from 'react';
+import { useEffect, useRef } from 'react';
 
 const ConfirmationPrompt = (props) => {
 	const confirmationPrompt = useRef(null);
@@ -13,18 +13,22 @@ const ConfirmationPrompt = (props) => {
 		}
 	};
 
+	const handleKeyUp = (e) => {
+		if (e.keyCode === 27) {
+			props.closePrompt();
+		}
+	};
+
 	useEffect(() => {
-		confirmationPrompt.current.addEventListener('click', handleOutsideClick);
-		confirmationPrompt.current.addEventListener('keyup', (e) => {
-			if (e.keyCode === 27) {
-				props.closePrompt();
-			}
-		});
+		confirmationPrompt?.current.addEventListener('click', handleOutsideClick);
+		confirmationPrompt?.current.addEventListener('keyup', handleKeyUp);
 
 		return () => {
-			console.log('clean up');
-			// document.body.removeEventListener('keyup');
-			// console.log('removed listener');
+			if (confirmationPrompt?.current) {
+				confirmationPrompt.current.removeEventListener('click', handleOutsideClick);
+				confirmationPrompt.current.removeEventListener('keyup', handleKeyUp);
+				console.log('removed listeners');
+			}
 		};
 	}, [confirmationPrompt, props.active]);
 

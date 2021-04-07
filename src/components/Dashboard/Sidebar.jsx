@@ -16,13 +16,13 @@ const Sidebar = (props) => {
 
 	const onMyClick = (idx) => {
 		props.onButtonClick(idx);
-		ref1.current.className = "sidebar__lower--part";
-		ref2.current.className = "sidebar__lower--part";
-		ref3.current.className = "sidebar__lower--part";
-		ref4.current.className = "sidebar__lower--part";
-		ref5.current.className = "sidebar__lower--part";
+		ref1.current.className = 'sidebar__lower--part';
+		ref2.current.className = 'sidebar__lower--part';
+		ref3.current.className = 'sidebar__lower--part';
+		ref4.current.className = 'sidebar__lower--part';
+		ref5.current.className = 'sidebar__lower--part';
 
-		const class_name = "sidebar__lower--part sidebar_active";
+		const class_name = 'sidebar__lower--part sidebar_active';
 		switch (idx) {
 			case 0:
 				ref1.current.className = class_name;
@@ -38,66 +38,77 @@ const Sidebar = (props) => {
 				break;
 			case 4:
 				ref5.current.className = class_name;
+
+			default:
+				return null;
 		}
-	}
-
-
+	};
 
 	return (
-		<div className="sidebar">
-			<div className="sidebar__upper">
-				<img src={profilePic} alt="profile photo" className="sidebar__upper--pic" />
-				<h2 className="sidebar__upper--name">John Doe</h2>
+		<div className='sidebar'>
+			<div className='sidebar__upper'>
+				<img src={profilePic} alt='profile' className='sidebar__upper--pic' />
+				<h2 className='sidebar__upper--name'>John Doe</h2>
 			</div>
-			<div className="sidebar__lower">
-				<span ref={ref1} className="sidebar__lower--part sidebar_active">
-					<div className="sidebar__lower--part_iconspan">
-						<img src={overviewIcon} alt="icon" className="sidebar__lower--icon" />
+			<div className='sidebar__lower'>
+				<span ref={ref1} className='sidebar__lower--part sidebar_active'>
+					<div className='sidebar__lower--part_iconspan'>
+						<img src={overviewIcon} alt='icon' className='sidebar__lower--icon' />
 					</div>
-					<button onClick={() => onMyClick(0)}
-						className="sidebar__lower--button">Overview</button>
+					<button onClick={() => onMyClick(0)} className='sidebar__lower--button'>
+						Overview
+					</button>
 				</span>
-				<span ref={ref2} className="sidebar__lower--part">
-					<div className="sidebar__lower--part_iconspan">
-						<img src={activityIcon} alt="icon" className="sidebar__lower--icon" />
+				<span ref={ref2} className='sidebar__lower--part'>
+					<div className='sidebar__lower--part_iconspan'>
+						<img src={activityIcon} alt='icon' className='sidebar__lower--icon' />
 					</div>
-					<button onClick={() => onMyClick(1)}
-						className="sidebar__lower--button"> Notifications</button>
+					<button onClick={() => onMyClick(1)} className='sidebar__lower--button'>
+						{' '}
+						Notifications
+					</button>
 				</span>
-				<span ref={ref3} className="sidebar__lower--part">
-					<div className="sidebar__lower--part_iconspan">
-						<img src={eventsIcon} alt="icon" className="sidebar__lower--icon" />
+				<span ref={ref3} className='sidebar__lower--part'>
+					<div className='sidebar__lower--part_iconspan'>
+						<img src={eventsIcon} alt='icon' className='sidebar__lower--icon' />
 					</div>
-					<button className="sidebar__lower--button" onClick={() => onMyClick(2)}> Events</button>
+					<button className='sidebar__lower--button' onClick={() => onMyClick(2)}>
+						{' '}
+						Events
+					</button>
 				</span>
-				<span ref={ref4} className="sidebar__lower--part">
-					<div className="sidebar__lower--part_iconspan">
-						<img src={messagesIcon} alt="icon" className="sidebar__lower--icon" />
+				<span ref={ref4} className='sidebar__lower--part'>
+					<div className='sidebar__lower--part_iconspan'>
+						<img src={messagesIcon} alt='icon' className='sidebar__lower--icon' />
 					</div>
-					<button className="sidebar__lower--button" onClick={() => onMyClick(3)}> Messages</button>
+					<button className='sidebar__lower--button' onClick={() => onMyClick(3)}>
+						{' '}
+						Messages
+					</button>
 				</span>
-				<span ref={ref5} className="sidebar__lower--part">
-					<div className="sidebar__lower--part_iconspan">
-						<img src={pricingIcon} alt="icon" className="sidebar__lower--icon" />
+				<span ref={ref5} className='sidebar__lower--part'>
+					<div className='sidebar__lower--part_iconspan'>
+						<img src={pricingIcon} alt='icon' className='sidebar__lower--icon' />
 					</div>
-					<button className="sidebar__lower--button" onClick={() => onMyClick(4)}> Pricing Plan</button>
+					<button className='sidebar__lower--button' onClick={() => onMyClick(4)}>
+						{' '}
+						Pricing Plan
+					</button>
 				</span>
 			</div>
-			<Link to="/events">
-				<div className="sidebar__exit">
+			<Link to='/events'>
+				<div className='sidebar__exit'>
 					{/* <img src="" alt=""/> */}
-					<div className="sidebar__exit--iconspan">
-						<i className="fas fa-long-arrow-alt-left sidebar__exit--icon"></i>
+					<div className='sidebar__exit--iconspan'>
+						<i className='fas fa-long-arrow-alt-left sidebar__exit--icon'></i>
 					</div>
-					<span >
-						<button className="sidebar__exit--button">Exit</button>
-
+					<span>
+						<button className='sidebar__exit--button'>Exit</button>
 					</span>
 				</div>
 			</Link>
-
 		</div>
-	)
-}
+	);
+};
 
-export default Sidebar
+export default Sidebar;

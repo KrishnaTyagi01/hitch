@@ -1,34 +1,35 @@
-import React from 'react';
-import person1 from '../../icons/about Hitch/person1.png';
-import person2 from '../../icons/about Hitch/person2.png';
-import Card1 from './AboutUsCard1';
-import person3 from '../../icons/hostIntro/image2.svg';
-import TeamCard from './TeamCard';
+import { Helmet } from 'react-helmet';
+
+import person1 from '../icons/about Hitch/person1.png';
+import person2 from '../icons/about Hitch/person2.png';
+import Card1 from '../components/AboutUs/AboutUsCard1';
+import person3 from '../icons/hostIntro/image2.svg';
+import TeamCard from '../components/AboutUs/TeamCard';
 
 const AboutUs = () => {
 	return (
 		<div className='AboutUs'>
+			<Helmet>
+				<title>About Us | Mezami</title>
+			</Helmet>
 			<div className='AboutUs__welcome'>
-
 				<div className='AboutUs__welcome--heading'>Welcome to H!TCH</div>
 				<div className='AboutUs__welcome--body'>
 					Lorem ipsum dolor sit amet consectetur adipisicing elit. Atque deleniti a, velit
 					qui consequatur itaque. Necessitatibus sint totam culpa laboriosam, voluptates
 					temporibus ab dolore? Nostrum voluptatum corporis obcaecati fugit alias!
-					</div>
-
+				</div>
 
 				<div className='AboutUs__welcome--person1'>
-					<img src={person1} />
+					<img src={person1} alt='person' />
 				</div>
 				<div className='AboutUs__welcome--person2'>
-					<img src={person2} />
+					<img src={person2} alt='person' />
 				</div>
-
 			</div>
 			<div className='AboutUs__whatWeDo'>
 				<div className='AboutUs__whatWeDo--heading'>What Do We Do?</div>
-				<div className="cardsContainer">
+				<div className='cardsContainer'>
 					<div className='AboutUs__whatWeDo--cards'>
 						<Card1 card='1' />
 						<Card1 card='2' />
@@ -47,7 +48,7 @@ const AboutUs = () => {
 					</div>
 				</div>
 				<div className='AboutUs__whyChoose__image'>
-					<img src={person3} />
+					<img src={person3} alt='person' />
 				</div>
 			</div>
 			<div className='AboutUs__Team'>
@@ -68,4 +69,3 @@ const AboutUs = () => {
 };
 
 export default AboutUs;
-

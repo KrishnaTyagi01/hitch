@@ -9,25 +9,25 @@ import downArrow from '../../icons/downArrow.svg';
 import { eventLocations } from '../../API/constants';
 import SearchBar from './SearchBar';
 
-const Navbar = (props) => {
+const MainHeader = (props) => {
 	const hamburger = useRef(null);
 	const sidebar = useRef(null);
 
 	let { pathname } = useLocation();
 
 	const toggleSidebar = () => {
-		sidebar?.current.classList.toggle('navbar__mobile__sidebar--open');
+		sidebar?.current.classList.toggle('mainHeader__mobile__sidebar--open');
 		hamburger?.current.classList.toggle('open');
 	};
 
 	const NavbarLogo = () => (
-		<Link to='/' className='navbar__logo'>
+		<Link to='/' className='mainHeader__logo'>
 			Mezami
 		</Link>
 	);
 
 	const NavbarLinks = () => (
-		<div className='navbar__links'>
+		<nav className='mainHeader__links'>
 			<NavLink
 				exact={true}
 				activeClassName='active-link'
@@ -77,17 +77,17 @@ const Navbar = (props) => {
 					</NavLink>
 				</>
 			) : null}
-		</div>
+		</nav>
 	);
 
 	// const SearchBar = () => (
-	// 	<div className='navbar__search-wrapper'>
+	// 	<div className='mainHeader__search-wrapper'>
 	// 		<input placeholder='Search' style={{ backgroundImage: `url(${search})` }} />
 	// 	</div>
 	// );
 
 	const LocationSelector = () => (
-		<div className='navbar__location-wrapper'>
+		<div className='mainHeader__location-wrapper'>
 			<select
 				className='eventLocation-dropdown'
 				style={{ backgroundImage: `url(${downArrow})` }}
@@ -105,7 +105,7 @@ const Navbar = (props) => {
 	);
 
 	const ProfileDropdown = () => (
-		<div className='navbar__profile-dropdown' tabIndex='-1'>
+		<div className='mainHeader__profile-dropdown' tabIndex='-1'>
 			<span>
 				<i className='fas fa-user-circle profile-icon'></i>
 			</span>
@@ -115,28 +115,30 @@ const Navbar = (props) => {
 					<h3>{props.profile?.name}</h3>
 				</div>
 				<hr />
-				<ul className='profile-links'>
-					<li>
-						<Link to='/profile'>View Profile</Link>
-					</li>
-					<li>
-						<Link to='/settings/edit-profile'>Edit Profile</Link>
-					</li>
-					<li>
-						<Link to='/dashboard'>Dashboard</Link>
-					</li>
-					<li>
-						<Link to='/my-events'>My Events</Link>
-					</li>
-					<li>
-						<Link to='/settings'>Settings</Link>
-					</li>
-					<li>
-						<button className='logout' onClick={props.logout}>
-							Log Out
-						</button>
-					</li>
-				</ul>
+				<nav>
+					<ul className='profile-links'>
+						<li>
+							<Link to='/profile'>View Profile</Link>
+						</li>
+						<li>
+							<Link to='/settings/edit-profile'>Edit Profile</Link>
+						</li>
+						<li>
+							<Link to='/dashboard'>Dashboard</Link>
+						</li>
+						<li>
+							<Link to='/my-events'>My Events</Link>
+						</li>
+						<li>
+							<Link to='/settings'>Settings</Link>
+						</li>
+						<li>
+							<button className='logout' onClick={props.logout}>
+								Log Out
+							</button>
+						</li>
+					</ul>
+				</nav>
 			</div>
 		</div>
 	);
@@ -146,11 +148,11 @@ const Navbar = (props) => {
 	}
 
 	return (
-		<nav className='navbar'>
-			<div className='navbar__desktop'>
+		<header className='mainHeader'>
+			<div className='mainHeader__desktop'>
 				<NavbarLogo />
 
-				<div className='navbar__desktop__middle'>
+				<div className='mainHeader__desktop__middle'>
 					{!pathname.startsWith('/dashboard') ? (
 						<>
 							<LocationSelector />
@@ -159,16 +161,18 @@ const Navbar = (props) => {
 							<NavbarLinks />
 						</>
 					) : (
-						<div className='navbar__desktop__middle__dashboard__text'>Host Dashboard</div>
+						<div className='mainHeader__desktop__middle__dashboard__text'>
+							Host Dashboard
+						</div>
 					)}
 				</div>
 
 				{props.isAuthenticated ? <ProfileDropdown /> : null}
 			</div>
 
-			<div className='navbar__mobile'>
+			<div className='mainHeader__mobile'>
 				<span
-					className='navbar__mobile__hamburger'
+					className='mainHeader__mobile__hamburger'
 					ref={hamburger}
 					onClick={toggleSidebar}
 				>
@@ -176,17 +180,17 @@ const Navbar = (props) => {
 					<i className='fas fa-times'></i>
 				</span>
 				<div
-					className='navbar__mobile__sidebar navbar__mobile__sidebar--closed'
+					className='mainHeader__mobile__sidebar mainHeader__mobile__sidebar--closed'
 					ref={sidebar}
 				>
 					<NavbarLinks />
 				</div>
 				<NavbarLogo />
-				<div className='navbar__mobile__profile'>
+				<div className='mainHeader__mobile__profile'>
 					{props.isAuthenticated ? <ProfileDropdown /> : null}
 				</div>
 			</div>
-		</nav>
+		</header>
 	);
 };
 
@@ -195,4 +199,4 @@ const mapStateToProps = (state) => ({
 	profile: state.profileState.profile
 });
 
-export default connect(mapStateToProps, { logout })(Navbar);
+export default connect(mapStateToProps, { logout })(MainHeader);

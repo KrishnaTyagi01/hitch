@@ -1,15 +1,26 @@
+import { Link } from 'react-router-dom';
+
 const HostCard = (props) => {
 	return (
-		<div className='hostcard'>
-			<div className='hostcard__wrapper'>
-				<img src={props.profile?.image} alt='host pic' className='hostcard__pic' />
-				{/* <p className="hostcard__role"></p> */}
-				<div className='hostcard__host'>
-					<h3 className='hostcard__name'>{props.profile?.name}</h3>
-					{/* <span className="hostcard__category"></span> */}
+		<div className='hostCard'>
+			<Link
+				to={{
+					pathname: `/profile/${props.profile?.id}`,
+					state: { profile: props.profile }
+				}}
+			>
+				<div>
+					<img
+						src={props.profile?.image}
+						alt={`${props.profile?.name}'s profile picture`}
+						className='hostCard__pic'
+					/>
+					{/* <p className="hostCard__role"></p> */}
+					<h6 className='hostCard__name'>{props.profile?.name}</h6>
 				</div>
-				<p className='hostcard__text'>{props.profile?.about}</p>
-			</div>
+			</Link>
+			<p className='hostCard__category'>{props.profile?.role}</p>
+			<p className='hostCard__about'>{props.profile?.about}</p>
 		</div>
 	);
 };

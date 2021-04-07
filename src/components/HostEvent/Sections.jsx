@@ -1,79 +1,43 @@
-import React, { useRef } from 'react';
-import { Link } from 'react-router-dom';
+import { NavHashLink } from 'react-router-hash-link';
 
 const Sections = () => {
-    const ref1 = useRef(null);
-    const ref2 = useRef(null);
-    const ref3 = useRef(null);
-    const ref4 = useRef(null);
-    const ref5 = useRef(null);
-    const ref6 = useRef(null);
-    const ref7 = useRef(null);
-    const ref8 = useRef(null);
-    const ref9 = useRef(null);
-    const ref10 = useRef(null);
+	return (
+		<div className='linkToSections'>
+			<nav className='list'>
+				<NavHashLink to='#basics' className='nav-link' activeClassName='active-link'>
+					Basics
+				</NavHashLink>
+				<NavHashLink to='#pictures' className='nav-link' activeClassName='active-link'>
+					Pictures
+				</NavHashLink>
+				{/* <NavHashLink to='#host' className='nav-link' activeClassName='active-link'>
+					Host and Speakers
+				</NavHashLink> */}
+				<NavHashLink to='#schedule' className='nav-link' activeClassName='active-link'>
+					Schedule and Timeline
+				</NavHashLink>
+				<NavHashLink to='#pricing' className='nav-link' activeClassName='active-link'>
+					Pricing
+				</NavHashLink>
+				<NavHashLink to='#tags' className='nav-link' activeClassName='active-link'>
+					Tags
+				</NavHashLink>
+				<NavHashLink to='#location' className='nav-link' activeClassName='active-link'>
+					Location
+				</NavHashLink>
+				{/* <NavHashLink to='#overview' className='nav-link' activeClassName='active-link'>
+					Overview
+				</NavHashLink> */}
+				<NavHashLink to='#additional' className='nav-link' activeClassName='active-link'>
+					Additional Info
+				</NavHashLink>
 
-    const makeActive = (currRef) => {
-        ref1.current.className = "";
-        ref2.current.className = "";
-        // ref3.current.className = "";
-        ref4.current.className = "";
-        ref5.current.className = "";
-        ref6.current.className = "";
-        ref7.current.className = "";
-        ref8.current.className = "";
-        // ref9.current.className = "";
-        ref10.current.className = "";
-        currRef.current.className = "active";
-    }
-
-
-    return (
-        <div className="linkToSections">
-            <ul className="list">
-                <a href="#basics">
-                    <li ref={ref1} onClick={() => makeActive(ref1)} className="active">Basics</li>
-                </a>
-
-                <a href="#pictures">
-                    <li ref={ref2} onClick={() => makeActive(ref2)} className="">Pictures</li>
-                </a>
-
-                {/* <a href="#host">
-                    <li ref={ref3} onClick={() => makeActive(ref3)} className="">Host and Speakers</li>
-                </a> */}
-
-                <a href="#schedule">
-                    <li ref={ref4} onClick={() => makeActive(ref4)} className="">Schedule and Timeline</li>
-                </a>
-
-                <a href="#pricing">
-                    <li ref={ref5} onClick={() => makeActive(ref5)} className="">Pricing</li>
-                </a>
-
-                <a href="#tags">
-                    <li ref={ref6} onClick={() => makeActive(ref6)} className="">Tags</li>
-                </a>
-
-
-                <a href="#location">
-                    <li ref={ref8} onClick={() => makeActive(ref8)} className="">Location</li>
-                </a>
-
-                {/* <a href="#overview">
-                    <li ref={ref9} onClick={() => makeActive(ref9)} className="">Overview</li>
-                </a> */}
-
-                <a href="#additional">
-                    <li ref={ref7} onClick={() => makeActive(ref7)} className="">Additional Info</li>
-                </a>
-
-                <a href="#post">
-                    <li ref={ref10} onClick={() => makeActive(ref10)} className="">Post Event</li>
-                </a>
-            </ul>
-        </div>
-    )
-}
+				<NavHashLink to='#post' className='nav-link' activeClassName='active-link'>
+					Post Event
+				</NavHashLink>
+			</nav>
+		</div>
+	);
+};
 
 export default Sections;

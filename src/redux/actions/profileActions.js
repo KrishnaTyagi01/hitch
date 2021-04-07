@@ -10,6 +10,7 @@ import {
 	GET_ATTENDED_EVENTS,
 	GET_UPCOMING_EVENTS,
 	GET_WISHLIST_EVENTS,
+	GET_RECOMMENDED_EVENTS,
 	ADD_TO_WISHLIST,
 	REMOVE_FROM_WISHLIST,
 	DELETE_WISHLIST
@@ -116,6 +117,22 @@ export const getWishlist = (next) => async (dispatch, getState) => {
 		const response = await axios.get('/profiles/wishlist/', tokenConfig(getState));
 		dispatch({
 			type: GET_WISHLIST_EVENTS,
+			payload: response.data
+		});
+		if (next && typeof next === 'function') next();
+	} catch (error) {
+		reduxErrorHandler(error, dispatch);
+	}
+};
+
+export const getRecommendedEvents = (next) => async (dispatch, getState) => {
+	try {
+		const response = await axios.get(
+			'/events/recommended-events/',
+			tokenConfig(getState)
+		);
+		dispatch({
+			type: GET_RECOMMENDED_EVENTS,
 			payload: response.data
 		});
 		if (next && typeof next === 'function') next();

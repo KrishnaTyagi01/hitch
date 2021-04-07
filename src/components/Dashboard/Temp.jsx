@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import Sidebar from './Sidebar';
-import Message from './Message';
-import Nav from './Nav';
+// import Message from './Message';
+// import Nav from './Nav';
 import ReviewPage from './Page_Review';
 import Notif from './Page_Notification';
 import Messages from './Page_Messages';
@@ -24,6 +24,8 @@ const Temp = () => {
 				return <Messages />;
 			case 4:
 				return <PricingPlan />;
+			default:
+				return null;
 		}
 	};
 
