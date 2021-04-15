@@ -258,7 +258,12 @@ const HostEvent = (props) => {
 	return (
 		<>
 			{viewEvent && (
-				<PreviewEvent show={viewEvent} setViewEvent={setViewEvent} event={tempEvent} />
+				<PreviewEvent
+					show={viewEvent}
+					setViewEvent={setViewEvent}
+					event={tempEvent}
+					profile={props.profile}
+				/>
 			)}
 			<div className='hostEvent'>
 				<div className='header'>
@@ -661,10 +666,9 @@ const HostEvent = (props) => {
 	);
 };
 
-const mapStateToProps = (state) => {
-	return {
-		token: state.authState.token
-	};
-};
+const mapStateToProps = (state) => ({
+	token: state.authState.token,
+	profile: state.profileState.profile
+});
 
 export default connect(mapStateToProps)(HostEvent);

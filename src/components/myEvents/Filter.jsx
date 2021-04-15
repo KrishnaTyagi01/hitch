@@ -449,7 +449,7 @@ const Filter = (props) => {
 									/>
 									<span
 										onClick={(e) => changeFilter(e, 'categories', 'design')}
-										class='filter__checkbox--checkmark'
+										className='filter__checkbox--checkmark'
 									></span>
 									Design
 								</label>
@@ -499,7 +499,7 @@ const Filter = (props) => {
 						<div className='filter__subtype--name'>Location</div>
 						<i
 							style={{ fontSize: '7.5px', color: '#ffffff' }}
-							class='fas fa-chevron-down '
+							className='fas fa-chevron-down '
 						/>
 					</div>
 

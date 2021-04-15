@@ -4,23 +4,21 @@ import { connect } from 'react-redux';
 
 import { logout } from '../../redux/actions/authActions';
 
-import search from '../../icons/search.svg';
+// import search from '../../icons/search.svg';
 import downArrow from '../../icons/downArrow.svg';
 import { eventLocations } from '../../API/constants';
-import SearchBar from './SearchBar';
+// import SearchBar from './SearchBar';
 
 const MainHeader = (props) => {
-	const hamburger = useRef(null);
-	const sidebar = useRef(null);
-
 	let { pathname } = useLocation();
+
+	const sidebar = useRef(null);
 
 	const toggleSidebar = () => {
 		sidebar?.current.classList.toggle('mainHeader__mobile__sidebar--open');
-		hamburger?.current.classList.toggle('open');
 	};
 
-	const NavbarLogo = () => (
+	const Logo = () => (
 		<Link to='/' className='mainHeader__logo'>
 			Mezami
 		</Link>
@@ -104,44 +102,67 @@ const MainHeader = (props) => {
 		</div>
 	);
 
-	const ProfileDropdown = () => (
-		<div className='mainHeader__profile-dropdown' tabIndex='-1'>
-			<span>
-				<i className='fas fa-user-circle profile-icon'></i>
-			</span>
-			<div className='profile-options'>
-				<div className='profile-details'>
-					<img src={props.profile?.image} alt='profile picture' />
-					<h3>{props.profile?.name}</h3>
+	const ProfileDropdown = () => {
+		const profileMenu = useRef(null);
+
+		const toggleProfileMenu = () => {
+			profileMenu?.current.classList.toggle('profile-menu-open');
+		};
+
+		// const hideProfileMenu = () => {
+		// 	profileMenu?.current.classList.remove('profile-menu-open');
+		// };
+
+		return (
+			<div
+				className='mainHeader__profile-dropdown'
+				tabIndex='-1'
+				// onBlur={hideProfileMenu}
+			>
+				<button
+					onClick={toggleProfileMenu}
+					className='mainHeader__profile-dropdown--button'
+				>
+					<i className='fas fa-user-circle profile-icon'></i>
+				</button>
+
+				<div className='profile-menu' ref={profileMenu}>
+					<div className='profile-details'>
+						<img
+							src={props.profile?.image}
+							alt={`${props.profile?.name}'s profile picture`}
+						/>
+						<h3>{props.profile?.name}</h3>
+					</div>
+					<hr />
+					<nav>
+						<ul className='profile-links'>
+							<li>
+								<Link to='/profile'>View Profile</Link>
+							</li>
+							<li>
+								<Link to='/settings/edit-profile'>Edit Profile</Link>
+							</li>
+							<li>
+								<Link to='/dashboard'>Dashboard</Link>
+							</li>
+							<li>
+								<Link to='/my-events'>My Events</Link>
+							</li>
+							<li>
+								<Link to='/settings'>Settings</Link>
+							</li>
+							<li>
+								<button className='logout' onClick={props.logout}>
+									Log Out
+								</button>
+							</li>
+						</ul>
+					</nav>
 				</div>
-				<hr />
-				<nav>
-					<ul className='profile-links'>
-						<li>
-							<Link to='/profile'>View Profile</Link>
-						</li>
-						<li>
-							<Link to='/settings/edit-profile'>Edit Profile</Link>
-						</li>
-						<li>
-							<Link to='/dashboard'>Dashboard</Link>
-						</li>
-						<li>
-							<Link to='/my-events'>My Events</Link>
-						</li>
-						<li>
-							<Link to='/settings'>Settings</Link>
-						</li>
-						<li>
-							<button className='logout' onClick={props.logout}>
-								Log Out
-							</button>
-						</li>
-					</ul>
-				</nav>
 			</div>
-		</div>
-	);
+		);
+	};
 
 	if (pathname.startsWith('/search')) {
 		return null;
@@ -150,14 +171,13 @@ const MainHeader = (props) => {
 	return (
 		<header className='mainHeader'>
 			<div className='mainHeader__desktop'>
-				<NavbarLogo />
+				<Logo />
 
 				<div className='mainHeader__desktop__middle'>
 					{!pathname.startsWith('/dashboard') ? (
 						<>
 							<LocationSelector />
-							<SearchBar changeSearchTerm={props.changeSearchTerm} />
-							{/* <SearchBar /> */}
+							{/* <SearchBar changeSearchTerm={props.changeSearchTerm} /> */}
 							<NavbarLinks />
 						</>
 					) : (
@@ -171,21 +191,16 @@ const MainHeader = (props) => {
 			</div>
 
 			<div className='mainHeader__mobile'>
-				<span
-					className='mainHeader__mobile__hamburger'
-					ref={hamburger}
-					onClick={toggleSidebar}
-				>
+				<button className='mainHeader__mobile__toggle--hamburger' onClick={toggleSidebar}>
 					<i className='fas fa-bars'></i>
-					<i className='fas fa-times'></i>
-				</span>
-				<div
-					className='mainHeader__mobile__sidebar mainHeader__mobile__sidebar--closed'
-					ref={sidebar}
-				>
+				</button>
+				<div className='mainHeader__mobile__sidebar' ref={sidebar}>
+					<button className='mainHeader__mobile__toggle--close' onClick={toggleSidebar}>
+						<i className='fas fa-times'></i>
+					</button>
 					<NavbarLinks />
 				</div>
-				<NavbarLogo />
+				<Logo />
 				<div className='mainHeader__mobile__profile'>
 					{props.isAuthenticated ? <ProfileDropdown /> : null}
 				</div>

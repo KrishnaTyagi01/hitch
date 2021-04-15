@@ -13,7 +13,7 @@ const SearchPage = (props) => {
 
 	useEffect(() => {
 		setTopics(props.location.state.topics);
-	}, []);
+	}, [props.location.state]);
 
 	useEffect(() => {
 		const getAllEvents = async () => {

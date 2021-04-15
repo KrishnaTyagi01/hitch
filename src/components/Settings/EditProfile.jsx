@@ -7,7 +7,6 @@ import { editProfile } from '../../redux/actions/profileActions';
 
 const EditProfile = (props) => {
 	const [confirmationPromptActive, setConfirmationPromptActive] = useState(false);
-	// const [profileData, setProfileData] = useState(null);
 	// const [data, setData] = useState(null);
 	const [fields, setFields] = useState(null);
 
@@ -26,10 +25,12 @@ const EditProfile = (props) => {
 		setFields((prevState) => ({ ...prevState, [name]: arr }));
 	};
 
-	const removeInputArrayItem = (name, i) => {
+	const removeInputArrayItem = (name, item) => {
 		let arr = [...fields[name]];
-		arr.splice(i, 1);
-		setFields((prevState) => ({ ...prevState, [name]: arr }));
+		let newArr = arr.filter((x) => x !== item);
+		setFields((prevState) => ({ ...prevState, [name]: newArr }));
+		// arr.splice(i, 1);
+		// setFields((prevState) => ({ ...prevState, [name]: arr }));
 	};
 
 	const handleSubmit = (e) => {
@@ -64,6 +65,7 @@ const EditProfile = (props) => {
 			professional_interests: JSON.parse(professional_interests ?? '[]'),
 			personal_interests: JSON.parse(personal_interests ?? '[]')
 		});
+
 		return () => {
 			setFields(null);
 		};
@@ -84,7 +86,7 @@ const EditProfile = (props) => {
 									<label>About</label>
 									<textarea
 										name='about'
-										value={fields.about || ''}
+										value={fields.about ?? ''}
 										rows='4'
 										onChange={handleInputChange}
 										placeholder='Enter a short description of yourself'
@@ -95,22 +97,22 @@ const EditProfile = (props) => {
 									<label>Email ID</label>
 									<input
 										required
+										type='email'
 										name='email'
-										value={fields.email || ''}
+										value={fields.email ?? ''}
 										onChange={handleInputChange}
 										placeholder='Email ID'
-										type='email'
 									/>
 								</div>
 
 								<div className='editProfile__form__entries__entry'>
 									<label>Location</label>
 									<input
+										type='text'
 										name='location'
-										value={fields.location || ''}
+										value={fields.location ?? ''}
 										onChange={handleInputChange}
 										placeholder='Enter your location'
-										type='text'
 									/>
 								</div>
 							</fieldset>
@@ -124,18 +126,19 @@ const EditProfile = (props) => {
 										<div key={`prof${i}`}>
 											<input
 												required
+												type='text'
 												name='professional_interests'
-												value={fields.professional_interests[i] || ''}
+												value={fields.professional_interests[i] ?? ''}
 												onChange={(e) => {
 													handleInputArrayChange(e, i);
 												}}
 												placeholder='Enter your interest'
-												type='text'
 											/>
 											<button
+												type='button'
 												className='small-button cancel'
 												onClick={() => {
-													removeInputArrayItem('professional_interests', i);
+													removeInputArrayItem('professional_interests', item);
 												}}
 											>
 												Remove
@@ -144,6 +147,7 @@ const EditProfile = (props) => {
 									))}
 								</div>
 								<button
+									type='button'
 									className='small-button submit block-button'
 									onClick={() => {
 										addInputArrayItem('professional_interests');
@@ -158,18 +162,19 @@ const EditProfile = (props) => {
 										<div key={`pers${i}`}>
 											<input
 												required
+												type='text'
 												name='personal_interests'
-												value={fields.personal_interests[i] || ''}
+												value={fields.personal_interests[i] ?? ''}
 												onChange={(e) => {
 													handleInputArrayChange(e, i);
 												}}
 												placeholder='Enter your interest'
-												type='text'
 											/>
 											<button
+												type='button'
 												className='small-button cancel'
 												onClick={() => {
-													removeInputArrayItem('personal_interests', i);
+													removeInputArrayItem('personal_interests', item);
 												}}
 											>
 												Remove
@@ -178,6 +183,7 @@ const EditProfile = (props) => {
 									))}
 								</div>
 								<button
+									type='button'
 									className='small-button submit block-button'
 									onClick={() => {
 										addInputArrayItem('personal_interests');

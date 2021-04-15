@@ -2,11 +2,21 @@
 	background-repeat: no-repeat;
 	background-size: cover;
 	position: relative;
-	height: 450px;
+	// height: 450px;
 	color: white;
 	border-radius: 10px;
 	box-shadow: 0px 0px 14px rgba(0, 0, 0, 0.5);
 	// overflow: hidden;
+
+	img.banner {
+		display: block;
+		object-fit: scale-down;
+		height: auto;
+		max-width: 100%;
+		max-height: 450px;
+		border-radius: 10px;
+		margin: auto;
+	}
 
 	.prev,
 	.next {
@@ -28,16 +38,10 @@
 	}
 
 	.prev {
-		left: 19px;
+		left: 20px;
 	}
 
 	.next {
-		right: 19px;
-	}
-
-	.prev:hover,
-	.next:hover {
-		cursor: pointer;
-		box-shadow: 0 0 4px white;
+		right: 20px;
 	}
 }

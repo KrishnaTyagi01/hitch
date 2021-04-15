@@ -13,6 +13,7 @@ select,
 textarea {
 	border: none;
 	outline: none;
+	color: inherit;
 	font-family: inherit;
 	transition: all 0.1s;
 
@@ -56,7 +57,10 @@ ul {
 // }
 
 @media (prefers-reduced-motion: reduce) {
-	* {
+	*,
+	*::after,
+	*::before {
+		scroll-behavior: auto;
 		animation: none !important;
 		transition: none !important;
 	}

@@ -18,7 +18,7 @@ const RecommendedEvents = (props) => {
 
 	useEffect(() => {
 		if (isAuthenticated && !recommendedEvents) getRecommendedEvents();
-	}, [isAuthenticated, recommendedEvents]);
+	}, [isAuthenticated, recommendedEvents, getRecommendedEvents]);
 
 	if (!isAuthenticated) return null;
 

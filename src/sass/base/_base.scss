@@ -51,6 +51,24 @@ body::-webkit-scrollbar-thumb {
 	--color-grey-1: #34323f;
 	--color-grey-2: #646176;
 	--color-grey-3: #9794a7;
+
+	// rgb colors which can be used with opacity using rgba()
+	--color-primary-1-rgb: 23, 20, 41;
+	--color-primary-2-rgb: 43, 36, 77;
+	--color-primary-3-rgb: 82, 70, 144;
+	--color-primary-4-rgb: 135, 124, 192;
+	--color-primary-5-rgb: 198, 193, 225;
+	--color-secondary-1-rgb: 18, 171, 125;
+	--color-secondary-2-rgb: 23, 218, 162;
+	--color-secondary-3-rgb: 57, 234, 180;
+	--color-semantic-1-rgb: 235, 71, 70;
+	--color-semantic-2-rgb: 236, 234, 71;
+	--color-semantic-3-rgb: 235, 153, 71;
+	--color-text-1-rgb: 4, 3, 8;
+	--color-text-2-rgb: 230, 228, 242;
+	--color-grey-1-rgb: 52, 50, 63;
+	--color-grey-2-rgb: 100, 97, 118;
+	--color-grey-3-rgb: 151, 148, 167;
 }
 
 @import url('https://fonts.googleapis.com/css2?family=Kumbh+Sans:wght@300;400;700&display=swap');

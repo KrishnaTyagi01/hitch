@@ -16,15 +16,18 @@
 		display: flex;
 		justify-content: space-around;
 
-		.vertical-line {
-			border-right: 1px solid rgba(255, 255, 255, 0.3);
-		}
+		// .vertical-line {
+		// 	border-right: 1px solid rgba(255, 255, 255, 0.3);
+		// }
 	}
 
 	&__detail {
-		padding: 1.5rem 0 2rem;
-		// &:not(:last-of-type) {
-		// }
+		flex: 1 1 33%;
+		padding: 1.5rem 1rem 2rem;
+
+		&:not(:last-of-type) {
+			border-right: 1px solid rgba(255, 255, 255, 0.3);
+		}
 
 		&--title {
 			font-weight: 500;
@@ -50,18 +53,12 @@
 			// color: var(--color-grey-3);
 		}
 
-		&--icon {
+		&--button {
+			background-color: transparent;
+
 			&:not(:last-of-type) {
 				margin-right: 20px;
 			}
-			&:hover {
-				cursor: pointer;
-			}
-		}
-
-		&--button {
-			background-color: transparent;
-			margin-left: 20px;
 
 			i {
 				font-size: 20px;
@@ -84,7 +81,7 @@
 		padding: 20px 16px;
 
 		&__detail {
-			padding: 0.6rem 0 0.8rem;
+			padding: 0.6rem 0.4rem 0.8rem;
 		}
 	}
 }
