@@ -33,24 +33,24 @@ const EventCard = (props) => {
 
 				{!props.isAuthenticated ? (
 					<div className='action-icons'>
-						<span
+						<button
 							title='Add to calendar'
 							className='details-icon'
 							onClick={props.activateLoginPrompt}
 						>
 							<i className='far fa-calendar-alt'></i>
-						</span>
-						<span
+						</button>
+						<button
 							title='Add to wishlist'
 							className='details-icon heart-icon'
 							onClick={props.activateLoginPrompt}
 						>
 							<i className='far fa-heart'></i>
-						</span>
+						</button>
 					</div>
 				) : (
 					<div className='action-icons'>
-						<span
+						<button
 							title='Add to calendar'
 							className='details-icon'
 							onClick={() => {
@@ -58,10 +58,10 @@ const EventCard = (props) => {
 							}}
 						>
 							<i className='far fa-calendar-alt'></i>
-						</span>
+						</button>
 
 						{!props.wishlist?.includes(id) ? (
-							<span
+							<button
 								title='Add to wishlist'
 								className='details-icon heart-icon'
 								onClick={() => {
@@ -69,9 +69,9 @@ const EventCard = (props) => {
 								}}
 							>
 								<i className='far fa-heart'></i>
-							</span>
+							</button>
 						) : (
-							<span
+							<button
 								title='Remove from wishlist'
 								className='details-icon heart-icon'
 								onClick={() => {
@@ -79,7 +79,7 @@ const EventCard = (props) => {
 								}}
 							>
 								<i className='fas fa-heart'></i>
-							</span>
+							</button>
 						)}
 					</div>
 				)}
@@ -98,7 +98,11 @@ const EventCard = (props) => {
 					</div>
 					<div className='event-card__text'>
 						<p className='title'>{title?.substring(0, 40)}</p>
-						<p className='description'>{description?.substring(0, 100)}</p>
+						<p className='description'>
+							{description?.length < 40
+								? description
+								: `${description?.substring(0, 40)}...`}
+						</p>
 					</div>
 				</div>
 			</Link>

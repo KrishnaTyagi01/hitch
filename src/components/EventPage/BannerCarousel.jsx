@@ -1,36 +1,50 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
 export default function BannerCarousel(props) {
 	const [index, setIndex] = useState(0);
 	const n = props.images.length;
 
-	const nextIT = () => {
-		var newIdx = (index + 1);
+	const nextImage = () => {
+		var newIdx = index + 1;
 		if (newIdx >= n) return;
 		setIndex(newIdx);
-	}
+	};
 
-	const prevIT = () => {
-		var newIdx = (index - 1);
+	const prevImage = () => {
+		var newIdx = index - 1;
 		if (newIdx < 0) return;
 		setIndex(newIdx);
-	}
+	};
 
-	// console.log(index);
+	useEffect(() => {
+		setIndex(0);
+	}, [props]);
+
 	return (
 		<div
 			className='banner-carousel'
-			style={{ backgroundImage: `url( ${props.images[index]} )` }}
+			// style={{ backgroundImage: `url( ${props.images[index]} )` }}
 		>
-			<button className='prev' type="button" onClick={prevIT}
+			<img src={props.images[index]} alt='event banner' className='banner' />
+			<button
+				className='prev'
+				type='button'
+				onClick={prevImage}
 				style={{
 					display: `${index === 0 ? 'none' : 'inline-block'}`
 				}}
-			>&#10094;</button>
-			<button className='next' onClick={nextIT}
+			>
+				&#10094;
+			</button>
+			<button
+				className='next'
+				onClick={nextImage}
 				style={{
 					display: `${index === n - 1 ? 'none' : 'inline-block'}`
-				}}>&#10095;</button>
-		</div >
+				}}
+			>
+				&#10095;
+			</button>
+		</div>
 	);
 }

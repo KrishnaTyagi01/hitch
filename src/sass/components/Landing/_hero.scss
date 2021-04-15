@@ -10,6 +10,7 @@
 		padding: 80px;
 
 		.highlight-text h1 {
+			overflow-wrap: break-word;
 			text-shadow: 0 0 8px var(--color-primary-1);
 		}
 	}
@@ -21,24 +22,29 @@
 		width: 28px;
 		height: 28px;
 		background: var(--color-secondary-3);
-		border: none;
 		border-radius: 50%;
 		box-shadow: 0px 0px 14px rgba(0, 0, 0, 0.25);
-		outline: none;
 		transition: 0.2s;
 	}
 
 	.prev {
-		left: 19px;
+		left: 2vw;
 	}
 
 	.next {
-		right: 19px;
+		right: 2vw;
 	}
 
 	.prev:hover,
 	.next:hover {
-		cursor: pointer;
 		box-shadow: 0 0 4px white;
+	}
+}
+
+@media screen and (max-width: 1024px) {
+	.landing-hero {
+		.highlight {
+			padding: 40px;
+		}
 	}
 }

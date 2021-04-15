@@ -18,14 +18,14 @@ const HighlightCard = (props) => {
 					</p>
 					<p className='highlightCard__detail--text'>Date</p>
 				</div>
-				<div className='vertical-line'></div>
+				{/* <div className='vertical-line'></div> */}
 				<div className='highlightCard__detail'>
 					<p className='highlightCard__detail--title'>
 						{location ? location?.toUpperCase() : '-'}
 					</p>
 					<p className='highlightCard__detail--text'>Location</p>
 				</div>
-				<div className='vertical-line'></div>
+				{/* <div className='vertical-line'></div> */}
 				<div className='highlightCard__detail'>
 					<p className='highlightCard__detail--title'>
 						{Moment(scheduled_time, ['hh:mm:ss']).format('hh:mm A')}
