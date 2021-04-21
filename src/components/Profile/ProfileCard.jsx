@@ -18,16 +18,20 @@ const ProfileCard = (props) => {
 			<div className='profilecard__lower'>
 				<div className='profilecard__lower--item'>
 					<img src={jobIcon} alt='icon' className='profilecard__lower--icon' />
-					<span className='profilecard__lower--text'>{props.profile?.role}</span>
+					<span className='profilecard__lower--text'>
+						{props.profile?.role ? props.profile.role : '--'}
+					</span>
 				</div>
 				<div className='profilecard__lower--item'>
 					<img src={buildingIcon} alt='icon' className='profilecard__lower--icon' />
-					<span className='profilecard__lower--text'>{props.profile?.company}</span>
+					<span className='profilecard__lower--text'>
+						{props.profile?.company ? props.profile.company : '--'}
+					</span>
 				</div>
 				<div className='profilecard__lower--item'>
 					<img src={locationIcon} alt='icon' className='profilecard__lower--icon ' />
 					<span className='profilecard__lower--text' id='profile__lower--locationtext'>
-						{props.profile?.location}
+						{props.profile?.location ? props.profile.location : '--'}
 					</span>
 				</div>
 			</div>

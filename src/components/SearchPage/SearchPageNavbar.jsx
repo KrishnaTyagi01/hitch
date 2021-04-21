@@ -45,7 +45,7 @@ const SearchPageNavbar = (props) => {
 				to='/about'
 				onClick={toggleSidebar}
 			>
-				About Hitch
+				About Mezami
 			</NavLink>
 			<NavLink
 				exact={true}

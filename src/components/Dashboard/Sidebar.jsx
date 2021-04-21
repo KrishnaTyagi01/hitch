@@ -38,6 +38,7 @@ const Sidebar = (props) => {
 				break;
 			case 4:
 				ref5.current.className = class_name;
+				break;
 
 			default:
 				return null;

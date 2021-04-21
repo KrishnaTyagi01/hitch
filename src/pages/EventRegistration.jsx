@@ -172,7 +172,7 @@ const EventRegistration = (props) => {
 			amount: data.amount.toString(),
 			order_id: data.razorpay_order_id,
 			name: 'Registration fee',
-			description: 'Entry fee for Hitch event',
+			description: 'Entry fee for Mezami event',
 			image: 'http://localhost:3000/temp/image.jpg',
 			handler: async function (response) {
 				console.log(response);

@@ -1,5 +1,6 @@
 import { connect } from 'react-redux';
 import { Helmet } from 'react-helmet';
+import { Switch, Route } from 'react-router-dom';
 
 import Hero from '../components/Profile/Hero';
 import About from '../components/Profile/About';
@@ -18,18 +19,24 @@ const SelfProfile = (props) => {
 			</Helmet>
 			<div className='profilePage__top'>
 				<Hero />
-				<HeaderSection />
+				<HeaderSection profile={props.profile} />
 			</div>
 			<div className='profilePage__bottom'>
 				<div className='profilePage__bottom__left'>
 					<ProfileCard profile={props.profile} />
 				</div>
 				<div className='profilePage__bottom__right'>
-					<About name={props.profile?.name} about={props.profile?.about} />
-					<HostedEvents hostedEvents={props.hostedEvents} />
-					<AttendedEvents attendedEvents={props.attendedEvents} />
-					<UpcomingEvents upcomingEvents={props.upcomingEvents} />
-					<WishlistEvents wishlistEvents={props.wishlistEvents} />
+					<Switch>
+						<Route exact path='/profile'>
+							<About name={props.profile?.name} about={props.profile?.about} />
+						</Route>
+						<Route path='/profile/activity'>
+							<HostedEvents hostedEvents={props.hostedEvents} />
+							<AttendedEvents attendedEvents={props.attendedEvents} />
+							<UpcomingEvents upcomingEvents={props.upcomingEvents} />
+							<WishlistEvents wishlistEvents={props.wishlistEvents} />
+						</Route>
+					</Switch>
 				</div>
 			</div>
 		</main>

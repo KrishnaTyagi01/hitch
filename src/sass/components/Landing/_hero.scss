@@ -1,13 +1,14 @@
 .landing-hero {
 	// overflow: hidden;
+	height: 550px;
 
 	.highlight {
 		background-repeat: no-repeat;
 		background-size: cover;
 		position: relative;
-		height: 550px;
 		color: white;
 		padding: 80px;
+		height: 100%;
 
 		.highlight-text h1 {
 			overflow-wrap: break-word;

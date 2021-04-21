@@ -36,6 +36,14 @@ const SettingsSidebar = () => {
 									Preferences
 								</NavHashLink>
 							</li>
+							<li>
+								<NavHashLink
+									to='/settings/edit-profile#social-media'
+									activeStyle={{ color: 'var(--color-secondary-3)' }}
+								>
+									Social Media
+								</NavHashLink>
+							</li>
 						</ul>
 					</li>
 					<li>

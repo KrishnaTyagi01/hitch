@@ -80,7 +80,7 @@ const MainHeader = (props) => {
 
 	// const SearchBar = () => (
 	// 	<div className='mainHeader__search-wrapper'>
-	// 		<input placeholder='Search' style={{ backgroundImage: `url(${search})` }} />
+	// 		<input type='search' placeholder='Search' style={{ backgroundImage: `url(${search})` }} />
 	// 	</div>
 	// );
 
@@ -128,10 +128,7 @@ const MainHeader = (props) => {
 
 				<div className='profile-menu' ref={profileMenu}>
 					<div className='profile-details'>
-						<img
-							src={props.profile?.image}
-							alt={`${props.profile?.name}'s profile picture`}
-						/>
+						<img src={props.profile?.image} alt={`${props.profile?.name}'s profile`} />
 						<h3>{props.profile?.name}</h3>
 					</div>
 					<hr />

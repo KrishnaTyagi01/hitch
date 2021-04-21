@@ -1,0 +1,33 @@
+.eventPage {
+	background-color: var(--color-primary-1);
+
+	article {
+		display: grid;
+		// grid-template-areas: 'main-content side-content';
+		grid-template-columns: 1fr minmax(310px, 20%);
+		grid-gap: 2rem;
+		padding: 20px 4vw;
+		width: auto;
+
+		main {
+			// grid-area: main-content;
+			width: auto;
+			max-width: 830px;
+		}
+
+		aside {
+			// grid-area: side-content;
+			width: 310px;
+			max-width: 100%;
+		}
+	}
+}
+
+@media screen and (max-width: 1024px) {
+	.eventPage {
+		article {
+			display: flex;
+			flex-direction: column;
+		}
+	}
+}

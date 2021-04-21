@@ -1,12 +1,12 @@
 import { useState, useEffect } from 'react';
 import axios from 'axios';
 
-import Filter from '../myEvents/Filter';
+import Filter from '../MyEvents/Filter';
 import EventCardsContainer from '../Common/EventCardsContainer';
 // import { dummyEvents } from '../../temp/events';
 
 export default function Discover() {
-	const [events, setEvents] = useState([]);
+	const [events, setEvents] = useState(null);
 
 	const getEvents = async () => {
 		try {

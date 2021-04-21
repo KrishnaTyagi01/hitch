@@ -5,13 +5,12 @@
 	color: var(--color-text-2);
 	background-color: var(--color-primary-2);
 	font-family: 'Kumbh Sans', sans-serif;
-	padding: 20px 4vw 20px 400px;
+	padding: 20px 4vw 20px calc(4vw + 320px + 2.5rem);
 
 	&__left {
 		&--about {
 			font-size: 16px;
 			line-height: 16px;
-			color: var(--color-secondary-3);
 		}
 
 		&--activity {
@@ -24,11 +23,13 @@
 	&__right {
 		&--link {
 			margin-left: 1.25rem;
-		}
 
+			i {
+				font-size: 24px;
+			}
+		}
 		&--icon {
-			width: 1.5rem;
-			height: 1.5rem;
+			height: 1.25rem;
 		}
 	}
 }
