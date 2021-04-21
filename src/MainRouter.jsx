@@ -5,7 +5,7 @@ import Home from './pages/Home';
 import Login from './pages/Login';
 import Register from './pages/Register';
 import HostIntro from './pages/HostIntro';
-import AboutUs from './pages/About';
+import About from './pages/About';
 
 import EventPage from './pages/EventPage';
 import UserProfile from './pages/UserProfile';
@@ -15,7 +15,7 @@ import Settings from './pages/Settings';
 import EventRegistration from './pages/EventRegistration';
 import EventTicketPage from './pages/EventTicketPage';
 
-import eventsPage from './components/myEvents/eventsPage';
+import EventsPage from './components/MyEvents/EventsPage';
 import HostEvent from './components/HostEvent/HostEvent';
 
 import Temp from './components/Dashboard/Temp';
@@ -49,14 +49,14 @@ const MainRouter = () => {
 					<Route exact path='/' component={Home} />
 					<Route path='/login' component={Login} />
 					<Route path='/register' component={Register} />
-					<Route path='/about' component={AboutUs} />
+					<Route path='/about' component={About} />
 					<Route path='/hostintro' component={HostIntro} />
 
-					<PrivateRoute exact path='/profile' component={SelfProfile} />
+					<PrivateRoute path='/profile' component={SelfProfile} />
 					<PrivateRoute path='/settings' component={Settings} />
 					<PrivateRoute path='/dashboard' component={Temp} />
 					<PrivateRoute path='/host-event' component={HostEvent} />
-					<PrivateRoute path='/my-events' component={eventsPage} />
+					<PrivateRoute path='/my-events' component={EventsPage} />
 					<Route path='/survey-page' component={SurveyPage} />
 					<PrivateRoute
 						exact

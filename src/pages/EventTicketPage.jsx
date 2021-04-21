@@ -21,20 +21,20 @@ const NotRegistered = (props) => (
 
 const EventTicketPage = (props) => {
 	const { eventID } = props.match.params;
-	const { name, email, phone } = props.profile ?? {};
+	// const { name, email, phone } = props.profile ?? {};
 	const [ticket, setTicket] = useState(null);
 	const [notRegistered, setNotRegistered] = useState(null);
-	const [show, setShow] = useState(false);
+	// const [show, setShow] = useState(false);
 
-	const {
-		num_of_participants,
-		event: { title, scheduled_time, scheduled_date, ticket_price } = {}
-	} = ticket ?? {};
+	// const {
+	// 	num_of_participants,
+	// 	event: { title, scheduled_time, scheduled_date, ticket_price } = {}
+	// } = ticket ?? {};
 
 	useEffect(() => {
 		if (props.location.state?.ticket) {
 			setTicket(props.location.state.ticket);
-			setShow(true);
+			// setShow(true);
 		} else {
 			if (props.upcomingEvents) {
 				const foundTicket =
@@ -42,7 +42,7 @@ const EventTicketPage = (props) => {
 					props.attendedEvents.find((item) => item.event.id === JSON.parse(eventID));
 				if (foundTicket) {
 					setTicket(foundTicket);
-					setShow(true);
+					// setShow(true);
 				} else {
 					setNotRegistered(true);
 				}

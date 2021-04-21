@@ -42,7 +42,12 @@ const EventDetails = (props) => {
 			<div className='eventdetails__visit'>
 				<h3 className='eventdetails__visit--head'>VISIT ORGANISERS</h3>
 				{props.organizersWebsite ? (
-					<a href='#' target='_blank' className='eventdetails__visit--link'>
+					<a
+						href={props.organizersWebsite}
+						target='_blank'
+						rel='noreferrer'
+						className='eventdetails__visit--link'
+					>
 						{props.organizersWebsite}
 					</a>
 				) : (

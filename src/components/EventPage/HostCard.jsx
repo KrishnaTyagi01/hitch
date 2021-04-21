@@ -12,7 +12,7 @@ const HostCard = (props) => {
 				<div>
 					<img
 						src={props.profile?.image}
-						alt={`${props.profile?.name}'s profile picture`}
+						alt={`${props.profile?.name}'s profile`}
 						className='hostCard__pic'
 					/>
 					{/* <p className="hostCard__role"></p> */}

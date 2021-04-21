@@ -2,12 +2,12 @@ import { Helmet } from 'react-helmet';
 
 import Button1 from '../components/HostEvent/Button1';
 import mezami from '../icons/mezami.png';
-import person1 from '../icons/about Hitch/person1_small.png';
-import person2 from '../icons/about Hitch/person2_small.png';
+import person1 from '../icons/About/person1_small.png';
+import person2 from '../icons/About/person2_small.png';
 import person3 from '../icons/hostIntro/image2.svg';
 import person4 from '../icons/hostIntro/image3.svg';
-import hand from '../icons/about Hitch/matchmaking.png';
-import yes from '../icons/about Hitch/yes.png';
+import hand from '../icons/About/matchmaking.png';
+import yes from '../icons/About/yes.png';
 
 const SurveyPage = () => {
 	return (

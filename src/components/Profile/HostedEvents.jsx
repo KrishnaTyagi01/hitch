@@ -9,12 +9,12 @@ const HostedEvents = (props) => {
 			</div>
 			{props.hostedEvents ? (
 				props.hostedEvents.length === 0 ? (
-					<div className='page-text'>You haven't hosted any events so far</div>
+					<div className='page-text'>No events found</div>
 				) : (
 					<EventCardsContainer events={props.hostedEvents} />
 				)
 			) : (
-				<div className='page-text'>You haven't hosted any events so far</div>
+				<div className='page-text'>No events found</div>
 			)}
 		</section>
 	);

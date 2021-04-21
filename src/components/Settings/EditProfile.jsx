@@ -1,12 +1,12 @@
 import { useEffect, useState } from 'react';
 import { connect } from 'react-redux';
 
-import ConfirmationPrompt from '../Common/ConfirmationPrompt';
+// import ConfirmationPrompt from '../Common/ConfirmationPrompt';
 import Loading from '../Common/Loading';
 import { editProfile } from '../../redux/actions/profileActions';
 
 const EditProfile = (props) => {
-	const [confirmationPromptActive, setConfirmationPromptActive] = useState(false);
+	// const [confirmationPromptActive, setConfirmationPromptActive] = useState(false);
 	// const [data, setData] = useState(null);
 	const [fields, setFields] = useState(null);
 
@@ -14,20 +14,24 @@ const EditProfile = (props) => {
 		setFields((prevState) => ({ ...prevState, [e.target.name]: e.target.value }));
 	};
 
+	const handleCheckboxChange = (e) => {
+		setFields((prevState) => ({ ...prevState, [e.target.name]: e.target.checked }));
+	};
+
 	const handleInputArrayChange = (e, i) => {
-		let arr = [...fields[e.target.name]];
+		const arr = [...fields[e.target.name]];
 		arr[i] = e.target.value;
 		setFields((prevState) => ({ ...prevState, [e.target.name]: arr }));
 	};
 
 	const addInputArrayItem = (name) => {
-		let arr = [...fields[name], ''];
+		const arr = [...fields[name], ''];
 		setFields((prevState) => ({ ...prevState, [name]: arr }));
 	};
 
 	const removeInputArrayItem = (name, item) => {
-		let arr = [...fields[name]];
-		let newArr = arr.filter((x) => x !== item);
+		const arr = [...fields[name]];
+		const newArr = arr.filter((x) => x !== item);
 		setFields((prevState) => ({ ...prevState, [name]: newArr }));
 		// arr.splice(i, 1);
 		// setFields((prevState) => ({ ...prevState, [name]: arr }));
@@ -45,6 +49,15 @@ const EditProfile = (props) => {
 			JSON.stringify(fields['professional_interests'])
 		);
 		formData.append('personal_interests', JSON.stringify(fields['personal_interests']));
+		formData.append(
+			'social_media_profiles_sharable',
+			fields['social_media_profiles_sharable']
+		);
+		formData.append('facebook_profile_link', fields['facebook_profile_link']);
+		formData.append('linkedin_profile_link', fields['linkedin_profile_link']);
+		formData.append('instagram_profile_link', fields['instagram_profile_link']);
+		formData.append('twitter_profile_link', fields['twitter_profile_link']);
+		formData.append('website', fields['website']);
 
 		props.editProfile(props.profile.id, formData, () => {
 			props.history.push('/profile', { message: 'Profile updated' });
@@ -56,14 +69,32 @@ const EditProfile = (props) => {
 	};
 
 	useEffect(() => {
-		const { about, email, location, professional_interests, personal_interests } =
-			props.profile ?? {};
+		const {
+			about,
+			email,
+			location,
+			professional_interests,
+			personal_interests,
+			social_media_profiles_sharable,
+			facebook_profile_link,
+			linkedin_profile_link,
+			instagram_profile_link,
+			twitter_profile_link,
+			website
+		} = props.profile ?? {};
+
 		setFields({
 			about,
 			email,
 			location,
 			professional_interests: JSON.parse(professional_interests ?? '[]'),
-			personal_interests: JSON.parse(personal_interests ?? '[]')
+			personal_interests: JSON.parse(personal_interests ?? '[]'),
+			social_media_profiles_sharable,
+			facebook_profile_link,
+			linkedin_profile_link,
+			instagram_profile_link,
+			twitter_profile_link,
+			website
 		});
 
 		return () => {
@@ -192,6 +223,80 @@ const EditProfile = (props) => {
 									Add interest
 								</button>
 							</fieldset>
+
+							<fieldset id='social-media'>
+								<legend>Social Media</legend>
+								{/* <h6>Professional Interests</h6> */}
+
+								<div className='editProfile__form__entries__entry'>
+									<label>
+										Share social media profiles
+										<input
+											type='checkbox'
+											name='social_media_profiles_sharable'
+											checked={fields.social_media_profiles_sharable}
+											onChange={handleCheckboxChange}
+											placeholder='Enter your location'
+											className='input-checkbox'
+										/>
+									</label>
+								</div>
+
+								<div className='editProfile__form__entries__entry'>
+									<label>Facebook profile</label>
+									<input
+										type='url'
+										name='facebook_profile_link'
+										value={fields.facebook_profile_link ?? ''}
+										onChange={handleInputChange}
+										placeholder='Enter your Facebook profile link'
+									/>
+								</div>
+
+								<div className='editProfile__form__entries__entry'>
+									<label>LinkedIn profile</label>
+									<input
+										type='url'
+										name='linkedin_profile_link'
+										value={fields.linkedin_profile_link ?? ''}
+										onChange={handleInputChange}
+										placeholder='Enter your LinkedIn profile link'
+									/>
+								</div>
+
+								<div className='editProfile__form__entries__entry'>
+									<label>Instagram profile</label>
+									<input
+										type='url'
+										name='instagram_profile_link'
+										value={fields.instagram_profile_link ?? ''}
+										onChange={handleInputChange}
+										placeholder='Enter your Instagram profile link'
+									/>
+								</div>
+
+								<div className='editProfile__form__entries__entry'>
+									<label>Twitter profile</label>
+									<input
+										type='url'
+										name='twitter_profile_link'
+										value={fields.twitter_profile_link ?? ''}
+										onChange={handleInputChange}
+										placeholder='Enter your Twitter profile link'
+									/>
+								</div>
+
+								<div className='editProfile__form__entries__entry'>
+									<label>Website</label>
+									<input
+										type='url'
+										name='website'
+										value={fields.website ?? ''}
+										onChange={handleInputChange}
+										placeholder='Enter your website'
+									/>
+								</div>
+							</fieldset>
 						</div>
 
 						<div className='editProfile__form__buttons'>
@@ -210,7 +315,7 @@ const EditProfile = (props) => {
 						</div>
 					</form>
 
-					<ConfirmationPrompt
+					{/* <ConfirmationPrompt
 						active={confirmationPromptActive}
 						closePrompt={() => {
 							setConfirmationPromptActive(false);
@@ -221,7 +326,7 @@ const EditProfile = (props) => {
 						confirm={(id, data) => {
 							props.editProfile(id, data);
 						}}
-					/>
+					/> */}
 				</>
 			)}
 		</div>

@@ -13,13 +13,16 @@ const MainFooter = () => {
 		<footer className='mainFooter'>
 			<div className='mainFooter__upper'>
 				<p className='mainFooter__upper--text'>
-					Get the Hitch App for the matchmaking experience
+					Get the Mezami App for the matchmaking experience
 				</p>
 				<div className='mainFooter__upper--buttons'>
-					<a href='#' className='mainFooter__upper--applink'>
+					<a
+						href='https://play.google.com/store/apps/details?id=com.mezami.app'
+						className='mainFooter__upper--applink'
+					>
 						<img src={GoogleBtn} alt='google btn' />
 					</a>
-					<a href='#' className='mainFooter__upper--applink'>
+					<a href='/' className='mainFooter__upper--applink'>
 						<img src={AppleBtn} alt='google btn' />
 					</a>
 				</div>
@@ -30,7 +33,7 @@ const MainFooter = () => {
 					<li className='mainFooter__mid--listhead'>About</li>
 					<li className='mainFooter__mid--listitem'>
 						<Link to='/' className='mainFooter__mid--listlink'>
-							About Hitch
+							About Mezami
 						</Link>
 					</li>
 					<li className='mainFooter__mid--listitem'>
@@ -47,17 +50,17 @@ const MainFooter = () => {
 				<ul className='mainFooter__mid--list'>
 					<li className='mainFooter__mid--listhead'>Events</li>
 					<li className='mainFooter__mid--listitem'>
-						<Link to='/' className='mainFooter__mid--listlink' href='#'>
+						<Link to='/' className='mainFooter__mid--listlink' href='/'>
 							Featured Events
 						</Link>
 					</li>
 					<li className='mainFooter__mid--listitem'>
-						<Link to='/' className='mainFooter__mid--listlink' href='#'>
+						<Link to='/' className='mainFooter__mid--listlink' href='/'>
 							Bookmarks
 						</Link>
 					</li>
 					<li className='mainFooter__mid--listitem'>
-						<Link to='/' className='mainFooter__mid--listlink' href='#'>
+						<Link to='/' className='mainFooter__mid--listlink' href='/'>
 							Visited Events
 						</Link>
 					</li>
@@ -65,22 +68,22 @@ const MainFooter = () => {
 				<ul className='mainFooter__mid--list'>
 					<li className='mainFooter__mid--listhead'>Discover</li>
 					<li className='mainFooter__mid--listitem'>
-						<Link to='/' className='mainFooter__mid--listlink' href='#'>
+						<Link to='/' className='mainFooter__mid--listlink' href='/'>
 							Music
 						</Link>
 					</li>
 					<li className='mainFooter__mid--listitem'>
-						<Link to='/' className='mainFooter__mid--listlink' href='#'>
+						<Link to='/' className='mainFooter__mid--listlink' href='/'>
 							webinars
 						</Link>
 					</li>
 					<li className='mainFooter__mid--listitem'>
-						<Link to='/' className='mainFooter__mid--listlink' href='#'>
+						<Link to='/' className='mainFooter__mid--listlink' href='/'>
 							Stand up
 						</Link>
 					</li>
 					<li className='mainFooter__mid--listitem'>
-						<Link to='/' className='mainFooter__mid--listlink' href='#'>
+						<Link to='/' className='mainFooter__mid--listlink' href='/'>
 							Art and culture
 						</Link>
 					</li>
@@ -136,23 +139,23 @@ const MainFooter = () => {
 				<div className='mainFooter__lower--left'>
 					<span className='mainFooter__lower--contact'>Contact Us : </span>
 					<span className='mainFooter__lower--icons'>
-						<a href='#' className='mainFooter__lower--iconlink'>
+						<a href='/' className='mainFooter__lower--iconlink'>
 							<img src={twitterIcon} className=' mainFooter__lower--icon' alt='twitter' />
 						</a>
-						<a href='#' className='mainFooter__lower--iconlink'>
+						<a href='/' className='mainFooter__lower--iconlink'>
 							<img
 								src={linkedInIcon}
 								className=' mainFooter__lower--icon'
 								alt='twitter'
 							/>
 						</a>
-						<a href='#' className='mainFooter__lower--iconlink'>
+						<a href='/' className='mainFooter__lower--iconlink'>
 							<img src={emailIcon} className=' mainFooter__lower--icon' alt='twitter' />
 						</a>
-						<a href='#' className='mainFooter__lower--iconlink'>
+						<a href='/' className='mainFooter__lower--iconlink'>
 							<img src={webIcon} className=' mainFooter__lower--icon' alt='twitter' />
 						</a>
-						<a href='#' className='mainFooter__lower--iconlink'>
+						<a href='/' className='mainFooter__lower--iconlink'>
 							<img
 								src={instagramIcon}
 								className=' mainFooter__lower--icon'

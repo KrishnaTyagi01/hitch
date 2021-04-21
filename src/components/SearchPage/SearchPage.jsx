@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import { connect } from 'react-redux';
 import axios from 'axios';
 
-import Filter from '../myEvents/Filter';
+import Filter from '../MyEvents/Filter';
 
 import SearchPageNavbar from './SearchPageNavbar';
 import EventCardsContainer from '../Common/EventCardsContainer';
@@ -31,12 +31,13 @@ const SearchPage = (props) => {
 	}, [topics]);
 
 	const getTopics = (search) => {
-		if (search.length !== 0) {
-			let ans = '[' + '"' + search + '"]';
-			return ans;
-		} else {
-			return '[]';
-		}
+		// if (search.length !== 0) {
+		// 	let ans = '[' + '"' + search + '"]';
+		// 	return ans;
+		// } else {
+		// 	return '[]';
+		// }
+		return JSON.stringify([search]);
 	};
 
 	const onFilterChange = (events) => {

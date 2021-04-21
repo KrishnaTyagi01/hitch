@@ -1,9 +1,9 @@
-import React, { useEffect, useState, useRef } from 'react';
+import { useEffect, useState, useRef } from 'react';
 import { connect } from 'react-redux';
 
 import EventCardsContainer from '../Common/EventCardsContainer';
 
-const MainComponent = (props) => {
+const EventsPage = (props) => {
 	const [events, setEvents] = useState([]);
 	const ref1 = useRef(null);
 	const ref2 = useRef(null);
@@ -74,4 +74,4 @@ const mapStateToProps = (state) => ({
 	wishlistEvents: state.profileState.wishlistEvents
 });
 
-export default connect(mapStateToProps)(MainComponent);
+export default connect(mapStateToProps)(EventsPage);
