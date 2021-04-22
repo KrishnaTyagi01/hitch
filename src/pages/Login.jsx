@@ -39,7 +39,7 @@ const Login = (props) => {
 			</Helmet>
 			{props.location.state?.message ? (
 				<div className='login-message'>
-					<h4>{props.location.state.message}</h4>
+					<h5>{props.location.state.message}</h5>
 				</div>
 			) : null}
 			<form className='login-form' onSubmit={handleSubmit}>

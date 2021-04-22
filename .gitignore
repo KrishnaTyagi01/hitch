@@ -26,3 +26,6 @@ yarn-error.log*
 
 src/css/App.css
 src/css/App.css.map
+
+#temporary files folder
+temp-files

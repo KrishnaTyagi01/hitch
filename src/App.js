@@ -7,18 +7,18 @@ import { getSelfProfile, getSelfEvents } from './redux/actions/profileActions';
 import '@fortawesome/fontawesome-free/css/all.min.css';
 import './css/App.css';
 
+// have to fix auth issues on server restart
 function App(props) {
 	const { isAuthenticated, getSelfProfile, getSelfEvents } = props;
-	console.log({ isAuthenticated, getSelfProfile, getSelfEvents });
-	console.log(Boolean(isAuthenticated));
 
 	useEffect(() => {
+		console.log('app.js render');
+		console.log(process.env.REACT_APP_HOME_PAGE);
 		if (isAuthenticated) {
-			console.log(Boolean(isAuthenticated));
 			getSelfProfile();
 			getSelfEvents();
 		}
-	}, [isAuthenticated]);
+	}, [props]);
 
 	return <MainRouter />;
 }
